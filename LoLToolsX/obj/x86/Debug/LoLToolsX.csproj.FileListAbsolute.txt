@@ -1,0 +1,9 @@
+K:\git\LoLToolsX_C#\LoLToolsX\bin\Debug\LoLToolsX.exe
+K:\git\LoLToolsX_C#\LoLToolsX\bin\Debug\LoLToolsX.pdb
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\ResolveAssemblyReference.cache
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.Properties.Resources.resources
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\GenerateResource.read.1.tlog
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\GenerateResource.write.1.tlog
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.exe
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.pdb
+K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.TwTools.resources
