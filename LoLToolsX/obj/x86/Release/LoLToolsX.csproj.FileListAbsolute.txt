@@ -7,3 +7,5 @@ K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Release\GenerateResource.read.1.tlog
 K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Release\GenerateResource.write.1.tlog
 K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Release\LoLToolsX.exe
 K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Release\LoLToolsX.pdb
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.exe
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.pdb
