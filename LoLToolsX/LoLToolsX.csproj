@@ -43,14 +43,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BakRes.cs" />
@@ -64,6 +63,7 @@
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="StartGame.cs" />
+    <Compile Include="SwitchLang.cs" />
     <Compile Include="SwitchServer.cs" />
     <Compile Include="TwTools.cs">
       <SubType>Form</SubType>

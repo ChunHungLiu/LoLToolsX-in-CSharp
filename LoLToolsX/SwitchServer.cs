@@ -7,6 +7,10 @@ using System.Windows.Forms;
 
 namespace LoLToolsX
 {
+    /// <summary>
+    /// 伺服器切換
+    /// </summary>
+
     class SwitchServer
     {
 

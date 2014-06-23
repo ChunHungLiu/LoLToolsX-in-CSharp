@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
@@ -239,6 +237,60 @@ namespace LoLToolsX
             }
             
         }
+
+        private void lChin_Click(object sender, EventArgs e)
+        {
+            SwitchLang sl = new SwitchLang(installPath);
+            sl.ChinLobby();
+
+        }
+
+        private void lEng_Click(object sender, EventArgs e)
+        {
+            SwitchLang sl = new SwitchLang(installPath);
+            sl.EngLobby();
+        }
+
+        private void gChin_Click(object sender, EventArgs e)
+        {
+            SwitchLang sl = new SwitchLang(installPath);
+            sl.ChinGame();
+        }
+
+        private void gEng_Click(object sender, EventArgs e)
+        {
+            SwitchLang sl = new SwitchLang(installPath);
+            sl.EngGame();
+        }
+
+        private void BakLang_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Lang(1);
+        }
+
+        private void ResLang_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Lang(2);
+        }
+
+        private void delLangBak_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Lang(3);
+        }
+
+        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://lolnx.pixub.com/sound-pack");
+        }
+
+        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://lolnx.pixub.com/lol-tools-tw/lol-lobby-theme/");
+        }
+
 
     }
 }

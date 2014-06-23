@@ -7,6 +7,10 @@ using System.Windows.Forms;
 
 namespace LoLToolsX
 {
+    /// <summary>
+    /// 檢查 lol.properties
+    /// </summary>
+
     class CheckProp
     {
         public string currentLoc;
