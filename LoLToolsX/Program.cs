@@ -15,7 +15,7 @@ namespace LoLToolsX
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TwTools());
+            Application.Run(new ServerSelect());
         }
     }
 }

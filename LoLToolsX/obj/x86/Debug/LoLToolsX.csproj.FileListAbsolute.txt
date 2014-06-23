@@ -7,3 +7,13 @@ K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\GenerateResource.write.1.tlog
 K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.exe
 K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.pdb
 K:\git\LoLToolsX_C#\LoLToolsX\obj\x86\Debug\LoLToolsX.TwTools.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLToolsX.exe
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLToolsX.pdb
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\ResolveAssemblyReference.cache
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.TwTools.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Properties.Resources.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\GenerateResource.read.1.tlog
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\GenerateResource.write.1.tlog
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.exe
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.pdb
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.ServerSelect.resources

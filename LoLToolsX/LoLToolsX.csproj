@@ -36,6 +36,10 @@
   <PropertyGroup>
     <ApplicationIcon>lol.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,9 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BakRes.cs" />
     <Compile Include="CFGFile.cs" />
     <Compile Include="CheckProp.cs" />
     <Compile Include="Path.cs" />
+    <Compile Include="ServerSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerSelect.Designer.cs">
+      <DependentUpon>ServerSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartGame.cs" />
+    <Compile Include="SwitchServer.cs" />
     <Compile Include="TwTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +74,9 @@
     <Compile Include="GetReg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ServerSelect.resx">
+      <DependentUpon>ServerSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TwTools.resx">
       <DependentUpon>TwTools.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +88,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
