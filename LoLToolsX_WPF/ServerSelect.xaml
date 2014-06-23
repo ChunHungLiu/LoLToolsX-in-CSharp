@@ -1,0 +1,10 @@
+<Window x:Class="LoLToolsX.ServerSelect"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="請選擇客戶端" Height="330" Width="261">
+	<Grid>
+		<Button Name="selectKR" Height="49" Width="118" TabIndex="5" IsEnabled="False" Margin="62,0,0,43" HorizontalAlignment="Left" VerticalAlignment="Bottom" >韓服</Button>
+		<Button Name="selectNA" Height="49" Width="118" TabIndex="4" Margin="62,118,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >美服</Button>
+		<Button Name="selectTW" Height="49" Width="118" TabIndex="3" Click="selectTW_Click" Margin="62,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >台服</Button>
+	</Grid>
+</Window>
