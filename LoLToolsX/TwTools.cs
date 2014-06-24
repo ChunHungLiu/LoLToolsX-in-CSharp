@@ -33,13 +33,13 @@ namespace LoLToolsX
             //取得LoL路徑
             GetReg gr = new GetReg();
             installPath = gr.TwPath(Directory.GetCurrentDirectory() + @"\config.ini");
+           
 
             //檢查路徑是否存有 LoLTW 字串
             if (!installPath.Contains("LoLTW"))
             {
-                DialogResult dr = new DialogResult();
-                dr = MessageBox.Show("無法取得LoL目錄 請手動選擇LoLTW目錄", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                if (dr == System.Windows.Forms.DialogResult.OK)
+
+                if (MessageBox.Show("無法取得LoL目錄 請手動選擇LoLTW目錄", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     folderBrowserDialog1.ShowDialog();
                     if (folderBrowserDialog1.SelectedPath.Contains("LoLTW"))
@@ -65,9 +65,9 @@ namespace LoLToolsX
                 PathLabel.Text = installPath;
 
             }
+
+           
             
-
-
 
             //string test = Directory.GetCurrentDirectory();
             //MessageBox.Show(test);
@@ -95,7 +95,9 @@ namespace LoLToolsX
             catch
             { }
 
-            //設定伺服器陣列
+            //刪除物件
+            cp = null;
+            gr = null;
 
         }
 
@@ -114,15 +116,15 @@ namespace LoLToolsX
         public static string GetLoLVer()
         {
             //取得LoL版本
-            FileStream fs = new FileStream(installPath + @"\Game\client.ver", FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
+            //FileStream fs = new FileStream(installPath + @"\Game\client.ver", FileMode.Open);
+            //StreamReader sr = new StreamReader(fs);
             FileStream fs2 = new FileStream(installPath + @"\lol.version", FileMode.Open);
             StreamReader sr2 = new StreamReader(fs2);
             try
             {
-                string gameVer = sr.ReadLine();
+                //string gameVer = sr.ReadLine();
                 string airVer = sr2.ReadLine();
-                return gameVer + " - " + airVer;
+                return airVer;
                 
             }
             catch
@@ -132,9 +134,9 @@ namespace LoLToolsX
             }
             finally
             {
-                sr.Close();
+                //sr.Close();
                 sr2.Close();
-                fs.Close();
+                //fs.Close();
                 fs2.Close();
             }
         }
@@ -290,6 +292,53 @@ namespace LoLToolsX
         {
             Process.Start("http://lolnx.pixub.com/lol-tools-tw/lol-lobby-theme/");
         }
+
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (folderBrowserDialog1.SelectedPath.Contains("Sound"))
+                {
+                    tbPath.Text = folderBrowserDialog1.SelectedPath;
+                }
+                else
+                {
+                    MessageBox.Show("請選擇正確的Sound資料夾", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void installSound_Click(object sender, EventArgs e)
+        {
+            SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
+            ss.SwitchLobby();
+        }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
+            ss.SwitchGame();
+        }
+
+        private void Button12_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Sound(1);
+        }
+
+        private void Button13_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Sound(2);
+        }
+
+        private void Button14_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Sound(3);
+        }
+
+
 
 
     }

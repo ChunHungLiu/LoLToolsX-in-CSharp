@@ -145,6 +145,125 @@ namespace LoLToolsX
 
         }
 
+        //語音
+        public void Sound(int Type)
+        {
+            if (Type == 1)  //備份
+            {
+
+                try
+                {
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_TW.fsb", true);
+                }
+                catch { }
+
+                try
+                {
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_CN.fsb", true);
+                }
+                catch { }
+
+                try
+                {
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_en_US.fsb", true);
+                }
+                catch { }
+                /*
+                try
+                {
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_ko_KR.fsb", true);
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_TW.fsb", true);
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_CN.fsb", true);
+                    File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_en_US.fsb", true);
+                }
+                catch { }
+                */
+                try
+                {
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\bak\sound\air");
+                    foreach (string newPath in Directory.GetFiles(installPath_m + @"\Air\assets\sounds\en_US\champions", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\en_US\champions", Directory.GetCurrentDirectory() + @"\bak\sound\air"), true);
+                    foreach (string newPath in Directory.GetFiles(installPath_m + @"\Air\assets\sounds\zh_TW\champions", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\zh_TW\champions", Directory.GetCurrentDirectory() + @"\bak\sound\air"), true);
+                    MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+            if (Type == 2) //還原
+            {
+                try
+                {
+                    File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_ko_KR.fsb", installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
+                }
+                catch { }
+
+                try
+                {
+                    File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_TW.fsb", installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", true);
+                }
+                catch { }
+
+                try
+                {
+                    File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_CN.fsb", installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", true);
+                }
+                catch { }
+
+                try
+                {
+                    File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_en_US.fsb", installPath_m + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", true);
+                }
+                catch { }
+
+                try
+                {
+                    foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air",installPath_m + @"\Air\assets\sounds\en_US\champions"), true);
+                    foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air", installPath_m + @"\Air\assets\sounds\zh_TW\champions"), true);
+                    MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (System.IO.DirectoryNotFoundException)
+                {
+                    MessageBox.Show("沒有還原檔可供還原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } 
+                catch (Exception e)
+                {
+                    MessageBox.Show("還原失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
+            }
+
+            if (Type == 3)  //刪除
+            {
+                try
+                {
+                    Directory.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\Air",true);
+                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_ko_KR.fsb");
+                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_TW.fsb");
+                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_CN.fsb");
+                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_en_US.fsb");
+                    MessageBox.Show("備份刪除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (System.IO.FileNotFoundException)
+                {
+                    MessageBox.Show("沒有還原檔可供還原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);     
+                }
+                catch (System.IO.DirectoryNotFoundException)
+                {
+                    
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("備份刪除失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
 
     }
 }

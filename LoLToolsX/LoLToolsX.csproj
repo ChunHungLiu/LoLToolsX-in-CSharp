@@ -65,6 +65,7 @@
     <Compile Include="StartGame.cs" />
     <Compile Include="SwitchLang.cs" />
     <Compile Include="SwitchServer.cs" />
+    <Compile Include="SwitchSound.cs" />
     <Compile Include="TwTools.cs">
       <SubType>Form</SubType>
     </Compile>

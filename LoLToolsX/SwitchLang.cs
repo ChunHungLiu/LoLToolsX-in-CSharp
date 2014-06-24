@@ -72,7 +72,7 @@ namespace LoLToolsX
                 File.Copy(cd + @"\files\lang\cht\lobby\locale.properties", installPath + @"\Air\locale.properties", true);
                 File.Copy(cd + @"\files\lang\cht\lobby\fonts.swf", installPath + @"\Air\css\fonts.swf",true);
                 File.Copy(cd + @"\files\lang\cht\lobby\fonts_zh_TW.swf", installPath + @"\Air\css\fonts_zh_TW.swf",true);
-                MessageBox.Show("大廳語言切換完成: 英文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("大廳語言切換完成: 中文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {

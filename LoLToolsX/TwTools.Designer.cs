@@ -457,18 +457,21 @@
             resources.ApplyResources(this.Button14, "Button14");
             this.Button14.Name = "Button14";
             this.Button14.UseVisualStyleBackColor = true;
+            this.Button14.Click += new System.EventHandler(this.Button14_Click);
             // 
             // Button13
             // 
             resources.ApplyResources(this.Button13, "Button13");
             this.Button13.Name = "Button13";
             this.Button13.UseVisualStyleBackColor = true;
+            this.Button13.Click += new System.EventHandler(this.Button13_Click);
             // 
             // Button12
             // 
             resources.ApplyResources(this.Button12, "Button12");
             this.Button12.Name = "Button12";
             this.Button12.UseVisualStyleBackColor = true;
+            this.Button12.Click += new System.EventHandler(this.Button12_Click);
             // 
             // pbGame
             // 
@@ -485,12 +488,14 @@
             resources.ApplyResources(this.Button11, "Button11");
             this.Button11.Name = "Button11";
             this.Button11.UseVisualStyleBackColor = true;
+            this.Button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // installSound
             // 
             resources.ApplyResources(this.installSound, "installSound");
             this.installSound.Name = "installSound";
             this.installSound.UseVisualStyleBackColor = true;
+            this.installSound.Click += new System.EventHandler(this.installSound_Click);
             // 
             // Label11
             // 
@@ -512,6 +517,7 @@
             resources.ApplyResources(this.Button10, "Button10");
             this.Button10.Name = "Button10";
             this.Button10.UseVisualStyleBackColor = true;
+            this.Button10.Click += new System.EventHandler(this.Button10_Click);
             // 
             // tabPage5
             // 
@@ -788,8 +794,6 @@
         internal System.Windows.Forms.Button Button14;
         internal System.Windows.Forms.Button Button13;
         internal System.Windows.Forms.Button Button12;
-        internal System.Windows.Forms.ProgressBar pbGame;
-        internal System.Windows.Forms.ProgressBar pbLobby;
         internal System.Windows.Forms.Button Button11;
         internal System.Windows.Forms.Button installSound;
         internal System.Windows.Forms.Label Label11;
@@ -824,6 +828,8 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        internal System.Windows.Forms.ProgressBar pbGame;
+        internal System.Windows.Forms.ProgressBar pbLobby;
     }
 }
 
