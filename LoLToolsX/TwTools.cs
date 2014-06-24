@@ -338,8 +338,22 @@ namespace LoLToolsX
             br.Sound(3);
         }
 
+        private void button23_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo StartInfo = new ProcessStartInfo();
+            StartInfo.WorkingDirectory = System.Environment.CurrentDirectory;
+            StartInfo.Verb = "runas";
+            StartInfo.FileName = "BakResConsole";
+            StartInfo.Arguments = "Backup" + " " + installPath;
+            Process.Start(StartInfo);
 
+        }
 
+        private void Button15_Click(object sender, EventArgs e)
+        {
+            PropEdit pe = new PropEdit(installPath,websiteIn.Text);
+            pe.LobbyLanding();
+        }
 
     }
 }

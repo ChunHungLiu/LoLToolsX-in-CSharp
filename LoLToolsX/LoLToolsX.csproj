@@ -56,6 +56,7 @@
     <Compile Include="CFGFile.cs" />
     <Compile Include="CheckProp.cs" />
     <Compile Include="Path.cs" />
+    <Compile Include="PropEdit.cs" />
     <Compile Include="ServerSelect.cs">
       <SubType>Form</SubType>
     </Compile>

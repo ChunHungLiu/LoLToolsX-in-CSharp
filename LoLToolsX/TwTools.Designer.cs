@@ -110,6 +110,7 @@
             this.Button22 = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.button23 = new System.Windows.Forms.Button();
             this.startLoL = new System.Windows.Forms.Button();
             this.WebBrowser1 = new System.Windows.Forms.WebBrowser();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -128,6 +129,7 @@
             this.GroupBox4.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -569,6 +571,7 @@
             resources.ApplyResources(this.Button15, "Button15");
             this.Button15.Name = "Button15";
             this.Button15.UseVisualStyleBackColor = true;
+            this.Button15.Click += new System.EventHandler(this.Button15_Click);
             // 
             // Label14
             // 
@@ -679,9 +682,17 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.button23);
             resources.ApplyResources(this.tabPage9, "tabPage9");
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // button23
+            // 
+            resources.ApplyResources(this.button23, "button23");
+            this.button23.Name = "button23";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // startLoL
             // 
@@ -739,6 +750,7 @@
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
             this.tabPage7.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -830,6 +842,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         internal System.Windows.Forms.ProgressBar pbGame;
         internal System.Windows.Forms.ProgressBar pbLobby;
+        private System.Windows.Forms.Button button23;
     }
 }
 
