@@ -27,12 +27,22 @@ namespace LoLToolsX
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //除錯模式
+            //Debug.debug = true;
+            //wpfLog wpLog = new wpfLog();
+            //wpLog.Show();
+
+            //寫入目前LoLToolsX版本到Log
+            Logger.log("LoLToolsX版本: " + Application.ProductVersion, Logger.LogType.Info);
             //載入LoLToolsX Logo
             PictureBox1.ImageLocation = Directory.GetCurrentDirectory() + @"\logo.png";
+            Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
             //取得LoL路徑
             GetReg gr = new GetReg();
             installPath = gr.TwPath(Directory.GetCurrentDirectory() + @"\config.ini");
+            Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
+
            
 
             //檢查路徑是否存有 LoLTW 字串
@@ -42,18 +52,24 @@ namespace LoLToolsX
                 if (MessageBox.Show("無法取得LoL目錄 請手動選擇LoLTW目錄", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     folderBrowserDialog1.ShowDialog();
+                    Logger.log("LoL手動選擇目錄! " , Logger.LogType.Info);
                     if (folderBrowserDialog1.SelectedPath.Contains("LoLTW"))
                     {
                         installPath = folderBrowserDialog1.SelectedPath;
+                        Logger.log("LoL目錄檢查成功! " + installPath, Logger.LogType.Info);
                     }
                     else
                     {
                         MessageBox.Show("目錄選擇錯誤 按確定退出程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Logger.log("LoL目錄檢查失敗 " , Logger.LogType.Error);
+                        Logger.log("強制關閉程式... " , Logger.LogType.Info);
                         Application.Exit();
                     }
                 }
                 else
                 {
+                    Logger.log("LoL目錄選擇取消 " , Logger.LogType.Error);
+                    Logger.log("關閉程式... " + installPath, Logger.LogType.Info);
                     Application.Exit();
                 }
             }
@@ -63,6 +79,9 @@ namespace LoLToolsX
                 CFGFile.SetValue("LoLPath", "TwPath", installPath);
                 CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                 PathLabel.Text = installPath;
+                Logger.log("LoL目錄檢查成功! " , Logger.LogType.Info);
+                Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);
+
 
             }
 
@@ -87,13 +106,18 @@ namespace LoLToolsX
             LoLVersionLabel.Text = GetLoLVer();
 
 
+
             //在綫統計使用人數
             try
             {
                 WebBrowser1.Navigate("http://lolnx.pixub.com/loltoolsx/stat.html");
+                Logger.log("使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html " , Logger.LogType.Info);
             }
-            catch
-            { }
+            catch (Exception e2)
+            {
+                Logger.log("使用人數統計失敗", Logger.LogType.Error);
+                Logger.log(e2);
+            }
 
             //刪除物件
             cp = null;
@@ -104,11 +128,13 @@ namespace LoLToolsX
         
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            Logger.log("關閉程式...", Logger.LogType.Info);
+            Environment.Exit(Environment.ExitCode);
         }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            Logger.log("開啟NitroXenon的BLOG...", Logger.LogType.Info);
             Process.Start("http://lolnx.pixub.com");
         }
 
@@ -124,12 +150,16 @@ namespace LoLToolsX
             {
                 //string gameVer = sr.ReadLine();
                 string airVer = sr2.ReadLine();
+                Logger.log("Air版本: " + airVer, Logger.LogType.Info);
                 return airVer;
                 
+                
             }
-            catch
+            catch (Exception e)
             {
                 MessageBox.Show("無法取得LoL版本", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("無法取得Air版本: " , Logger.LogType.Error);
+                Logger.log(e);
                 return "未知";
             }
             finally
@@ -299,11 +329,13 @@ namespace LoLToolsX
             {
                 if (folderBrowserDialog1.SelectedPath.Contains("Sound"))
                 {
+                    Logger.log("Sound資料夾選擇成功: " +folderBrowserDialog1.SelectedPath, Logger.LogType.Error);
                     tbPath.Text = folderBrowserDialog1.SelectedPath;
                 }
                 else
                 {
                     MessageBox.Show("請選擇正確的Sound資料夾", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("Sound資料夾選擇錯誤", Logger.LogType.Error);
                 }
             }
         }
@@ -340,12 +372,23 @@ namespace LoLToolsX
 
         private void button23_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo StartInfo = new ProcessStartInfo();
-            StartInfo.WorkingDirectory = System.Environment.CurrentDirectory;
-            StartInfo.Verb = "runas";
-            StartInfo.FileName = "BakResConsole";
-            StartInfo.Arguments = "Backup" + " " + installPath;
-            Process.Start(StartInfo);
+            try
+            {
+                ProcessStartInfo StartInfo = new ProcessStartInfo();
+                StartInfo.UseShellExecute = true;
+                StartInfo.WorkingDirectory = System.Environment.CurrentDirectory;
+                StartInfo.Verb = "runas";
+                StartInfo.FileName = "BakResConsole";
+                StartInfo.Arguments = "Backup" + " " + installPath;
+                Process.Start(StartInfo);
+                Logger.log("LoLToolsX 備份/還原中心 啟動成功!", Logger.LogType.Info);
+            }
+            catch (Exception e3)
+            {
+                Logger.log("LoLToolsX 備份/還原中心 啟動失敗", Logger.LogType.Error);
+                Logger.log(e3);
+            }
+
 
         }
 

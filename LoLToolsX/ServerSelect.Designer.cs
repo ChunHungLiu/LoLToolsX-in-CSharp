@@ -77,6 +77,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "請選擇客戶端";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.ServerSelect_Load);
             this.ResumeLayout(false);
 
         }

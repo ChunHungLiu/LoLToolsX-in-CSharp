@@ -17,15 +17,28 @@ namespace LoLToolsX
 
         public string CheckPropFL(string installPath)
         {
+            if (!File.Exists(installPath + @"\Air\lol.properties"))
+            {
+                MessageBox.Show("無法存取伺服器設定檔\r\n按'確定'關閉程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("無法存取伺服器設定檔", Logger.LogType.Error);
+                Logger.log("強制關閉程式... Exit Code: " + Environment.ExitCode, Logger.LogType.Error);
+                
+                Environment.Exit(Environment.ExitCode);
+            }
 
-            Path.propPath = installPath + @"\Air\lol.properties";
-            FileStream fs = new FileStream(Path.propPath, FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
+            else
+            {
+                Path.propPath = installPath + @"\Air\lol.properties";
+            }
+   
+
 
             try
             {
-                
-                    
+
+                FileStream fs = new FileStream(Path.propPath, FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+
                     string cs = sr.ReadToEnd();
 
                     //////////////////////////////////////
@@ -66,20 +79,23 @@ namespace LoLToolsX
                     {
                         currentLoc = "未知";
                     }
-                
-                
+
+                Logger.log("伺服器設定檔檢查成功! ", Logger.LogType.Info);
+                Logger.log("目前伺服器: " + currentLoc , Logger.LogType.Info);
                 return currentLoc;
             }
 
             catch (Exception e)
             {
+                Logger.log("伺服器設定檔檢查失敗", Logger.LogType.Error);
+                Logger.log(e,Logger.LogType.Exception);
+                GC.Collect();
                 return currentLoc;
             }
 
             finally
             {
-                sr.Close();
-                fs.Close();
+                GC.Collect();
             }
 
             

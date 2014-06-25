@@ -17,3 +17,8 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\GenerateResource.write.1.tlog
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.exe
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.pdb
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.ServerSelect.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\wpfLog.baml
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\wpfLog.g.cs
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX_Content.g.cs
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX_MarkupCompile.cache
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.g.resources

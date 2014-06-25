@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LoLToolsX
 {
@@ -22,6 +23,14 @@ namespace LoLToolsX
             tt.Show();
             this.Hide();
             GC.Collect();
+        }
+
+        private void ServerSelect_Load(object sender, EventArgs e)
+        {
+            //開始記錄
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + @"\Logs"))
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Logs");
+            Logger.start();
         }
     }
 }

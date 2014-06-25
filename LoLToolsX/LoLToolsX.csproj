@@ -41,12 +41,21 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
@@ -55,6 +64,8 @@
     <Compile Include="BakRes.cs" />
     <Compile Include="CFGFile.cs" />
     <Compile Include="CheckProp.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="PropEdit.cs" />
     <Compile Include="ServerSelect.cs">
@@ -76,6 +87,9 @@
     <Compile Include="GetReg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wpfLog.xaml.cs">
+      <DependentUpon>wpfLog.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ServerSelect.resx">
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lol.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="wpfLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

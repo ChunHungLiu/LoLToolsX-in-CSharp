@@ -17,3 +17,8 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.TwTools.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.Properties.Resources.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.read.1.tlog
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.write.1.tlog
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\wpfLog.baml
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\wpfLog.g.cs
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX_Content.g.cs
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX_MarkupCompile.cache
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.g.resources
