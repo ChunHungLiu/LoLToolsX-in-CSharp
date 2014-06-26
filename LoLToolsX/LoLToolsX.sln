@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLToolsX", "LoLToolsX.csproj", "{FCC11EC8-FE56-4AFF-9DD2-1FCB1754F57E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLToolsX-Updater", "..\LoLToolsX-Updater\LoLToolsX-Updater.csproj", "{0C12FC41-53F4-4528-A0CC-1AD15BD74034}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{FCC11EC8-FE56-4AFF-9DD2-1FCB1754F57E}.Debug|x86.Build.0 = Debug|x86
 		{FCC11EC8-FE56-4AFF-9DD2-1FCB1754F57E}.Release|x86.ActiveCfg = Release|x86
 		{FCC11EC8-FE56-4AFF-9DD2-1FCB1754F57E}.Release|x86.Build.0 = Release|x86
+		{0C12FC41-53F4-4528-A0CC-1AD15BD74034}.Debug|x86.ActiveCfg = Debug|x86
+		{0C12FC41-53F4-4528-A0CC-1AD15BD74034}.Debug|x86.Build.0 = Debug|x86
+		{0C12FC41-53F4-4528-A0CC-1AD15BD74034}.Release|x86.ActiveCfg = Release|x86
+		{0C12FC41-53F4-4528-A0CC-1AD15BD74034}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

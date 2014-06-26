@@ -38,20 +38,36 @@ namespace LoLToolsX
                         WebClient wc = new WebClient();
                         try
                         {
-                            string downloadPath = System.IO.Path.Combine(@"https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/" + result + @"/LoLToolsX" + result + @".exe");
+                            string downloadPath = "https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/LoLToolsX" + result + "/LoLToolsX" + result + ".exe";
                             try
                             {
                                 Logger.log("LoLToolsX 開始下載更新", Logger.LogType.Info);
-                                wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"LoLToolsX" + result + @".exe");
+                                wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"LoLToolsX.exe");
                                 if (MessageBox.Show("更新下載完成 按確定重新啟動程式", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                 {
+                                    Logger.log("LoLToolsX 更新下載完成", Logger.LogType.Info);
+                                    Logger.log("正在關閉程式並進行更新", Logger.LogType.Info);
+                                    Logger.log("啟動 Updater.exe 進行更新", Logger.LogType.Info);
+                                    Logger.log("Starting " +  Directory.GetCurrentDirectory() + @"\Updater.exe");
+                                    ProcessStartInfo pi = new ProcessStartInfo();
+                                    pi.FileName = "Updater.exe";
+                                    pi.WorkingDirectory = Directory.GetCurrentDirectory();
+                                    pi.Arguments = "Update";
+                                    Process.Start(pi);
+                                    //Process.Start(Directory.GetCurrentDirectory() + @"\Updater.exe");
                                     Environment.Exit(Environment.ExitCode);
-                                    Process.Start(Directory.GetCurrentDirectory() + "Updater.exe");
                                 }
+                            }
+                            catch (System.ComponentModel.Win32Exception err)
+                            {
+                                Logger.log("找不到 Updater.exe ,更新失敗", Logger.LogType.Error);
+                                Logger.log(err, Logger.LogType.Error);
+                                MessageBox.Show("找不到 Updater.exe ,更新失敗", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             catch (Exception e)
                             {
                                 Logger.log("LoLToolsX 下載更新失敗", Logger.LogType.Error);
+                                Logger.log(e, Logger.LogType.Error);
                             }
 
                         }

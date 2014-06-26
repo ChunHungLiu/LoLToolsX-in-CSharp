@@ -29,6 +29,7 @@ namespace LoLToolsX
             }
             finally
             {
+                Logger.log("關閉程式...", Logger.LogType.Info);
                 Application.Exit();
             }
         }
