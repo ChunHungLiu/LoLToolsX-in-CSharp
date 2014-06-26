@@ -12,6 +12,7 @@ namespace LoLToolsX
     /// 語音切換
     /// </summary>
 
+
     class SwitchSound
     {
         string installPath;

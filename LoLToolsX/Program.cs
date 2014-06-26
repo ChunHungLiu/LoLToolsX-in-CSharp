@@ -11,22 +11,26 @@ namespace LoLToolsX
         /// 應用程式的主要進入點。
         /// </summary>
         [STAThread]
-        static void Main(string[] args)  //加入 string[] args 來接受參數
+        static void Main()
         {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //如果參數是 "Debug" 則Debug模式開啟
-            if (args.Length > 0)
-            {
-                switch (args[0])
-                {
-                    case "Debug":
-                        Debug.debug = true;
-                        break;
-                }
-            }
             Application.Run(new ServerSelect());
-
+        }
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)  //CrushHandler
+        {
+            try
+            {
+                Exception ex = (Exception)e.ExceptionObject;
+                Logger.log(string.Format("程式發生未處理的錯誤！\n\n{0}{1}", ex.Message, ex.StackTrace), Logger.LogType.Crash);
+                MessageBox.Show(string.Format("程式發生未處理的錯誤, 按確定關閉程式！\n\n{0}{1}", ex.Message, ex.StackTrace), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                Application.Exit();
+            }
         }
     }
 }

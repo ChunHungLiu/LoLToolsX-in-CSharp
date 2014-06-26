@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Threading;
 
 namespace LoLToolsX
 {
@@ -14,6 +15,7 @@ namespace LoLToolsX
     /// <summary>
     /// 台服工具
     /// </summary>
+
 
     public partial class TwTools : Form
     {
@@ -25,12 +27,12 @@ namespace LoLToolsX
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)     //Form1_Load
         {
-            //除錯模式
-            //Debug.debug = true;
-            //wpfLog wpLog = new wpfLog();
-            //wpLog.Show();
+            Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+            updateThread.Start();
+
+            //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
             //寫入目前LoLToolsX版本到Log
             Logger.log("LoLToolsX版本: " + Application.ProductVersion, Logger.LogType.Info);
@@ -398,6 +400,21 @@ namespace LoLToolsX
             pe.LobbyLanding();
         }
 
+        private void chooseHUD_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                Path.hudPath = openFileDialog2.FileName;
+                Logger.log("已選擇hudPath路徑: " + Path.hudPath);
+            }
+            
+        }
+
+        private void installHUD_Click(object sender, EventArgs e)
+        {
+            InstallUI.GameUI(installPath);
+        }
+        
     }
 }
 

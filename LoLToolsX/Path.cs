@@ -7,6 +7,7 @@ namespace LoLToolsX
 {
     class Path
     {
-        public static string propPath; 
+        public static string propPath;
+        public static string hudPath;
     }
 }
