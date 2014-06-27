@@ -1,0 +1,5 @@
+K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\bin\Release\LoLToolsX-Updater.exe
+K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\bin\Release\LoLToolsX-Updater.pdb
+K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Release\ResolveAssemblyReference.cache
+K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Release\LoLToolsX-Updater.exe
+K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Release\LoLToolsX-Updater.pdb
