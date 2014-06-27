@@ -52,10 +52,9 @@ namespace LoLToolsX
                                     ProcessStartInfo pi = new ProcessStartInfo();
                                     pi.FileName = "Updater.exe";
                                     pi.WorkingDirectory = Directory.GetCurrentDirectory();
-                                    pi.Arguments = "Update";
                                     Process.Start(pi);
                                     //Process.Start(Directory.GetCurrentDirectory() + @"\Updater.exe");
-                                    Environment.Exit(Environment.ExitCode);
+                                    Application.Exit();
                                 }
                             }
                             catch (System.ComponentModel.Win32Exception err)

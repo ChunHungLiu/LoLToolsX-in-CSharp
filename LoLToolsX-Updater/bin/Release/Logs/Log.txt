@@ -1,0 +1,27 @@
+﻿06/27/2014 14:38:16信息: 檢查 LoLToolsX 更新...
+06/27/2014 14:38:16信息: LoLToolsX版本: 3.0.0.0
+06/27/2014 14:38:16信息: LoLToolsX Logo載入成功!
+06/27/2014 14:38:16信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/27/2014 14:38:17信息: LoL目錄檢查成功! 
+06/27/2014 14:38:17信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/27/2014 14:38:17信息: 伺服器設定檔檢查成功! 
+06/27/2014 14:38:17信息: 目前伺服器: 台服
+06/27/2014 14:38:17信息: Air版本: 20140624
+06/27/2014 14:38:17信息: 使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html 
+06/27/2014 14:38:20信息: LoLToolsX 發現可用更新 : 2.6.1.0
+06/27/2014 14:38:23信息: LoLToolsX 開始下載更新
+06/27/2014 14:38:25錯誤: LoLToolsX 下載更新失敗
+06/27/2014 14:39:14錯誤: LoLToolsX 備份/還原中心 啟動失敗
+06/27/2014 14:39:14異常: System
+System.ComponentModel.Win32Exception (0x80004005): The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at LoLToolsX.TwTools.button23_Click(Object sender, EventArgs e)
+The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+   at LoLToolsX.TwTools.button23_Click(Object sender, EventArgs e)
+
+06/27/2014 14:39:16信息: 關閉程式...

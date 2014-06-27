@@ -268,5 +268,72 @@ namespace LoLToolsX
 
         }
 
+        public void UI(int Type)     //UI備份
+        {
+            //備份
+            if (Type == 1)
+            {
+                try
+                {
+                    FileInfo fi = new FileInfo(installPath_m + @"\Game\DATA\Menu\Textures\HUDAtlas.tga");
+                    fi.CopyTo(Directory.GetCurrentDirectory() + @"\bak\UI\game\HUDAtlas.tga", true);
+                    MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("UI檔案 備份成功!", Logger.LogType.Info);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("UI檔案 備份失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+
+                }
+            }
+
+            //還原
+            if (Type == 2)
+            {
+                try
+                {
+                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\UI\game\HUDAtlas.tga");
+                    fi.CopyTo(installPath_m + @"\Game\DATA\Menu\Textures\HUDAtlas.tga", true);
+                    MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("UI檔案 還原成功!", Logger.LogType.Info);
+                }
+                catch (FileNotFoundException e2)
+                {
+                    MessageBox.Show("還原失敗 : 沒有備份 ", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("UI檔案 還原失敗 : 沒有備份檔案", Logger.LogType.Error);
+                    Logger.log(e2);
+                }
+
+                catch (Exception e)
+                {
+                    MessageBox.Show("還原失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("UI檔案 還原失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+                }
+            }
+
+            //刪除備份
+            if (Type == 3)
+            {
+                try
+                {
+                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\UI\game\HUDAtlas.tga");
+                    fi.Delete();
+                    Logger.log("UI檔案 備份刪除成功!", Logger.LogType.Info);
+                    MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception e)
+                {
+                    Logger.log("UI檔案 備份刪除失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+                    MessageBox.Show("刪除備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+        }
+
     }
 }

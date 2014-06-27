@@ -109,7 +109,25 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.Button22 = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.Label008 = new System.Windows.Forms.Label();
+            this.Label002 = new System.Windows.Forms.Label();
+            this.Label003 = new System.Windows.Forms.Label();
+            this.Label004 = new System.Windows.Forms.Label();
+            this.Label005 = new System.Windows.Forms.Label();
+            this.Label006 = new System.Windows.Forms.Label();
+            this.Label007 = new System.Windows.Forms.Label();
+            this.Label001 = new System.Windows.Forms.Label();
+            this.Label02 = new System.Windows.Forms.Label();
+            this.Label03 = new System.Windows.Forms.Label();
+            this.Label04 = new System.Windows.Forms.Label();
+            this.Label05 = new System.Windows.Forms.Label();
+            this.Label06 = new System.Windows.Forms.Label();
+            this.Label07 = new System.Windows.Forms.Label();
+            this.Label08 = new System.Windows.Forms.Label();
+            this.Label01 = new System.Windows.Forms.Label();
+            this.checkServerStatus = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button23 = new System.Windows.Forms.Button();
             this.startLoL = new System.Windows.Forms.Button();
             this.WebBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -129,6 +147,7 @@
             this.GroupBox4.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -848,6 +867,7 @@
             this.Button19.TabIndex = 2;
             this.Button19.Text = "刪除已備份設定檔";
             this.Button19.UseVisualStyleBackColor = true;
+            this.Button19.Click += new System.EventHandler(this.Button19_Click);
             // 
             // Button20
             // 
@@ -858,6 +878,7 @@
             this.Button20.TabIndex = 0;
             this.Button20.Text = "備份UI";
             this.Button20.UseVisualStyleBackColor = true;
+            this.Button20.Click += new System.EventHandler(this.Button20_Click);
             // 
             // Button21
             // 
@@ -867,6 +888,7 @@
             this.Button21.TabIndex = 1;
             this.Button21.Text = "還原UI";
             this.Button21.UseVisualStyleBackColor = true;
+            this.Button21.Click += new System.EventHandler(this.Button21_Click);
             // 
             // GroupBox4
             // 
@@ -954,15 +976,33 @@
             // 
             // Button22
             // 
-            this.Button22.Location = new System.Drawing.Point(350, 136);
+            this.Button22.Location = new System.Drawing.Point(359, 109);
             this.Button22.Name = "Button22";
             this.Button22.Size = new System.Drawing.Size(164, 75);
             this.Button22.TabIndex = 0;
             this.Button22.Text = "對話框文字修改";
             this.Button22.UseVisualStyleBackColor = true;
+            this.Button22.Click += new System.EventHandler(this.Button22_Click);
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.Label008);
+            this.tabPage8.Controls.Add(this.Label002);
+            this.tabPage8.Controls.Add(this.Label003);
+            this.tabPage8.Controls.Add(this.Label004);
+            this.tabPage8.Controls.Add(this.Label005);
+            this.tabPage8.Controls.Add(this.Label006);
+            this.tabPage8.Controls.Add(this.Label007);
+            this.tabPage8.Controls.Add(this.Label001);
+            this.tabPage8.Controls.Add(this.Label02);
+            this.tabPage8.Controls.Add(this.Label03);
+            this.tabPage8.Controls.Add(this.Label04);
+            this.tabPage8.Controls.Add(this.Label05);
+            this.tabPage8.Controls.Add(this.Label06);
+            this.tabPage8.Controls.Add(this.Label07);
+            this.tabPage8.Controls.Add(this.Label08);
+            this.tabPage8.Controls.Add(this.Label01);
+            this.tabPage8.Controls.Add(this.checkServerStatus);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
@@ -971,8 +1011,180 @@
             this.tabPage8.Text = "伺服器狀態";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // Label008
+            // 
+            this.Label008.AutoSize = true;
+            this.Label008.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label008.Location = new System.Drawing.Point(387, 275);
+            this.Label008.Name = "Label008";
+            this.Label008.Size = new System.Drawing.Size(56, 28);
+            this.Label008.TabIndex = 33;
+            this.Label008.Text = "未知";
+            // 
+            // Label002
+            // 
+            this.Label002.AutoSize = true;
+            this.Label002.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label002.Location = new System.Drawing.Point(387, 73);
+            this.Label002.Name = "Label002";
+            this.Label002.Size = new System.Drawing.Size(56, 28);
+            this.Label002.TabIndex = 32;
+            this.Label002.Text = "未知";
+            // 
+            // Label003
+            // 
+            this.Label003.AutoSize = true;
+            this.Label003.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label003.Location = new System.Drawing.Point(387, 106);
+            this.Label003.Name = "Label003";
+            this.Label003.Size = new System.Drawing.Size(56, 28);
+            this.Label003.TabIndex = 31;
+            this.Label003.Text = "未知";
+            // 
+            // Label004
+            // 
+            this.Label004.AutoSize = true;
+            this.Label004.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label004.Location = new System.Drawing.Point(387, 140);
+            this.Label004.Name = "Label004";
+            this.Label004.Size = new System.Drawing.Size(56, 28);
+            this.Label004.TabIndex = 30;
+            this.Label004.Text = "未知";
+            // 
+            // Label005
+            // 
+            this.Label005.AutoSize = true;
+            this.Label005.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label005.Location = new System.Drawing.Point(387, 174);
+            this.Label005.Name = "Label005";
+            this.Label005.Size = new System.Drawing.Size(56, 28);
+            this.Label005.TabIndex = 29;
+            this.Label005.Text = "未知";
+            // 
+            // Label006
+            // 
+            this.Label006.AutoSize = true;
+            this.Label006.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label006.Location = new System.Drawing.Point(387, 208);
+            this.Label006.Name = "Label006";
+            this.Label006.Size = new System.Drawing.Size(56, 28);
+            this.Label006.TabIndex = 28;
+            this.Label006.Text = "未知";
+            // 
+            // Label007
+            // 
+            this.Label007.AutoSize = true;
+            this.Label007.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label007.Location = new System.Drawing.Point(387, 241);
+            this.Label007.Name = "Label007";
+            this.Label007.Size = new System.Drawing.Size(56, 28);
+            this.Label007.TabIndex = 27;
+            this.Label007.Text = "未知";
+            // 
+            // Label001
+            // 
+            this.Label001.AutoSize = true;
+            this.Label001.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label001.ForeColor = System.Drawing.Color.Black;
+            this.Label001.Location = new System.Drawing.Point(387, 36);
+            this.Label001.Name = "Label001";
+            this.Label001.Size = new System.Drawing.Size(56, 28);
+            this.Label001.TabIndex = 26;
+            this.Label001.Text = "未知";
+            // 
+            // Label02
+            // 
+            this.Label02.AutoSize = true;
+            this.Label02.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label02.Location = new System.Drawing.Point(270, 71);
+            this.Label02.Name = "Label02";
+            this.Label02.Size = new System.Drawing.Size(68, 28);
+            this.Label02.TabIndex = 25;
+            this.Label02.Text = "美服: ";
+            // 
+            // Label03
+            // 
+            this.Label03.AutoSize = true;
+            this.Label03.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label03.Location = new System.Drawing.Point(270, 104);
+            this.Label03.Name = "Label03";
+            this.Label03.Size = new System.Drawing.Size(87, 28);
+            this.Label03.TabIndex = 24;
+            this.Label03.Text = "SEA服: ";
+            // 
+            // Label04
+            // 
+            this.Label04.AutoSize = true;
+            this.Label04.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label04.Location = new System.Drawing.Point(270, 138);
+            this.Label04.Name = "Label04";
+            this.Label04.Size = new System.Drawing.Size(68, 28);
+            this.Label04.TabIndex = 23;
+            this.Label04.Text = "韓服: ";
+            // 
+            // Label05
+            // 
+            this.Label05.AutoSize = true;
+            this.Label05.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label05.Location = new System.Drawing.Point(270, 172);
+            this.Label05.Name = "Label05";
+            this.Label05.Size = new System.Drawing.Size(98, 28);
+            this.Label05.TabIndex = 22;
+            this.Label05.Text = "EUW服: ";
+            // 
+            // Label06
+            // 
+            this.Label06.AutoSize = true;
+            this.Label06.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label06.Location = new System.Drawing.Point(270, 206);
+            this.Label06.Name = "Label06";
+            this.Label06.Size = new System.Drawing.Size(105, 28);
+            this.Label06.TabIndex = 21;
+            this.Label06.Text = "EUNE服: ";
+            // 
+            // Label07
+            // 
+            this.Label07.AutoSize = true;
+            this.Label07.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label07.Location = new System.Drawing.Point(270, 239);
+            this.Label07.Name = "Label07";
+            this.Label07.Size = new System.Drawing.Size(112, 28);
+            this.Label07.TabIndex = 20;
+            this.Label07.Text = "大洋洲服: ";
+            // 
+            // Label08
+            // 
+            this.Label08.AutoSize = true;
+            this.Label08.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label08.Location = new System.Drawing.Point(270, 273);
+            this.Label08.Name = "Label08";
+            this.Label08.Size = new System.Drawing.Size(86, 28);
+            this.Label08.TabIndex = 19;
+            this.Label08.Text = "PBE服: ";
+            // 
+            // Label01
+            // 
+            this.Label01.AutoSize = true;
+            this.Label01.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
+            this.Label01.Location = new System.Drawing.Point(270, 36);
+            this.Label01.Name = "Label01";
+            this.Label01.Size = new System.Drawing.Size(68, 28);
+            this.Label01.TabIndex = 18;
+            this.Label01.Text = "台服: ";
+            // 
+            // checkServerStatus
+            // 
+            this.checkServerStatus.Location = new System.Drawing.Point(546, 138);
+            this.checkServerStatus.Name = "checkServerStatus";
+            this.checkServerStatus.Size = new System.Drawing.Size(115, 50);
+            this.checkServerStatus.TabIndex = 17;
+            this.checkServerStatus.Text = "一鍵查詢!";
+            this.checkServerStatus.UseVisualStyleBackColor = true;
+            this.checkServerStatus.Click += new System.EventHandler(this.checkServerStatus_Click);
+            // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.checkBox1);
             this.tabPage9.Controls.Add(this.button23);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
@@ -982,15 +1194,26 @@
             this.tabPage9.Text = "其他選項";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(383, 202);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(122, 17);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "取消自動檢查更新";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(326, 131);
+            this.button23.Location = new System.Drawing.Point(358, 108);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(171, 72);
+            this.button23.Size = new System.Drawing.Size(163, 68);
             this.button23.TabIndex = 0;
-            this.button23.Text = "button23";
+            this.button23.Text = "檢查更新";
             this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
+            this.button23.Click += new System.EventHandler(this.button23_Click_1);
             // 
             // startLoL
             // 
@@ -1041,6 +1264,7 @@
             this.Text = "LoLToolsX";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TwTools_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.TwTools_Click);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1061,7 +1285,10 @@
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
             this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1152,8 +1379,26 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
         internal System.Windows.Forms.ProgressBar pbGame;
         internal System.Windows.Forms.ProgressBar pbLobby;
-        private System.Windows.Forms.Button button23;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button23;
+        internal System.Windows.Forms.Label Label008;
+        internal System.Windows.Forms.Label Label002;
+        internal System.Windows.Forms.Label Label003;
+        internal System.Windows.Forms.Label Label004;
+        internal System.Windows.Forms.Label Label005;
+        internal System.Windows.Forms.Label Label006;
+        internal System.Windows.Forms.Label Label007;
+        internal System.Windows.Forms.Label Label001;
+        internal System.Windows.Forms.Label Label02;
+        internal System.Windows.Forms.Label Label03;
+        internal System.Windows.Forms.Label Label04;
+        internal System.Windows.Forms.Label Label05;
+        internal System.Windows.Forms.Label Label06;
+        internal System.Windows.Forms.Label Label07;
+        internal System.Windows.Forms.Label Label08;
+        internal System.Windows.Forms.Label Label01;
+        internal System.Windows.Forms.Button checkServerStatus;
     }
 }
 

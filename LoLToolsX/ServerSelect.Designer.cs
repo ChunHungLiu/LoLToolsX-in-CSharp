@@ -45,6 +45,7 @@
             // 
             // selectNA
             // 
+            this.selectNA.Enabled = false;
             this.selectNA.Location = new System.Drawing.Point(62, 133);
             this.selectNA.Name = "selectNA";
             this.selectNA.Size = new System.Drawing.Size(118, 49);

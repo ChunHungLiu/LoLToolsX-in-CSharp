@@ -35,6 +35,8 @@ namespace LoLToolsX
                 }
                 catch { }
 
+                Logger.log("LobbyLanding : 去掉 http/https", Logger.LogType.Info);
+
                 LobbyLandingEdit();
             }
             else
@@ -55,6 +57,7 @@ namespace LoLToolsX
      
 
             MessageBox.Show("修改完成!\r\n" + website, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Logger.log("LobbyLanding 修改成功 : " + website, Logger.LogType.Info);
 
         }
     }

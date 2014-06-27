@@ -77,6 +77,12 @@
   <ItemGroup>
     <Compile Include="BakRes.cs" />
     <Compile Include="CFGFile.cs" />
+    <Compile Include="ChatEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChatEdit.Designer.cs">
+      <DependentUpon>ChatEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckProp.cs" />
     <Compile Include="CheckUpdate.cs" />
     <Compile Include="Debug.cs" />
@@ -91,6 +97,7 @@
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="StartGame.cs" />
+    <Compile Include="StatusCheck.cs" />
     <Compile Include="SwitchLang.cs" />
     <Compile Include="SwitchServer.cs" />
     <Compile Include="SwitchSound.cs" />
@@ -106,6 +113,9 @@
     <Compile Include="wpfLog.xaml.cs">
       <DependentUpon>wpfLog.xaml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChatEdit.resx">
+      <DependentUpon>ChatEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServerSelect.resx">
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </EmbeddedResource>

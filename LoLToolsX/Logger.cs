@@ -35,6 +35,7 @@ namespace LoLToolsX
                 file = System.IO.Path.Combine(Directory.GetCurrentDirectory() + @"\Logs\" + "Log.txt");
                 if (!File.Exists(Directory.GetCurrentDirectory() + @"\Logs\" + "Log.txt"))
                     File.Create(Directory.GetCurrentDirectory() + @"\Logs\" + "Log.txt");
+                GC.Collect();
                 FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\Logs\" + "Log.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                 if (Debug.debug)
                 {

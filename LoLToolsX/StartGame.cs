@@ -32,12 +32,15 @@ namespace LoLToolsX
                     if (!String.IsNullOrEmpty(ggcPath))
                     {
                         Process.Start(ggcPath + @"\GarenaMessenger.exe");
+                        Logger.log("遊戲啟動成功!" , Logger.LogType.Info);
+                        Logger.log(ggcPath + @"\GarenaMessenger.exe", Logger.LogType.Info);
                     }
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show("遊戲啟動失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("遊戲啟動失敗!" + e, Logger.LogType.Error);
             }
 
             
@@ -48,10 +51,13 @@ namespace LoLToolsX
             try
             {
                 Process.Start(installPath + @"\lol.exe");
+                Logger.log("遊戲啟動成功!", Logger.LogType.Info);
+                Logger.log(installPath + @"\lol.exe", Logger.LogType.Info);
             }
             catch (Exception e)
             {
                 MessageBox.Show("遊戲啟動失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("遊戲啟動失敗!" + e, Logger.LogType.Error);
             }
         }
     }

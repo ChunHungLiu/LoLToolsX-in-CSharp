@@ -27,7 +27,18 @@ namespace LoLToolsX
 
         private void ServerSelect_Load(object sender, EventArgs e)
         {
-            //開始記錄
+            //如果多過15個Log就全部刪除
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\Logs");
+            if (files.Length > 15)
+            {
+                foreach (string txt in files)
+                {
+                System.IO.File.Delete(txt);
+                }
+                File.Create(Directory.GetCurrentDirectory() + @"\Logs\Log.txt");
+            }
+
+            // Logger 開始記錄
             if (!Directory.Exists(Directory.GetCurrentDirectory() + @"\Logs"))
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Logs");
             Logger.start();

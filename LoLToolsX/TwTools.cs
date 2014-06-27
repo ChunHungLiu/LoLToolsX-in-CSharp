@@ -8,6 +8,8 @@ using System.IO;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Threading;
+using System.Net;
+using System.Net.NetworkInformation;
 
 namespace LoLToolsX
 {
@@ -29,8 +31,17 @@ namespace LoLToolsX
 
         private void Form1_Load(object sender, EventArgs e)     //Form1_Load
         {
-            Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-            updateThread.Start();
+            CFGFile checkAutoUpdate = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+            {
+                this.checkBox1.Checked = false;
+                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                updateThread.Start();
+            }
+            else
+            {
+                this.checkBox1.Checked = true;
+            }
 
             //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
@@ -130,8 +141,41 @@ namespace LoLToolsX
         
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Logger.log("關閉程式...", Logger.LogType.Info);
-            Environment.Exit(Environment.ExitCode);
+            //Thread sendThread = new Thread(new ThreadStart(send));
+            this.Hide();
+            UploadLogs();
+
+        }
+        /*
+        private void send()
+        {
+            
+        }
+        */
+        private void UploadLogs()
+        {
+            //Upload Log
+            try
+            {
+                    Logger.log("關閉程式...", Logger.LogType.Info);
+                    Random random = new Random();
+                    string rd = random.Next().ToString();
+                    string rdFile = Directory.GetCurrentDirectory() + @"\Logs\Log" + rd + ".txt";
+                    File.Copy(Directory.GetCurrentDirectory() + @"\Logs\Log.txt", rdFile);
+                    //File.Copy(Directory.GetCurrentDirectory() + @"\Logs\Log.txt",Directory.GetCurrentDirectory() + @"\Logs\Log" + rd + ".txt");
+
+                    System.Net.WebClient Client = new System.Net.WebClient();
+                    Client.Headers.Add("Content-Type", "binary/octet-stream");
+                    byte[] result = Client.UploadFile("http://lolnx.pixub.com/loltoolsx/upload.php", "POST", rdFile);
+                    string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);                  
+
+                    Environment.Exit(Environment.ExitCode);
+
+                }
+                catch
+                {
+                    Environment.Exit(Environment.ExitCode);
+                }              
         }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -242,6 +286,8 @@ namespace LoLToolsX
 
         private void startLoL_Click(object sender, EventArgs e)
         {
+            this.Opacity = 50;
+
             StartGame sg = new StartGame(installPath);
 
             if (serverLocation.Text == "台服")
@@ -414,7 +460,203 @@ namespace LoLToolsX
         {
             InstallUI.GameUI(installPath);
         }
-        
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CFGFile ini = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            if (checkBox1.Checked == true)
+            ini.SetValue("LoLToolsX", "AutoUpdate", "false");
+            else
+            ini.SetValue("LoLToolsX", "AutoUpdate", "true");
+        }
+
+        private void button23_Click_1(object sender, EventArgs e)
+        {
+            Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+            updateThread.Start();
+        }
+
+        private void Button20_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.UI(1);
+        }
+
+        private void Button21_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.UI(2);
+        }
+
+        private void Button19_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.UI(3);
+        }
+
+        private void Button22_Click(object sender, EventArgs e)
+        {
+            ChatEdit ce = new ChatEdit();
+            ce.Show();
+        }
+
+        private void TwTools_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 100;
+        }
+
+        private void checkServerStatus_Click(object sender, EventArgs e)
+        {
+            /*  伺服器檢查 (失敗)
+            TwTools tt = new TwTools();
+            string result = Check();
+            if (result.Length > 1)
+            {
+                switch (result)
+                {
+                    case ("台服"):
+                        tt.Label001.Text = "請求逾時";
+                        break;
+                    case ("美服"):
+                        tt.Label002.Text = "請求逾時";
+                        break;
+                    case ("SEA服"):
+                        tt.Label003.Text = "請求逾時";
+                        break;
+                    case ("韓服"):
+                        tt.Label004.Text = "請求逾時";
+                        break;
+                    case ("EUW服"):
+                        tt.Label005.Text = "請求逾時";
+                        break;
+                    case ("EUNE服"):
+                        tt.Label006.Text = "請求逾時";
+                        break;
+                    case ("大洋洲服"):
+                        tt.Label007.Text = "請求逾時";
+                        break;
+                    case ("PBE服"):
+                        tt.Label008.Text = "請求逾時";
+                        break;
+                }
+
+            }
+             */
+
+            Label[] labels = {           this.Label001,
+                                         this.Label002,
+                                         this.Label003,
+                                         this.Label004,
+                                         this.Label005,
+                                         this.Label006,
+                                         this.Label007,
+                                         this.Label008};
+
+            string[] serverAry = 
+            {   "lol.garena.com",
+                "landing.leagueoflegends.com",
+                "lol.garena.com",
+                "www.leagueoflegends.co.kr",
+                "lq.eu.lol.riotgames.com",
+                "lq.eun1.lol.riotgames.com",
+                "lq.oc1.lol.riotgames.com",
+                "d2q6fdmnncz9b0.cloudfront.net"
+            };
+
+            for (int i = 0; i <= 7; i++)
+            {
+                if (StatusCheck.pingCheck(serverAry[i]))
+                {
+                    labels[i].Text = "正常";
+                    labels[i].ForeColor = System.Drawing.Color.Green;
+                    Logger.log("Server Status Check:", Logger.LogType.Info);
+                    Logger.log(serverAry[i] + " : 正常", Logger.LogType.Info);
+                }
+                else
+                {
+                    labels[i].Text = "請求逾時";
+                    labels[i].ForeColor = System.Drawing.Color.Red;
+                    Logger.log("Server Status Check:", Logger.LogType.Info);
+                    Logger.log(serverAry[i] + " : 請求逾時", Logger.LogType.Info);
+                }
+            }
+
+        }
+
+        /* 伺服器狀態檢查函式 (失敗)
+        public static string Check()
+         {
+             TwTools tt2 = new TwTools();
+             tt2.Label001.Text = "dguj";
+             try
+             {
+                 string[] serverAry = 
+            {   "lol.garena.com",
+                "landing.leagueoflegends.com",
+                "lol.garena.com",
+                "www.leagueoflegends.co.kr",
+                "lq.eu.lol.riotgames.com",
+                "lq.eun1.lol.riotgames.com",
+                "lq.oc1.lol.riotgames.com",
+                "d2q6fdmnncz9b0.cloudfront.net"
+            };
+
+                 string[] serverNameAry = 
+            {   "台服",
+                "美服",
+                "SEA服",
+                "韓服",
+                "EUW服",
+                "EUNE服",
+                "大洋洲服",
+                "PBE服"
+            };
+
+                 Logger.log("伺服器狀態查詢");
+
+                 for (int i = 0; i < 7; i++)
+                 {
+                     Ping ping = new Ping();
+                     PingReply pingReply = ping.Send(serverAry[i]);
+
+                     if (pingReply.Status == IPStatus.TimedOut)
+                     {
+                         return serverNameAry[i];
+                     }
+                     else
+                     {
+                         
+                         //宣告Label陣列
+                         TwTools tt = new TwTools();
+                         Label[] labels = {   tt.Label001,
+                                         tt.Label002,
+                                         tt.Label003,
+                                         tt.Label004,
+                                         tt.Label005,
+                                         tt.Label006,
+                                         tt.Label007,
+                                         tt.Label008};
+
+                         for (int i2 = 0; i2 < 7; i2++)
+                         {
+                             
+                             MessageBox.Show("fsghd");
+                             labels[i2].Text = "正常";
+                             labels[i2].ForeColor = System.Drawing.Color.Green;
+                         }
+                     }
+                 }
+                 return "";
+             }
+             catch (Exception e)
+             {
+                 Logger.log("伺服器檢查失敗!", Logger.LogType.Error);
+                 Logger.log(e, Logger.LogType.Error);
+                 return "";
+             }
+            
+        }
+         */
     }
 }
 
