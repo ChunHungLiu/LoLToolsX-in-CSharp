@@ -19,7 +19,7 @@ namespace LoLToolsX
 
         public string TwPath(string iniPath)   //取得台服LoL路徑
         {
-            
+                       
             CFGFile CFGFile = new CFGFile(iniPath);
 
             //檢查 config.ini
@@ -54,11 +54,7 @@ namespace LoLToolsX
                     }
                 }
             }
-
-            
-
-
-            return installPath;
+              return installPath;
         }
     }
 }

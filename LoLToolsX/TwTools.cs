@@ -20,8 +20,7 @@ namespace LoLToolsX
 
 
     public partial class TwTools : Form
-    {
-
+    {     
         public static string installPath = "";
 
         public TwTools()
@@ -136,22 +135,17 @@ namespace LoLToolsX
             cp = null;
             gr = null;
 
+            Variable.v_installPath = installPath;
+
         }
 
         
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Thread sendThread = new Thread(new ThreadStart(send));
             this.Hide();
             UploadLogs();
+        }
 
-        }
-        /*
-        private void send()
-        {
-            
-        }
-        */
         private void UploadLogs()
         {
             //Upload Log
@@ -188,8 +182,6 @@ namespace LoLToolsX
         public static string GetLoLVer()
         {
             //取得LoL版本
-            //FileStream fs = new FileStream(installPath + @"\Game\client.ver", FileMode.Open);
-            //StreamReader sr = new StreamReader(fs);
             FileStream fs2 = new FileStream(installPath + @"\lol.version", FileMode.Open);
             StreamReader sr2 = new StreamReader(fs2);
             try
@@ -450,8 +442,8 @@ namespace LoLToolsX
         {
             if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {
-                Path.hudPath = openFileDialog2.FileName;
-                Logger.log("已選擇hudPath路徑: " + Path.hudPath);
+                Variable.hudPath = openFileDialog2.FileName;
+                Logger.log("已選擇hudPath路徑: " + Variable.hudPath);
             }
             
         }
@@ -496,7 +488,7 @@ namespace LoLToolsX
 
         private void Button22_Click(object sender, EventArgs e)
         {
-            ChatEdit ce = new ChatEdit();
+            ChatEdit ce = new ChatEdit(installPath);
             ce.Show();
         }
 
@@ -507,42 +499,6 @@ namespace LoLToolsX
 
         private void checkServerStatus_Click(object sender, EventArgs e)
         {
-            /*  伺服器檢查 (失敗)
-            TwTools tt = new TwTools();
-            string result = Check();
-            if (result.Length > 1)
-            {
-                switch (result)
-                {
-                    case ("台服"):
-                        tt.Label001.Text = "請求逾時";
-                        break;
-                    case ("美服"):
-                        tt.Label002.Text = "請求逾時";
-                        break;
-                    case ("SEA服"):
-                        tt.Label003.Text = "請求逾時";
-                        break;
-                    case ("韓服"):
-                        tt.Label004.Text = "請求逾時";
-                        break;
-                    case ("EUW服"):
-                        tt.Label005.Text = "請求逾時";
-                        break;
-                    case ("EUNE服"):
-                        tt.Label006.Text = "請求逾時";
-                        break;
-                    case ("大洋洲服"):
-                        tt.Label007.Text = "請求逾時";
-                        break;
-                    case ("PBE服"):
-                        tt.Label008.Text = "請求逾時";
-                        break;
-                }
-
-            }
-             */
-
             Label[] labels = {           this.Label001,
                                          this.Label002,
                                          this.Label003,
@@ -583,80 +539,17 @@ namespace LoLToolsX
 
         }
 
-        /* 伺服器狀態檢查函式 (失敗)
-        public static string Check()
-         {
-             TwTools tt2 = new TwTools();
-             tt2.Label001.Text = "dguj";
-             try
-             {
-                 string[] serverAry = 
-            {   "lol.garena.com",
-                "landing.leagueoflegends.com",
-                "lol.garena.com",
-                "www.leagueoflegends.co.kr",
-                "lq.eu.lol.riotgames.com",
-                "lq.eun1.lol.riotgames.com",
-                "lq.oc1.lol.riotgames.com",
-                "d2q6fdmnncz9b0.cloudfront.net"
-            };
-
-                 string[] serverNameAry = 
-            {   "台服",
-                "美服",
-                "SEA服",
-                "韓服",
-                "EUW服",
-                "EUNE服",
-                "大洋洲服",
-                "PBE服"
-            };
-
-                 Logger.log("伺服器狀態查詢");
-
-                 for (int i = 0; i < 7; i++)
-                 {
-                     Ping ping = new Ping();
-                     PingReply pingReply = ping.Send(serverAry[i]);
-
-                     if (pingReply.Status == IPStatus.TimedOut)
-                     {
-                         return serverNameAry[i];
-                     }
-                     else
-                     {
-                         
-                         //宣告Label陣列
-                         TwTools tt = new TwTools();
-                         Label[] labels = {   tt.Label001,
-                                         tt.Label002,
-                                         tt.Label003,
-                                         tt.Label004,
-                                         tt.Label005,
-                                         tt.Label006,
-                                         tt.Label007,
-                                         tt.Label008};
-
-                         for (int i2 = 0; i2 < 7; i2++)
-                         {
-                             
-                             MessageBox.Show("fsghd");
-                             labels[i2].Text = "正常";
-                             labels[i2].ForeColor = System.Drawing.Color.Green;
-                         }
-                     }
-                 }
-                 return "";
-             }
-             catch (Exception e)
-             {
-                 Logger.log("伺服器檢查失敗!", Logger.LogType.Error);
-                 Logger.log(e, Logger.LogType.Error);
-                 return "";
-             }
-            
+        private void button25_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.LoL(1);
         }
-         */
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.LoL(2);
+        }
     }
 }
 

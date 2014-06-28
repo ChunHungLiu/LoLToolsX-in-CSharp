@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DO NOT MODIFY THIS FILE MANUALLY-->
+<manifest version="1">
+	<file path="Air\assets\data\gameStats\gameStats_en_US.sqlite" flag="3" modification="130476913196743174" size="1063936" old_size="1057792" checksum="1927508409" old_checksum="680277683"/>
+	<file path="Air\assets\data\gameStats\gameStats_zh_TW.sqlite" flag="3" modification="130476913352388737" size="1089536" old_size="1086464" checksum="2296741066" old_checksum="2953916491"/>
+	<file path="Air\assets\imagePacks\ImagePack_backgrounds.swf" flag="3" modification="130476913649848480" size="1212864" old_size="1212864" checksum="3733459556" old_checksum="1114590194"/>
+	<file path="Air\assets\imagePacks\ImagePack_items.swf" flag="3" modification="130476913729786473" size="2373387" old_size="2349844" checksum="128356378" old_checksum="1979819694"/>
+	<file path="Air\assets\imagePacks\ImagePack_masteryIcons.swf" flag="3" modification="130476913732936788" size="1812645" old_size="1812644" checksum="1399724981" old_checksum="2160281669"/>
+	<file path="Air\assets\imagePacks\ImagePack_misc.swf" flag="3" modification="130476913770720566" size="2790256" old_size="2788291" checksum="1124420945" old_checksum="1598711490"/>
+	<file path="Air\assets\imagePacks\ImagePack_playerProfile.swf" flag="3" modification="130476913788712365" size="3065901" old_size="3065827" checksum="3763803425" old_checksum="173673492"/>
+	<file path="Air\assets\imagePacks\ImagePack_runebook.swf" flag="3" modification="130476913799853479" size="1559219" old_size="1559219" checksum="3546411147" old_checksum="3470970286"/>
+	<file path="Air\assets\imagePacks\ImagePack_spells.swf" flag="3" modification="130476913825646058" size="2542193" old_size="2542324" checksum="3636860348" old_checksum="2968135754"/>
+	<file path="Air\assets\locale\App\resources-zh_TW.swf" flag="3" modification="130476915202373717" size="242777" old_size="242352" checksum="3182722598" old_checksum="1236581146"/>
+	<file path="Air\mod\mhi\themes\parchment\matchHistoryAssets.swf" flag="3" modification="130476915643167792" size="201008" old_size="204576" checksum="207466688" old_checksum="3956394462"/>
+	<file path="Air\mod\win\ClientWindow.dat" flag="3" modification="130476915651068582" size="6186509" old_size="6186363" checksum="2921043248" old_checksum="1291021032"/>
+	<file path="Game\CharacterAnimations.zip" flag="2" modification="130476915685732048"/>
+	<file path="Game\CharacterAnimations1.zip" flag="2" modification="130476915708494324"/>
+	<file path="Game\CharacterAnimations2.zip" flag="2" modification="130476915784301904"/>
+	<file path="Game\CharacterAnimations3.zip" flag="2" modification="130476915991266560"/>
+	<file path="Game\CharacterAnimations4.zip" flag="2" modification="130476916108738306"/>
+	<file path="Game\Characters.zip" flag="2" modification="130476916185255957"/>
+	<file path="Game\CharacterSkins.zip" flag="2" modification="130476916366044034"/>
+	<file path="Game\CharacterSkins1.zip" flag="2" modification="130476916385165946"/>
+	<file path="Game\CharacterTextures.zip" flag="2" modification="130476916421599589"/>
+	<file path="Game\CharacterTextures1.zip" flag="2" modification="130476916487876216"/>
+	<file path="Game\CharacterTextures2.zip" flag="2" modification="130476916563433771"/>
+	<file path="Game\CharacterTextures3.zip" flag="2" modification="130476916644011828"/>
+	<file path="Game\CharacterTextures4.zip" flag="2" modification="130476916686876114"/>
+	<file path="Game\CharacterTextures7.zip" flag="2" modification="130476916776675093"/>
+	<file path="Game\DATA\Sounds\FMOD\LoL_Audio.fev" flag="3" modification="130476917932230637" size="3578744" old_size="3531346" checksum="2968449658" old_checksum="2099590548"/>
+	<file path="Game\DATA\Sounds\FMOD\LoL_Audio_en_US.fev" flag="3" modification="130476917940291443" size="2004761" old_size="1991627" checksum="3478513238" old_checksum="1111431054"/>
+	<file path="Game\DATA\Sounds\FMOD\LoL_Audio_zh_TW.fev" flag="3" modification="130476918109988411" size="2004761" old_size="1991627" checksum="1579600671" old_checksum="3157020279"/>
+	<file path="Game\DATA\Sounds\FMOD\LoL_SFX_items.fsb" flag="3" modification="130476918729220328" size="3654400" old_size="3610688" checksum="3078073580" old_checksum="659782180"/>
+	<file path="Game\DATA\Sounds\FMOD\LoL_SFX_nidalee_base.fsb" flag="3" modification="130476918986883187" size="1811360" old_size="1655104" checksum="753907526" old_checksum="1089906615"/>
+	<file path="Game\DATA\Sounds\FMOD\LoL_SFX_skarner.fsb" flag="3" modification="130476919450009495" size="962592" old_size="897568" checksum="3404862758" old_checksum="1719453148"/>
+	<file path="Game\DATA\Sounds\FMOD\VOBank_en_US.fsb" flag="3" modification="130476920116096097" size="456346176" old_size="452748320" checksum="3359187534" old_checksum="3022437514"/>
+	<file path="Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb" flag="3" modification="130476921288163292" size="455714240" old_size="452116384" checksum="951298127" old_checksum="1419570523"/>
+	<file path="Game\DATA\Sounds\Wwise\SFX\Characters\Gragas\Skins\Skin06\Gragas_Skin06_SFX_audio.bnk" flag="3" modification="130476921328497325" size="222936" old_size="144770" checksum="2707420893" old_checksum="2390273680"/>
+	<file path="Game\DATA\Sounds\Wwise\SFX\Characters\Karthus\Skins\Base\Karthus_Base_SFX_audio.bnk" flag="3" modification="130476921341938669" size="1424523" old_size="1350091" checksum="3473681775" old_checksum="796224786"/>
+	<file path="Game\DATA\Sounds\Wwise\SFX\Shared\ITEMS_Global_audio.bnk" flag="3" modification="130476921438668341" size="4749459" old_size="4713091" checksum="2832782732" old_checksum="3888170423"/>
+	<file path="Game\Datas.zip" flag="2" modification="130476922102818707"/>
+	<file path="Game\Datas1.zip" flag="2" modification="130476922130121437"/>
+	<file path="Game\Datas2.zip" flag="2" modification="130476922140872512"/>
+	<file path="Game\fmod_event.dll" flag="3" modification="130476922142832708" size="642552" old_size="642552" checksum="208900429" old_checksum="179281851"/>
+	<file path="Game\fmod_event_net.dll" flag="3" modification="130476922143042729" size="680440" old_size="680440" checksum="25798433" old_checksum="790870701"/>
+	<file path="Game\fmodex.dll" flag="3" modification="130476922142612686" size="1247224" old_size="1247224" checksum="475441261" old_checksum="3746936993"/>
+	<file path="Game\Jinx.zip" flag="2" modification="130476922146893114"/>
+	<file path="Game\League of Legends.exe" flag="3" modification="130476922160474472" size="16629240" old_size="16608760" checksum="1244391461" old_checksum="2517616997"/>
+	<file path="Game\Lucian.zip" flag="2" modification="130476922258994323"/>
+	<file path="Game\Map1.zip" flag="2" modification="130476922266385062"/>
+	<file path="Game\Map10.zip" flag="2" modification="130476922284936917"/>
+	<file path="Game\Map12.zip" flag="2" modification="130476922297798203"/>
+	<file path="Game\Map8.zip" flag="2" modification="130476922320880511"/>
+	<file path="Game\Particles.zip" flag="2" modification="130476922326901113"/>
+	<file path="Game\ParticleTextrues.zip" flag="2" modification="130476922381116534"/>
+	<file path="Game\ParticleTextrues2.zip" flag="2" modification="130476922416400062"/>
+	<file path="Game\ParticleTextrues3.zip" flag="2" modification="130476922419970419"/>
+	<file path="Game\riotlauncher.dll" flag="3" modification="130476922420290451" size="1528312" old_size="1531896" checksum="2540045609" old_checksum="1663062932"/>
+</manifest>
+

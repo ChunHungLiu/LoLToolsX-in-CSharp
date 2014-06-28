@@ -28,7 +28,7 @@ namespace LoLToolsX
 
             else
             {
-                Path.propPath = installPath + @"\Air\lol.properties";
+                Variable.propPath = installPath + @"\Air\lol.properties";
             }
    
 
@@ -36,7 +36,7 @@ namespace LoLToolsX
             try
             {
 
-                FileStream fs = new FileStream(Path.propPath, FileMode.Open);
+                FileStream fs = new FileStream(Variable.propPath, FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
 
                     string cs = sr.ReadToEnd();

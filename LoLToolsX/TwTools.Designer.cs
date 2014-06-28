@@ -134,6 +134,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
@@ -1184,6 +1186,8 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.button25);
+            this.tabPage9.Controls.Add(this.button24);
             this.tabPage9.Controls.Add(this.checkBox1);
             this.tabPage9.Controls.Add(this.button23);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
@@ -1197,7 +1201,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(383, 202);
+            this.checkBox1.Location = new System.Drawing.Point(621, 215);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(122, 17);
             this.checkBox1.TabIndex = 1;
@@ -1207,20 +1211,20 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(358, 108);
+            this.button23.Location = new System.Drawing.Point(601, 119);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(163, 68);
-            this.button23.TabIndex = 0;
+            this.button23.TabIndex = 2;
             this.button23.Text = "檢查更新";
             this.button23.UseVisualStyleBackColor = true;
             this.button23.Click += new System.EventHandler(this.button23_Click_1);
             // 
             // startLoL
             // 
-            this.startLoL.Location = new System.Drawing.Point(350, 378);
+            this.startLoL.Location = new System.Drawing.Point(347, 378);
             this.startLoL.Name = "startLoL";
             this.startLoL.Size = new System.Drawing.Size(191, 46);
-            this.startLoL.TabIndex = 300;
+            this.startLoL.TabIndex = 0;
             this.startLoL.Text = "啟動遊戲";
             this.startLoL.UseVisualStyleBackColor = true;
             this.startLoL.Click += new System.EventHandler(this.startLoL_Click);
@@ -1247,6 +1251,26 @@
             this.openFileDialog2.FileName = "HUDAtlas.tga";
             this.openFileDialog2.Filter = "UI檔案|*.tga";
             this.openFileDialog2.Title = "請選擇 HUDAtlas.tga UI檔案";
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(352, 119);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(163, 68);
+            this.button24.TabIndex = 1;
+            this.button24.Text = "一鍵還原LoL";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(110, 119);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(163, 68);
+            this.button25.TabIndex = 0;
+            this.button25.Text = "一鍵備份LoL";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
             // 
             // TwTools
             // 
@@ -1399,6 +1423,8 @@
         internal System.Windows.Forms.Label Label08;
         internal System.Windows.Forms.Label Label01;
         internal System.Windows.Forms.Button checkServerStatus;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button24;
     }
 }
 

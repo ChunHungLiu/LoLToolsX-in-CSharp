@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Config Version="1.0">
+	<AirClient>
+		<RelativePath>Air\LOLClient.exe</RelativePath>
+		<FriendlyName>League of Legends Lobby</FriendlyName>
+		<Port>8393</Port>
+	</AirClient>
+	<GameClient>
+		<RelativePath>Game\League of Legends.exe</RelativePath>
+		<FriendlyName>League of Legends Game Client</FriendlyName>
+		<Port>8390</Port>
+	</GameClient>
+	<Launcher>
+        <Port>8370</Port>
+        <GlobalSettingsUrl>http://ffs.solidstatenetworks.net/riotgames/riot-dev.ffs</GlobalSettingsUrl>
+        <ConfigureFirewall>1</ConfigureFirewall>
+        <MinimizeToTray>1</MinimizeToTray>
+        <DisplayEULA>1</DisplayEULA>
+        <MiniDumpType>Normal</MiniDumpType>
+	</Launcher>
+	<Packages>
+   	</Packages>
+	<LayoutInfo>
+        	<Url>html\default.html</Url>
+	        <Width>800</Width>
+	        <Height>600</Height>
+	</LayoutInfo>
+	<Help>
+		<Url>http://www.leagueoflegends.com/</Url>
+	</Help>
+	<Ports>
+		<RandomPortMin>6881</RandomPortMin>
+		<RandomPortMax>6999</RandomPortMax>
+	</Ports>
+	<RateLimit>
+		<UploadRate>
+			<Default>25000</Default>
+			<Max>250000</Max>
+		</UploadRate>
+		<DownloadRate>
+			<Default>500000</Default>
+			<Max>500000</Max>
+		</DownloadRate>
+	</RateLimit>
+</Config>

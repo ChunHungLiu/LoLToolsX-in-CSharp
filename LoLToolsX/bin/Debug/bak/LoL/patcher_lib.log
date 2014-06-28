@@ -1,0 +1,4 @@
+06/27/2014 16:07 [INFO] Solid LauncherLib [1.0.0.33] initializing...
+06/27/2014 16:07 [INFO] Add App[League of Legends Launcher] Exe[E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW\LoL.exe] to Windows Firewall
+06/27/2014 16:07 [WARNING] ScriptFacadeWindows::Execute() error.  unable to retrieve document
+06/27/2014 16:08 [WARNING] Unable to download settings ffs [http://ffs.solidstatenetworks.net/riotgames/riot-dev.ffs]

@@ -1,0 +1,58 @@
+﻿============================== LoLToolsX Log File ==============================
+================================================================================
+06/28/2014 16:46:54信息: LoLToolsX版本: 3.0.0.0
+06/28/2014 16:46:54信息: LoLToolsX Logo載入成功!
+06/28/2014 16:46:54信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/28/2014 16:46:54信息: LoL目錄檢查成功! 
+06/28/2014 16:46:54信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/28/2014 16:46:54信息: 伺服器設定檔檢查成功! 
+06/28/2014 16:46:54信息: 目前伺服器: 台服
+06/28/2014 16:46:54信息: Air版本: 20140624
+06/28/2014 16:46:54信息: 使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html 
+06/28/2014 16:46:57信息: Chat.ini 備份成功!
+06/28/2014 16:46:57信息: Chat.ini 還原成功!
+06/28/2014 16:46:58信息: Chat.ini 備份刪除成功!
+06/28/2014 16:46:59信息: Chat.ini 備份刪除成功!
+06/28/2014 16:46:59信息: Chat.ini 備份刪除成功!
+06/28/2014 16:47:01錯誤: Chat.ini 還原失敗 : 沒有備份檔案
+06/28/2014 16:47:01異常: mscorlib
+System.IO.FileNotFoundException: Could not find file 'E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\bak\Chat\Chat.ini'.
+File name: 'E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\bak\Chat\Chat.ini'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at LoLToolsX.BakRes.Chat(Int32 Type) in E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\BakRes.cs:line 363
+Could not find file 'E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\bak\Chat\Chat.ini'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at LoLToolsX.BakRes.Chat(Int32 Type) in E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\BakRes.cs:line 363
+
+06/28/2014 16:47:03錯誤: Chat.ini 還原失敗 : 沒有備份檔案
+06/28/2014 16:47:03異常: mscorlib
+System.IO.FileNotFoundException: Could not find file 'E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\bak\Chat\Chat.ini'.
+File name: 'E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\bak\Chat\Chat.ini'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at LoLToolsX.BakRes.Chat(Int32 Type) in E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\BakRes.cs:line 363
+Could not find file 'E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\bak\Chat\Chat.ini'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at LoLToolsX.BakRes.Chat(Int32 Type) in E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\BakRes.cs:line 363
+
+06/28/2014 16:47:04信息: 對話框文字 : 一鍵恢復預設值成功!
+06/28/2014 16:47:05信息: 對話框文字 : 一鍵恢復預設值成功!
+06/28/2014 16:47:15信息: 對話框文字顏色修改成功 : 0 128 255
+06/28/2014 16:47:37信息: 對話框文字顏色修改成功 : 0 128 255
+06/28/2014 16:48:09信息: 對話框文字顏色修改成功 : 128 0 255
+06/28/2014 16:48:11信息: 對話框文字顏色修改成功 : 255 128 0
+06/28/2014 16:48:13信息: 對話框文字顏色修改成功 : 0 128 255
+06/28/2014 16:48:14信息: 對話框文字顏色修改成功 : 255 255 255
+06/28/2014 16:48:14信息: 對話框文字顏色修改成功 : 128 0 255
+06/28/2014 16:48:15信息: 對話框文字顏色修改成功 : 255 128 0
+06/28/2014 16:48:15信息: 對話框文字顏色修改成功 : 241 231 22
+06/28/2014 16:48:16信息: 對話框文字顏色修改成功 : 220 220 220
+06/28/2014 16:48:26信息: 對話框文字 字體大小修改成功 : 22
+06/28/2014 16:48:28信息: 關閉程式...

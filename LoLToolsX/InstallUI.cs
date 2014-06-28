@@ -11,11 +11,11 @@ namespace LoLToolsX
     {
         public static void GameUI(string installPath)
         {
-            if (Path.hudPath.Contains("HUDAtlas.tga"))
+            if (Variable.hudPath.Contains("HUDAtlas.tga"))
             {
                 try
                 {
-                    File.Copy(Path.hudPath, installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.tga",true);
+                    File.Copy(Variable.hudPath, installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.tga",true);
                     MessageBox.Show("UI安裝成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI安裝成功...");
                 }

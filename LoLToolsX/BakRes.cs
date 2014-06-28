@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace LoLToolsX
 {
     class BakRes
     {
+        Wait wait = new Wait();
 
         /// <summary>
         /// 檔案備份/還原
         /// </summary>
 
-        protected string installPath_m;  //
+        string installPath_m;  
 
         public BakRes(string installPath)
         {
@@ -89,8 +91,7 @@ namespace LoLToolsX
 
         }
 
-
-        public void Lang(int Type)    //備份語言檔
+        public void Lang(int Type)     //備份語言檔
         {
 
             string cd = Directory.GetCurrentDirectory();
@@ -167,15 +168,16 @@ namespace LoLToolsX
             }
 
         }
-
-        //語音
-        public void Sound(int Type)
+        
+        public void Sound(int Type)    //語音  
         {
             
 
 
             if (Type == 1)  //備份
             {
+                wait.Show();
+                wait.progressBar1.Value = 0;
 
                 string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb" };
                 foreach (string file in fsbFile)
@@ -183,6 +185,7 @@ namespace LoLToolsX
                     try
                     {
                         File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\" + file, true);
+                        wait.progressBar1.Value += 20;
                     }
                     catch { }
                 }
@@ -192,13 +195,18 @@ namespace LoLToolsX
                     Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\bak\sound\air");
                     foreach (string newPath in Directory.GetFiles(installPath_m + @"\Air\assets\sounds\en_US\champions", "*.*", SearchOption.AllDirectories))
                         File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\en_US\champions", Directory.GetCurrentDirectory() + @"\bak\sound\air"), true);
+                    wait.progressBar1.Value = 60;
                     foreach (string newPath in Directory.GetFiles(installPath_m + @"\Air\assets\sounds\zh_TW\champions", "*.*", SearchOption.AllDirectories))
                         File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\zh_TW\champions", Directory.GetCurrentDirectory() + @"\bak\sound\air"), true);
+                    wait.progressBar1.Value = 100;
+                    wait.progressBar1.Value = 0;
+                    wait.Close();
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("語音檔 備份成功!", Logger.LogType.Info);
                 }
                 catch (Exception e)
                 {
+                    wait.Close();
                     Logger.log("語音檔 備份失敗!", Logger.LogType.Error);
                     Logger.log(e);
                     MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -208,12 +216,16 @@ namespace LoLToolsX
 
             if (Type == 2) //還原
             {
+                wait.Show();
+                wait.progressBar1.Value = 0;
+
                 string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb" };
                 foreach (string file in fsbFile)
                 {
                     try
                     {
                         File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\" + file, installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, true);
+                        wait.progressBar1.Value += 20;
                     }
                     catch { }
                 }
@@ -221,19 +233,25 @@ namespace LoLToolsX
                 {
                     foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
                         File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air",installPath_m + @"\Air\assets\sounds\en_US\champions"), true);
+                    wait.progressBar1.Value = 50;
                     foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
                         File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air", installPath_m + @"\Air\assets\sounds\zh_TW\champions"), true);
+                    wait.progressBar1.Value = 1000;
+                    wait.progressBar1.Value = 0;
+                    wait.Close();
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("語音檔 還原成功!", Logger.LogType.Info);
                 }
                 catch (System.IO.DirectoryNotFoundException err)
                 {
+                    wait.Close();
                     Logger.log("語音檔 備份失敗 : 沒有還原檔可供還原", Logger.LogType.Error);
                     Logger.log(err);
                     MessageBox.Show("沒有還原檔可供還原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } 
                 catch (Exception e)
                 {
+                    wait.Close();
                     Logger.log("語音檔 還原失敗!", Logger.LogType.Error);
                     Logger.log(e);
                     MessageBox.Show("還原失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -268,7 +286,7 @@ namespace LoLToolsX
 
         }
 
-        public void UI(int Type)     //UI備份
+        public void UI(int Type)       //UI備份
         {
             //備份
             if (Type == 1)
@@ -335,5 +353,96 @@ namespace LoLToolsX
 
         }
 
+        public void Chat(int Type)     //備份伺服器設定檔 (lol.properties)
+        {
+            //備份
+            if (Type == 1)
+            {
+                try
+                {
+                    FileInfo fi = new FileInfo(installPath_m + @"\Game\DATA\Menu\HUD\defaults\Chat.ini");
+                    fi.CopyTo(Directory.GetCurrentDirectory() + @"\bak\Chat\Chat.ini", true);
+                    MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("Chat.ini 備份成功!", Logger.LogType.Info);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("Chai.ini 備份失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+
+                }
+            }
+
+            //還原
+            if (Type == 2)
+            {
+                try
+                {
+                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\Chat\Chat.ini");
+                    fi.CopyTo(installPath_m + @"\Game\DATA\Menu\HUD\defaults\Chat.ini", true);
+                    MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("Chat.ini 還原成功!", Logger.LogType.Info);
+                }
+                catch (FileNotFoundException e2)
+                {
+                    MessageBox.Show("還原失敗 : 沒有備份 ", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("Chat.ini 還原失敗 : 沒有備份檔案", Logger.LogType.Error);
+                    Logger.log(e2);
+                }
+
+                catch (Exception e)
+                {
+                    MessageBox.Show("還原失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("Chat.ini 還原失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+                }
+            }
+
+            //刪除備份
+            if (Type == 3)
+            {
+                try
+                {
+                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\Chat\Chat.ini");
+                    fi.Delete();
+                    Logger.log("Chat.ini 備份刪除成功!", Logger.LogType.Info);
+                    MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception e)
+                {
+                    Logger.log("Chat.ini 備份刪除失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+                    MessageBox.Show("刪除備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+        }
+
+        public void LoL(int Type)
+        {
+            if (Type == 1)
+            {
+                ProcessStartInfo si = new ProcessStartInfo();
+                si.Arguments = "Backup " + installPath_m;
+                si.Verb = "runas";
+                si.WorkingDirectory = Directory.GetCurrentDirectory();
+                si.FileName = "LoLBakRes.exe";
+                Process.Start(si);
+                Logger.log("LoL一鍵備份 開始!", Logger.LogType.Info);
+            }
+
+                if (Type == 2)
+                {
+                    ProcessStartInfo si = new ProcessStartInfo();
+                    si.Arguments = "Restore " + installPath_m;
+                    si.Verb = "runas";
+                    si.WorkingDirectory = Directory.GetCurrentDirectory();
+                    si.FileName = "LoLBakRes.exe";
+                    Process.Start(si);
+                    Logger.log("LoL一鍵還原 開始!", Logger.LogType.Info);
+                }
+        }
     }
 }

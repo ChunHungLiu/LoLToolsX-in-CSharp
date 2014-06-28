@@ -55,6 +55,9 @@
     <StartupObject>LoLToolsX.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChatColour">
+      <HintPath>C:\Documents and Settings\NICE\My Documents\Visual Studio 2010\Projects\ChatColour\ChatColour\bin\Release\ChatColour.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -85,11 +88,9 @@
     </Compile>
     <Compile Include="CheckProp.cs" />
     <Compile Include="CheckUpdate.cs" />
-    <Compile Include="Debug.cs" />
+    <Compile Include="Edit.cs" />
     <Compile Include="InstallUI.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="Path.cs" />
-    <Compile Include="PropEdit.cs" />
     <Compile Include="ServerSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,9 +99,7 @@
     </Compile>
     <Compile Include="StartGame.cs" />
     <Compile Include="StatusCheck.cs" />
-    <Compile Include="SwitchLang.cs" />
-    <Compile Include="SwitchServer.cs" />
-    <Compile Include="SwitchSound.cs" />
+    <Compile Include="Switch.cs" />
     <Compile Include="TwTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,8 +109,12 @@
     <Compile Include="GetReg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="wpfLog.xaml.cs">
-      <DependentUpon>wpfLog.xaml</DependentUpon>
+    <Compile Include="Variable.cs" />
+    <Compile Include="Wait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wait.Designer.cs">
+      <DependentUpon>Wait.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ChatEdit.resx">
       <DependentUpon>ChatEdit.cs</DependentUpon>
@@ -132,6 +135,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Wait.resx">
+      <DependentUpon>Wait.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,12 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lol.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="wpfLog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

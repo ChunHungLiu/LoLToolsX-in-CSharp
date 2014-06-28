@@ -37,22 +37,11 @@ namespace LoLToolsX
                     File.Create(Directory.GetCurrentDirectory() + @"\Logs\" + "Log.txt");
                 GC.Collect();
                 FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\Logs\" + "Log.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-                if (Debug.debug)
-                {
-                    wpfLog wpLog = new wpfLog();
-                    wpLog.Show();
-                }
+                StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+                sw.WriteLine("============================== LoLToolsX Log File ==============================");
+                sw.Close();
             }
         
-
-        public static void stop()
-        {
-            if (Debug.debug)
-            {
-                wpfLog wpLog = new wpfLog();
-                wpLog.Show();
-            }
-        }
         private static string writeInfo(LogType type = LogType.Info)
         {
             switch (type)
@@ -83,11 +72,6 @@ namespace LoLToolsX
             sw.WriteLine(writeInfo(type) + str);
             sw.Close();
             fs.Close();
-            if (Debug.debug)
-            {
-                wpfLog wpLog = new wpfLog();
-                wpLog.WriteLine(str, type);
-            }
         }
 
         private static void write(Stream s, LogType type = LogType.Info)
@@ -95,12 +79,6 @@ namespace LoLToolsX
             StreamReader sr = new StreamReader(s);
             write(sr.ReadToEnd(), type);
             sr.Close();
-            if (Debug.debug)
-            {
-                wpfLog wpLog = new wpfLog();
-                s.Position = 0;
-                wpLog.WriteLine(sr.ReadToEnd(), type);
-            }
         }
 
         static public void log(string str, LogType type = LogType.Info)
