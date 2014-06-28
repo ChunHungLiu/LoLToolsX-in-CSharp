@@ -13,6 +13,7 @@ namespace LoLToolsX
         public static string hudPath;
 
         public static bool debug = false;
+        public static bool haveUpdate = false;
 
         public static CFGFile lolConfig = new CFGFile(v_installPath);
     }

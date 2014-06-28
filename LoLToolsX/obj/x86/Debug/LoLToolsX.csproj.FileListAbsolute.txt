@@ -16,11 +16,6 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\GenerateResource.write.1.tlog
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.exe
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.pdb
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.ServerSelect.resources
-K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\wpfLog.baml
-K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\wpfLog.g.cs
-K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX_Content.g.cs
-K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX_MarkupCompile.cache
-K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.g.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.TwTools.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.ChatEdit.resources
 E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\LoLToolsX.exe
@@ -41,3 +36,10 @@ E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-
 E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\ChatColour.xml
 E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\INIFile.pdb
 E:\1fa8bf7c8b28be9c838de368296535a9\LOL\LoLToolsX-in-CSharp-master\LoLToolsX-in-CSharp-master\LoLToolsX\bin\Debug\INIFile.xml
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\ChatColour.dll
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.dll
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\ChatColour.pdb
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\ChatColour.xml
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.pdb
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.xml
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Wait.resources

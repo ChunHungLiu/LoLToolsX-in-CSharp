@@ -43,6 +43,7 @@ namespace LoLToolsX
 
                     if (MessageBox.Show("有可用更新 按'確定'下載更新", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
+                        Variable.haveUpdate = true;    //有更新
                         //wait.progressBar1.Value = 40;
                         WebClient wc = new WebClient();
                         try

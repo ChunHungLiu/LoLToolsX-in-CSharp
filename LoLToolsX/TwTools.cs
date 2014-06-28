@@ -142,8 +142,15 @@ namespace LoLToolsX
         
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            UploadLogs();
+            if (!Variable.haveUpdate)
+            {
+                this.Hide();
+                UploadLogs();
+            }
+            else
+            {
+                Environment.Exit(Environment.ExitCode);
+            }
         }
 
         private void UploadLogs()
