@@ -420,28 +420,42 @@ namespace LoLToolsX
 
         }
 
-        public void LoL(int Type)
+        public void LoL(int Type)   //一鍵備份
         {
             if (Type == 1)
             {
-                ProcessStartInfo si = new ProcessStartInfo();
-                si.Arguments = "Backup " + installPath_m;
-                si.Verb = "runas";
-                si.WorkingDirectory = Directory.GetCurrentDirectory();
-                si.FileName = "LoLBakRes.exe";
-                Process.Start(si);
-                Logger.log("LoL一鍵備份 開始!", Logger.LogType.Info);
-            }
-
-                if (Type == 2)
+                try
                 {
                     ProcessStartInfo si = new ProcessStartInfo();
-                    si.Arguments = "Restore " + installPath_m;
+                    si.Arguments = "Backup " + installPath_m;
                     si.Verb = "runas";
                     si.WorkingDirectory = Directory.GetCurrentDirectory();
                     si.FileName = "LoLBakRes.exe";
                     Process.Start(si);
-                    Logger.log("LoL一鍵還原 開始!", Logger.LogType.Info);
+                    Logger.log("LoL一鍵備份 開始!", Logger.LogType.Info);
+                }
+                catch
+                {
+ 
+                }
+            }
+
+                if (Type == 2)
+                {
+                    try
+                    {
+                        ProcessStartInfo si = new ProcessStartInfo();
+                        si.Arguments = "Restore " + installPath_m;
+                        si.Verb = "runas";
+                        si.WorkingDirectory = Directory.GetCurrentDirectory();
+                        si.FileName = "LoLBakRes.exe";
+                        Process.Start(si);
+                        Logger.log("LoL一鍵還原 開始!", Logger.LogType.Info);
+                    }
+                    catch
+                    {
+ 
+                    }
                 }
         }
     }

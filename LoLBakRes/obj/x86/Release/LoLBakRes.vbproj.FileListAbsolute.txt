@@ -8,3 +8,13 @@ C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRe
 C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Release\LoLBakRes.exe
 C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Release\LoLBakRes.xml
 C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Release\LoLBakRes.pdb
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\bin\Release\LoLBakRes.exe
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\bin\Release\LoLBakRes.pdb
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\bin\Release\LoLBakRes.xml
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\ResolveAssemblyReference.cache
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\LoLBakRes.Resources.resources
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\GenerateResource.read.1.tlog
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\GenerateResource.write.1.tlog
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\LoLBakRes.exe
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\LoLBakRes.xml
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Release\LoLBakRes.pdb

@@ -26,14 +26,15 @@ Module LoLBakRes
             Console.WriteLine("備份開始!")
             Try
                 Console.WriteLine("備份中 請稍候...")
-                My.Computer.FileSystem.CopyDirectory(args(1), Directory.GetCurrentDirectory() + "\bak\LoL", True)
-                Dim files() As String = Directory.GetFiles(args(1), "*.*")
-                For Each i In files
-                    File.Copy(args(0) + i, Directory.GetCurrentDirectory() + "\bak\LoL\" + i, True)
-                Next
-                Console.WriteLine("備份成功!")
+                Dim bakPath As String = Path.Combine(Directory.GetCurrentDirectory(), "\bak\LoL")
+                My.Computer.FileSystem.CopyDirectory(args(1), bakPath, True)
+                'Dim files() As String = Directory.GetFiles(args(1), "*.*")
+                'For Each i In files
+                'File.Copy(args(0) + i, Directory.GetCurrentDirectory() + "\bak\LoL\" + i, True)
+                'Next
+                Console.WriteLine("備份成功! 按任意鍵離開...")
             Catch ex As Exception
-                Console.WriteLine("備份失敗: ")
+                Console.WriteLine("備份失敗! 按任意鍵離開...: ")
                 Console.WriteLine(ex)
             Finally
                 Console.ReadLine()
@@ -47,13 +48,13 @@ Module LoLBakRes
             Try
                 Console.WriteLine("還原中 請稍候...")
                 My.Computer.FileSystem.CopyDirectory(Directory.GetCurrentDirectory() + "\bak\LoL", args(1), True)
-                Dim files() As String = Directory.GetFiles(Directory.GetCurrentDirectory() + "\bak\LoL", "*.*")
-                For Each i In files
-                    File.Copy(Directory.GetCurrentDirectory() + "\bak\LoL\", args(0) + i, True)
-                Next
-                Console.WriteLine("還原成功!")
+                'Dim files() As String = Directory.GetFiles(Directory.GetCurrentDirectory() + "\bak\LoL", "*.*")
+                'For Each i In files
+                'File.Copy(Directory.GetCurrentDirectory() + "\bak\LoL\", args(0) + i, True)
+                'Next
+                Console.WriteLine("還原成功! 按任意鍵離開...")
             Catch ex As Exception
-                Console.WriteLine("還原失敗: ")
+                Console.WriteLine("還原失敗! 按任意鍵離開... ")
                 Console.WriteLine(ex)
             Finally
                 Console.ReadLine()

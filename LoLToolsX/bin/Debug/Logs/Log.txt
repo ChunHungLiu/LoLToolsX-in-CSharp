@@ -1,13 +1,25 @@
 ﻿============================== LoLToolsX Log File ==============================
-06/30/2014 08:22:54信息: LoLToolsX版本: 3.0.2.0
-06/30/2014 08:22:54信息: 目前客戶端 ; 台服
-06/30/2014 08:22:54信息: LoLToolsX Logo載入成功!
-06/30/2014 08:22:54信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-06/30/2014 08:22:54信息: LoL目錄檢查成功! 
-06/30/2014 08:22:55信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-06/30/2014 08:22:55信息: 伺服器設定檔檢查成功! 
-06/30/2014 08:22:55信息: 目前伺服器: 台服
-06/30/2014 08:22:55信息: Air版本: 20140624
-06/30/2014 08:22:55信息: 使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html 
-06/30/2014 08:23:03信息: 伺服器切換成功: lolt.properties
-06/30/2014 08:23:04信息: 關閉程式...
+06/30/2014 13:33:32信息: LoLToolsX版本: 3.0.2.0
+06/30/2014 13:33:32信息: 目前客戶端 ; 台服
+06/30/2014 13:33:32信息: LoLToolsX Logo載入成功!
+06/30/2014 13:33:32信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/30/2014 13:33:32信息: LoL目錄檢查成功! 
+06/30/2014 13:33:32信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/30/2014 13:33:32信息: 伺服器設定檔檢查成功! 
+06/30/2014 13:33:32信息: 目前伺服器: 台服
+06/30/2014 13:33:32信息: Air版本: 20140624
+06/30/2014 13:33:32信息: 使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html 
+06/30/2014 13:33:55錯誤: 大廳UI安裝失敗 : 
+06/30/2014 13:33:55錯誤: mscorlib
+System.IO.FileNotFoundException: Could not find file 'K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\openstore.mp3'.
+File name: 'K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\openstore.mp3'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at LoLToolsX.LobbyUI.button4_Click(Object sender, EventArgs e) in K:\git\LoLToolsX-in-CSharp\LoLToolsX\LobbyUI.cs:line 84
+Could not find file 'K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\openstore.mp3'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at LoLToolsX.LobbyUI.button4_Click(Object sender, EventArgs e) in K:\git\LoLToolsX-in-CSharp\LoLToolsX\LobbyUI.cs:line 84
+

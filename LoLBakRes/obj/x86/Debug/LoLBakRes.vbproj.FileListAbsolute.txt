@@ -8,3 +8,6 @@ C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRe
 C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.exe
 C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.xml
 C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.pdb
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Debug\LoLBakRes.exe
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Debug\LoLBakRes.xml
+K:\git\LoLToolsX-in-CSharp\LoLBakRes\obj\x86\Debug\LoLBakRes.pdb

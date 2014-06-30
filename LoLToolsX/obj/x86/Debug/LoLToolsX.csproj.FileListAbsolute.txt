@@ -43,3 +43,4 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\ChatColour.xml
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.pdb
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.xml
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Wait.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.LobbyUI.resources

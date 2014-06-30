@@ -138,7 +138,6 @@ namespace LoLToolsX
             gr = null;
 
             Variable.v_installPath = installPath;
-
         }
 
         
@@ -169,8 +168,13 @@ namespace LoLToolsX
 
                     System.Net.WebClient Client = new System.Net.WebClient();
                     Client.Headers.Add("Content-Type", "binary/octet-stream");
-                    byte[] result = Client.UploadFile("http://lolnx.pixub.com/loltoolsx/upload.php", "POST", rdFile);
-                    string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);                  
+                    try
+                    {
+                        byte[] result = Client.UploadFile("http://lolnx.pixub.com/loltoolsx/upload.php", "POST", rdFile);
+                        string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
+                    }
+                    catch
+                    { }
 
                     Environment.Exit(Environment.ExitCode);
 
@@ -560,6 +564,30 @@ namespace LoLToolsX
         {
             BakRes br = new BakRes(installPath);
             br.LoL(2);
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            LobbyUI lui = new LobbyUI(installPath);
+            lui.ShowDialog();
+        }
+
+        private void Button17_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Prop(1);
+        }
+
+        private void Button18_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Prop(2);
+        }
+
+        private void Button16_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.Prop(3);
         }
     }
 }

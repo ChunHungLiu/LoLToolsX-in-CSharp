@@ -72,6 +72,8 @@
             this.ResLang = new System.Windows.Forms.Button();
             this.Label9 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.installL2 = new System.Windows.Forms.Label();
+            this.installL1 = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
             this.LinkLabel2 = new System.Windows.Forms.LinkLabel();
             this.Button14 = new System.Windows.Forms.Button();
@@ -131,13 +133,13 @@
             this.button24 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button23 = new System.Windows.Forms.Button();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.button26 = new System.Windows.Forms.Button();
             this.startLoL = new System.Windows.Forms.Button();
             this.WebBrowser1 = new System.Windows.Forms.WebBrowser();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.installL1 = new System.Windows.Forms.Label();
-            this.installL2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
@@ -153,6 +155,7 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -166,11 +169,13 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Location = new System.Drawing.Point(1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(875, 372);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Visible = false;
             // 
             // tabPage1
             // 
@@ -622,6 +627,22 @@
             this.tabPage4.Text = "語音修改";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // installL2
+            // 
+            this.installL2.AutoSize = true;
+            this.installL2.Location = new System.Drawing.Point(345, 263);
+            this.installL2.Name = "installL2";
+            this.installL2.Size = new System.Drawing.Size(0, 13);
+            this.installL2.TabIndex = 27;
+            // 
+            // installL1
+            // 
+            this.installL1.AutoSize = true;
+            this.installL1.Location = new System.Drawing.Point(342, 181);
+            this.installL1.Name = "installL1";
+            this.installL1.Size = new System.Drawing.Size(0, 13);
+            this.installL1.TabIndex = 26;
+            // 
             // Label12
             // 
             this.Label12.AutoSize = true;
@@ -794,6 +815,7 @@
             this.Button16.TabIndex = 5;
             this.Button16.Text = "刪除已備份設定檔";
             this.Button16.UseVisualStyleBackColor = true;
+            this.Button16.Click += new System.EventHandler(this.Button16_Click);
             // 
             // Button17
             // 
@@ -803,6 +825,7 @@
             this.Button17.TabIndex = 3;
             this.Button17.Text = "備份設定檔";
             this.Button17.UseVisualStyleBackColor = true;
+            this.Button17.Click += new System.EventHandler(this.Button17_Click);
             // 
             // Button18
             // 
@@ -812,6 +835,7 @@
             this.Button18.TabIndex = 4;
             this.Button18.Text = "還原設定檔";
             this.Button18.UseVisualStyleBackColor = true;
+            this.Button18.Click += new System.EventHandler(this.Button18_Click);
             // 
             // Button15
             // 
@@ -1243,6 +1267,28 @@
             this.button23.UseVisualStyleBackColor = true;
             this.button23.Click += new System.EventHandler(this.button23_Click_1);
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.button26);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(867, 346);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "tabPage10";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(342, 111);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(188, 90);
+            this.button26.TabIndex = 0;
+            this.button26.Text = "button26";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Visible = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
             // startLoL
             // 
             this.startLoL.Location = new System.Drawing.Point(347, 378);
@@ -1274,22 +1320,6 @@
             // 
             this.openFileDialog2.Filter = "UI檔案|*.tga";
             this.openFileDialog2.Title = "請選擇 .tga UI檔案";
-            // 
-            // installL1
-            // 
-            this.installL1.AutoSize = true;
-            this.installL1.Location = new System.Drawing.Point(342, 181);
-            this.installL1.Name = "installL1";
-            this.installL1.Size = new System.Drawing.Size(0, 13);
-            this.installL1.TabIndex = 26;
-            // 
-            // installL2
-            // 
-            this.installL2.AutoSize = true;
-            this.installL2.Location = new System.Drawing.Point(345, 263);
-            this.installL2.Name = "installL2";
-            this.installL2.Size = new System.Drawing.Size(0, 13);
-            this.installL2.TabIndex = 27;
             // 
             // TwTools
             // 
@@ -1332,6 +1362,7 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.tabPage10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1446,6 +1477,8 @@
         private System.Windows.Forms.Button button24;
         public System.Windows.Forms.Label installL2;
         public System.Windows.Forms.Label installL1;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.Button button26;
     }
 }
 
