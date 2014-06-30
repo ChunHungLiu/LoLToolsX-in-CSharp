@@ -51,10 +51,20 @@ namespace LoLToolsX
                             string downloadPath = "https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/LoLToolsX" + result + "/LoLToolsX" + result + ".exe";
                             try
                             {
-                                //wait.progressBar1.Value = 60;
-                                Logger.log("LoLToolsX 開始下載更新", Logger.LogType.Info);
-                                wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"LoLToolsX.exe");
-                                //wait.progressBar1.Value = 100;
+                                try
+                                {
+                                    //wait.progressBar1.Value = 60;
+                                    Logger.log("LoLToolsX 開始下載更新", Logger.LogType.Info);
+                                    wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"LoLToolsX.exe");
+                                    //wait.progressBar1.Value = 100;
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("下載更新失敗!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Logger.log("下載更新失敗!", Logger.LogType.Error);
+                                    return;
+                                }
+                                
                                 if (MessageBox.Show("更新下載完成 按確定重新啟動程式", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                 {
                                     //wait.progressBar1.Value = 0;

@@ -1,0 +1,27 @@
+﻿============================== LoLToolsX Log File ==============================
+06/30/2014 07:56:17信息: LoLToolsX版本: 3.0.2.0
+06/30/2014 07:56:17信息: LoLToolsX Logo載入成功!
+06/30/2014 07:56:17信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/30/2014 07:56:17信息: LoL目錄檢查成功! 
+06/30/2014 07:56:17信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+06/30/2014 07:56:17信息: 伺服器設定檔檢查成功! 
+06/30/2014 07:56:17信息: 目前伺服器: 台服
+06/30/2014 07:56:17信息: Air版本: 20140624
+06/30/2014 07:56:17信息: 使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html 
+06/30/2014 07:56:22信息: Server Status Check:
+06/30/2014 07:56:22信息: lol.garena.com : 正常
+06/30/2014 07:56:22信息: Server Status Check:
+06/30/2014 07:56:22信息: landing.leagueoflegends.com : 正常
+06/30/2014 07:56:22信息: Server Status Check:
+06/30/2014 07:56:22信息: lol.garena.com : 正常
+06/30/2014 07:56:22信息: Server Status Check:
+06/30/2014 07:56:22信息: www.leagueoflegends.co.kr : 正常
+06/30/2014 07:56:22信息: Server Status Check:
+06/30/2014 07:56:22信息: lq.eu.lol.riotgames.com : 正常
+06/30/2014 07:56:23信息: Server Status Check:
+06/30/2014 07:56:23信息: lq.eun1.lol.riotgames.com : 正常
+06/30/2014 07:56:23信息: Server Status Check:
+06/30/2014 07:56:23信息: lq.oc1.lol.riotgames.com : 正常
+06/30/2014 07:56:23信息: Server Status Check:
+06/30/2014 07:56:23信息: d2q6fdmnncz9b0.cloudfront.net : 正常
+06/30/2014 07:56:24信息: 關閉程式...

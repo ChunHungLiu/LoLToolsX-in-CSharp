@@ -127,6 +127,8 @@
             this.Label01 = new System.Windows.Forms.Label();
             this.checkServerStatus = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button23 = new System.Windows.Forms.Button();
             this.startLoL = new System.Windows.Forms.Button();
@@ -134,8 +136,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
+            this.installL1 = new System.Windows.Forms.Label();
+            this.installL2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
@@ -597,6 +599,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.installL2);
+            this.tabPage4.Controls.Add(this.installL1);
             this.tabPage4.Controls.Add(this.Label12);
             this.tabPage4.Controls.Add(this.LinkLabel2);
             this.tabPage4.Controls.Add(this.Button14);
@@ -672,14 +676,14 @@
             // 
             // pbGame
             // 
-            this.pbGame.Location = new System.Drawing.Point(274, 300);
+            this.pbGame.Location = new System.Drawing.Point(274, 282);
             this.pbGame.Name = "pbGame";
             this.pbGame.Size = new System.Drawing.Size(201, 18);
             this.pbGame.TabIndex = 20;
             // 
             // pbLobby
             // 
-            this.pbLobby.Location = new System.Drawing.Point(274, 219);
+            this.pbLobby.Location = new System.Drawing.Point(274, 200);
             this.pbLobby.Name = "pbLobby";
             this.pbLobby.Size = new System.Drawing.Size(201, 18);
             this.pbLobby.TabIndex = 19;
@@ -1198,6 +1202,26 @@
             this.tabPage9.Text = "其他選項";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(110, 119);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(163, 68);
+            this.button25.TabIndex = 0;
+            this.button25.Text = "一鍵備份LoL";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(352, 119);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(163, 68);
+            this.button24.TabIndex = 1;
+            this.button24.Text = "一鍵還原LoL";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -1248,29 +1272,24 @@
             // 
             // openFileDialog2
             // 
-            this.openFileDialog2.FileName = "HUDAtlas.tga";
             this.openFileDialog2.Filter = "UI檔案|*.tga";
-            this.openFileDialog2.Title = "請選擇 HUDAtlas.tga UI檔案";
+            this.openFileDialog2.Title = "請選擇 .tga UI檔案";
             // 
-            // button24
+            // installL1
             // 
-            this.button24.Location = new System.Drawing.Point(352, 119);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(163, 68);
-            this.button24.TabIndex = 1;
-            this.button24.Text = "一鍵還原LoL";
-            this.button24.UseVisualStyleBackColor = true;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
+            this.installL1.AutoSize = true;
+            this.installL1.Location = new System.Drawing.Point(342, 181);
+            this.installL1.Name = "installL1";
+            this.installL1.Size = new System.Drawing.Size(0, 13);
+            this.installL1.TabIndex = 26;
             // 
-            // button25
+            // installL2
             // 
-            this.button25.Location = new System.Drawing.Point(110, 119);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(163, 68);
-            this.button25.TabIndex = 0;
-            this.button25.Text = "一鍵備份LoL";
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
+            this.installL2.AutoSize = true;
+            this.installL2.Location = new System.Drawing.Point(345, 263);
+            this.installL2.Name = "installL2";
+            this.installL2.Size = new System.Drawing.Size(0, 13);
+            this.installL2.TabIndex = 27;
             // 
             // TwTools
             // 
@@ -1425,6 +1444,8 @@
         internal System.Windows.Forms.Button checkServerStatus;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button24;
+        public System.Windows.Forms.Label installL2;
+        public System.Windows.Forms.Label installL1;
     }
 }
 

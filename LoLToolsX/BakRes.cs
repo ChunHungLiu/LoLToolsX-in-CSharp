@@ -245,7 +245,7 @@ namespace LoLToolsX
                 catch (System.IO.DirectoryNotFoundException err)
                 {
                     wait.Close();
-                    Logger.log("語音檔 備份失敗 : 沒有還原檔可供還原", Logger.LogType.Error);
+                    Logger.log("語音檔 還原失敗 : 沒有還原檔可供還原", Logger.LogType.Error);
                     Logger.log(err);
                     MessageBox.Show("沒有還原檔可供還原", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } 

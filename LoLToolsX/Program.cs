@@ -11,13 +11,17 @@ namespace LoLToolsX
         /// 應用程式的主要進入點。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ServerSelect());
+            //只允許單一執行個體
+            SingelApp myapp = new SingelApp();
+            myapp.Run(args);
+
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new ServerSelect());
         }
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)  //CrushHandler
         {
@@ -32,6 +36,24 @@ namespace LoLToolsX
                 Logger.log("關閉程式...", Logger.LogType.Info);
                 Application.Exit();
             }
+        }
+    }
+    /// <summary>
+    /// 單一執行個體。
+    /// </summary>
+
+    internal class SingelApp : Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase
+    {
+        public SingelApp()
+        {
+            this.IsSingleInstance = true;
+            this.EnableVisualStyles = true;
+            this.ShutdownStyle = Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses;
+        }
+
+        protected override void OnCreateMainForm()
+        {
+            this.MainForm = new ServerSelect();
         }
     }
 }

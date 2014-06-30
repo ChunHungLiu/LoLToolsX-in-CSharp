@@ -1,0 +1,10 @@
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\bin\Debug\LoLBakRes.exe
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\bin\Debug\LoLBakRes.pdb
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\bin\Debug\LoLBakRes.xml
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.Resources.resources
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.exe
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.xml
+C:\Documents and Settings\NICE\my documents\visual studio 2010\Projects\LoLBakRes\LoLBakRes\obj\x86\Debug\LoLBakRes.pdb

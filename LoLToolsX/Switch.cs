@@ -155,6 +155,7 @@ namespace LoLToolsX
             }
             try
             {
+                tt.installL1.Text = "安裝進行中...";
                 tt.pbLobby.Value = 0;
                 foreach (string newPath in Directory.GetFiles(soundPath + @"\champions", "*.*", SearchOption.AllDirectories))
                     File.Copy(newPath, newPath.Replace(soundPath + @"\champions", installPath + @"\Air\assets\sounds\en_US\champions"), true);
@@ -165,14 +166,16 @@ namespace LoLToolsX
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tt.pbLobby.Value = 0;
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
-
+                tt.installL1.Text = "";
             }
             catch (Exception e)
             {
+                tt.installL1.Text = "安裝進行中...";
                 tt.pbLobby.Value = 0;
                 MessageBox.Show("安裝失敗\r\n錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("語音切換: 大廳語音安裝失敗!", Logger.LogType.Error);
                 Logger.log(e, Logger.LogType.Error);
+                tt.installL1.Text = "";
             }
         }
 
@@ -188,6 +191,7 @@ namespace LoLToolsX
             //KR
             try
             {
+                tt.installL2.Text = "安裝進行中...";
                 tt.pbGame.Value = 0;
                 File.Copy(soundPath + @"\VOBank_ko_KR.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
                 tt.pbGame.Value = 35;
@@ -199,6 +203,7 @@ namespace LoLToolsX
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tt.pbGame.Value = 0;
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
+                tt.installL2.Text = "";
             }
             /*
         catch (System.IO.FileNotFoundException)
@@ -209,7 +214,7 @@ namespace LoLToolsX
              */
             catch (Exception e)
             {
-                Logger.log(e, Logger.LogType.Error);
+                Logger.log(e, Logger.LogType.Exception);
             }
 
 
@@ -236,7 +241,7 @@ namespace LoLToolsX
              */
             catch (Exception e2)
             {
-                Logger.log(e2, Logger.LogType.Error);
+                Logger.log(e2, Logger.LogType.Exception);
             }
 
             try
@@ -262,7 +267,7 @@ namespace LoLToolsX
              */
             catch (Exception e3)
             {
-                Logger.log(e3, Logger.LogType.Error);
+                Logger.log(e3, Logger.LogType.Exception);
             }
 
         }

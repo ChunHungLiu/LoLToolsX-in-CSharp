@@ -1,0 +1,11 @@
+﻿<Window x:Class="LoLToolsX.wpfLog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="342" d:DesignWidth="699" Title="LoLToolsX Debug 除錯模式" SizeToContent="WidthAndHeight">
+    <Grid>
+        <ListBox Height="294" HorizontalAlignment="Left" Margin="0,0,0,12" Name="listBox1" VerticalAlignment="Bottom" Width="680" />
+    </Grid>
+</Window>

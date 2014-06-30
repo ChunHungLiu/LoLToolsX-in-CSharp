@@ -46,6 +46,8 @@ namespace LoLToolsX
 
             //寫入目前LoLToolsX版本到Log
             Logger.log("LoLToolsX版本: " + Application.ProductVersion, Logger.LogType.Info);
+
+            Logger.log("目前客戶端 ; 台服", Logger.LogType.Info);
             //載入LoLToolsX Logo
             PictureBox1.ImageLocation = Directory.GetCurrentDirectory() + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
@@ -376,7 +378,7 @@ namespace LoLToolsX
             {
                 if (folderBrowserDialog1.SelectedPath.Contains("Sound"))
                 {
-                    Logger.log("Sound資料夾選擇成功: " +folderBrowserDialog1.SelectedPath, Logger.LogType.Error);
+                    Logger.log("Sound資料夾選擇成功: " +folderBrowserDialog1.SelectedPath, Logger.LogType.Info);
                     tbPath.Text = folderBrowserDialog1.SelectedPath;
                 }
                 else
@@ -390,13 +392,15 @@ namespace LoLToolsX
         private void installSound_Click(object sender, EventArgs e)
         {
             SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-            ss.SwitchLobby();
+            Thread thread = new Thread(new ThreadStart(ss.SwitchLobby));
+            //ss.SwitchLobby();
         }
 
         private void Button11_Click(object sender, EventArgs e)
         {
             SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-            ss.SwitchGame();
+            Thread thread = new Thread(new ThreadStart(ss.SwitchGame));
+            //ss.SwitchGame();
         }
 
         private void Button12_Click(object sender, EventArgs e)

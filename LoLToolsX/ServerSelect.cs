@@ -22,7 +22,6 @@ namespace LoLToolsX
             TwTools tt = new TwTools();
             tt.Show();
             this.Hide();
-            GC.Collect();
         }
 
         private void ServerSelect_Load(object sender, EventArgs e)

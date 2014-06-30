@@ -15,7 +15,7 @@ namespace LoLToolsX
         /// 從登錄檔取得LoL路徑
         /// </summary>
 
-        public static string installPath;  //LoL安裝路徑
+        public static string installPath = "";  //LoL安裝路徑
 
         public string TwPath(string iniPath)   //取得台服LoL路徑
         {
@@ -26,6 +26,7 @@ namespace LoLToolsX
             if (!String.IsNullOrEmpty(CFGFile.GetValue("Path", "TwPath")))
             {
                 installPath = CFGFile.GetValue("Path", "TwPath");
+                return installPath;
             }
 
             if (String.IsNullOrEmpty(installPath))
@@ -37,6 +38,7 @@ namespace LoLToolsX
                     if (!String.IsNullOrEmpty(value))
                     {
                         installPath = value;
+                        return installPath;
                     }
                 }
             }
@@ -51,10 +53,11 @@ namespace LoLToolsX
                     if (!String.IsNullOrEmpty(value))
                     {
                         installPath = value;
+                        return installPath;
                     }
                 }
             }
-              return installPath;
+              return "";
         }
     }
 }

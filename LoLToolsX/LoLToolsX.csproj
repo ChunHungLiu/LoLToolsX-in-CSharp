@@ -54,6 +54,9 @@
   <PropertyGroup>
     <StartupObject>LoLToolsX.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ChatColour">
       <HintPath>C:\Documents and Settings\NICE\My Documents\Visual Studio 2010\Projects\ChatColour\ChatColour\bin\Release\ChatColour.dll</HintPath>
@@ -86,6 +89,7 @@
     <Compile Include="Edit.cs" />
     <Compile Include="InstallUI.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="My.cs" />
     <Compile Include="ServerSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +137,7 @@
     <EmbeddedResource Include="Wait.resx">
       <DependentUpon>Wait.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
