@@ -29,16 +29,40 @@ namespace LoLToolsX
                 return installPath;
             }
 
+            if (My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\LoLTW", "Path",null) != null)
+            {
+                string value = My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\LoLTW", "Path",null).ToString();
+                if (value.Contains("LoLTW"))
+                {
+                    installPath = My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\LoLTW", "Path", null).ToString();
+                    return installPath;
+                }
+            }
+
+            if (My.Computer.Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Garena\LoLTW", "Path", null) != null)
+            {
+                string value = My.Computer.Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Garena\LoLTW", "Path", null).ToString();
+                if (value.Contains("LoLTW"))
+                {
+                    installPath = My.Computer.Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Garena\LoLTW", "Path", null).ToString();
+                    return installPath;
+                }
+            }
+
+            /*
             if (String.IsNullOrEmpty(installPath))
             {
                 {
                     RegistryKey myKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Garena\LoLTW", false);
-                    String value = (String)myKey.GetValue("Path");
-
-                    if (!String.IsNullOrEmpty(value))
+                    if (myKey.GetValue("Path") != null)
                     {
-                        installPath = value;
-                        return installPath;
+                        String value = (String)myKey.GetValue("Path");
+                        if (!String.IsNullOrEmpty(value))
+                        {
+                            installPath = value;
+                            return installPath;
+                    }
+
                     }
                 }
             }
@@ -47,16 +71,20 @@ namespace LoLToolsX
             if (String.IsNullOrEmpty(installPath))
             {
                 {
-                    RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Garena\LoLTW", false);
-                    String value = (String)myKey.GetValue("Path");
-
-                    if (!String.IsNullOrEmpty(value))
+                    RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Garena\LoLTW",false);
+                    if (myKey.GetValue("Path") != null)
                     {
-                        installPath = value;
-                        return installPath;
+                        String value = (String)myKey.GetValue("Path");
+                        if (!String.IsNullOrEmpty(value))
+                        {
+                            installPath = value;
+                            return installPath;
+                        }
+
                     }
                 }
             }
+             */
               return "";
         }
     }
