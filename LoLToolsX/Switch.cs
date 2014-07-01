@@ -155,6 +155,7 @@ namespace LoLToolsX
             }
             try
             {
+                Variable.switchingSound = true;
                 tt.installL1.Text = "安裝進行中...";
                 tt.pbLobby.Value = 0;
                 foreach (string newPath in Directory.GetFiles(soundPath + @"\champions", "*.*", SearchOption.AllDirectories))
@@ -167,6 +168,7 @@ namespace LoLToolsX
                 tt.pbLobby.Value = 0;
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
                 tt.installL1.Text = "";
+                Variable.switchingSound = false;
             }
             catch (Exception e)
             {
@@ -176,6 +178,7 @@ namespace LoLToolsX
                 Logger.log("語音切換: 大廳語音安裝失敗!", Logger.LogType.Error);
                 Logger.log(e, Logger.LogType.Error);
                 tt.installL1.Text = "";
+                Variable.switchingSound = false;
             }
         }
 
@@ -191,6 +194,7 @@ namespace LoLToolsX
             //KR
             try
             {
+                Variable.switchingSound = true;
                 tt.installL2.Text = "安裝進行中...";
                 tt.pbGame.Value = 0;
                 File.Copy(soundPath + @"\VOBank_ko_KR.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
@@ -204,6 +208,7 @@ namespace LoLToolsX
                 tt.pbGame.Value = 0;
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
                 tt.installL2.Text = "";
+                Variable.switchingSound = false;
             }
             /*
         catch (System.IO.FileNotFoundException)
@@ -220,6 +225,7 @@ namespace LoLToolsX
 
             try
             {
+                Variable.switchingSound = true;
                 tt.pbGame.Value = 0;
                 File.Copy(soundPath + @"\VOBank_zh_TW.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
                 tt.pbGame.Value = 35;
@@ -231,6 +237,7 @@ namespace LoLToolsX
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tt.pbGame.Value = 0;
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
+                Variable.switchingSound = false;
             }
             /*
             catch (System.IO.FileNotFoundException)
@@ -246,6 +253,7 @@ namespace LoLToolsX
 
             try
             {
+                Variable.switchingSound = true;
                 tt.pbGame.Value = 0;
                 File.Copy(soundPath + @"\VOBank_zh_CN.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
                 tt.pbGame.Value = 35;
@@ -257,6 +265,7 @@ namespace LoLToolsX
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tt.pbGame.Value = 0;
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
+                Variable.switchingSound = false;
             }
             /*
         catch (System.IO.FileNotFoundException)
@@ -270,6 +279,7 @@ namespace LoLToolsX
                 Logger.log(e3, Logger.LogType.Exception);
             }
 
+            Variable.switchingSound = false;
         }
 
     }

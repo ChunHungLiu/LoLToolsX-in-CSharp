@@ -16,9 +16,9 @@ namespace LoLToolsX
         /// 檔案備份/還原
         /// </summary>
 
-        string installPath_m;  
+        private string installPath_m;  
 
-        public BakRes(string installPath)
+        public BakRes(string installPath)  //Constructor
         {
             installPath_m = installPath;
         }
@@ -185,7 +185,7 @@ namespace LoLToolsX
                     try
                     {
                         File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\" + file, true);
-                        wait.progressBar1.Value += 20;
+                        wait.progressBar1.Value = wait.progressBar1.Value +  15;
                     }
                     catch { }
                 }
@@ -225,7 +225,7 @@ namespace LoLToolsX
                     try
                     {
                         File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\" + file, installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, true);
-                        wait.progressBar1.Value += 20;
+                        wait.progressBar1.Value = wait.progressBar1.Value + 15;
                     }
                     catch { }
                 }
@@ -236,7 +236,7 @@ namespace LoLToolsX
                     wait.progressBar1.Value = 50;
                     foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
                         File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air", installPath_m + @"\Air\assets\sounds\zh_TW\champions"), true);
-                    wait.progressBar1.Value = 1000;
+                    wait.progressBar1.Value = 100;
                     wait.progressBar1.Value = 0;
                     wait.Close();
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -353,7 +353,7 @@ namespace LoLToolsX
 
         }
 
-        public void Chat(int Type)     //備份伺服器設定檔 (lol.properties)
+        public void Chat(int Type)     //備份 Chat.ini
         {
             //備份
             if (Type == 1)

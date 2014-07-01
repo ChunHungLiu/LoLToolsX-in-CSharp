@@ -33,6 +33,7 @@ namespace LoLToolsX
             CFGFile checkAutoUpdate = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
             if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
             {
+                Variable.updating = true;
                 this.checkBox1.Checked = false;
                 Thread updateThread = new Thread(CheckUpdate.checkUpdate);
                 updateThread.Start();
@@ -47,7 +48,7 @@ namespace LoLToolsX
             //寫入目前LoLToolsX版本到Log
             Logger.log("LoLToolsX版本: " + Application.ProductVersion, Logger.LogType.Info);
 
-            Logger.log("目前客戶端 ; 台服", Logger.LogType.Info);
+            Logger.log("目前客戶端 : 台服", Logger.LogType.Info);
             //載入LoLToolsX Logo
             PictureBox1.ImageLocation = Directory.GetCurrentDirectory() + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
@@ -395,16 +396,44 @@ namespace LoLToolsX
 
         private void installSound_Click(object sender, EventArgs e)
         {
-            SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-            Thread thread = new Thread(new ThreadStart(ss.SwitchLobby));
-            //ss.SwitchLobby();
+            if (tbPath.Text != null)
+            {
+                if (!Variable.switchingSound)
+                {
+                    SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
+                    Thread thread = new Thread(new ThreadStart(ss.SwitchLobby));
+                    //ss.SwitchLobby();
+                }
+                else
+                {
+                    MessageBox.Show("語音安裝進行中... 請稍後~");
+                }
+            }
+            else
+            {
+                MessageBox.Show("請先選擇Sound資料夾", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-            Thread thread = new Thread(new ThreadStart(ss.SwitchGame));
-            //ss.SwitchGame();
+            if (tbPath.Text != null)
+            {
+                if (!Variable.switchingSound)
+                {
+                    SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
+                    Thread thread = new Thread(new ThreadStart(ss.SwitchGame));
+                    //ss.SwitchGame();
+                }
+                else
+                {
+                    MessageBox.Show("語音安裝進行中... 請稍後~");
+                }
+            }
+            else
+            {
+                MessageBox.Show("請先選擇Sound資料夾", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Button12_Click(object sender, EventArgs e)
@@ -479,8 +508,15 @@ namespace LoLToolsX
 
         private void button23_Click_1(object sender, EventArgs e)
         {
-            Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-            updateThread.Start();
+            if (!Variable.updating)
+            {
+                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                updateThread.Start();
+            }
+            else
+            {
+                MessageBox.Show("正在檢查更新, 請稍候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Button20_Click(object sender, EventArgs e)

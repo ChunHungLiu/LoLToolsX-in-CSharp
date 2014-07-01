@@ -23,9 +23,9 @@ namespace LoLToolsX
             CFGFile CFGFile = new CFGFile(iniPath);
 
             //檢查 config.ini
-            if (!String.IsNullOrEmpty(CFGFile.GetValue("Path", "TwPath")))
+            if (!String.IsNullOrEmpty(CFGFile.GetValue("LoLPath", "TwPath")))
             {
-                installPath = CFGFile.GetValue("Path", "TwPath");
+                installPath = CFGFile.GetValue("LoLPath", "TwPath");
                 return installPath;
             }
 

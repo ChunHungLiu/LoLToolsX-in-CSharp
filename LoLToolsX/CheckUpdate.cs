@@ -20,18 +20,15 @@ namespace LoLToolsX
 
         public static void checkUpdate()
         {
-            //Wait wait = new Wait();
-            //wait.Show();
-            //wait.progressBar1.Value = 0;
-
+            Variable.updating = true;
             Logger.log("檢查 LoLToolsX 更新...",Logger.LogType.Info);
             var request = (HttpWebRequest)WebRequest.Create("http://lolnx.pixub.com/loltoolsx/version.txt");
             WebResponse response = request.GetResponse();
             var reader = new StreamReader(response.GetResponseStream());
-            //wait.progressBar1.Value = 10;
 
-            WebClient test = new WebClient();
-            test.DownloadFile("http://lolnx.pixub.com/loltoolsx/version.txt", Directory.GetCurrentDirectory() + @"\download\version.txt");
+            var request2 = (HttpWebRequest)WebRequest.Create("http://lolnx.pixub.com/loltoolsx/info.txt");
+            WebResponse response2 = request2.GetResponse();
+            var reader2 = new StreamReader(response2.GetResponseStream());
 
             try
             {
@@ -40,8 +37,8 @@ namespace LoLToolsX
                 if (Application.ProductVersion != result)
                 {
                     Logger.log("LoLToolsX 發現可用更新 : " + result, Logger.LogType.Info);
-
-                    if (MessageBox.Show("有可用更新 按'確定'下載更新", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    string info = reader2.ReadToEnd();
+                    if (MessageBox.Show("有可用更新 按'確定'下載更新\r\n更新內容: \r\n" + info, "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         Variable.haveUpdate = true;    //有更新
                         //wait.progressBar1.Value = 40;
@@ -52,7 +49,8 @@ namespace LoLToolsX
                             try
                             {
                                 try
-                                {
+                                {  
+                                    Variable.updating = true;
                                     //wait.progressBar1.Value = 60;
                                     Logger.log("LoLToolsX 開始下載更新", Logger.LogType.Info);
                                     wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"LoLToolsX.exe");
@@ -60,6 +58,7 @@ namespace LoLToolsX
                                 }
                                 catch
                                 {
+                                    Variable.updating = false;
                                     MessageBox.Show("下載更新失敗!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     Logger.log("下載更新失敗!", Logger.LogType.Error);
                                     return;
@@ -112,6 +111,7 @@ namespace LoLToolsX
                         }
                         finally
                         {
+                            Variable.updating = false;
                             //wait.progressBar1.Value = 0;
                             //wait.Dispose();
                             wc = null;
@@ -120,6 +120,7 @@ namespace LoLToolsX
                 }
                 else
                 {
+                    Variable.updating = false;
                     //wait.progressBar1.Value = 0;
                     //wait.Dispose();
                     Logger.log("LoLToolsX 沒有可用更新", Logger.LogType.Info);
@@ -127,6 +128,7 @@ namespace LoLToolsX
             }
             catch (Exception e)
             {
+                Variable.updating = false;
                 //wait.progressBar1.Value = 0;
                 //wait.Dispose();
                 Logger.log("LoLToolsX 下載更新資訊失敗", Logger.LogType.Info);
@@ -134,10 +136,11 @@ namespace LoLToolsX
             }
             finally
             {
-                reader = null;
+                Variable.updating = false;
+                reader.Close();
                 request = null;
-                //wait.Close();
-                //wait.Dispose();
+                reader.Close();
+                request2 = null;
                 GC.Collect();
             }
            

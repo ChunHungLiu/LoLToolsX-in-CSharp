@@ -11,7 +11,8 @@ namespace LoLToolsX
     {
         public static void GameUI(string installPath)
         {
-            if (Variable.hudPath.Contains("tga"))
+            MessageBox.Show(Path.GetExtension(Variable.hudPath));
+            if (Path.GetExtension(Variable.hudPath) == ".tga")
             {
                 try
                 {
@@ -29,7 +30,7 @@ namespace LoLToolsX
             }
             else
             {
-                MessageBox.Show("請先選擇 '.tga' 檔案", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("請選擇 '.tga' 檔案", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("HUDAtlas.tga 未選擇 : 安裝失敗",Logger.LogType.Error);
             }
         }
