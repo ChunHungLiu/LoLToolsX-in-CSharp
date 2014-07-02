@@ -11,7 +11,6 @@ namespace LoLToolsX
     {
         public static void GameUI(string installPath)
         {
-            MessageBox.Show(Path.GetExtension(Variable.hudPath));
             if (Path.GetExtension(Variable.hudPath) == ".tga")
             {
                 try

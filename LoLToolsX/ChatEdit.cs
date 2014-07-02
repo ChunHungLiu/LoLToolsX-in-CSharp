@@ -167,7 +167,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "BS", BS.Text);
             ini.SetValue("ChatColour", "GS", GS.Text);
             ini.SetValue("ChatColour", "BS", BS.Text);
-            cc.WriteFriendlyColour(installPath, RS.Text, GS.Text, BS.Text);
+            cc.WriteTeamChatColour(installPath, RS.Text, GS.Text, BS.Text);
             Logger.log("對話框文字顏色修改成功 : " + RS.Text + " " + GS.Text + " " + BS.Text, Logger.LogType.Info);
             MessageBox.Show("修改成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -177,7 +177,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B2", B2.Text);
             ini.SetValue("ChatColour", "G2", G2.Text);
             ini.SetValue("ChatColour", "B2", B2.Text);
-            cc.WriteFriendlyColour(installPath, R2.Text, G2.Text, B2.Text);
+            cc.WriteAllChatColor(installPath, R2.Text, G2.Text, B2.Text);
             Logger.log("對話框文字顏色修改成功 : " + R2.Text + " " + G2.Text + " " + B2.Text, Logger.LogType.Info);
             MessageBox.Show("修改成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -187,7 +187,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B3", B3.Text);
             ini.SetValue("ChatColour", "G3", G3.Text);
             ini.SetValue("ChatColour", "B3", B3.Text);
-            cc.WriteFriendlyColour(installPath, R3.Text, G3.Text, B3.Text);
+            cc.WriteEnemyColor(installPath, R3.Text, G3.Text, B3.Text);
             Logger.log("對話框文字顏色修改成功 : " + R3.Text + " " + G3.Text + " " + B3.Text, Logger.LogType.Info);
             MessageBox.Show("修改成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -197,7 +197,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B4", B4.Text);
             ini.SetValue("ChatColour", "G4", G4.Text);
             ini.SetValue("ChatColour", "B4", B4.Text);
-            cc.WriteFriendlyColour(installPath, R4.Text, G4.Text, B4.Text);
+            cc.WriteWhisperColor(installPath, R4.Text, G4.Text, B4.Text);
             Logger.log("對話框文字顏色修改成功 : " + R4.Text + " " + G4.Text + " " + B4.Text, Logger.LogType.Info);
             MessageBox.Show("修改成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -207,7 +207,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B5", B5.Text);
             ini.SetValue("ChatColour", "G5", G5.Text);
             ini.SetValue("ChatColour", "B5", B5.Text);
-            cc.WriteFriendlyColour(installPath, R5.Text, G5.Text, B5.Text);
+            cc.WriteTimestampColor(installPath, R5.Text, G5.Text, B5.Text);
             Logger.log("對話框文字顏色修改成功 : " + R5.Text + " " + G5.Text + " " + B5.Text, Logger.LogType.Info);
             MessageBox.Show("修改成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -227,7 +227,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "BS", "255");
             ini.SetValue("ChatColour", "GS", "255");
             ini.SetValue("ChatColour", "BS", "255");
-            cc.WriteFriendlyColour(installPath, "255", "255", "255");
+            cc.WriteTeamChatColour(installPath, "255", "255", "255");
             Logger.log("對話框文字顏色 恢復預設值成功!", Logger.LogType.Info);
             MessageBox.Show("恢復成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -237,7 +237,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B2", "255");
             ini.SetValue("ChatColour", "G2", "255");
             ini.SetValue("ChatColour", "B2", "255");
-            cc.WriteFriendlyColour(installPath, "255", "255", "255");
+            cc.WriteAllChatColor(installPath, "255", "255", "255");
             Logger.log("對話框文字顏色 恢復預設值成功!", Logger.LogType.Info);
             MessageBox.Show("恢復成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -247,7 +247,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B3", "255");
             ini.SetValue("ChatColour", "G3", "51");
             ini.SetValue("ChatColour", "B3", "51");
-            cc.WriteFriendlyColour(installPath, "255", "51", "51");
+            cc.WriteEnemyColor(installPath, "255", "51", "51");
             Logger.log("對話框文字顏色 恢復預設值成功!", Logger.LogType.Info);
             MessageBox.Show("恢復成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -257,7 +257,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B4", "241");
             ini.SetValue("ChatColour", "G4", "231");
             ini.SetValue("ChatColour", "B4", "22");
-            cc.WriteFriendlyColour(installPath, "241", "231", "22");
+            cc.WriteWhisperColor(installPath, "241", "231", "22");
             Logger.log("對話框文字顏色 恢復預設值成功!", Logger.LogType.Info);
             MessageBox.Show("恢復成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -267,7 +267,7 @@ namespace LoLToolsX
             ini.SetValue("ChatColour", "B5", "220");
             ini.SetValue("ChatColour", "G5", "220");
             ini.SetValue("ChatColour", "B5", "220");
-            cc.WriteFriendlyColour(installPath, "220", "220", "220");
+            cc.WriteTimestampColor(installPath, "220", "220", "220");
             Logger.log("對話框文字顏色 恢復預設值成功!", Logger.LogType.Info);
             MessageBox.Show("恢復成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -363,5 +363,6 @@ namespace LoLToolsX
             BakRes br = new BakRes(installPath);
             br.Chat(3);
         }
+
     }
 }

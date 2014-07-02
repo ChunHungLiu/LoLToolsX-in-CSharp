@@ -625,6 +625,12 @@ namespace LoLToolsX
             BakRes br = new BakRes(installPath);
             br.Prop(3);
         }
+
+        private void button26_Click_1(object sender, EventArgs e)
+        {
+            LobbyUI lui = new LobbyUI(installPath);
+            lui.Show();
+        }
     }
 }
 

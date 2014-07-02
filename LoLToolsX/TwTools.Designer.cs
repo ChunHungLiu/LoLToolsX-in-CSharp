@@ -66,7 +66,7 @@
             this.Button20 = new System.Windows.Forms.Button();
             this.Button21 = new System.Windows.Forms.Button();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
-            this.Label16 = new System.Windows.Forms.Label();
+            this.button26 = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.installHUD = new System.Windows.Forms.Button();
             this.Label18 = new System.Windows.Forms.Label();
@@ -510,7 +510,7 @@
             // 
             // GroupBox4
             // 
-            this.GroupBox4.Controls.Add(this.Label16);
+            this.GroupBox4.Controls.Add(this.button26);
             this.GroupBox4.Location = new System.Drawing.Point(47, 27);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(250, 291);
@@ -518,15 +518,15 @@
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "大廳UI";
             // 
-            // Label16
+            // button26
             // 
-            this.Label16.AutoSize = true;
-            this.Label16.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold);
-            this.Label16.Location = new System.Drawing.Point(84, 129);
-            this.Label16.Name = "Label16";
-            this.Label16.Size = new System.Drawing.Size(75, 26);
-            this.Label16.TabIndex = 0;
-            this.Label16.Text = "未開放";
+            this.button26.Location = new System.Drawing.Point(41, 101);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(168, 89);
+            this.button26.TabIndex = 3;
+            this.button26.Text = "按我進入UI管理...";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click_1);
             // 
             // GroupBox3
             // 
@@ -1324,7 +1324,6 @@
             this.tabPage7.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.GroupBox4.ResumeLayout(false);
-            this.GroupBox4.PerformLayout();
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1383,7 +1382,6 @@
         internal System.Windows.Forms.Button Button20;
         internal System.Windows.Forms.Button Button21;
         internal System.Windows.Forms.GroupBox GroupBox4;
-        internal System.Windows.Forms.Label Label16;
         internal System.Windows.Forms.GroupBox GroupBox3;
         internal System.Windows.Forms.Button installHUD;
         internal System.Windows.Forms.Label Label18;
@@ -1456,6 +1454,7 @@
         internal System.Windows.Forms.Label toolsVersion;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.NotifyIcon notifyIcon2;
+        internal System.Windows.Forms.Button button26;
     }
 }
 
