@@ -45,13 +45,13 @@
             // 
             // selectNA
             // 
-            this.selectNA.Enabled = false;
             this.selectNA.Location = new System.Drawing.Point(62, 133);
             this.selectNA.Name = "selectNA";
             this.selectNA.Size = new System.Drawing.Size(118, 49);
             this.selectNA.TabIndex = 4;
             this.selectNA.Text = "美服";
             this.selectNA.UseVisualStyleBackColor = true;
+            this.selectNA.Click += new System.EventHandler(this.selectNA_Click);
             // 
             // selectTW
             // 

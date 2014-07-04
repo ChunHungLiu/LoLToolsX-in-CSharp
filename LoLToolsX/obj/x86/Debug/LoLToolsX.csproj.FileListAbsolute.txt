@@ -44,3 +44,6 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.pdb
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\INIFile.xml
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Wait.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.LobbyUI.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\SevenZipSharp.dll
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.NaTools.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.VerSelect.resources

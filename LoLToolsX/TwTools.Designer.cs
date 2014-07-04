@@ -138,7 +138,10 @@
             this.Label4 = new System.Windows.Forms.Label();
             this.toolsVersion = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.button27 = new System.Windows.Forms.Button();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label16 = new System.Windows.Forms.Label();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -154,6 +157,7 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // startLoL
@@ -1286,6 +1290,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
@@ -1295,10 +1300,43 @@
             this.tabControl1.Size = new System.Drawing.Size(875, 372);
             this.tabControl1.TabIndex = 0;
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.label16);
+            this.tabPage10.Controls.Add(this.button27);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(867, 346);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "SKIN安裝";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(566, 123);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(141, 58);
+            this.button27.TabIndex = 0;
+            this.button27.Text = "安裝";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Visible = false;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
             // notifyIcon2
             // 
             this.notifyIcon2.Text = "notifyIcon2";
             this.notifyIcon2.Visible = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label16.Location = new System.Drawing.Point(374, 141);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 40);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "未開放...";
             // 
             // TwTools
             // 
@@ -1340,6 +1378,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1356,7 +1396,6 @@
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button23;
         private System.Windows.Forms.TabPage tabPage8;
         internal System.Windows.Forms.Label Label008;
         internal System.Windows.Forms.Label Label002;
@@ -1407,8 +1446,6 @@
         internal System.Windows.Forms.Button Button12;
         internal System.Windows.Forms.ProgressBar pbGame;
         internal System.Windows.Forms.ProgressBar pbLobby;
-        internal System.Windows.Forms.Button Button11;
-        internal System.Windows.Forms.Button installSound;
         internal System.Windows.Forms.Label Label11;
         internal System.Windows.Forms.TextBox tbPath;
         internal System.Windows.Forms.Label Label10;
@@ -1455,6 +1492,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.NotifyIcon notifyIcon2;
         internal System.Windows.Forms.Button button26;
+        public System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button installSound;
+        private System.Windows.Forms.Button Button11;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Label label16;
     }
 }
 

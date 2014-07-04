@@ -18,8 +18,7 @@ namespace LoLToolsX
         public static string installPath = "";  //LoL安裝路徑
 
         public string TwPath(string iniPath)   //取得台服LoL路徑
-        {
-                       
+        {                
             CFGFile CFGFile = new CFGFile(iniPath);
 
             //檢查 config.ini
@@ -48,44 +47,41 @@ namespace LoLToolsX
                     return installPath;
                 }
             }
-
-            /*
-            if (String.IsNullOrEmpty(installPath))
-            {
-                {
-                    RegistryKey myKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Garena\LoLTW", false);
-                    if (myKey.GetValue("Path") != null)
-                    {
-                        String value = (String)myKey.GetValue("Path");
-                        if (!String.IsNullOrEmpty(value))
-                        {
-                            installPath = value;
-                            return installPath;
-                    }
-
-                    }
-                }
-            }
-
-
-            if (String.IsNullOrEmpty(installPath))
-            {
-                {
-                    RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Garena\LoLTW",false);
-                    if (myKey.GetValue("Path") != null)
-                    {
-                        String value = (String)myKey.GetValue("Path");
-                        if (!String.IsNullOrEmpty(value))
-                        {
-                            installPath = value;
-                            return installPath;
-                        }
-
-                    }
-                }
-            }
-             */
               return "";
+        }
+
+        public string NaPath(string iniPath)
+        {
+
+            CFGFile CFGFile = new CFGFile(iniPath);
+
+            //檢查 config.ini
+            if (!String.IsNullOrEmpty(CFGFile.GetValue("LoLPath", "NaPath")))
+            {
+                installPath = CFGFile.GetValue("LoLPath", "NaPath");
+                return installPath;
+            }
+
+            if (My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Riot Games\League of Legends", "Path", null) != null)
+            {
+                string value = My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Riot Games\League of Legends", "Path", null).ToString();
+                if (value.Contains("League of Legends"))
+                {
+                    installPath = My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Riot Games\League of Legends", "Path", null).ToString();
+                    return installPath;
+                }
+            }
+
+            if (My.Computer.Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Riot Games\League of Legends", "Path", null) != null)
+            {
+                string value = My.Computer.Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Riot Games\League of Legends", "Path", null).ToString();
+                if (value.Contains("League of Legends"))
+                {
+                    installPath = My.Computer.Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Riot Games\League of Legends", "Path", null).ToString();
+                    return installPath;
+                }
+            }
+            return "";
         }
     }
 }

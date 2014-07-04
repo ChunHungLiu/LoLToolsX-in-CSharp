@@ -42,5 +42,12 @@ namespace LoLToolsX
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Logs");
             Logger.start();
         }
+
+        private void selectNA_Click(object sender, EventArgs e)
+        {
+            VerSelect vs = new VerSelect();
+            vs.Show();
+            this.Hide();
+        }
     }
 }

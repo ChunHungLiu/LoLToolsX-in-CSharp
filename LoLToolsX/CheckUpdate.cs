@@ -28,7 +28,7 @@ namespace LoLToolsX
 
             var request2 = (HttpWebRequest)WebRequest.Create("http://lolnx.pixub.com/loltoolsx/info.txt");
             WebResponse response2 = request2.GetResponse();
-            var reader2 = new StreamReader(response2.GetResponseStream());
+            var reader2 = new StreamReader(response2.GetResponseStream(),Encoding.UTF8);
 
             try
             {

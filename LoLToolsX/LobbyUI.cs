@@ -41,7 +41,7 @@ namespace LoLToolsX
 
         private void LobbyUI_Load(object sender, EventArgs e)
         {
-
+            this.listBox1.AllowDrop = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace LoLToolsX
                         Logger.log("大廳UI安裝: " + i, Logger.LogType.Info);
                     }
                     MessageBox.Show("安裝成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Logger.log("大廳UI安裝成功!" , Logger.LogType.Info);
+                    Logger.log("大廳UI安裝成功!", Logger.LogType.Info);
                 }
                 catch (Exception ex)
                 {
@@ -92,9 +92,9 @@ namespace LoLToolsX
             }
             else
             {
-                MessageBox.Show("請先添加資源!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);            
+                MessageBox.Show("請先添加資源!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-         }
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -191,6 +191,25 @@ namespace LoLToolsX
                     listBox2.Items.Add(f);
                 }
 
+            }
+        }
+
+        private void listBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            {
+                e.Effect = DragDropEffects.All;
+            }
+        }
+
+        private void listBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                foreach (string file in files)
+                {
+                    listBox1.Items.Add(file);
+                }
             }
         }
     }

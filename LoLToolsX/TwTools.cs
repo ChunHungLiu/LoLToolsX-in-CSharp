@@ -141,7 +141,6 @@ namespace LoLToolsX
             Variable.v_installPath = installPath;
         }
 
-        
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!Variable.haveUpdate)
@@ -191,7 +190,6 @@ namespace LoLToolsX
             Logger.log("開啟NitroXenon的BLOG...", Logger.LogType.Info);
             Process.Start("http://lolnx.pixub.com");
         }
-
 
         public static string GetLoLVer()
         {
@@ -394,36 +392,15 @@ namespace LoLToolsX
             }
         }
 
-        private void installSound_Click(object sender, EventArgs e)
-        {
-            if (tbPath.Text != null)
-            {
-                if (!Variable.switchingSound)
-                {
-                    SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-                    Thread thread = new Thread(new ThreadStart(ss.SwitchLobby));
-                    //ss.SwitchLobby();
-                }
-                else
-                {
-                    MessageBox.Show("語音安裝進行中... 請稍後~");
-                }
-            }
-            else
-            {
-                MessageBox.Show("請先選擇Sound資料夾", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            if (tbPath.Text != null)
+            if (!String.IsNullOrEmpty(tbPath.Text))
             {
                 if (!Variable.switchingSound)
                 {
                     SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-                    Thread thread = new Thread(new ThreadStart(ss.SwitchGame));
-                    //ss.SwitchGame();
+                    ss.SwitchGame();
                 }
                 else
                 {
@@ -630,6 +607,63 @@ namespace LoLToolsX
         {
             LobbyUI lui = new LobbyUI(installPath);
             lui.Show();
+        }
+
+        private void installSound_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(tbPath.Text))
+            {
+                if (!Variable.switchingSound)
+                {
+                    SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
+                    ss.SwitchLobby();
+                }
+                else
+                {
+                    MessageBox.Show("語音安裝進行中... 請稍後~");
+                }
+            }
+            else
+            {
+                MessageBox.Show("請先選擇Sound資料夾", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll"))
+            {
+                if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    Thread downloadThread = new Thread(new ThreadStart(LibDownload));
+                    downloadThread.Start();
+                }
+            }
+        }
+
+        private void LibDownload()
+        {
+                WebClient wc = new WebClient();
+                Wait wait = new Wait();
+                try
+                {
+                    wait.Show();
+                    wait.progressBar1.Value = 50;
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll");
+                    wait.progressBar1.Value = 100;
+                    MessageBox.Show("下載完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("SevenZipSharp.dll 下載完成!", Logger.LogType.Info);
+                    wait.Close();
+                }
+                catch
+                {
+                    wait.Dispose();
+                    MessageBox.Show("下載Skin安裝所需類別庫失敗, 無法進行Skin安裝。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    wc.Dispose();
+                }
         }
     }
 }

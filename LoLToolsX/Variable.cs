@@ -5,13 +5,14 @@ using System.Text;
 
 namespace LoLToolsX
 {
-    class Variable
+    struct Variable
     {
         //Path
         public static string v_installPath;
         public static string propPath;
         public static string hudPath;
 
+        //bool
         public static bool debug = false;
         public static bool haveUpdate = false;
         public static bool switchingSound = false;
