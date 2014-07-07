@@ -7,6 +7,7 @@ using System.Web;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using SevenZip;
 
 namespace LoLToolsX
 {
@@ -147,4 +148,137 @@ namespace LoLToolsX
 
         }
     }
+
+    /*
+    class LangUpdate
+    {
+        /// <summary>
+        /// LoLToolsX 更新
+        /// </summary>
+
+
+
+        public static void CheckLangUpdate()
+        {
+                 WebClient wc = new WebClient();
+
+            Logger.log("檢查 LoLToolsX 語言檔更新...", Logger.LogType.Info);
+
+            try
+            {
+                if (!Directory.Exists(Directory.GetCurrentDirectory() + @"\files\lang\kr"))
+                {
+                    Logger.log("語言檔有可用更新", Logger.LogType.Info);
+                    if (MessageBox.Show("語言檔有可用更新 按'確定'下載更新\r\nPS.下載需時較久，請耐心等候...", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        Wait wait = new Wait();
+                        wait.Show();
+
+                         if (!File.Exists(Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll"))
+            {
+                if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+
+                try
+                {
+                    wait.progressBar1.Value = 10;
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll");
+                    wait.progressBar1.Value = 100;
+                    MessageBox.Show("下載完成 按'確定'更新語言檔!\r\nPS.下載需時較久，請耐心等候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("SevenZipSharp.dll 下載完成!", Logger.LogType.Info);
+                    wait.Close();
+                }
+                catch
+                {
+                    wait.Dispose();
+                    MessageBox.Show("下載所需類別庫失敗。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    wc.Dispose();
+                }
+                }
+                else
+                {
+                    return;
+                }
+            }
+                        wait.Show();
+                        try
+                        {
+                            string downloadPath = "https://dl.dropboxusercontent.com/u/7084520/lang.zip";
+                            try
+                            {
+                                try
+                                {
+                                    Logger.log("LoLToolsX 開始下載語言檔更新\r\nPS.下載需時較久，請耐心等候...", Logger.LogType.Info);
+                                    wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"lang.zip");
+                                    wait.progressBar1.Value = 50;
+                                    SevenZip.SevenZipExtractor sz = new SevenZip.SevenZipExtractor(Directory.GetCurrentDirectory() + @"\download\" + @"lang.zip");
+                                    sz.ExtractArchive(Directory.GetCurrentDirectory() + @"\files\lang");
+                                    wait.progressBar1.Value = 100;
+                                    MessageBox.Show("語言檔更新完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                catch (Exception e)
+                                {
+                                    Variable.updating = false;
+                                    MessageBox.Show("更新失敗!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Logger.log("更新失敗!", Logger.LogType.Error);
+                                    Logger.log(e, Logger.LogType.Error);
+                                    return;
+                                }
+
+                            }
+                            catch (Exception e)
+                            {
+                                //wait.progressBar1.Value = 0;
+                                //wait.Dispose();
+                                Logger.log("下載更新失敗", Logger.LogType.Error);
+                                Logger.log(e, Logger.LogType.Error);
+                            }
+
+                        }
+                        catch (Exception e2)
+                        {
+                            //wait.progressBar1.Value = 0;
+                            //wait.Dispose();
+                            Logger.log("更新失敗", Logger.LogType.Error);
+                            Logger.log(e2, Logger.LogType.Error);
+                        }
+                        finally
+                        {
+                            Variable.updating = false;
+                            //wait.progressBar1.Value = 0;
+                            //wait.Dispose();
+                            wc = null;
+                        }
+                    }
+                }
+                else
+                {
+                    Variable.updating = false;
+                    //wait.progressBar1.Value = 0;
+                    //wait.Dispose();
+                    Logger.log("語言檔 沒有可用更新", Logger.LogType.Info);
+                }
+            }
+            catch (Exception e)
+            {
+                Variable.updating = false;
+                //wait.progressBar1.Value = 0;
+                //wait.Dispose();
+                Logger.log("語言檔 下載更新失敗", Logger.LogType.Info);
+                Logger.log(e, Logger.LogType.Error);
+            }
+            finally
+            {
+                Variable.updating = false;
+                GC.Collect();
+            }
+
+
+        }
+    }
+     */
 }
+

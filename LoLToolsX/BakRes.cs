@@ -101,11 +101,24 @@ namespace LoLToolsX
 
                 try
                 {
+                    try
+                    {
+                        File.Copy(installPath_m + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", cd + @"\bak\lang\GamePermanent_ko_KR.cfg", true);
+                    }
+                    catch { }
+                    File.Copy(installPath_m + @"\Game\DATA\CFG\defaults\FontTypes.xml", cd + @"\bak\lang\FontTypes.xml", true);
+                    File.Copy(installPath_m + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", cd + @"\bak\lang\GamePermanent_zh_TW.cfg", true);
+                    File.Copy(installPath_m + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", cd + @"\bak\lang\GamePermanent.cfg", true);
                     File.Copy(installPath_m + @"\Game\DATA\Menu\fontconfig_en_US.txt",cd + @"\bak\lang\fontconfig_en_US.txt", true);
                     File.Copy(installPath_m + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", cd + @"\bak\lang\fontconfig_zh_TW.txt", true);
                     File.Copy(installPath_m + @"\Game\DATA\CFG\Locale.cfg",cd + @"\bak\lang\Locale.cfg", true);
                     File.Copy(installPath_m + @"\Air\css\fonts.swf", cd + @"\bak\lang\fonts.swf", true);
                     File.Copy(installPath_m + @"\Air\css\fonts_zh_TW.swf", cd + @"\bak\lang\fonts_zh_TW.swf", true);
+                    try
+                    {
+                        File.Copy(installPath_m + @"\Air\css\fonts_ko_KR.swf", cd + @"\bak\lang\fonts_ko_KR.swf", true);
+                    }
+                    catch { }
                     File.Copy(installPath_m + @"\Air\locale.properties", cd + @"\bak\lang\locale.properties", true);
                     Logger.log("語言檔 備份成功!", Logger.LogType.Info);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,22 +136,62 @@ namespace LoLToolsX
             {
                 try
                 {
-                    File.Copy(cd + @"\bak\lang\fontconfig_en_US.txt", installPath_m + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
-                    File.Copy(cd + @"\bak\lang\fontconfig_zh_TW.txt", installPath_m + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
-                    File.Copy(cd + @"\bak\lang\Locale.cfg", installPath_m + @"\Game\DATA\CFG\Locale.cfg", true);
-                    File.Copy(cd + @"\bak\lang\fonts.swf", installPath_m + @"\Air\css\fonts.swf", true);
-                    File.Copy(cd + @"\bak\lang\fonts_zh_TW.swf", installPath_m + @"\Air\css\fonts_zh_TW.swf", true);
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\GamePermanent_ko_KR.cfg", installPath_m + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\FontTypes.xml", installPath_m + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\GamePermanent_zh_TW.cfg", installPath_m + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\GamePermanent.cfg", installPath_m + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\fontconfig_en_US.txt", installPath_m + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
+                    }
+                    catch {}
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\fontconfig_zh_TW.txt", installPath_m + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
+                    }
+                    catch {}
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\Locale.cfg", installPath_m + @"\Game\DATA\CFG\Locale.cfg", true);
+                    }
+                    catch {}
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\fonts.swf", installPath_m + @"\Air\css\fonts.swf", true);
+                    }
+                    catch {}
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\fonts_zh_TW.swf", installPath_m + @"\Air\css\fonts_zh_TW.swf", true);
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Copy(cd + @"\bak\lang\fonts_ko_KR.swf", installPath_m + @"\Air\css\fonts_ko_KR.swf", true);
+                    }
+                    catch { }
                     File.Copy(cd + @"\bak\lang\locale.properties", installPath_m + @"\Air\locale.properties", true);
                     Logger.log("語言檔 還原成功!", Logger.LogType.Info);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (FileNotFoundException e2)
-                {
-                    Logger.log("語言檔 還原失敗 : 沒有備份", Logger.LogType.Error);
-                    Logger.log(e2);
-                    MessageBox.Show("還原失敗 : 沒有備份 ", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+               
                 catch (Exception e)
                 {
                     Logger.log("語言檔 還原失敗", Logger.LogType.Error);
@@ -151,12 +204,61 @@ namespace LoLToolsX
             {
                 try
                 {
-                    File.Delete(cd + @"\bak\lang\fontconfig_en_US.txt");
-                    File.Delete(cd + @"\bak\lang\fontconfig_zh_TW.txt");
-                    File.Delete(cd + @"\bak\lang\Locale.cfg");
-                    File.Delete(cd + @"\bak\lang\fonts.swf");
-                    File.Delete(cd + @"\bak\lang\fonts_zh_TW.swf");
-                    File.Delete(cd + @"\bak\lang\locale.properties");
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\GamePermanent_ko_KR.cfg");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\FontTypes.xml");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\GamePermanent_zh_TW.cfg");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\GamePermanent.cfg");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\fontconfig_en_US.txt");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\fontconfig_zh_TW.txt");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\Locale.cfg");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\fonts.swf");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\fonts_zh_TW.swf");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\fonts_ko_KR.swf");
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Delete(cd + @"\bak\lang\locale.properties");
+                    }
+                    catch { }
                     Logger.log("語言檔 備份刪除成功! ", Logger.LogType.Info);
                     MessageBox.Show("備份刪除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

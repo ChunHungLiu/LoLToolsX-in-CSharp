@@ -32,14 +32,18 @@ namespace LoLToolsX
                     if (My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\im", "Path", null).ToString() != null)
                     {
                         ggcPath = My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\im", "Path", null).ToString();
-                            if (!String.IsNullOrEmpty(ggcPath))
-                            {
-                                Process.Start(ggcPath + @"\GarenaMessenger.exe");
-                                Logger.log("遊戲啟動成功!", Logger.LogType.Info);
-                                Logger.log(ggcPath + @"\GarenaMessenger.exe", Logger.LogType.Info);
-                                MessageBox.Show("遊戲啟動成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                g_started = true;
-                            }
+                        if (!String.IsNullOrEmpty(ggcPath))
+                        {
+                            Process.Start(ggcPath + @"\GarenaMessenger.exe");
+                            Logger.log("遊戲啟動成功!", Logger.LogType.Info);
+                            Logger.log(ggcPath + @"\GarenaMessenger.exe", Logger.LogType.Info);
+                            MessageBox.Show("遊戲啟動成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            g_started = true;
+                        }
+                        else
+                        {
+                            g_started = false;
+                        }
                         }
                 }
             }

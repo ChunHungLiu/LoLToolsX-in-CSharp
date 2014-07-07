@@ -139,9 +139,11 @@
             this.toolsVersion = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
             this.button27 = new System.Windows.Forms.Button();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.label16 = new System.Windows.Forms.Label();
+            this.lKR = new System.Windows.Forms.Button();
+            this.gKR = new System.Windows.Forms.Button();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -885,18 +887,19 @@
             // 
             // GroupBox2
             // 
+            this.GroupBox2.Controls.Add(this.gKR);
             this.GroupBox2.Controls.Add(this.gEng);
             this.GroupBox2.Controls.Add(this.gChin);
-            this.GroupBox2.Location = new System.Drawing.Point(340, 65);
+            this.GroupBox2.Location = new System.Drawing.Point(340, 51);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(235, 219);
+            this.GroupBox2.Size = new System.Drawing.Size(235, 264);
             this.GroupBox2.TabIndex = 31;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "遊戲";
             // 
             // gEng
             // 
-            this.gEng.Location = new System.Drawing.Point(62, 131);
+            this.gEng.Location = new System.Drawing.Point(61, 111);
             this.gEng.Name = "gEng";
             this.gEng.Size = new System.Drawing.Size(114, 46);
             this.gEng.TabIndex = 1;
@@ -906,7 +909,7 @@
             // 
             // gChin
             // 
-            this.gChin.Location = new System.Drawing.Point(62, 40);
+            this.gChin.Location = new System.Drawing.Point(61, 32);
             this.gChin.Name = "gChin";
             this.gChin.Size = new System.Drawing.Size(114, 46);
             this.gChin.TabIndex = 0;
@@ -916,18 +919,19 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.lKR);
             this.GroupBox1.Controls.Add(this.lEng);
             this.GroupBox1.Controls.Add(this.lChin);
-            this.GroupBox1.Location = new System.Drawing.Point(61, 65);
+            this.GroupBox1.Location = new System.Drawing.Point(61, 51);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(235, 219);
+            this.GroupBox1.Size = new System.Drawing.Size(235, 264);
             this.GroupBox1.TabIndex = 30;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "大廳";
             // 
             // lEng
             // 
-            this.lEng.Location = new System.Drawing.Point(59, 131);
+            this.lEng.Location = new System.Drawing.Point(59, 111);
             this.lEng.Name = "lEng";
             this.lEng.Size = new System.Drawing.Size(114, 46);
             this.lEng.TabIndex = 1;
@@ -937,7 +941,7 @@
             // 
             // lChin
             // 
-            this.lChin.Location = new System.Drawing.Point(59, 40);
+            this.lChin.Location = new System.Drawing.Point(59, 32);
             this.lChin.Name = "lChin";
             this.lChin.Size = new System.Drawing.Size(114, 46);
             this.lChin.TabIndex = 0;
@@ -1312,8 +1316,19 @@
             this.tabPage10.Text = "SKIN安裝";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label16.Location = new System.Drawing.Point(374, 141);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 40);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "未開放...";
+            // 
             // button27
             // 
+            this.button27.Enabled = false;
             this.button27.Location = new System.Drawing.Point(566, 123);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(141, 58);
@@ -1328,15 +1343,25 @@
             this.notifyIcon2.Text = "notifyIcon2";
             this.notifyIcon2.Visible = true;
             // 
-            // label16
+            // lKR
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label16.Location = new System.Drawing.Point(374, 141);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(137, 40);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "未開放...";
+            this.lKR.Location = new System.Drawing.Point(59, 191);
+            this.lKR.Name = "lKR";
+            this.lKR.Size = new System.Drawing.Size(114, 46);
+            this.lKR.TabIndex = 2;
+            this.lKR.Text = "韓文";
+            this.lKR.UseVisualStyleBackColor = true;
+            this.lKR.Click += new System.EventHandler(this.lKR_Click);
+            // 
+            // gKR
+            // 
+            this.gKR.Location = new System.Drawing.Point(61, 191);
+            this.gKR.Name = "gKR";
+            this.gKR.Size = new System.Drawing.Size(114, 46);
+            this.gKR.TabIndex = 2;
+            this.gKR.Text = "韓文";
+            this.gKR.UseVisualStyleBackColor = true;
+            this.gKR.Click += new System.EventHandler(this.gKR_Click);
             // 
             // TwTools
             // 
@@ -1498,6 +1523,8 @@
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Label label16;
+        internal System.Windows.Forms.Button gKR;
+        internal System.Windows.Forms.Button lKR;
     }
 }
 

@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.selectKR = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerSelect));
             this.selectNA = new System.Windows.Forms.Button();
             this.selectTW = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // selectKR
-            // 
-            this.selectKR.Enabled = false;
-            this.selectKR.Location = new System.Drawing.Point(62, 238);
-            this.selectKR.Name = "selectKR";
-            this.selectKR.Size = new System.Drawing.Size(118, 49);
-            this.selectKR.TabIndex = 5;
-            this.selectKR.Text = "韓服";
-            this.selectKR.UseVisualStyleBackColor = true;
-            // 
             // selectNA
             // 
+            this.selectNA.Enabled = false;
             this.selectNA.Location = new System.Drawing.Point(62, 133);
             this.selectNA.Name = "selectNA";
             this.selectNA.Size = new System.Drawing.Size(118, 49);
@@ -67,11 +58,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 330);
-            this.Controls.Add(this.selectKR);
+            this.ClientSize = new System.Drawing.Size(243, 221);
             this.Controls.Add(this.selectNA);
             this.Controls.Add(this.selectTW);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ServerSelect";
@@ -85,7 +76,6 @@
 
         #endregion
 
-        internal System.Windows.Forms.Button selectKR;
         internal System.Windows.Forms.Button selectNA;
         internal System.Windows.Forms.Button selectTW;
 

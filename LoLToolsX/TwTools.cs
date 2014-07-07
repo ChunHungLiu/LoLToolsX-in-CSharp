@@ -30,18 +30,6 @@ namespace LoLToolsX
 
         private void Form1_Load(object sender, EventArgs e)     //Form1_Load
         {
-            CFGFile checkAutoUpdate = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
-            if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
-            {
-                Variable.updating = true;
-                this.checkBox1.Checked = false;
-                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-                updateThread.Start();
-            }
-            else
-            {
-                this.checkBox1.Checked = true;
-            }
 
             //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
@@ -58,12 +46,12 @@ namespace LoLToolsX
             installPath = gr.TwPath(Directory.GetCurrentDirectory() + @"\config.ini");
             Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
 
-           
+
+            CFGFile CFGFile = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
 
             //檢查路徑是否存有 LoLTW 字串
             if (!installPath.Contains("LoLTW"))
             {
-
                 if (MessageBox.Show("無法取得LoL目錄 請手動選擇LoLTW目錄", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     folderBrowserDialog1.ShowDialog();
@@ -72,6 +60,8 @@ namespace LoLToolsX
                     {
                         installPath = folderBrowserDialog1.SelectedPath;
                         Logger.log("LoL目錄檢查成功! " + installPath, Logger.LogType.Info);
+                        CFGFile.SetValue("LoLPath", "TwPath", installPath);
+                        CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                     }
                     else
                     {
@@ -90,18 +80,31 @@ namespace LoLToolsX
             }
             else
             {
-                CFGFile CFGFile = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
                 CFGFile.SetValue("LoLPath", "TwPath", installPath);
                 CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                 PathLabel.Text = installPath;
                 Logger.log("LoL目錄檢查成功! " , Logger.LogType.Info);
                 Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);
-
-
             }
 
-           
-            
+            CFGFile = null;
+
+            CFGFile checkAutoUpdate = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+            {
+                Variable.updating = true;
+                this.checkBox1.Checked = false;
+                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                updateThread.Start();
+            }
+            else
+            {
+                this.checkBox1.Checked = true;
+            }
+
+            //檢查語言檔更新
+            //Thread langUpdate = new Thread(LangUpdate.CheckLangUpdate);
+            //langUpdate.Start();
 
             //string test = Directory.GetCurrentDirectory();
             //MessageBox.Show(test);
@@ -664,6 +667,18 @@ namespace LoLToolsX
                 {
                     wc.Dispose();
                 }
+        }
+
+        private void lKR_Click(object sender, EventArgs e)
+        {
+            SwitchLang swLang = new SwitchLang(installPath);
+            swLang.KRLobby();
+        }
+
+        private void gKR_Click(object sender, EventArgs e)
+        {
+            SwitchLang swLang = new SwitchLang(installPath);
+            swLang.KRGame();
         }
     }
 }
