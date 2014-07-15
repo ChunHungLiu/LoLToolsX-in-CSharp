@@ -1,0 +1,43 @@
+﻿============================== LoLToolsX Log File ==============================
+07/12/2014 18:46:32信息: LoLToolsX版本: 3.0.7.0
+07/12/2014 18:46:32信息: 目前客戶端 : 台服
+07/12/2014 18:46:32信息: LoLToolsX Logo載入成功!
+07/12/2014 18:46:32信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+07/12/2014 18:46:32信息: LoL目錄檢查成功! 
+07/12/2014 18:46:32信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+07/12/2014 18:46:32信息: 伺服器設定檔檢查成功! 
+07/12/2014 18:46:32信息: 檢查 LoLToolsX 更新...
+07/12/2014 18:46:32信息: 目前伺服器: 台服
+07/12/2014 18:46:32信息: Air版本: 20140708
+07/12/2014 18:46:32信息: 使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html 
+07/12/2014 18:46:34崩潰: 程式發生未處理的錯誤！
+
+Object reference not set to an instance of an object.   at LoLToolsX.TwTools.button27_Click(Object sender, EventArgs e) in K:\git\LoLToolsX-in-CSharp\LoLToolsX\TwTools.cs:line 705
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase.OnRun()
+   at Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase.DoApplicationModel()
+   at Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase.Run(String[] commandLine)
+   at LoLToolsX.Program.Main(String[] args) in K:\git\LoLToolsX-in-CSharp\LoLToolsX\Program.cs:line 20
+   at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+   at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   at System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart()
+07/12/2014 18:46:36信息: LoLToolsX 發現可用更新 : 3.0.6.0
+07/12/2014 18:46:37信息: 關閉程式...
+07/12/2014 18:46:37信息: 關閉程式...

@@ -54,7 +54,7 @@ namespace LoLToolsX
                                     Variable.updating = true;
                                     //wait.progressBar1.Value = 60;
                                     Logger.log("LoLToolsX 開始下載更新", Logger.LogType.Info);
-                                    wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"LoLToolsX.exe");
+                                    wc.DownloadFile(downloadPath, Application.StartupPath + @"\download\" + @"LoLToolsX.exe");
                                     //wait.progressBar1.Value = 100;
                                 }
                                 catch
@@ -72,12 +72,12 @@ namespace LoLToolsX
                                     Logger.log("LoLToolsX 更新下載完成", Logger.LogType.Info);
                                     Logger.log("正在關閉程式並進行更新", Logger.LogType.Info);
                                     Logger.log("啟動 Updater.exe 進行更新", Logger.LogType.Info);
-                                    Logger.log("Starting " + Directory.GetCurrentDirectory() + @"\Updater.exe");
+                                    Logger.log("Starting " + Application.StartupPath + @"\Updater.exe");
                                     ProcessStartInfo pi = new ProcessStartInfo();
                                     pi.FileName = "Updater.exe";
-                                    pi.WorkingDirectory = Directory.GetCurrentDirectory();
+                                    pi.WorkingDirectory = Application.StartupPath;
                                     Process.Start(pi);
-                                    //Process.Start(Directory.GetCurrentDirectory() + @"\Updater.exe");
+                                    //Process.Start(Application.StartupPath + @"\Updater.exe");
                                     Application.Exit();
                                 }
                                 else
@@ -166,7 +166,7 @@ namespace LoLToolsX
 
             try
             {
-                if (!Directory.Exists(Directory.GetCurrentDirectory() + @"\files\lang\kr"))
+                if (!Directory.Exists(Application.StartupPath + @"\files\lang\kr"))
                 {
                     Logger.log("語言檔有可用更新", Logger.LogType.Info);
                     if (MessageBox.Show("語言檔有可用更新 按'確定'下載更新\r\nPS.下載需時較久，請耐心等候...", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
@@ -174,7 +174,7 @@ namespace LoLToolsX
                         Wait wait = new Wait();
                         wait.Show();
 
-                         if (!File.Exists(Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll"))
+                         if (!File.Exists(Application.StartupPath + @"\SevenZipSharp.dll"))
             {
                 if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
@@ -182,7 +182,7 @@ namespace LoLToolsX
                 try
                 {
                     wait.progressBar1.Value = 10;
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Application.StartupPath + @"\SevenZipSharp.dll");
                     wait.progressBar1.Value = 100;
                     MessageBox.Show("下載完成 按'確定'更新語言檔!\r\nPS.下載需時較久，請耐心等候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("SevenZipSharp.dll 下載完成!", Logger.LogType.Info);
@@ -212,10 +212,10 @@ namespace LoLToolsX
                                 try
                                 {
                                     Logger.log("LoLToolsX 開始下載語言檔更新\r\nPS.下載需時較久，請耐心等候...", Logger.LogType.Info);
-                                    wc.DownloadFile(downloadPath, Directory.GetCurrentDirectory() + @"\download\" + @"lang.zip");
+                                    wc.DownloadFile(downloadPath, Application.StartupPath + @"\download\" + @"lang.zip");
                                     wait.progressBar1.Value = 50;
-                                    SevenZip.SevenZipExtractor sz = new SevenZip.SevenZipExtractor(Directory.GetCurrentDirectory() + @"\download\" + @"lang.zip");
-                                    sz.ExtractArchive(Directory.GetCurrentDirectory() + @"\files\lang");
+                                    SevenZip.SevenZipExtractor sz = new SevenZip.SevenZipExtractor(Application.StartupPath + @"\download\" + @"lang.zip");
+                                    sz.ExtractArchive(Application.StartupPath + @"\files\lang");
                                     wait.progressBar1.Value = 100;
                                     MessageBox.Show("語言檔更新完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }

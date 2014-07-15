@@ -39,12 +39,40 @@ namespace LoLToolsX
     {
         public static void Skin(string installpath,string zipPath,string zipName)
         {
-            string extractPath = installpath + @"\Game";
-            SevenZipExtractor sze = new SevenZipExtractor(zipPath);
-            sze.ExtractArchive(extractPath);
-            FileStream fs = new FileStream(extractPath + @"\ClientZips.txt",FileMode.Append,FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.WriteLine(zipName);
+            SevenZipExtractor.SetLibraryPath(Application.StartupPath + @"\7z.dll");
+
+            StreamReader sr = new StreamReader(installpath + @"\Game\ClientZips.txt");
+            string temp = sr.ReadToEnd().ToString();
+            sr.Close();
+
+            if (!temp.Contains(zipName))
+            {
+                try
+                {
+                    string extractPath = installpath;
+                    string parentPath = Directory.GetParent(extractPath).ToString();
+                    SevenZipExtractor sze = new SevenZipExtractor(zipPath);
+                    sze.ExtractArchive(parentPath);
+                    FileStream fs = new FileStream(extractPath + @"\Game\ClientZips.txt", FileMode.Append, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs);
+                    sw.WriteLine(zipName);
+                    sw.Close();
+                    fs.Close();
+
+                    Variable.InstallSkinDone = true;
+                    Logger.log("SKIN安裝成功!", Logger.LogType.Info);
+                    MessageBox.Show("SKIN安裝成功!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SKIN安裝失敗 錯誤信息如下:\r\n" + ex.ToString());
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("你所選擇的SKIN已安裝");
+            }
         }
     }
 }

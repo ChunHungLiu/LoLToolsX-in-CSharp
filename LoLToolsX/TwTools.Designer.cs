@@ -101,9 +101,11 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.delLangBak = new System.Windows.Forms.Button();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.gKR = new System.Windows.Forms.Button();
             this.gEng = new System.Windows.Forms.Button();
             this.gChin = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.lKR = new System.Windows.Forms.Button();
             this.lEng = new System.Windows.Forms.Button();
             this.lChin = new System.Windows.Forms.Button();
             this.BakLang = new System.Windows.Forms.Button();
@@ -139,11 +141,18 @@
             this.toolsVersion = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.installedSkin = new System.Windows.Forms.ListBox();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
+            this.skinPathBox = new System.Windows.Forms.ListBox();
             this.button27 = new System.Windows.Forms.Button();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.lKR = new System.Windows.Forms.Button();
-            this.gKR = new System.Windows.Forms.Button();
+            this.skinSelector = new System.Windows.Forms.OpenFileDialog();
+            this.label20 = new System.Windows.Forms.Label();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -897,6 +906,16 @@
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "遊戲";
             // 
+            // gKR
+            // 
+            this.gKR.Location = new System.Drawing.Point(61, 191);
+            this.gKR.Name = "gKR";
+            this.gKR.Size = new System.Drawing.Size(114, 46);
+            this.gKR.TabIndex = 2;
+            this.gKR.Text = "韓文";
+            this.gKR.UseVisualStyleBackColor = true;
+            this.gKR.Click += new System.EventHandler(this.gKR_Click);
+            // 
             // gEng
             // 
             this.gEng.Location = new System.Drawing.Point(61, 111);
@@ -928,6 +947,16 @@
             this.GroupBox1.TabIndex = 30;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "大廳";
+            // 
+            // lKR
+            // 
+            this.lKR.Location = new System.Drawing.Point(59, 191);
+            this.lKR.Name = "lKR";
+            this.lKR.Size = new System.Drawing.Size(114, 46);
+            this.lKR.TabIndex = 2;
+            this.lKR.Text = "韓文";
+            this.lKR.UseVisualStyleBackColor = true;
+            this.lKR.Click += new System.EventHandler(this.lKR_Click);
             // 
             // lEng
             // 
@@ -1306,7 +1335,15 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.linkLabel4);
+            this.tabPage10.Controls.Add(this.label20);
+            this.tabPage10.Controls.Add(this.label19);
             this.tabPage10.Controls.Add(this.label16);
+            this.tabPage10.Controls.Add(this.installedSkin);
+            this.tabPage10.Controls.Add(this.button30);
+            this.tabPage10.Controls.Add(this.button29);
+            this.tabPage10.Controls.Add(this.button28);
+            this.tabPage10.Controls.Add(this.skinPathBox);
             this.tabPage10.Controls.Add(this.button27);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
@@ -1316,26 +1353,80 @@
             this.tabPage10.Text = "SKIN安裝";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(80, 59);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(71, 13);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "已安裝SKIN:";
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label16.Location = new System.Drawing.Point(374, 141);
+            this.label16.Location = new System.Drawing.Point(339, 59);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(137, 40);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "未開放...";
+            this.label16.Size = new System.Drawing.Size(95, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "預備安裝的SKIN:";
+            // 
+            // installedSkin
+            // 
+            this.installedSkin.FormattingEnabled = true;
+            this.installedSkin.HorizontalScrollbar = true;
+            this.installedSkin.Location = new System.Drawing.Point(83, 78);
+            this.installedSkin.Name = "installedSkin";
+            this.installedSkin.Size = new System.Drawing.Size(200, 238);
+            this.installedSkin.TabIndex = 0;
+            // 
+            // button30
+            // 
+            this.button30.Location = new System.Drawing.Point(628, 264);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(141, 65);
+            this.button30.TabIndex = 5;
+            this.button30.Text = "刪除SKIN";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
+            // button29
+            // 
+            this.button29.Location = new System.Drawing.Point(628, 100);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(141, 65);
+            this.button29.TabIndex = 3;
+            this.button29.Text = "從預備安裝清單中移除SKIN";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(628, 20);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(141, 65);
+            this.button28.TabIndex = 2;
+            this.button28.Text = "加入SKIN";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // skinPathBox
+            // 
+            this.skinPathBox.FormattingEnabled = true;
+            this.skinPathBox.HorizontalScrollbar = true;
+            this.skinPathBox.Location = new System.Drawing.Point(342, 78);
+            this.skinPathBox.Name = "skinPathBox";
+            this.skinPathBox.Size = new System.Drawing.Size(200, 238);
+            this.skinPathBox.TabIndex = 1;
             // 
             // button27
             // 
-            this.button27.Enabled = false;
-            this.button27.Location = new System.Drawing.Point(566, 123);
+            this.button27.Location = new System.Drawing.Point(628, 184);
             this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(141, 58);
-            this.button27.TabIndex = 0;
-            this.button27.Text = "安裝";
+            this.button27.Size = new System.Drawing.Size(141, 65);
+            this.button27.TabIndex = 4;
+            this.button27.Text = "安裝SKIN";
             this.button27.UseVisualStyleBackColor = true;
-            this.button27.Visible = false;
             this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // notifyIcon2
@@ -1343,25 +1434,32 @@
             this.notifyIcon2.Text = "notifyIcon2";
             this.notifyIcon2.Visible = true;
             // 
-            // lKR
+            // skinSelector
             // 
-            this.lKR.Location = new System.Drawing.Point(59, 191);
-            this.lKR.Name = "lKR";
-            this.lKR.Size = new System.Drawing.Size(114, 46);
-            this.lKR.TabIndex = 2;
-            this.lKR.Text = "韓文";
-            this.lKR.UseVisualStyleBackColor = true;
-            this.lKR.Click += new System.EventHandler(this.lKR_Click);
+            this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
+            this.skinSelector.Title = "請選擇SKIN檔案";
             // 
-            // gKR
+            // label20
             // 
-            this.gKR.Location = new System.Drawing.Point(61, 191);
-            this.gKR.Name = "gKR";
-            this.gKR.Size = new System.Drawing.Size(114, 46);
-            this.gKR.TabIndex = 2;
-            this.gKR.Text = "韓文";
-            this.gKR.UseVisualStyleBackColor = true;
-            this.gKR.Click += new System.EventHandler(this.gKR_Click);
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label20.Location = new System.Drawing.Point(80, 20);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(187, 17);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "只適用於在這裡下載的SKIN: ";
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.linkLabel4.Location = new System.Drawing.Point(263, 20);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(151, 17);
+            this.linkLabel4.TabIndex = 10;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "點我進入下載SKIN頁面";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // TwTools
             // 
@@ -1522,9 +1620,18 @@
         private System.Windows.Forms.Button Button11;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Label label16;
         internal System.Windows.Forms.Button gKR;
         internal System.Windows.Forms.Button lKR;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.OpenFileDialog skinSelector;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.ListBox skinPathBox;
+        public System.Windows.Forms.ListBox installedSkin;
+        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label20;
     }
 }
 

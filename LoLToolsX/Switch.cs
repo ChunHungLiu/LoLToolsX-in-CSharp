@@ -15,7 +15,7 @@ namespace LoLToolsX
     class SwitchLang
     {
         string installPath;
-        string cd = Directory.GetCurrentDirectory();
+        string cd = Application.StartupPath;
 
         public SwitchLang(string ip)
         {
@@ -154,7 +154,7 @@ namespace LoLToolsX
         public static void SwitchServerLoc(string installPath, string targetLoc)
         {
             string propPath = installPath + @"\Air\lol.properties";
-            string localProp = Directory.GetCurrentDirectory() + @"\files\server_prop\" + targetLoc;
+            string localProp = Application.StartupPath + @"\files\server_prop\" + targetLoc;
             FileInfo fi = new FileInfo(localProp);
             try
             {

@@ -24,7 +24,7 @@ namespace LoLToolsX
 
         private void NaTools_Load(object sender, EventArgs e)
         {
-            CFGFile checkAutoUpdate = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
             if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
             {
                 Variable.updating = true;
@@ -44,12 +44,12 @@ namespace LoLToolsX
 
             Logger.log("目前客戶端 : 美服", Logger.LogType.Info);
             //載入LoLToolsX Logo
-            PictureBox1.ImageLocation = Directory.GetCurrentDirectory() + @"\logo.png";
+            PictureBox1.ImageLocation = Application.StartupPath + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
             //取得LoL路徑
             GetReg gr = new GetReg();
-            installPath = gr.NaPath(Directory.GetCurrentDirectory() + @"\config.ini");
+            installPath = gr.NaPath(Application.StartupPath + @"\config.ini");
             Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
 
 
@@ -84,7 +84,7 @@ namespace LoLToolsX
             }
             else
             {
-                CFGFile CFGFile = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+                CFGFile CFGFile = new CFGFile(Application.StartupPath + @"\config.ini");
                 CFGFile.SetValue("LoLPath", "NaPath", installPath);
                 CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                 PathLabel.Text = installPath;
@@ -98,7 +98,7 @@ namespace LoLToolsX
             installPath = vs.NaVer(installPath);
 
 
-            //string test = Directory.GetCurrentDirectory();
+            //string test = Application.StartupPath;
             //MessageBox.Show(test);
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

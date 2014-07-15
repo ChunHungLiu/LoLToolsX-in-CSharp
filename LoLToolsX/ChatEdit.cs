@@ -14,7 +14,7 @@ namespace LoLToolsX
     public partial class ChatEdit : Form
     {
         string installPath;
-        CFGFile ini = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+        CFGFile ini = new CFGFile(Application.StartupPath + @"\config.ini");
         ChatColour.ChatColour cc = new ChatColour.ChatColour();
 
 

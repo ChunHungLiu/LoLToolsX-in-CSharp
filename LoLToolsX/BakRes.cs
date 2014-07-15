@@ -32,7 +32,7 @@ namespace LoLToolsX
                 try
                 {
                     FileInfo fi = new FileInfo(installPath_m + @"\Air\lol.properties");
-                    fi.CopyTo(Directory.GetCurrentDirectory() + @"\bak\server_prop\lol.properties",true);
+                    fi.CopyTo(Application.StartupPath + @"\bak\server_prop\lol.properties",true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("伺服器設定檔 備份成功!", Logger.LogType.Info);
                 }
@@ -50,7 +50,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\server_prop\lol.properties");
+                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\server_prop\lol.properties");
                     fi.CopyTo(installPath_m + @"\Air\lol.properties", true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("伺服器設定檔 還原成功!", Logger.LogType.Info);
@@ -75,7 +75,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\server_prop\lol.properties");
+                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\server_prop\lol.properties");
                     fi.Delete();
                     Logger.log("伺服器設定檔 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,7 +94,7 @@ namespace LoLToolsX
         public void Lang(int Type)     //備份語言檔
         {
 
-            string cd = Directory.GetCurrentDirectory();
+            string cd = Application.StartupPath;
             //備份
             if (Type == 1)
             {
@@ -286,7 +286,7 @@ namespace LoLToolsX
                 {
                     try
                     {
-                        File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\" + file, true);
+                        File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, Application.StartupPath + @"\bak\sound\FMOD\" + file, true);
                         wait.progressBar1.Value = wait.progressBar1.Value +  15;
                     }
                     catch { }
@@ -294,12 +294,12 @@ namespace LoLToolsX
                 
                 try
                 {
-                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\bak\sound\air");
+                    Directory.CreateDirectory(Application.StartupPath + @"\bak\sound\air");
                     foreach (string newPath in Directory.GetFiles(installPath_m + @"\Air\assets\sounds\en_US\champions", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\en_US\champions", Directory.GetCurrentDirectory() + @"\bak\sound\air"), true);
+                        File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\en_US\champions", Application.StartupPath + @"\bak\sound\air"), true);
                     wait.progressBar1.Value = 60;
                     foreach (string newPath in Directory.GetFiles(installPath_m + @"\Air\assets\sounds\zh_TW\champions", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\zh_TW\champions", Directory.GetCurrentDirectory() + @"\bak\sound\air"), true);
+                        File.Copy(newPath, newPath.Replace(installPath_m + @"\Air\assets\sounds\zh_TW\champions", Application.StartupPath + @"\bak\sound\air"), true);
                     wait.progressBar1.Value = 100;
                     wait.progressBar1.Value = 0;
                     wait.Close();
@@ -326,18 +326,18 @@ namespace LoLToolsX
                 {
                     try
                     {
-                        File.Copy(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\" + file, installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, true);
+                        File.Copy(Application.StartupPath + @"\bak\sound\FMOD\" + file, installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, true);
                         wait.progressBar1.Value = wait.progressBar1.Value + 15;
                     }
                     catch { }
                 }
                 try
                 {
-                    foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air",installPath_m + @"\Air\assets\sounds\en_US\champions"), true);
+                    foreach (string newPath in Directory.GetFiles(Application.StartupPath + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(Application.StartupPath + @"\bak\sound\air",installPath_m + @"\Air\assets\sounds\en_US\champions"), true);
                     wait.progressBar1.Value = 50;
-                    foreach (string newPath in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(Directory.GetCurrentDirectory() + @"\bak\sound\air", installPath_m + @"\Air\assets\sounds\zh_TW\champions"), true);
+                    foreach (string newPath in Directory.GetFiles(Application.StartupPath + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(Application.StartupPath + @"\bak\sound\air", installPath_m + @"\Air\assets\sounds\zh_TW\champions"), true);
                     wait.progressBar1.Value = 100;
                     wait.progressBar1.Value = 0;
                     wait.Close();
@@ -364,11 +364,11 @@ namespace LoLToolsX
             {
                 try
                 {
-                    Directory.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\Air",true);
-                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_ko_KR.fsb");
-                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_TW.fsb");
-                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_zh_CN.fsb");
-                    File.Delete(Directory.GetCurrentDirectory() + @"\bak\sound\FMOD\VOBank_en_US.fsb");
+                    Directory.Delete(Application.StartupPath + @"\bak\sound\Air",true);
+                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_ko_KR.fsb");
+                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_zh_TW.fsb");
+                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_zh_CN.fsb");
+                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_en_US.fsb");
                     Logger.log("語音檔 刪除備份成功!", Logger.LogType.Error);
                     MessageBox.Show("備份刪除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -396,7 +396,7 @@ namespace LoLToolsX
                 try
                 {
                     FileInfo fi = new FileInfo(installPath_m + @"\Game\DATA\Menu\Textures\HUDAtlas.tga");
-                    fi.CopyTo(Directory.GetCurrentDirectory() + @"\bak\UI\game\HUDAtlas.tga", true);
+                    fi.CopyTo(Application.StartupPath + @"\bak\UI\game\HUDAtlas.tga", true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 備份成功!", Logger.LogType.Info);
                 }
@@ -414,7 +414,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\UI\game\HUDAtlas.tga");
+                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\UI\game\HUDAtlas.tga");
                     fi.CopyTo(installPath_m + @"\Game\DATA\Menu\Textures\HUDAtlas.tga", true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 還原成功!", Logger.LogType.Info);
@@ -439,7 +439,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\UI\game\HUDAtlas.tga");
+                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\UI\game\HUDAtlas.tga");
                     fi.Delete();
                     Logger.log("UI檔案 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -463,7 +463,7 @@ namespace LoLToolsX
                 try
                 {
                     FileInfo fi = new FileInfo(installPath_m + @"\Game\DATA\Menu\HUD\defaults\Chat.ini");
-                    fi.CopyTo(Directory.GetCurrentDirectory() + @"\bak\Chat\Chat.ini", true);
+                    fi.CopyTo(Application.StartupPath + @"\bak\Chat\Chat.ini", true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("Chat.ini 備份成功!", Logger.LogType.Info);
                 }
@@ -481,7 +481,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\Chat\Chat.ini");
+                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\Chat\Chat.ini");
                     fi.CopyTo(installPath_m + @"\Game\DATA\Menu\HUD\defaults\Chat.ini", true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("Chat.ini 還原成功!", Logger.LogType.Info);
@@ -506,7 +506,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Directory.GetCurrentDirectory() + @"\bak\Chat\Chat.ini");
+                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\Chat\Chat.ini");
                     fi.Delete();
                     Logger.log("Chat.ini 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -531,7 +531,7 @@ namespace LoLToolsX
                     ProcessStartInfo si = new ProcessStartInfo();
                     si.Arguments = "Backup " + installPath_m;
                     si.Verb = "runas";
-                    si.WorkingDirectory = Directory.GetCurrentDirectory();
+                    si.WorkingDirectory = Application.StartupPath;
                     si.FileName = "LoLBakRes.exe";
                     Process.Start(si);
                     Logger.log("LoL一鍵備份 開始!", Logger.LogType.Info);
@@ -549,7 +549,7 @@ namespace LoLToolsX
                         ProcessStartInfo si = new ProcessStartInfo();
                         si.Arguments = "Restore " + installPath_m;
                         si.Verb = "runas";
-                        si.WorkingDirectory = Directory.GetCurrentDirectory();
+                        si.WorkingDirectory = Application.StartupPath;
                         si.FileName = "LoLBakRes.exe";
                         Process.Start(si);
                         Logger.log("LoL一鍵還原 開始!", Logger.LogType.Info);

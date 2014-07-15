@@ -38,16 +38,16 @@ namespace LoLToolsX
 
             Logger.log("目前客戶端 : 台服", Logger.LogType.Info);
             //載入LoLToolsX Logo
-            PictureBox1.ImageLocation = Directory.GetCurrentDirectory() + @"\logo.png";
+            PictureBox1.ImageLocation = Application.StartupPath + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
             //取得LoL路徑
             GetReg gr = new GetReg();
-            installPath = gr.TwPath(Directory.GetCurrentDirectory() + @"\config.ini");
+            installPath = gr.TwPath(Application.StartupPath + @"\config.ini");
             Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
 
 
-            CFGFile CFGFile = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            CFGFile CFGFile = new CFGFile(Application.StartupPath + @"\config.ini");
 
             //檢查路徑是否存有 LoLTW 字串
             if (!installPath.Contains("LoLTW"))
@@ -89,7 +89,7 @@ namespace LoLToolsX
 
             CFGFile = null;
 
-            CFGFile checkAutoUpdate = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
             if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
             {
                 Variable.updating = true;
@@ -106,7 +106,7 @@ namespace LoLToolsX
             //Thread langUpdate = new Thread(LangUpdate.CheckLangUpdate);
             //langUpdate.Start();
 
-            //string test = Directory.GetCurrentDirectory();
+            //string test = Application.StartupPath;
             //MessageBox.Show(test);
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,6 +142,12 @@ namespace LoLToolsX
             gr = null;
 
             Variable.v_installPath = installPath;
+
+            string[] skins = File.ReadAllLines(Application.StartupPath + @"\Skin.txt");
+            foreach (string s in skins)
+            {
+                installedSkin.Items.Add(s);
+            }
         }
 
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
@@ -165,9 +171,9 @@ namespace LoLToolsX
                     Logger.log("關閉程式...", Logger.LogType.Info);
                     Random random = new Random();
                     string rd = random.Next().ToString();
-                    string rdFile = Directory.GetCurrentDirectory() + @"\Logs\Log" + rd + ".txt";
-                    File.Copy(Directory.GetCurrentDirectory() + @"\Logs\Log.txt", rdFile);
-                    //File.Copy(Directory.GetCurrentDirectory() + @"\Logs\Log.txt",Directory.GetCurrentDirectory() + @"\Logs\Log" + rd + ".txt");
+                    string rdFile = Application.StartupPath + @"\Logs\Log" + rd + ".txt";
+                    File.Copy(Application.StartupPath + @"\Logs\Log.txt", rdFile);
+                    //File.Copy(Application.StartupPath + @"\Logs\Log.txt",Application.StartupPath + @"\Logs\Log" + rd + ".txt");
 
                     System.Net.WebClient Client = new System.Net.WebClient();
                     Client.Headers.Add("Content-Type", "binary/octet-stream");
@@ -479,7 +485,7 @@ namespace LoLToolsX
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            CFGFile ini = new CFGFile(Directory.GetCurrentDirectory() + @"\config.ini");
+            CFGFile ini = new CFGFile(Application.StartupPath + @"\config.ini");
             if (checkBox1.Checked == true)
             ini.SetValue("LoLToolsX", "AutoUpdate", "false");
             else
@@ -632,18 +638,6 @@ namespace LoLToolsX
             }
         }
 
-        private void button27_Click(object sender, EventArgs e)
-        {
-            if (!File.Exists(Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll"))
-            {
-                if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    Thread downloadThread = new Thread(new ThreadStart(LibDownload));
-                    downloadThread.Start();
-                }
-            }
-        }
-
         private void LibDownload()
         {
                 WebClient wc = new WebClient();
@@ -652,7 +646,9 @@ namespace LoLToolsX
                 {
                     wait.Show();
                     wait.progressBar1.Value = 50;
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Directory.GetCurrentDirectory() + @"\SevenZipSharp.dll");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Application.StartupPath + @"\SevenZipSharp.dll");
+                    wait.progressBar1.Value = 70;
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", Application.StartupPath + @"\7z.dll");
                     wait.progressBar1.Value = 100;
                     MessageBox.Show("下載完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("SevenZipSharp.dll 下載完成!", Logger.LogType.Info);
@@ -679,6 +675,132 @@ namespace LoLToolsX
         {
             SwitchLang swLang = new SwitchLang(installPath);
             swLang.KRGame();
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            if (skinSelector.ShowDialog() == DialogResult.OK)
+            {
+                if (!String.IsNullOrEmpty(skinSelector.FileName))
+                {
+                    skinPathBox.Items.Add(skinSelector.FileName);
+                }
+            }
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            if (skinPathBox.Items.Count != 0)
+            {
+                skinPathBox.Items.Remove(skinPathBox.SelectedItem);
+            }
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(Application.StartupPath + @"\SevenZipSharp.dll") || !File.Exists(Application.StartupPath + @"\7z.dll"))
+            {
+                Logger.log("找不到Skin安裝所需的類別庫", Logger.LogType.Info);
+                if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    Logger.log("正在下載Skin安裝所需的類別庫...", Logger.LogType.Info);
+                    Thread downloadThread = new Thread(new ThreadStart(LibDownload));
+                    downloadThread.Start();
+                }
+            }
+            else
+            {
+                if (skinPathBox.SelectedItem != null)
+                {
+                    if (Path.GetExtension(skinPathBox.SelectedItem.ToString()) == ".zip")
+                    {
+                        try
+                        {
+                            string str = File.ReadAllText(Application.StartupPath + @"\Skin.txt");
+
+
+
+                            File.WriteAllText(Application.StartupPath + @"\Skin.txt", str, Encoding.Default);
+
+                            InstallSkin.Skin(installPath, skinPathBox.SelectedItem.ToString(), Path.GetFileName(skinPathBox.SelectedItem.ToString()));
+                            FileStream fs = new FileStream(Application.StartupPath + @"\Skin.txt", FileMode.Append, FileAccess.Write);
+                            StreamWriter sw = new StreamWriter(fs);
+                            sw.WriteLine(Path.GetFileName(skinPathBox.SelectedItem.ToString()));
+                            sw.Close();
+                            fs.Close();
+
+                            if (Variable.InstallSkinDone)
+                            {
+                                installedSkin.Items.Add(Path.GetFileName(skinPathBox.SelectedItem.ToString()));
+                                skinPathBox.Items.Remove(skinPathBox.SelectedItem);
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.log("SKIN安裝失敗: \r\n" + ex, Logger.LogType.Info);
+                            MessageBox.Show("SKIN安裝失敗，錯誤訊息:\r\n" + ex);
+                        }
+                        finally
+                        {
+                            Variable.InstallSkinDone = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("請選擇正確的SKIN檔案");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("請先選擇欲安裝之SKIN");
+                }
+            }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            if (installedSkin.SelectedItem != null)
+            {
+                try
+                {
+                    string str = File.ReadAllText(Application.StartupPath + @"\Skin.txt");
+                    
+                    
+                    
+                    File.WriteAllText(Application.StartupPath + @"\Skin.txt", str, Encoding.Default);
+
+                    string temp = File.ReadAllText(Application.StartupPath + @"\Skin.txt");
+                    string newTemp = temp.Replace(installedSkin.SelectedItem.ToString() + "\r\n" , "");
+                    File.WriteAllText(Application.StartupPath + @"\Skin.txt", newTemp);
+
+                    string temp2 = File.ReadAllText(installPath + @"\Game\ClientZips.txt");
+                    string newTemp2 = temp2.Replace(installedSkin.SelectedItem.ToString() + "\r\n", "");
+                    File.WriteAllText(installPath + @"\Game\ClientZips.txt", newTemp2);
+                    installedSkin.Items.Remove(installedSkin.SelectedItem);
+
+                    
+                    
+                    
+                    
+                    
+
+                    Logger.log("SKIN刪除成功!", Logger.LogType.Info);
+                    MessageBox.Show("SKIN刪除成功!");
+                }
+                catch (Exception ex)
+                {
+                    Logger.log("SKIN刪除失敗: \r\n" + ex, Logger.LogType.Info);
+                    MessageBox.Show("SKIN刪除失敗! 錯誤信息:\r\n" + ex);
+                }
+            }
+            else
+                MessageBox.Show("請先選擇欲刪除的SKIN");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://forum.gamer.com.tw/C.php?bsn=17532&snA=235775&tnum=1285");
         }
     }
 }
