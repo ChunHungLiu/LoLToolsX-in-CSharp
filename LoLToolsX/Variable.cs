@@ -11,6 +11,11 @@ namespace LoLToolsX
         public static string v_installPath;
         public static string propPath;
         public static string hudPath;
+        public static string n_installPath;
+
+        //Na Ver
+        public static string airVer = "";
+        public static string gameVer = "";
 
         //bool
         public static bool debug = false;

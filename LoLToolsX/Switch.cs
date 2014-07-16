@@ -43,12 +43,25 @@ namespace LoLToolsX
                 Logger.log(e, Logger.LogType.Error);
             }
         }
-        public void EngLobby()
+        public void EngLobby(int type)
         {
+            string targetPath = "";
+
+            //1是台服 2是美服
+            if (type == 1)
+            {
+                targetPath = installPath + @"\Air";
+            }
+            else
+            {
+                targetPath = installPath;
+            }
+
+
             try
             {
-                File.Copy(cd + @"\files\lang\eng\lobby\locale.properties", installPath + @"\Air\locale.properties", true);
-                File.Copy(cd + @"\files\lang\eng\lobby\fonts.swf", installPath + @"\Air\css\fonts.swf", true);
+                File.Copy(cd + @"\files\lang\eng\lobby\locale.properties", targetPath + @"\locale.properties", true);
+                File.Copy(cd + @"\files\lang\eng\lobby\fonts.swf", targetPath + @"\css\fonts.swf", true);
                 MessageBox.Show("大廳語言切換完成: 英文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("大廳語言切換完成: 英文", Logger.LogType.Info);
             }
@@ -83,13 +96,25 @@ namespace LoLToolsX
                 Logger.log(e, Logger.LogType.Error);
             }
         }
-        public void ChinLobby()
+        public void ChinLobby(int type)
         {
+            string targetPath = "";
+
+            //1是台服 2是美服
+            if (type == 1)
+            {
+                targetPath = installPath + @"\Air";
+            }
+            else
+            {
+                targetPath = installPath;
+            }
+
             try
             {
-                File.Copy(cd + @"\files\lang\cht\lobby\locale.properties", installPath + @"\Air\locale.properties", true);
-                File.Copy(cd + @"\files\lang\cht\lobby\fonts.swf", installPath + @"\Air\css\fonts.swf", true);
-                File.Copy(cd + @"\files\lang\cht\lobby\fonts_zh_TW.swf", installPath + @"\Air\css\fonts_zh_TW.swf", true);
+                File.Copy(cd + @"\files\lang\cht\lobby\locale.properties", targetPath + @"\locale.properties" , true);
+                File.Copy(cd + @"\files\lang\cht\lobby\fonts.swf", targetPath + @"\css\fonts.swf", true);
+                File.Copy(cd + @"\files\lang\cht\lobby\fonts_zh_TW.swf", targetPath + @"\css\fonts_zh_TW.swf", true);
                 MessageBox.Show("大廳語言切換完成: 中文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("大廳語言切換完成: 中文", Logger.LogType.Info);
             }
@@ -154,6 +179,24 @@ namespace LoLToolsX
         public static void SwitchServerLoc(string installPath, string targetLoc)
         {
             string propPath = installPath + @"\Air\lol.properties";
+            string localProp = Application.StartupPath + @"\files\server_prop\" + targetLoc;
+            FileInfo fi = new FileInfo(localProp);
+            try
+            {
+                fi.CopyTo(propPath, true);
+                MessageBox.Show("伺服器切換成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Logger.log("伺服器切換成功: " + targetLoc, Logger.LogType.Info);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("伺服器切換失敗 \n\r 錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("伺服器切換失敗", Logger.LogType.Error);
+                Logger.log(e, Logger.LogType.Error);
+            }
+        }
+        public static void SwitchServerLocNa(string installPath, string targetLoc)
+        {
+            string propPath = installPath + @"\lol.properties";
             string localProp = Application.StartupPath + @"\files\server_prop\" + targetLoc;
             FileInfo fi = new FileInfo(localProp);
             try

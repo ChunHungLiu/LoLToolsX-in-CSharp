@@ -78,5 +78,20 @@ namespace LoLToolsX
                 Logger.log("遊戲啟動失敗!" + e, Logger.LogType.Error);
             }
         }
+        public void naLauncher()
+        {
+            try
+            {
+                Process.Start(installPath + @"\lol.launcher.exe");
+                MessageBox.Show("遊戲啟動成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Logger.log("遊戲啟動成功!", Logger.LogType.Info);
+                Logger.log(installPath + @"\lol.launcher.exe", Logger.LogType.Info);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("遊戲啟動失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("遊戲啟動失敗!" + e, Logger.LogType.Error);
+            }
+        }
     }
 }

@@ -24,15 +24,30 @@ namespace LoLToolsX
         }
 
 
-        public void Prop(int Type)     //備份伺服器設定檔 (lol.properties)
+        public void Prop(int Type,int client)     //備份伺服器設定檔 (lol.properties)
         {
+            string propPath = "";
+            string bakPath = "";
+
+            //1是台服 2是美服
+            if (client == 1)
+            {
+                propPath = installPath_m + @"\Air\lol.properties";
+                bakPath = Application.StartupPath + @"\bak\server_prop\lol.properties";
+            }
+            else
+            {
+                propPath = installPath_m + @"\lol.properties";
+                bakPath = Application.StartupPath + @"\bak\na_server_prop\lol.properties";
+            }
+
             //備份
             if (Type == 1)
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(installPath_m + @"\Air\lol.properties");
-                    fi.CopyTo(Application.StartupPath + @"\bak\server_prop\lol.properties",true);
+                    FileInfo fi = new FileInfo(propPath);
+                    fi.CopyTo(bakPath,true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("伺服器設定檔 備份成功!", Logger.LogType.Info);
                 }
@@ -50,8 +65,8 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\server_prop\lol.properties");
-                    fi.CopyTo(installPath_m + @"\Air\lol.properties", true);
+                    FileInfo fi = new FileInfo(bakPath);
+                    fi.CopyTo(propPath, true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("伺服器設定檔 還原成功!", Logger.LogType.Info);
                 }
@@ -75,7 +90,7 @@ namespace LoLToolsX
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\server_prop\lol.properties");
+                    FileInfo fi = new FileInfo(bakPath);
                     fi.Delete();
                     Logger.log("伺服器設定檔 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,6 +104,111 @@ namespace LoLToolsX
             }
 
 
+        }
+
+        public void NaLang(int Type)   //備份語言檔(美服0
+        {
+            string cd = Application.StartupPath;
+            //備份
+            if (Type == 1)
+            {
+                try
+                {
+                    File.Copy(installPath_m + @"\css\fonts.swf", cd + @"\bak\na_lang\fonts.swf", true);
+                    File.Copy(installPath_m + @"\css\fonts_zh_TW.swf", cd + @"\bak\na_lang\fonts_zh_TW.swf", true);
+                    try
+                    {
+                        File.Copy(installPath_m + @"\css\fonts_ko_KR.swf", cd + @"\bak\na_lang\fonts_ko_KR.swf", true);
+                    }
+                    catch { }
+                    try
+                    {
+                        File.Copy(installPath_m + @"\css\fonts_en_US.swf", cd + @"\bak\na_lang\fonts_en_US.swf", true);
+                    }
+                    catch { }
+                    File.Copy(installPath_m + @"\locale.properties", cd + @"\bak\na_lang\locale.properties", true);
+                    Logger.log("語言檔 備份成功!", Logger.LogType.Info);
+                    MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception e)
+                {
+                    Logger.log("語言檔 備份失敗!", Logger.LogType.Error);
+                    Logger.log(e);
+                    MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (Type == 2)
+            {
+                try
+                {
+                    File.Copy(cd + @"\bak\na_lang\fonts.swf", installPath_m + @"\css\fonts.swf", true);
+                }
+                catch { }
+                try
+                {
+                    File.Copy(cd + @"\bak\na_lang\fonts_zh_TW.swf", installPath_m + @"\css\fonts_zh_TW.swf", true);
+                }
+                catch { }
+                try
+                {
+                    File.Copy(cd + @"\bak\na_lang\fonts_en_US.swf", installPath_m + @"\css\fonts_en_US.swf", true);
+                }
+                catch { }
+                try
+                {
+                    File.Copy(cd + @"\bak\na_lang\fonts_ko_KR.swf", installPath_m + @"\css\fonts_ko_KR.swf", true);
+                }
+                catch { }
+                File.Copy(cd + @"\bak\na_lang\locale.properties", installPath_m + @"\locale.properties", true);
+                Logger.log("語言檔 還原成功!", Logger.LogType.Info);
+                MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (Type == 3)
+            {
+                if (Type == 3)
+                {
+                    try
+                    {
+                        try
+                        {
+                            File.Delete(cd + @"\bak\na_lang\Locale.cfg");
+                        }
+                        catch { }
+                        try
+                        {
+                            File.Delete(cd + @"\bak\na_lang\fonts.swf");
+                        }
+                        catch { }
+                        try
+                        {
+                            File.Delete(cd + @"\bak\na_lang\fonts_zh_TW.swf");
+                        }
+                        catch { }
+                        try
+                        {
+                            File.Delete(cd + @"\bak\na_lang\fonts_en_US.swf");
+                        }
+                        catch { }
+                        try
+                        {
+                            File.Delete(cd + @"\bak\na_lang\fonts_ko_KR.swf");
+                        }
+                        catch { }
+                        try
+                        {
+                            File.Delete(cd + @"\bak\na_lang\locale.properties");
+                        }
+                        catch { }
+                        Logger.log("語言檔 備份刪除成功! ", Logger.LogType.Info);
+                        MessageBox.Show("備份刪除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.log(e);
+                        MessageBox.Show("備份刪除失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         public void Lang(int Type)     //備份語言檔

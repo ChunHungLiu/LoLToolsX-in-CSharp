@@ -15,9 +15,17 @@ namespace LoLToolsX
         string website;
         string editedWebSite;
 
-        public PropEdit(string installpath, string websiteIn)
+        public PropEdit(string installpath, string websiteIn,int client)
         {
-            this.propPath = installpath + @"\Air\lol.properties";
+            //1是台服 2是美服
+            if (client == 1)
+            {
+                this.propPath = installpath + @"\Air\lol.properties";
+            }
+            else
+            {
+                this.propPath = installpath + @"\lol.properties";
+            }
             this.website = websiteIn;
         }
 

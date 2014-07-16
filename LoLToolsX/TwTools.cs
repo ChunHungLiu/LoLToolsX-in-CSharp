@@ -163,7 +163,7 @@ namespace LoLToolsX
             }
         }
 
-        private void UploadLogs()
+        public void UploadLogs()
         {
             //Upload Log
             try
@@ -281,20 +281,20 @@ namespace LoLToolsX
         private void backProp_Click(object sender, EventArgs e)
         {
             BakRes br = new BakRes(installPath);
-            br.Prop(1);
+            br.Prop(1,1);
 
         }
 
         private void restoneProp_Click(object sender, EventArgs e)
         {
             BakRes br = new BakRes(installPath);
-            br.Prop(2);
+            br.Prop(2,1);
         }
 
         private void delBakProp_Click(object sender, EventArgs e)
         {
             BakRes br = new BakRes(installPath);
-            br.Prop(3);
+            br.Prop(3,1);
         }
 
         private void startLoL_Click(object sender, EventArgs e)
@@ -334,14 +334,14 @@ namespace LoLToolsX
         private void lChin_Click(object sender, EventArgs e)
         {
             SwitchLang sl = new SwitchLang(installPath);
-            sl.ChinLobby();
+            sl.ChinLobby(1);
 
         }
 
         private void lEng_Click(object sender, EventArgs e)
         {
             SwitchLang sl = new SwitchLang(installPath);
-            sl.EngLobby();
+            sl.EngLobby(1);
         }
 
         private void gChin_Click(object sender, EventArgs e)
@@ -464,7 +464,7 @@ namespace LoLToolsX
 
         private void Button15_Click(object sender, EventArgs e)
         {
-            PropEdit pe = new PropEdit(installPath,websiteIn.Text);
+            PropEdit pe = new PropEdit(installPath,websiteIn.Text,1);
             pe.LobbyLanding();
         }
 
@@ -597,19 +597,19 @@ namespace LoLToolsX
         private void Button17_Click(object sender, EventArgs e)
         {
             BakRes br = new BakRes(installPath);
-            br.Prop(1);
+            br.Prop(1,1);
         }
 
         private void Button18_Click(object sender, EventArgs e)
         {
             BakRes br = new BakRes(installPath);
-            br.Prop(2);
+            br.Prop(2,1);
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
             BakRes br = new BakRes(installPath);
-            br.Prop(3);
+            br.Prop(3,1);
         }
 
         private void button26_Click_1(object sender, EventArgs e)
@@ -802,6 +802,13 @@ namespace LoLToolsX
         {
             Process.Start("http://forum.gamer.com.tw/C.php?bsn=17532&snA=235775&tnum=1285");
         }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            PropEdit pe = new PropEdit(installPath, "http://lobby.lol.tw/", 1);
+            pe.LobbyLanding();
+        }
+
     }
 }
 

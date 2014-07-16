@@ -141,6 +141,8 @@
             this.toolsVersion = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.installedSkin = new System.Windows.Forms.ListBox();
@@ -151,8 +153,7 @@
             this.button27 = new System.Windows.Forms.Button();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
-            this.label20 = new System.Windows.Forms.Label();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.button31 = new System.Windows.Forms.Button();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -598,6 +599,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button31);
             this.tabPage5.Controls.Add(this.Label15);
             this.tabPage5.Controls.Add(this.LinkLabel3);
             this.tabPage5.Controls.Add(this.Button16);
@@ -639,7 +641,7 @@
             // 
             // Button16
             // 
-            this.Button16.Location = new System.Drawing.Point(638, 238);
+            this.Button16.Location = new System.Drawing.Point(662, 180);
             this.Button16.Name = "Button16";
             this.Button16.Size = new System.Drawing.Size(114, 46);
             this.Button16.TabIndex = 5;
@@ -649,7 +651,7 @@
             // 
             // Button17
             // 
-            this.Button17.Location = new System.Drawing.Point(638, 53);
+            this.Button17.Location = new System.Drawing.Point(662, 40);
             this.Button17.Name = "Button17";
             this.Button17.Size = new System.Drawing.Size(114, 46);
             this.Button17.TabIndex = 3;
@@ -659,7 +661,7 @@
             // 
             // Button18
             // 
-            this.Button18.Location = new System.Drawing.Point(638, 146);
+            this.Button18.Location = new System.Drawing.Point(662, 109);
             this.Button18.Name = "Button18";
             this.Button18.Size = new System.Drawing.Size(114, 46);
             this.Button18.TabIndex = 4;
@@ -1353,6 +1355,28 @@
             this.tabPage10.Text = "SKIN安裝";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.linkLabel4.Location = new System.Drawing.Point(263, 20);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(151, 17);
+            this.linkLabel4.TabIndex = 10;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "點我進入下載SKIN頁面";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label20.Location = new System.Drawing.Point(80, 20);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(187, 17);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "只適用於在這裡下載的SKIN: ";
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -1439,27 +1463,15 @@
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
             // 
-            // label20
+            // button31
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label20.Location = new System.Drawing.Point(80, 20);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(187, 17);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "只適用於在這裡下載的SKIN: ";
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.linkLabel4.Location = new System.Drawing.Point(263, 20);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(151, 17);
-            this.linkLabel4.TabIndex = 10;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "點我進入下載SKIN頁面";
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.button31.Location = new System.Drawing.Point(662, 250);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(114, 46);
+            this.button31.TabIndex = 42;
+            this.button31.Text = "恢復預設首頁";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
             // TwTools
             // 
@@ -1632,6 +1644,7 @@
         public System.Windows.Forms.ListBox installedSkin;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label label20;
+        internal System.Windows.Forms.Button button31;
     }
 }
 

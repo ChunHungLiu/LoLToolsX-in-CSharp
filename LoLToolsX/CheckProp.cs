@@ -104,7 +104,7 @@ namespace LoLToolsX
 
         public string CheckPropNa(string installPath)
         {
-            if (!File.Exists(installPath + @"\Air\lol.properties"))
+            if (!File.Exists(installPath + @"\lol.properties"))
             {
                 MessageBox.Show("無法存取伺服器設定檔\r\n按'確定'關閉程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("無法存取伺服器設定檔", Logger.LogType.Error);
@@ -115,7 +115,7 @@ namespace LoLToolsX
 
             else
             {
-                Variable.propPath = installPath + @"\Air\lol.properties";
+                Variable.propPath = installPath + @"\lol.properties";
             }
 
 
