@@ -47,3 +47,5 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.LobbyUI.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\SevenZipSharp.dll
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.NaTools.resources
 K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.VerSelect.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.FileCheck.resources
+K:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.CrushForm.resources

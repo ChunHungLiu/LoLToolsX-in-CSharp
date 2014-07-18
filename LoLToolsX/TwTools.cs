@@ -30,7 +30,11 @@ namespace LoLToolsX
 
         private void Form1_Load(object sender, EventArgs e)     //Form1_Load
         {
-
+            if (!Variable.allowBakRes)
+            {
+                button24.Enabled = false;
+                button25.Enabled = false;
+            }
             //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
             //寫入目前LoLToolsX版本到Log
@@ -89,17 +93,24 @@ namespace LoLToolsX
 
             CFGFile = null;
 
-            CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
-            if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+            if (Variable.allowUpdate)
             {
-                Variable.updating = true;
-                this.checkBox1.Checked = false;
-                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-                updateThread.Start();
+                CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
+                if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+                {
+                    Variable.updating = true;
+                    this.checkBox1.Checked = false;
+                    Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                    updateThread.Start();
+                }
+                else
+                {
+                    this.checkBox1.Checked = true;
+                }
             }
             else
             {
-                this.checkBox1.Checked = true;
+                button23.Enabled = false;
             }
 
             //檢查語言檔更新
@@ -155,7 +166,8 @@ namespace LoLToolsX
             if (!Variable.haveUpdate)
             {
                 this.Hide();
-                UploadLogs();
+                Function.UploadLogs();
+                Environment.Exit(Environment.ExitCode);
             }
             else
             {
@@ -163,36 +175,6 @@ namespace LoLToolsX
             }
         }
 
-        public void UploadLogs()
-        {
-            //Upload Log
-            try
-            {
-                    Logger.log("關閉程式...", Logger.LogType.Info);
-                    Random random = new Random();
-                    string rd = random.Next().ToString();
-                    string rdFile = Application.StartupPath + @"\Logs\Log" + rd + ".txt";
-                    File.Copy(Application.StartupPath + @"\Logs\Log.txt", rdFile);
-                    //File.Copy(Application.StartupPath + @"\Logs\Log.txt",Application.StartupPath + @"\Logs\Log" + rd + ".txt");
-
-                    System.Net.WebClient Client = new System.Net.WebClient();
-                    Client.Headers.Add("Content-Type", "binary/octet-stream");
-                    try
-                    {
-                        byte[] result = Client.UploadFile("http://lolnx.pixub.com/loltoolsx/upload.php", "POST", rdFile);
-                        string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
-                    }
-                    catch
-                    { }
-
-                    Environment.Exit(Environment.ExitCode);
-
-                }
-                catch
-                {
-                    Environment.Exit(Environment.ExitCode);
-                }              
-        }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -494,14 +476,17 @@ namespace LoLToolsX
 
         private void button23_Click_1(object sender, EventArgs e)
         {
-            if (!Variable.updating)
+            if (Variable.allowUpdate)
             {
-                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-                updateThread.Start();
-            }
-            else
-            {
-                MessageBox.Show("正在檢查更新, 請稍候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!Variable.updating)
+                {
+                    Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                    updateThread.Start();
+                }
+                else
+                {
+                    MessageBox.Show("正在檢查更新, 請稍候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

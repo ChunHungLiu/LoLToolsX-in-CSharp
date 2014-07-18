@@ -1,0 +1,25 @@
+﻿============================== LoLToolsX Log File ==============================
+07/18/2014 17:39:53信息: LoLToolsX 啟動路徑 : K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
+07/18/2014 17:39:54信息: 檔案檢查開始!
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\Air
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\Chat
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\lang
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\LoL
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\na_lang
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\na_server_prop
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\server_prop
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\sound
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\UI
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\UI\game
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\download
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Logs
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\config.ini
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Skin.txt
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLBakRes.exe
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Updater.exe
+檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Logs\Log.txt
+檢查完成!
+07/18/2014 17:39:56信息: 傳送錯誤報告
+07/18/2014 17:39:56信息: 關閉程式...

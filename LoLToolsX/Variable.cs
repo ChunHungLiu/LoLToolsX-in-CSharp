@@ -23,6 +23,8 @@ namespace LoLToolsX
         public static bool switchingSound = false;
         public static bool updating = false;
         public static bool InstallSkinDone = false;
+        public static bool allowBakRes = true;
+        public static bool allowUpdate = true;
 
         public static CFGFile lolConfig = new CFGFile(v_installPath);
 

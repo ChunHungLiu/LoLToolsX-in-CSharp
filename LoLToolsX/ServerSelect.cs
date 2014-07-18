@@ -12,6 +12,8 @@ namespace LoLToolsX
 {
     public partial class ServerSelect : Form
     {
+        string cd = Application.StartupPath;
+
         public ServerSelect()
         {
             InitializeComponent();
@@ -21,12 +23,13 @@ namespace LoLToolsX
         {
             TwTools tt = new TwTools();
             tt.Show();
-            this.Hide();
+            this.Dispose();
         }
 
+       
         private void ServerSelect_Load(object sender, EventArgs e)
         {
-            //如果多過15個Log就全部刪除
+            //如果多過15個Log就全部刪
             string[] files = Directory.GetFiles(Application.StartupPath + @"\Logs");
             if (files.Length > 15)
             {
@@ -36,18 +39,13 @@ namespace LoLToolsX
                 }
                 File.Create(Application.StartupPath + @"\Logs\Log.txt");
             }
-
-            // Logger 開始記錄
-            if (!Directory.Exists(Application.StartupPath + @"\Logs"))
-                Directory.CreateDirectory(Application.StartupPath + @"\Logs");
-            Logger.start();
         }
 
         private void selectNA_Click(object sender, EventArgs e)
         {
             VerSelect vs = new VerSelect();
             vs.Show();
-            this.Hide();
+            this.Dispose();
         }
     }
 }

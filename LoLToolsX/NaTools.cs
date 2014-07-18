@@ -29,6 +29,11 @@ namespace LoLToolsX
 
         private void NaTools_Load(object sender, EventArgs e)
         {
+            if (!Variable.allowBakRes)
+            {
+                button24.Enabled = false;
+                button25.Enabled = false;
+            }
             //Initialize Na Path
             installPath = Variable.n_installPath;
             airVer = Variable.airVer;
@@ -36,17 +41,24 @@ namespace LoLToolsX
             airPath = installPath + @"\RADS\projects\lol_air_client\releases\" + airVer + @"\deploy";
             gamePath = installPath + @"\RADS\projects\lol_game_client\releases\" + gameVer + @"\deploy";
 
-            CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
-            if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+            if (Variable.allowUpdate)
             {
-                Variable.updating = true;
-                this.checkBox1.Checked = false;
-                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-                updateThread.Start();
+                CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
+                if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+                {
+                    Variable.updating = true;
+                    this.checkBox1.Checked = false;
+                    Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                    updateThread.Start();
+                }
+                else
+                {
+                    this.checkBox1.Checked = true;
+                }
             }
             else
             {
-                this.checkBox1.Checked = true;
+                button23.Enabled = false;
             }
 
             //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
@@ -96,7 +108,8 @@ namespace LoLToolsX
             if (!Variable.haveUpdate)
             {
                 this.Hide();
-                tt.UploadLogs();
+                Function.UploadLogs();
+                Environment.Exit(Environment.ExitCode);
             }
             else
             {
@@ -311,14 +324,17 @@ namespace LoLToolsX
 
         private void button23_Click(object sender, EventArgs e)
         {
-            if (!Variable.updating)
+            if (Variable.allowUpdate)
             {
-                Thread updateThread = new Thread(CheckUpdate.checkUpdate);
-                updateThread.Start();
-            }
-            else
-            {
-                MessageBox.Show("正在檢查更新, 請稍候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!Variable.updating)
+                {
+                    Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                    updateThread.Start();
+                }
+                else
+                {
+                    MessageBox.Show("正在檢查更新, 請稍候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

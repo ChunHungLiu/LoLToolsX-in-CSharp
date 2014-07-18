@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace LoLToolsX
 {
@@ -28,8 +29,10 @@ namespace LoLToolsX
             try
             {
                 Exception ex = (Exception)e.ExceptionObject;
+                CrushForm cf = new CrushForm(ex.Message,ex.StackTrace);
+                cf.ShowDialog();
                 Logger.log(string.Format("程式發生未處理的錯誤！\n\n{0}{1}", ex.Message, ex.StackTrace), Logger.LogType.Crash);
-                MessageBox.Show(string.Format("程式發生未處理的錯誤, 按確定關閉程式！\n\n{0}{1}", ex.Message, ex.StackTrace), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                //MessageBox.Show(string.Format("程式發生未處理的錯誤, 按確定關閉程式！\n\n{0}{1}", ex.Message, ex.StackTrace), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             finally
             {
@@ -53,7 +56,7 @@ namespace LoLToolsX
 
         protected override void OnCreateMainForm()
         {
-            this.MainForm = new ServerSelect();
+            this.MainForm = new FileCheck();
         }
     }
 }
