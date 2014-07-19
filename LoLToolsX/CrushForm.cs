@@ -40,19 +40,20 @@ namespace LoLToolsX
 
         private void button1_Click(object sender, EventArgs e)
         {
+            bool sucess;
             Wait wait = new Wait();
             if (!Variable.haveUpdate)
             {
-                try
-                {
                     Logger.log("傳送錯誤報告");
-                    Function.UploadLogs();
-                    MessageBox.Show("傳送錯誤報告成功!");
-                }
-                catch
-                {
-                    MessageBox.Show("傳送錯誤報告失敗!");
-                }
+                       sucess = Function.UploadLogs();
+                       if (sucess)
+                       {
+                           MessageBox.Show("傳送錯誤報告成功!");
+                       }
+                       else
+                       {
+                           MessageBox.Show("傳送錯誤報告失敗!");
+                       }
             }
             else
             {

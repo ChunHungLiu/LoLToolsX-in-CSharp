@@ -15,6 +15,8 @@ namespace LoLToolsX
 {
     public partial class FileCheck : Form
     {
+        WebClient wc = new WebClient();
+
         string cd = Application.StartupPath;
 
         public FileCheck()
@@ -24,12 +26,11 @@ namespace LoLToolsX
 
         private void FileCheck_Load(object sender, EventArgs e)
         {
-            timer1.Interval = 1000;
+            timer1.Interval = 500;
             timer1.Start();
         }
         private void CheckBegin()
         {
-            this.button1.Enabled = false;
             if (!Directory.Exists(cd + @"\Logs"))
             {
                 Directory.CreateDirectory(cd + @"\Logs");
@@ -59,6 +60,7 @@ namespace LoLToolsX
                                   "\\download",
                                   "\\Logs",
                                   "\\files",
+                                  "\\files\\lang\\kr"
                               };
 
             string[] files = {
@@ -66,7 +68,9 @@ namespace LoLToolsX
                                   "\\Skin.txt",
                                   "\\LoLBakRes.exe",
                                   "\\Updater.exe",
-                                  "\\Logs\\Log.txt"
+                                  "\\Logs\\Log.txt",
+                                  "\\SevenZipSharp.dll",
+                                  "\\7z.dll"
                              };
 
             int count = folder.Length + files.Length;
@@ -76,24 +80,6 @@ namespace LoLToolsX
             progressBar1.Step = 1;
 
             textBox1.AppendText("檔案檢查開始!");
-
-            foreach (string f in folder)
-            {
-                string path = cd + f;
-                textBox1.AppendText(String.Format("\r\n檢查 {0}", path));
-                if (!Directory.Exists(path))
-                {
-                    textBox1.AppendText(String.Format("\r\n找不到 {0} 目錄", path));
-                    Directory.CreateDirectory(path);
-                    textBox1.AppendText(String.Format("\r\n{0} 建立成功!", path));
-                }
-                if (f.Contains("bak"))
-                {
-                    DirectoryInfo di = new DirectoryInfo(path);
-                    di.Refresh();
-                }
-                progressBar1.PerformStep();
-            }
 
             foreach (string f in files)
             {
@@ -105,7 +91,6 @@ namespace LoLToolsX
                     switch (f)
                     {
                         case "\\config.ini":
-                            WebClient wc = new WebClient();
                             wc.DownloadFile("http://lolnx.pixub.com/loltoolsx/config.ini", cd + "\\config.ini");
                             textBox1.AppendText("\r\n下載config.ini");
                             break;
@@ -125,13 +110,88 @@ namespace LoLToolsX
                             textBox1.AppendText("\r\n更新程式遺失 將無法進行更新");
                             Variable.allowUpdate = false;
                             break;
+                        case "\\SevenZipSharp.dll" :
+                            textBox1.AppendText("\r\n程式必要的類別庫遺失 正在重新下載... 請勿關閉程式");
+                            try
+                            {
+                                wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", cd + "\\SevenZipSharp.dll");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch
+                            {
+                                textBox1.AppendText("\r\n下載失敗");
+                                continue;
+                            }
+                        case "\\7z.dll":
+                            textBox1.AppendText("\r\n程式必要的類別庫遺失 正在重新下載... 請勿關閉程式");
+                            WebClient wc3 = new WebClient();
+                            try
+                            {
+                                wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", cd + "\\7z.dll");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch
+                            {
+                                textBox1.AppendText("\r\n下載失敗");
+                                continue;
+                            }
                     }
 
                 }
                 progressBar1.PerformStep();
             }
+
+            foreach (string f in folder)
+            {
+                string path = cd + f;
+                textBox1.AppendText(String.Format("\r\n檢查 {0}", path));
+                if (!Directory.Exists(path) & f != "\\files")
+                {
+                    if (f != "\\files\\lang\\kr")
+                    {
+                        textBox1.AppendText(String.Format("\r\n找不到 {0} 目錄", path));
+                        Directory.CreateDirectory(path);
+                        textBox1.AppendText(String.Format("\r\n{0} 建立成功!", path));
+                    }
+                }
+                if (f.Contains("bak"))
+                {
+                    DirectoryInfo di = new DirectoryInfo(path);
+                    di.Refresh();
+                }
+                if (!Directory.Exists(path) & f == "\\files\\lang\\kr")
+                {
+                    textBox1.AppendText("\r\n找不到韓文語言檔案 正在重新下載... 請勿關閉程式");
+                    wc.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip", cd + "\\download\\kr.zip");
+                    SevenZip.SevenZipExtractor Extractor = new SevenZip.SevenZipExtractor(cd + "\\download\\kr.zip");
+                    Extractor.ExtractArchive(cd + "\\files\\lang");
+                    textBox1.AppendText("\r\n下載完成!");
+
+                }
+                if (!Directory.Exists(path) & f == "\\files")
+                {
+                    textBox1.AppendText(String.Format("\r\n找不到 {0} 目錄\r\n程式無法繼續執行...", path));
+                    textBox1.AppendText(String.Format("\r\n程式將會於 5 秒後退出"));
+                    textBox1.AppendText(".");
+                    Thread.Sleep(1000);
+                    textBox1.AppendText(".");
+                    Thread.Sleep(1000);
+                    textBox1.AppendText(".");
+                    Thread.Sleep(1000);
+                    textBox1.AppendText(".");
+                    Thread.Sleep(1000);
+                    textBox1.AppendText(".");
+                    Thread.Sleep(1000);
+                    Application.Exit();
+                }
+                progressBar1.PerformStep();
+            }
+
             textBox1.AppendText("\r\n檢查完成!");
-            this.button1.Enabled = true;
+            timer2.Interval = 500;
+            timer2.Start();
         }
 
         private void CheckEnd()
@@ -144,15 +204,16 @@ namespace LoLToolsX
             ss.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CheckEnd();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
             CheckBegin();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Stop();
+            CheckEnd();
         }
     }
 }
