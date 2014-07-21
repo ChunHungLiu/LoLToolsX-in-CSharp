@@ -33,7 +33,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // progressBar1
@@ -59,10 +58,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // FileCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,7 +81,6 @@
         public System.Windows.Forms.ProgressBar progressBar1;
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
 
     }
 }

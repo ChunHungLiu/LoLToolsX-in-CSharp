@@ -1487,7 +1487,6 @@
             this.Name = "TwTools";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoLToolsX";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TwTools_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.TwTools_Click);
             this.tabPage9.ResumeLayout(false);

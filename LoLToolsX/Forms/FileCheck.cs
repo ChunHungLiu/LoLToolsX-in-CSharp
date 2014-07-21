@@ -15,6 +15,10 @@ namespace LoLToolsX
 {
     public partial class FileCheck : Form
     {
+        private delegate void CheckFinishHandler();
+
+        private event CheckFinishHandler CheckFinish;
+
         WebClient wc = new WebClient();
 
         string cd = Application.StartupPath;
@@ -26,6 +30,7 @@ namespace LoLToolsX
 
         private void FileCheck_Load(object sender, EventArgs e)
         {
+            CheckFinish += new CheckFinishHandler(CheckEnd);
             timer1.Interval = 500;
             timer1.Start();
         }
@@ -164,10 +169,19 @@ namespace LoLToolsX
                 if (!Directory.Exists(path) & f == "\\files\\lang\\kr")
                 {
                     textBox1.AppendText("\r\n找不到韓文語言檔案 正在重新下載... 請勿關閉程式");
-                    wc.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip", cd + "\\download\\kr.zip");
-                    SevenZip.SevenZipExtractor Extractor = new SevenZip.SevenZipExtractor(cd + "\\download\\kr.zip");
-                    Extractor.ExtractArchive(cd + "\\files\\lang");
-                    textBox1.AppendText("\r\n下載完成!");
+                    try
+                    {
+                        wc.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip", cd + "\\download\\kr.zip");
+                        SevenZip.SevenZipExtractor Extractor = new SevenZip.SevenZipExtractor(cd + "\\download\\kr.zip");
+                        Extractor.ExtractArchive(cd + "\\files\\lang");
+                        textBox1.AppendText("\r\n下載完成!");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("韓文語言檔案下載失敗 將關閉韓文語言切換功能");
+                        Thread.Sleep(3000);
+                        continue;
+                    }
 
                 }
                 if (!Directory.Exists(path) & f == "\\files")
@@ -190,15 +204,18 @@ namespace LoLToolsX
             }
 
             textBox1.AppendText("\r\n檢查完成!");
-            timer2.Interval = 500;
-            timer2.Start();
+            CheckFinish();
         }
 
         private void CheckEnd()
         {
             Logger.log(this.textBox1.Text);
-            //this.WindowState = FormWindowState.Minimized;
-            //this.ShowInTaskbar = false;
+
+            //釋放資源
+            timer1 = null;
+            wc = null;
+            cd = null;
+
             this.Hide();
             ServerSelect ss = new ServerSelect();
             ss.Show();
@@ -210,10 +227,5 @@ namespace LoLToolsX
             CheckBegin();
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            timer2.Stop();
-            CheckEnd();
-        }
     }
 }

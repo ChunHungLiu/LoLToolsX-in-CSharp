@@ -159,22 +159,9 @@ namespace LoLToolsX
             {
                 installedSkin.Items.Add(s);
             }
-        }
 
-        private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!Variable.haveUpdate)
-            {
-                this.Hide();
-                Function.UploadLogs();
-                Environment.Exit(Environment.ExitCode);
-            }
-            else
-            {
-                Environment.Exit(Environment.ExitCode);
-            }
+            Variable.curClient = "台服";
         }
-
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -222,42 +209,49 @@ namespace LoLToolsX
         {
             SwitchServer.SwitchServerLoc(installPath, "lols.properties");
             serverLocation.Text = "SEA服";
+            
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLoc(installPath, "loloce.properties");
             serverLocation.Text = "大洋洲服";
+            
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLoc(installPath, "loln.properties");
             serverLocation.Text = "美服";
+            
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLoc(installPath, "lole.properties");
             serverLocation.Text = "EUW服";
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLoc(installPath, "lolp.properties");
             serverLocation.Text = "PBE服";
+            
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLoc(installPath, "lolk.properties");
             serverLocation.Text = "韓服";
+            
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLoc(installPath, "loleune.properties");
             serverLocation.Text = "EUNE服";
+            
         }
 
         private void backProp_Click(object sender, EventArgs e)
@@ -310,7 +304,7 @@ namespace LoLToolsX
                 
                 
             }
-            
+            this.Dispose();
         }
 
         private void lChin_Click(object sender, EventArgs e)

@@ -1375,7 +1375,6 @@
             this.Name = "NaTools";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoLToolsX";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NaTools_FormClosing);
             this.Load += new System.EventHandler(this.NaTools_Load);
             this.Click += new System.EventHandler(this.NaTools_Click);
             this.tabPage2.ResumeLayout(false);

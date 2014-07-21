@@ -38,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -81,96 +82,104 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BakRes.cs" />
-    <Compile Include="CFGFile.cs" />
-    <Compile Include="ChatEdit.cs">
+    <Compile Include="Functions\BakRes.cs" />
+    <Compile Include="Functions\CFGFile.cs" />
+    <Compile Include="Forms\ChatEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChatEdit.Designer.cs">
+    <Compile Include="Forms\ChatEdit.Designer.cs">
       <DependentUpon>ChatEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckProp.cs" />
-    <Compile Include="CheckUpdate.cs" />
-    <Compile Include="CrushForm.cs">
+    <Compile Include="Functions\CheckProp.cs" />
+    <Compile Include="Functions\Update\CheckUpdate.cs" />
+    <Compile Include="Forms\CrushForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrushForm.Designer.cs">
+    <Compile Include="Forms\CrushForm.Designer.cs">
       <DependentUpon>CrushForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Edit.cs" />
-    <Compile Include="FileCheck.cs">
+    <Compile Include="Functions\Edit.cs" />
+    <Compile Include="Forms\FileCheck.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FileCheck.Designer.cs">
+    <Compile Include="Forms\FileCheck.Designer.cs">
       <DependentUpon>FileCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Function.cs" />
-    <Compile Include="Install.cs" />
-    <Compile Include="LobbyUI.cs">
+    <Compile Include="Functions\Function.cs" />
+    <Compile Include="Functions\Install.cs" />
+    <Compile Include="Forms\LobbyUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LobbyUI.Designer.cs">
+    <Compile Include="Forms\LobbyUI.Designer.cs">
       <DependentUpon>LobbyUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logger.cs" />
-    <Compile Include="My.cs" />
-    <Compile Include="NaTools.cs">
+    <Compile Include="Functions\Logger.cs" />
+    <Compile Include="Forms\NaTools.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NaTools.Designer.cs">
+    <Compile Include="Forms\NaTools.Designer.cs">
       <DependentUpon>NaTools.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServerSelect.cs">
+    <Compile Include="Forms\ServerSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServerSelect.Designer.cs">
+    <Compile Include="Forms\ServerSelect.Designer.cs">
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="StartGame.cs" />
-    <Compile Include="StatusCheck.cs" />
-    <Compile Include="Switch.cs" />
-    <Compile Include="TwTools.cs">
+    <Compile Include="Functions\StartGame.cs" />
+    <Compile Include="Functions\StatusCheck.cs" />
+    <Compile Include="Functions\Switch.cs" />
+    <Compile Include="Forms\TwTools.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TwTools.Designer.cs">
+    <Compile Include="Forms\TwTools.Designer.cs">
       <DependentUpon>TwTools.cs</DependentUpon>
     </Compile>
-    <Compile Include="GetReg.cs" />
+    <Compile Include="Functions\GetReg.cs" />
+    <Compile Include="Functions\Update\UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions\Update\UpdateForm.Designer.cs">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Variable.cs" />
-    <Compile Include="VerSelect.cs">
+    <Compile Include="Forms\VerSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerSelect.Designer.cs">
+    <Compile Include="Forms\VerSelect.Designer.cs">
       <DependentUpon>VerSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wait.cs">
+    <Compile Include="Forms\Wait.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wait.Designer.cs">
+    <Compile Include="Forms\Wait.Designer.cs">
       <DependentUpon>Wait.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ChatEdit.resx">
+    <EmbeddedResource Include="Forms\ChatEdit.resx">
       <DependentUpon>ChatEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrushForm.resx">
+    <EmbeddedResource Include="Forms\CrushForm.resx">
       <DependentUpon>CrushForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileCheck.resx">
+    <EmbeddedResource Include="Forms\FileCheck.resx">
       <DependentUpon>FileCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LobbyUI.resx">
+    <EmbeddedResource Include="Forms\LobbyUI.resx">
       <DependentUpon>LobbyUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NaTools.resx">
+    <EmbeddedResource Include="Forms\NaTools.resx">
       <DependentUpon>NaTools.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServerSelect.resx">
+    <EmbeddedResource Include="Forms\ServerSelect.resx">
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TwTools.resx">
+    <EmbeddedResource Include="Forms\TwTools.resx">
       <DependentUpon>TwTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions\Update\UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,10 +191,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="VerSelect.resx">
+    <EmbeddedResource Include="Forms\VerSelect.resx">
       <DependentUpon>VerSelect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wait.resx">
+    <EmbeddedResource Include="Forms\Wait.resx">
       <DependentUpon>Wait.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />

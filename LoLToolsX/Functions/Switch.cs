@@ -184,14 +184,20 @@ namespace LoLToolsX
             try
             {
                 fi.CopyTo(propPath, true);
-                MessageBox.Show("伺服器切換成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Logger.log("伺服器切換成功: " + targetLoc, Logger.LogType.Info);
+                if (Variable.editpropMessageBox)
+                {
+                    MessageBox.Show("伺服器切換成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("伺服器切換成功: " + targetLoc, Logger.LogType.Info);
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show("伺服器切換失敗 \n\r 錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.log("伺服器切換失敗", Logger.LogType.Error);
-                Logger.log(e, Logger.LogType.Error);
+                if (Variable.editpropMessageBox)
+                {
+                    MessageBox.Show("伺服器切換失敗 \n\r 錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("伺服器切換失敗", Logger.LogType.Error);
+                    Logger.log(e, Logger.LogType.Error);
+                }
             }
         }
         public static void SwitchServerLocNa(string installPath, string targetLoc)
@@ -202,14 +208,20 @@ namespace LoLToolsX
             try
             {
                 fi.CopyTo(propPath, true);
-                MessageBox.Show("伺服器切換成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Logger.log("伺服器切換成功: " + targetLoc, Logger.LogType.Info);
+                if (Variable.editpropMessageBox)
+                {
+                    MessageBox.Show("伺服器切換成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("伺服器切換成功: " + targetLoc, Logger.LogType.Info);
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show("伺服器切換失敗 \n\r 錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.log("伺服器切換失敗", Logger.LogType.Error);
-                Logger.log(e, Logger.LogType.Error);
+                if (Variable.editpropMessageBox)
+                {
+                    MessageBox.Show("伺服器切換失敗 \n\r 錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("伺服器切換失敗", Logger.LogType.Error);
+                    Logger.log(e, Logger.LogType.Error);
+                }
             }
         }
     }

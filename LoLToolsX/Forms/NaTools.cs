@@ -29,6 +29,8 @@ namespace LoLToolsX
 
         private void NaTools_Load(object sender, EventArgs e)
         {
+            Variable.airPath = airPath;
+
             if (!Variable.allowBakRes)
             {
                 button24.Enabled = false;
@@ -101,22 +103,10 @@ namespace LoLToolsX
             cp = null;
 
             Variable.v_installPath = installPath;
+            Variable.curClient = "美服";
         }
 
-        private void NaTools_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!Variable.haveUpdate)
-            {
-                this.Hide();
-                Function.UploadLogs();
-                Environment.Exit(Environment.ExitCode);
-            }
-            else
-            {
-                Environment.Exit(Environment.ExitCode);
-            }
-        }
-
+            
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Logger.log("開啟NitroXenon的BLOG...", Logger.LogType.Info);
@@ -127,12 +117,14 @@ namespace LoLToolsX
         {
             SwitchServer.SwitchServerLocNa(airPath, "lolt.properties");
             serverLocation.Text = "台服";
+            
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLocNa(airPath, "lols.properties");
             serverLocation.Text = "SEA服";
+            
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -145,30 +137,35 @@ namespace LoLToolsX
         {
             SwitchServer.SwitchServerLocNa(airPath, "loln.properties");
             serverLocation.Text = "美服";
+            
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLocNa(airPath, "lole.properties");
             serverLocation.Text = "EUW服";
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLocNa(airPath, "lolp.properties");
             serverLocation.Text = "PBE服";
+            
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLocNa(airPath, "lolk.properties");
             serverLocation.Text = "韓服";
+            
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
             SwitchServer.SwitchServerLocNa(airPath, "loleune.properties");
             serverLocation.Text = "EUNE服";
+            
         }
 
         private void backProp_Click(object sender, EventArgs e)
@@ -238,6 +235,7 @@ namespace LoLToolsX
 
 
             }
+            this.Dispose();
         }
 
         private void lChin_Click(object sender, EventArgs e)

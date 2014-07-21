@@ -7,17 +7,26 @@ namespace LoLToolsX
 {
     struct Variable
     {
-        //Path
+        #region 字串
+
         public static string v_installPath;
         public static string propPath;
         public static string hudPath;
         public static string n_installPath;
+        public static string airPath;   //美服Air路徑
+        public static string curClient;
 
-        //Na Ver
+        #endregion
+
+        #region 版本
+
         public static string airVer = "";
         public static string gameVer = "";
 
-        //bool
+        #endregion
+
+        #region 布林值
+
         public static bool debug = false;
         public static bool haveUpdate = false;
         public static bool switchingSound = false;
@@ -25,8 +34,62 @@ namespace LoLToolsX
         public static bool InstallSkinDone = false;
         public static bool allowBakRes = true;
         public static bool allowUpdate = true;
+        public static bool editpropMessageBox = true;
+
+        #endregion
+
+        #region 物件
 
         public static CFGFile lolConfig = new CFGFile(v_installPath);
 
+        #endregion
+
+        #region 伺服器名稱 ---> lol.properties檔案名稱
+        /*
+        
+
+        private static string _curLoc;
+
+        public static string curLoc
+        {
+            get
+            {
+                switch (_curLoc)
+                {
+                    case "台服":
+                        _curLoc = "lolt.properties";
+                        break;
+                    case "美服" :
+                        _curLoc = "loln.properties";
+                        break;
+                    case "SEA服":
+                        _curLoc = "lols.properties";
+                        break;
+                    case "大洋洲服":
+                        _curLoc = "loloce.properties";
+                        break;
+                    case "韓服":
+                        _curLoc = "lolk.properties";
+                        break;
+                    case "EUW服":
+                        _curLoc = "lole.properties";
+                        break;
+                    case "EUNE服":
+                        _curLoc = "loleune.properties";
+                        break;
+                    case "PBE服":
+                        _curLoc = "lolp.properties";
+                        break;
+                }
+                return _curLoc;
+            }
+            set
+            {
+                _curLoc = value;
+            }
+        }
+
+         */
+        #endregion
     }
 }

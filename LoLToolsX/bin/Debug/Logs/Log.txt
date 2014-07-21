@@ -1,6 +1,6 @@
 ﻿============================== LoLToolsX Log File ==============================
-07/19/2014 18:58:14信息: LoLToolsX 啟動路徑 : K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
-07/19/2014 18:58:15信息: 檔案檢查開始!
+07/21/2014 08:56:17信息: LoLToolsX 啟動路徑 : K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
+07/21/2014 08:56:17信息: 檔案檢查開始!
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\config.ini
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Skin.txt
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLBakRes.exe
