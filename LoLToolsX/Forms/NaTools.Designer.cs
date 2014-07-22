@@ -90,6 +90,10 @@
             this.Label4 = new System.Windows.Forms.Label();
             this.toolsVersion = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button31 = new System.Windows.Forms.Button();
+            this.Button16 = new System.Windows.Forms.Button();
+            this.Button17 = new System.Windows.Forms.Button();
+            this.Button18 = new System.Windows.Forms.Button();
             this.Label15 = new System.Windows.Forms.Label();
             this.LinkLabel3 = new System.Windows.Forms.LinkLabel();
             this.Button15 = new System.Windows.Forms.Button();
@@ -139,10 +143,6 @@
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.button31 = new System.Windows.Forms.Button();
-            this.Button16 = new System.Windows.Forms.Button();
-            this.Button17 = new System.Windows.Forms.Button();
-            this.Button18 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -813,6 +813,46 @@
             this.tabPage5.Text = "大廳網頁修改";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // button31
+            // 
+            this.button31.Location = new System.Drawing.Point(662, 254);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(114, 46);
+            this.button31.TabIndex = 46;
+            this.button31.Text = "恢復預設首頁";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // Button16
+            // 
+            this.Button16.Location = new System.Drawing.Point(662, 182);
+            this.Button16.Name = "Button16";
+            this.Button16.Size = new System.Drawing.Size(114, 46);
+            this.Button16.TabIndex = 45;
+            this.Button16.Text = "刪除已備份設定檔";
+            this.Button16.UseVisualStyleBackColor = true;
+            this.Button16.Click += new System.EventHandler(this.Button16_Click_1);
+            // 
+            // Button17
+            // 
+            this.Button17.Location = new System.Drawing.Point(662, 38);
+            this.Button17.Name = "Button17";
+            this.Button17.Size = new System.Drawing.Size(114, 46);
+            this.Button17.TabIndex = 43;
+            this.Button17.Text = "備份設定檔";
+            this.Button17.UseVisualStyleBackColor = true;
+            this.Button17.Click += new System.EventHandler(this.Button17_Click_1);
+            // 
+            // Button18
+            // 
+            this.Button18.Location = new System.Drawing.Point(662, 110);
+            this.Button18.Name = "Button18";
+            this.Button18.Size = new System.Drawing.Size(114, 46);
+            this.Button18.TabIndex = 44;
+            this.Button18.Text = "還原設定檔";
+            this.Button18.UseVisualStyleBackColor = true;
+            this.Button18.Click += new System.EventHandler(this.Button18_Click_1);
+            // 
             // Label15
             // 
             this.Label15.AutoSize = true;
@@ -1320,46 +1360,6 @@
             this.notifyIcon2.Text = "notifyIcon2";
             this.notifyIcon2.Visible = true;
             // 
-            // button31
-            // 
-            this.button31.Location = new System.Drawing.Point(662, 254);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(114, 46);
-            this.button31.TabIndex = 46;
-            this.button31.Text = "恢復預設首頁";
-            this.button31.UseVisualStyleBackColor = true;
-            this.button31.Click += new System.EventHandler(this.button31_Click);
-            // 
-            // Button16
-            // 
-            this.Button16.Location = new System.Drawing.Point(662, 182);
-            this.Button16.Name = "Button16";
-            this.Button16.Size = new System.Drawing.Size(114, 46);
-            this.Button16.TabIndex = 45;
-            this.Button16.Text = "刪除已備份設定檔";
-            this.Button16.UseVisualStyleBackColor = true;
-            this.Button16.Click += new System.EventHandler(this.Button16_Click_1);
-            // 
-            // Button17
-            // 
-            this.Button17.Location = new System.Drawing.Point(662, 38);
-            this.Button17.Name = "Button17";
-            this.Button17.Size = new System.Drawing.Size(114, 46);
-            this.Button17.TabIndex = 43;
-            this.Button17.Text = "備份設定檔";
-            this.Button17.UseVisualStyleBackColor = true;
-            this.Button17.Click += new System.EventHandler(this.Button17_Click_1);
-            // 
-            // Button18
-            // 
-            this.Button18.Location = new System.Drawing.Point(662, 110);
-            this.Button18.Name = "Button18";
-            this.Button18.Size = new System.Drawing.Size(114, 46);
-            this.Button18.TabIndex = 44;
-            this.Button18.Text = "還原設定檔";
-            this.Button18.UseVisualStyleBackColor = true;
-            this.Button18.Click += new System.EventHandler(this.Button18_Click_1);
-            // 
             // NaTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1375,6 +1375,7 @@
             this.Name = "NaTools";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoLToolsX";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NaTools_FormClosing);
             this.Load += new System.EventHandler(this.NaTools_Load);
             this.Click += new System.EventHandler(this.NaTools_Click);
             this.tabPage2.ResumeLayout(false);

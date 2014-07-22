@@ -73,6 +73,7 @@
             this.Label17 = new System.Windows.Forms.Label();
             this.chooseHUD = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button31 = new System.Windows.Forms.Button();
             this.Label15 = new System.Windows.Forms.Label();
             this.LinkLabel3 = new System.Windows.Forms.LinkLabel();
             this.Button16 = new System.Windows.Forms.Button();
@@ -153,7 +154,7 @@
             this.button27 = new System.Windows.Forms.Button();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
-            this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -617,6 +618,16 @@
             this.tabPage5.Text = "大廳網頁修改";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // button31
+            // 
+            this.button31.Location = new System.Drawing.Point(662, 250);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(114, 46);
+            this.button31.TabIndex = 42;
+            this.button31.Text = "恢復預設首頁";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
             // Label15
             // 
             this.Label15.AutoSize = true;
@@ -872,6 +883,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button32);
             this.tabPage3.Controls.Add(this.delLangBak);
             this.tabPage3.Controls.Add(this.GroupBox2);
             this.tabPage3.Controls.Add(this.GroupBox1);
@@ -888,7 +900,7 @@
             // 
             // delLangBak
             // 
-            this.delLangBak.Location = new System.Drawing.Point(661, 228);
+            this.delLangBak.Location = new System.Drawing.Point(670, 191);
             this.delLangBak.Name = "delLangBak";
             this.delLangBak.Size = new System.Drawing.Size(114, 46);
             this.delLangBak.TabIndex = 2;
@@ -982,7 +994,7 @@
             // 
             // BakLang
             // 
-            this.BakLang.Location = new System.Drawing.Point(661, 77);
+            this.BakLang.Location = new System.Drawing.Point(670, 40);
             this.BakLang.Name = "BakLang";
             this.BakLang.Size = new System.Drawing.Size(114, 46);
             this.BakLang.TabIndex = 0;
@@ -992,7 +1004,7 @@
             // 
             // ResLang
             // 
-            this.ResLang.Location = new System.Drawing.Point(661, 151);
+            this.ResLang.Location = new System.Drawing.Point(670, 114);
             this.ResLang.Name = "ResLang";
             this.ResLang.Size = new System.Drawing.Size(114, 46);
             this.ResLang.TabIndex = 1;
@@ -1463,15 +1475,15 @@
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
             // 
-            // button31
+            // button32
             // 
-            this.button31.Location = new System.Drawing.Point(662, 250);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(114, 46);
-            this.button31.TabIndex = 42;
-            this.button31.Text = "恢復預設首頁";
-            this.button31.UseVisualStyleBackColor = true;
-            this.button31.Click += new System.EventHandler(this.button31_Click);
+            this.button32.Location = new System.Drawing.Point(670, 260);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(114, 46);
+            this.button32.TabIndex = 32;
+            this.button32.Text = "檢查語言檔更新";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
             // 
             // TwTools
             // 
@@ -1487,6 +1499,7 @@
             this.Name = "TwTools";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoLToolsX";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TwTools_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.TwTools_Click);
             this.tabPage9.ResumeLayout(false);
@@ -1644,6 +1657,7 @@
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label label20;
         internal System.Windows.Forms.Button button31;
+        internal System.Windows.Forms.Button button32;
     }
 }
 

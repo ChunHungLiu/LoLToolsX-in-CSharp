@@ -171,10 +171,12 @@ namespace LoLToolsX
                     textBox1.AppendText("\r\n找不到韓文語言檔案 正在重新下載... 請勿關閉程式");
                     try
                     {
+                        //wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
+                        //wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadFileCompleted);
+                        //wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip"),cd + "\\download\\kr.zip");
+
                         wc.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip", cd + "\\download\\kr.zip");
-                        SevenZip.SevenZipExtractor Extractor = new SevenZip.SevenZipExtractor(cd + "\\download\\kr.zip");
-                        Extractor.ExtractArchive(cd + "\\files\\lang");
-                        textBox1.AppendText("\r\n下載完成!");
+                       
                     }
                     catch
                     {
@@ -226,6 +228,22 @@ namespace LoLToolsX
             timer1.Stop();
             CheckBegin();
         }
+        /*
+        private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            double bytesIn = double.Parse(e.BytesReceived.ToString());
+            double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+            double percentage = bytesIn / totalBytes * 100;
 
+            int value = int.Parse(Math.Truncate(percentage).ToString()); 
+            textBox1.AppendText("\r\n" + value.ToString());
+        }
+        private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            SevenZip.SevenZipExtractor Extractor = new SevenZip.SevenZipExtractor(cd + "\\download\\kr.zip");
+            Extractor.ExtractArchive(cd + "\\files\\lang");
+            textBox1.AppendText("\r\n下載完成!");
+        }
+         */
     }
 }

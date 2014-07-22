@@ -788,6 +788,17 @@ namespace LoLToolsX
             pe.LobbyLanding();
         }
 
+        private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            LoLToolsX.Forms.CheckLangUpdate check = new Forms.CheckLangUpdate();
+            check.ShowDialog();
+        }
+
     }
 }
 

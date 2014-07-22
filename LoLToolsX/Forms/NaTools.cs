@@ -365,5 +365,10 @@ namespace LoLToolsX
             PropEdit pe = new PropEdit(airPath, "http://landing.leagueoflegends.com/spectator_swf/landingPage.swf", 2);
             pe.LobbyLanding();
         }
+
+        private void NaTools_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
     }
 }

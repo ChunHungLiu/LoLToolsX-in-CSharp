@@ -53,7 +53,7 @@
             this.button1.Location = new System.Drawing.Point(36, 332);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 51);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 0;
             this.button1.Text = "發送錯誤報告";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -72,7 +72,7 @@
             this.button2.Location = new System.Drawing.Point(176, 332);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 51);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 1;
             this.button2.Text = "BUG回報";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -82,7 +82,7 @@
             this.button3.Location = new System.Drawing.Point(316, 332);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 51);
-            this.button3.TabIndex = 4;
+            this.button3.TabIndex = 2;
             this.button3.Text = "作者網站";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -92,7 +92,7 @@
             this.button4.Location = new System.Drawing.Point(455, 332);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(112, 51);
-            this.button4.TabIndex = 5;
+            this.button4.TabIndex = 3;
             this.button4.Text = "忽略錯誤";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
