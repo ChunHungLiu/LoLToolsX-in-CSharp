@@ -39,6 +39,10 @@ namespace LoLToolsX
                 }
                 File.Create(Application.StartupPath + @"\Logs\Log.txt");
             }
+            if (!File.Exists(Application.StartupPath + "\\config.ini"))
+            { 
+                File.Create(Application.StartupPath + "\\config.ini");
+            }
         }
 
         private void selectNA_Click(object sender, EventArgs e)
@@ -46,6 +50,11 @@ namespace LoLToolsX
             VerSelect vs = new VerSelect();
             vs.Show();
             this.Dispose();
+        }
+
+        private void ServerSelect_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
         }
     }
 }

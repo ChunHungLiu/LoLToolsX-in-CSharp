@@ -172,7 +172,6 @@ namespace LoLToolsX
     /// <summary>
     /// 伺服器切換
     /// </summary>
-
     class SwitchServer
     {
 
@@ -230,8 +229,6 @@ namespace LoLToolsX
     /// <summary>
     /// 語音切換
     /// </summary>
-
-
     class SwitchSound
     {
         string installPath;
@@ -285,31 +282,153 @@ namespace LoLToolsX
         //遊戲語音切換
         public void SwitchGame()
         {
+
             if (!soundPath.Contains("Sound"))
             {
                 MessageBox.Show("請選擇正確的Sound資料夾", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("語音切換: Sound 資料夾選擇錯誤", Logger.LogType.Error);
                 return;
             }
-            //KR
-            try
-            {
-                Variable.switchingSound = true;
-                tt.installL2.Text = "安裝進行中...";
-                tt.pbGame.Value = 0;
-                File.Copy(soundPath + @"\VOBank_ko_KR.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
-                tt.pbGame.Value = 35;
-                File.Copy(soundPath + @"\VOBank_ko_KR.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", true);
-                File.Copy(soundPath + @"\VOBank_ko_KR.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", true);
-                tt.pbGame.Value = 65;
-                File.Copy(soundPath + @"\VOBank_ko_KR.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", true);
+                string[] fsbFile = { "\\VOBank_zh_TW.fsb", 
+                                       "\\VOBank_zh_CN.fsb", 
+                                       "\\VOBank_en_US.fsb", 
+                                       "\\VOBank_ko_KR.fsb", 
+                                       };
+                string[] fevFile = {
+                                     "\\LoL_Audio_zh_TW.fev", 
+                                       "\\LoL_Audio_zh_CN.fev", 
+                                       "\\LoL_Audio_en_US.fev", 
+                                       "\\LoL_Audio_ko_KR.fev" 
+                                   };
+                
+                #region FSB
+                foreach (string s in fsbFile)
+                {
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s, installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s, installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s, installPath + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s, installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
+                    }
+                    catch
+                    { }
+                }
+                
+                #endregion 
+
+                #region FEV
+
+                foreach (string s2 in fevFile)
+                {
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s2, installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_zh_TW.fev", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s2, installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_zh_CN.fev", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s2, installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_ko_KR.fev", true);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        Variable.switchingSound = true;
+                        tt.installL2.Text = "安裝進行中...";
+                        tt.pbGame.Value += 5;
+                        File.Copy(soundPath + s2, installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_en_US.fev", true);
+                    }
+                    catch
+                    { }
+                }
+                #endregion
+
+                if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
+                {
+                    Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR");
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR", true);
+                }
+                catch { }
+                if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
+                {
+                    Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+                }
+                catch { }
+                if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
+                {
+                    Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
+                }
+                catch { }
+                if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
+                {
+                    Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN");
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN", true);
+                }
+                catch { }
                 tt.pbGame.Value = 100;
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tt.pbGame.Value = 0;
-                Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
+                Logger.log("語音安裝成功!", Logger.LogType.Info);
                 tt.installL2.Text = "";
-                Variable.switchingSound = false;
-            }
+            
             /*
         catch (System.IO.FileNotFoundException)
         {
@@ -317,26 +436,30 @@ namespace LoLToolsX
             MessageBox.Show("安裝失敗\r\n找不到語音檔案 " , "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
              */
-            catch (Exception e)
-            {
-                Logger.log(e, Logger.LogType.Exception);
-            }
-
-
+            /*
             try
             {
                 Variable.switchingSound = true;
+                tt.installL2.Text = "安裝進行中...";
                 tt.pbGame.Value = 0;
                 File.Copy(soundPath + @"\VOBank_zh_TW.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
-                tt.pbGame.Value = 35;
+                tt.pbGame.Value = 10;
                 File.Copy(soundPath + @"\VOBank_zh_TW.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", true);
+                tt.pbGame.Value = 20;
                 File.Copy(soundPath + @"\VOBank_zh_TW.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", true);
-                tt.pbGame.Value = 65;
+                tt.pbGame.Value = 30;
                 File.Copy(soundPath + @"\VOBank_zh_TW.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", true);
-                tt.pbGame.Value = 100;
-                MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tt.pbGame.Value = 0;
-                Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
+                tt.pbGame.Value = 40;
+                File.Copy(soundPath + @"\LoL_Audio_zh_TW.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_ko_KR.fev", true);
+                tt.pbGame.Value = 50;
+                File.Copy(soundPath + @"\LoL_Audio_zh_TW.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_zh_TW.fev", true);
+                tt.pbGame.Value = 60;
+                File.Copy(soundPath + @"\LoL_Audio_zh_TW.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_zh_CN.fev", true);
+                tt.pbGame.Value = 70;
+                File.Copy(soundPath + @"\LoL_Audio_zh_TW.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_en_US.fev", true);
+                tt.pbGame.Value = 80;
+             */
+
                 Variable.switchingSound = false;
             }
             /*
@@ -345,7 +468,7 @@ namespace LoLToolsX
                 tt.pbGame.Value = 0;
                 MessageBox.Show("安裝失敗\r\n找不到語音檔案 ", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-             */
+             
             catch (Exception e2)
             {
                 Logger.log(e2, Logger.LogType.Exception);
@@ -354,17 +477,49 @@ namespace LoLToolsX
             try
             {
                 Variable.switchingSound = true;
+                tt.installL2.Text = "安裝進行中...";
                 tt.pbGame.Value = 0;
                 File.Copy(soundPath + @"\VOBank_zh_CN.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_ko_KR.fsb", true);
-                tt.pbGame.Value = 35;
+                tt.pbGame.Value = 10;
                 File.Copy(soundPath + @"\VOBank_zh_CN.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_TW.fsb", true);
+                tt.pbGame.Value = 20;
                 File.Copy(soundPath + @"\VOBank_zh_CN.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_zh_CN.fsb", true);
-                tt.pbGame.Value = 65;
+                tt.pbGame.Value = 30;
                 File.Copy(soundPath + @"\VOBank_zh_CN.fsb", installPath + @"\Game\DATA\Sounds\FMOD\VOBank_en_US.fsb", true);
+                tt.pbGame.Value = 40;
+                File.Copy(soundPath + @"\LoL_Audio_zh_CN.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_ko_KR.fev", true);
+                tt.pbGame.Value = 50;
+                File.Copy(soundPath + @"\LoL_Audio_zh_CN.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_zh_TW.fev", true);
+                tt.pbGame.Value = 60;
+                File.Copy(soundPath + @"\LoL_Audio_zh_CN.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_zh_CN.fev", true);
+                tt.pbGame.Value = 70;
+                File.Copy(soundPath + @"\LoL_Audio_zh_CN.fev", installPath + @"\Game\DATA\Sounds\FMOD\LoL_Audio_en_US.fev", true);
+                tt.pbGame.Value = 80;
+                if (!Directory.Exists(installPath + @"Game\DATA\Sounds\Wwise\VO\ko_KR"))
+                {
+                    Directory.CreateDirectory(installPath + @"Game\DATA\Sounds\Wwise\VO\ko_KR");
+                }
+                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"Game\DATA\Sounds\Wwise\VO\ko_KR", true);
+                if (!Directory.Exists(installPath + @"Game\DATA\Sounds\Wwise\VO\zh_TW"))
+                {
+                    Directory.CreateDirectory(installPath + @"Game\DATA\Sounds\Wwise\VO\zh_TW");
+                }
+                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+                if (!Directory.Exists(installPath + @"Game\DATA\Sounds\Wwise\VO\en_US"))
+                {
+                    Directory.CreateDirectory(installPath + @"Game\DATA\Sounds\Wwise\VO\en_US");
+                }
+                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"Game\DATA\Sounds\Wwise\VO\en_US", true);
+                if (!Directory.Exists(installPath + @"Game\DATA\Sounds\Wwise\VO\zh_CN"))
+                {
+                    Directory.CreateDirectory(installPath + @"Game\DATA\Sounds\Wwise\VO\zh_CN");
+                }
+                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"Game\DATA\Sounds\Wwise\VO\zh_CN", true);
                 tt.pbGame.Value = 100;
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tt.pbGame.Value = 0;
-                Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
+                Logger.log("語音安裝成功!", Logger.LogType.Info);
+                tt.installL2.Text = "";
                 Variable.switchingSound = false;
             }
             /*
@@ -373,15 +528,12 @@ namespace LoLToolsX
             tt.pbGame.Value = 0;
             MessageBox.Show("安裝失敗\r\n找不到語音檔案 ", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-             */
+             
             catch (Exception e3)
             {
                 Logger.log(e3, Logger.LogType.Exception);
             }
-
-            Variable.switchingSound = false;
-        }
-
+            */
     }
 
 }

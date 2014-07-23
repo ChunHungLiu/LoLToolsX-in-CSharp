@@ -90,8 +90,7 @@ namespace LoLToolsX
             //在綫統計使用人數
             try
             {
-                WebBrowser1.Navigate("http://lolnx.pixub.com/loltoolsx/stat.html");
-                Logger.log("使用人數統計: http://lolnx.pixub.com/loltoolsx/stat.html ", Logger.LogType.Info);
+                WebBrowser1.Navigate("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/stat.html");
             }
             catch (Exception e2)
             {
@@ -110,7 +109,7 @@ namespace LoLToolsX
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Logger.log("開啟NitroXenon的BLOG...", Logger.LogType.Info);
-            Process.Start("http://lolnx.pixub.com");
+            Process.Start("http://lolnx.netai.net");
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -270,7 +269,7 @@ namespace LoLToolsX
 
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://lolnx.pixub.com/lol-tools-tw/lol-lobby-theme/");
+            Process.Start("http://lolnx.netai.net/lol-tools-tw/lol-lobby-theme/");
         }
 
         private void checkServerStatus_Click(object sender, EventArgs e)

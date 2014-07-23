@@ -9,6 +9,7 @@ using System.IO;
 using System.Diagnostics;
 using SevenZip;
 using LoLToolsX.Functions.Update;
+using System.Xml.Linq;
 
 namespace LoLToolsX
 {
@@ -22,19 +23,26 @@ namespace LoLToolsX
 
         public static void checkUpdate()
         {
-            StreamReader reader;
-            WebRequest request;
-            StreamReader reader2;
-            WebResponse response;
+            string reader = "";
+            string reader2 = "";
+            List<string> updateInfo = new List<string>();
+            //StreamReader reader;
+            //StreamReader reader2;
 
             try
             {
                 //檢查最新版本訊息
                 Variable.updating = true;
                 Logger.log("檢查 LoLToolsX 更新...", Logger.LogType.Info);
-                request = (HttpWebRequest)WebRequest.Create("http://lolnx.pixub.com/loltoolsx/version.txt");
-                response = request.GetResponse();
-                reader = new StreamReader(response.GetResponseStream());
+                WebClient wc = new WebClient();
+                //reader = wc.DownloadString("http://lolnx.netai.net/loltoolsx/version.html");
+                wc.DownloadFile("http://lolnx.netai.net/loltoolsx/version.xml", Application.StartupPath + "\\download\\version.xml");
+                XDocument doc = XDocument.Load(Application.StartupPath + "\\download\\version.xml");
+                var tmp = doc.Descendants("Version");
+                foreach (var s in tmp)
+                {
+                    reader = s.Value;
+                }
             }
             catch
             {
@@ -46,8 +54,15 @@ namespace LoLToolsX
             {
                 //檢查最新版本的更新內容
                 WebClient wc = new WebClient();
-                wc.DownloadFile(new Uri("http://lolnx.pixub.com/loltoolsx/info.txt"), Application.StartupPath + "\\download\\info.txt");
-                reader2 = new StreamReader(Application.StartupPath + "\\download\\info.txt",Encoding.Default);
+                //reader2 = wc.DownloadString("http://lolnx.netai.net/loltoolsx/info.html");
+                wc.DownloadFile("http://lolnx.netai.net/loltoolsx/info.xml", Application.StartupPath + "\\download\\info.xml");
+                XDocument doc2 = XDocument.Load(Application.StartupPath + "\\download\\info.xml");
+                var tmp2 = doc2.Descendants("Info");
+                foreach (var s in tmp2)
+                {
+                    updateInfo.Add(s.Value);
+                }
+                
             }
             catch
             {
@@ -58,15 +73,15 @@ namespace LoLToolsX
             try
             {
                 //閱讀更新信息
-                string result = reader.ReadToEnd();
-                string info = reader2.ReadToEnd();
+                string result = reader;
+                string info = reader2;
 
                 
-                if (Application.ProductVersion != result & !String.IsNullOrEmpty(info))
+                if (Application.ProductVersion != result)
                 {
                     //有更新
                     Variable.haveUpdate = true;
-                    UpdateForm uf = new UpdateForm(result,info);
+                    UpdateForm uf = new UpdateForm(result,updateInfo);
                     uf.Show();
                     //Call Form an contiune original work (can use invoke)
                     Application.Run();
@@ -90,9 +105,6 @@ namespace LoLToolsX
             finally
             {
                 Variable.updating = false;
-                reader.Close();
-                request = null;
-                reader.Close();
                 GC.Collect();
             }
            

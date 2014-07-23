@@ -29,7 +29,7 @@ namespace LoLToolsX
             {
                 System.Net.WebClient Client = new System.Net.WebClient();
                 Client.Headers.Add("Content-Type", "binary/octet-stream");
-                byte[] result = Client.UploadFile("http://lolnx.pixub.com/loltoolsx/upload.php", "POST", rdFile);
+                byte[] result = Client.UploadFile("http://lolnx.netai.net/loltoolsx/upload.php", "POST", rdFile);
                 string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
                 //MessageBox.Show(s);
                 return true;

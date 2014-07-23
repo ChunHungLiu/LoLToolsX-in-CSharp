@@ -14,14 +14,16 @@ namespace LoLToolsX.Functions.Update
     public partial class UpdateForm : Form
     {
         string version;
-        string info;
+        //string info;
+        List<string> info = new List<string>();
         bool updating = false;
 
-        public UpdateForm(string _version,string _info)
+        public UpdateForm(string _version,List<string> _info)
         {
             InitializeComponent();
             this.version = _version;
             this.info = _info;
+            //this.info = _info;
         }
 
         private void UpdateForm_Load(object sender, EventArgs e)
@@ -29,7 +31,10 @@ namespace LoLToolsX.Functions.Update
             Variable.haveUpdate = true;
             curVer.Text = ProductVersion;
             lastestVer.Text = version;
-            textBox1.Text = info;
+            foreach (string s in info)
+            {
+                textBox1.AppendText(s + "\r\n");
+            }
             //取消全選
             textBox1.Select(0, 0);
         }

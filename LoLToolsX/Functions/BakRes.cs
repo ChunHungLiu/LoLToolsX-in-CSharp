@@ -21,6 +21,26 @@ namespace LoLToolsX
         public BakRes(string installPath)  //Constructor
         {
             installPath_m = installPath;
+            if (!Directory.Exists(Application.StartupPath + @"\bak\sound\FMOD\"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + @"\bak\sound\FMOD\");
+            }
+            if (!Directory.Exists(Application.StartupPath + Application.StartupPath + "\\bak\\sound\\zh_TW"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\zh_TW");
+            }
+            if (!Directory.Exists(Application.StartupPath + "\\bak\\sound\\zh_CN"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\zh_CN");
+            }
+            if (!Directory.Exists(Application.StartupPath + "\\bak\\sound\\en_US"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\en_US");
+            }
+            if (!Directory.Exists(Application.StartupPath + "\\bak\\sound\\ko_KR"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\ko_KR");
+            }
         }
 
 
@@ -393,25 +413,55 @@ namespace LoLToolsX
         
         public void Sound(int Type)    //語音  
         {
-            
-
+            //Backuped File
+            string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb", "LoL_Audio_zh_TW.fev", "LoL_Audio_zh_CN.fev", "LoL_Audio_en_US.fev", "LoL_Audio_ko_KR.fev" };
 
             if (Type == 1)  //備份
             {
                 wait.Show();
-                wait.progressBar1.Value = 0;
+                wait.progressBar1.Value = 0;    
 
-                string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb" };
                 foreach (string file in fsbFile)
                 {
                     try
                     {
                         File.Copy(installPath_m + @"\Game\DATA\Sounds\FMOD\" + file, Application.StartupPath + @"\bak\sound\FMOD\" + file, true);
-                        wait.progressBar1.Value = wait.progressBar1.Value +  15;
+                        wait.progressBar1.Value = wait.progressBar1.Value + 5;
                     }
                     catch { }
                 }
-                
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", Application.StartupPath + "\\bak\\sound\\zh_TW", true);
+                }
+                catch
+                {
+ 
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_CN", Application.StartupPath + "\\bak\\sound\\zh_CN", true);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", Application.StartupPath + "\\bak\\sound\\en_US", true);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\ko_KR", Application.StartupPath + "\\bak\\sound\\ko_KR", true);
+                }
+                catch
+                {
+
+                }
                 try
                 {
                     Directory.CreateDirectory(Application.StartupPath + @"\bak\sound\air");
@@ -441,7 +491,6 @@ namespace LoLToolsX
                 wait.Show();
                 wait.progressBar1.Value = 0;
 
-                string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb" };
                 foreach (string file in fsbFile)
                 {
                     try
@@ -450,6 +499,38 @@ namespace LoLToolsX
                         wait.progressBar1.Value = wait.progressBar1.Value + 15;
                     }
                     catch { }
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\zh_TW", installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", true);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\zh_CN", installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_CN", true);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\en_US", installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", true);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\ko_KR", installPath_m + "\\Game\\DATA\\Sounds\\Wwise\\VO\\ko_KR", true);
+                }
+                catch
+                {
+
                 }
                 try
                 {
@@ -482,28 +563,46 @@ namespace LoLToolsX
 
             if (Type == 3)  //刪除
             {
+                foreach (string files in fsbFile)
+                {
+                    try
+                    {
+                        File.Delete(Application.StartupPath + @"\bak\sound\FMOD\" + files);
+                    }
+                    catch { }
+                }
                 try
                 {
-                    Directory.Delete(Application.StartupPath + @"\bak\sound\Air",true);
-                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_ko_KR.fsb");
-                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_zh_TW.fsb");
-                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_zh_CN.fsb");
-                    File.Delete(Application.StartupPath + @"\bak\sound\FMOD\VOBank_en_US.fsb");
+                    Directory.Delete(Application.StartupPath + @"\bak\sound\zh_TW", true);
+                }
+                catch
+                { }
+                try
+                {
+                    Directory.Delete(Application.StartupPath + @"\bak\sound\zh_CN", true);
+                }
+                catch
+                { }
+                try
+                {
+                    Directory.Delete(Application.StartupPath + @"\bak\sound\en_US", true);
+                }
+                catch
+                { }
+                try
+                {
+                    Directory.Delete(Application.StartupPath + @"\bak\sound\ko_KR", true);
+                }
+                catch
+                { }
+                try
+                {
+                    Directory.Delete(Application.StartupPath + @"\bak\sound\Air", true);
                     Logger.log("語音檔 刪除備份成功!", Logger.LogType.Error);
                     MessageBox.Show("備份刪除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (System.IO.FileNotFoundException err)
-                {
-                    Logger.log("語音檔 刪除備份失敗 : 沒有還原檔可供刪除", Logger.LogType.Error);
-                    Logger.log(err);
-                    MessageBox.Show("沒有還原檔可供刪除", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);     
-                }
-                catch (Exception e)
-                {
-                    Logger.log("語音檔 刪除備份失敗", Logger.LogType.Error);
-                    Logger.log(e);
-                    MessageBox.Show("備份刪除失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                catch
+                { }
             }
 
         }

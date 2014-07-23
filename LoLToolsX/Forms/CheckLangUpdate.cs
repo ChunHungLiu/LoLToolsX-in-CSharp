@@ -10,6 +10,8 @@ using System.Security.Cryptography;
 using System.Net;
 using System.IO;
 using SevenZip;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace LoLToolsX.Forms
 {
@@ -86,12 +88,22 @@ namespace LoLToolsX.Forms
             //在綫獲取最新版MD5
             try
             {
+                string md5sum = "";
                 WebClient client = new WebClient();
-                client.DownloadFile("http://lolnx.pixub.com/loltoolsx/MD5/md5.txt", Application.StartupPath + @"\download\md5.txt");
-                string tmp = File.ReadAllText(Application.StartupPath + @"\download\md5.txt");
+                //string tmp = client.DownloadString("http://lolnx.netai.net/loltoolsx/MD5/md5.xml");
+                client.DownloadFile("http://lolnx.netai.net/loltoolsx/MD5/md5.xml",Application.StartupPath + "\\download\\md5.xml");
+                XDocument doc = XDocument.Load(Application.StartupPath + "\\download\\md5.xml");
+                var tmp = doc.Descendants("MD5");
+                foreach (var s in tmp)
+                {
+                    md5sum = s.Value;
+                }
+                
+                //client.DownloadFile("http://lolnx.netai.net/loltoolsx/MD5/md5.txt", Application.StartupPath + @"\download\md5.txt");
+                //string tmp = File.ReadAllText(Application.StartupPath + @"\download\md5.txt");
 
                 //對比本地檔案和最新檔案的MD5
-                if (na_final != tmp)
+                if (na_final != md5sum)
                 {
                     //有更新
                     button1.Enabled = true;

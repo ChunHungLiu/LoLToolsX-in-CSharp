@@ -69,7 +69,6 @@ namespace LoLToolsX
                               };
 
             string[] files = {
-                                  "\\config.ini",
                                   "\\Skin.txt",
                                   "\\LoLBakRes.exe",
                                   "\\Updater.exe",
@@ -95,10 +94,6 @@ namespace LoLToolsX
                     textBox1.AppendText(String.Format("\r\n找不到 {0} 檔案", path));
                     switch (f)
                     {
-                        case "\\config.ini":
-                            wc.DownloadFile("http://lolnx.pixub.com/loltoolsx/config.ini", cd + "\\config.ini");
-                            textBox1.AppendText("\r\n下載config.ini");
-                            break;
                         case "\\Skin.txt":
                             File.Create(cd + "\\Skin.txt");
                             break;

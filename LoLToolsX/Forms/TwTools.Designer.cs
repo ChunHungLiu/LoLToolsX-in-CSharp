@@ -647,7 +647,7 @@
             this.LinkLabel3.Size = new System.Drawing.Size(299, 16);
             this.LinkLabel3.TabIndex = 0;
             this.LinkLabel3.TabStop = true;
-            this.LinkLabel3.Text = "http://lolnx.pixub.com/lol-tools-tw/lol-lobby-theme/";
+            this.LinkLabel3.Text = "http://lolnx.netai.net/lol-tools-tw/lol-lobby-theme/";
             this.LinkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
             // 
             // Button16
@@ -777,7 +777,7 @@
             this.LinkLabel2.Size = new System.Drawing.Size(242, 20);
             this.LinkLabel2.TabIndex = 0;
             this.LinkLabel2.TabStop = true;
-            this.LinkLabel2.Text = "http://lolnx.pixub.com/sound-pack";
+            this.LinkLabel2.Text = "http://lolnx.netai.net/sound-pack";
             this.LinkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
             // Button14
@@ -1207,7 +1207,7 @@
             this.LinkLabel1.Size = new System.Drawing.Size(115, 13);
             this.LinkLabel1.TabIndex = 27;
             this.LinkLabel1.TabStop = true;
-            this.LinkLabel1.Text = "http://lolnx.pixub.com/";
+            this.LinkLabel1.Text = "http://lolnx.netai.net/";
             this.LinkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked_1);
             // 
             // PictureBox1

@@ -54,17 +54,18 @@ namespace LoLToolsX
                     {
                         FileInfo fi = new FileInfo(i);
                         //MessageBox.Show(i,j);
-                        if (i.Contains("landingPage"))
+                        string file = i.ToLower();
+                        if (file.Contains("landingpage"))
                             fi.CopyTo(modPath + @"\lp\themes\parchment\landingPageAssets.swf", true);
-                        else if (i.Contains("buddypane"))
+                        else if (file.Contains("buddypanel"))
                             fi.CopyTo(modPath + @"\cht2\themes\parchment\buddyPanelAssets.swf", true);
-                        else if (i.Contains("dockedchat"))
+                        else if (file.Contains("dockedchat"))
                             fi.CopyTo(modPath + @"\cht2\themes\parchment\dockedChatAssets.swf", true);
-                        else if (i.Contains("chrome"))
+                        else if (file.Contains("chrome"))
                             fi.CopyTo(modPath + @"\chrome\themes\parchment\chromeAssets.swf", true);
-                        else if (i.Contains("openstore"))
+                        else if (file.Contains("openstore"))
                             fi.CopyTo(assetsPath + @"\sounds\openstore.mp3", true);
-                        else if (i.Contains("login.mp3"))
+                        else if (file.Contains("login.mp3"))
                         {
                             if (!Directory.Exists(assetsPath + @"\sounds\newSounds\"))
                             {
@@ -72,7 +73,7 @@ namespace LoLToolsX
                             }
                             fi.CopyTo(assetsPath + @"\sounds\newSounds\login.mp3", true);
                         }
-                        else if (i.Contains("playbutton"))
+                        else if (file.Contains("playbutton"))
                             fi.CopyTo(assetsPath + @"\sounds\newSounds\playbutton.mp3", true);
                         else
                         {
