@@ -43,7 +43,7 @@ namespace LoLToolsX
                         installPath = folderBrowserDialog1.SelectedPath;
                         Logger.log("LoL目錄檢查成功! " + installPath, Logger.LogType.Info);
 
-                        CFGFile.SetValue("LoLPath", "NaPath", installPath);
+                        CFGFile.SetValue("LoLPath", "NaPath", "\"" + installPath + "\"");
                         CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                         Logger.log("LoL目錄檢查成功! ", Logger.LogType.Info);
                         Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);
@@ -78,7 +78,7 @@ namespace LoLToolsX
             }
             else
             {
-                CFGFile.SetValue("LoLPath", "NaPath", installPath);
+                CFGFile.SetValue("LoLPath", "NaPath", "\"" + installPath + "\"");
                 CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                 Logger.log("LoL目錄檢查成功! ", Logger.LogType.Info);
                 Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);

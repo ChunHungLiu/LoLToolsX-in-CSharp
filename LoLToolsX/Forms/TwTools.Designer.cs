@@ -84,15 +84,11 @@
             this.Label13 = new System.Windows.Forms.Label();
             this.websiteIn = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.installL2 = new System.Windows.Forms.Label();
-            this.installL1 = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
             this.LinkLabel2 = new System.Windows.Forms.LinkLabel();
             this.Button14 = new System.Windows.Forms.Button();
             this.Button13 = new System.Windows.Forms.Button();
             this.Button12 = new System.Windows.Forms.Button();
-            this.pbGame = new System.Windows.Forms.ProgressBar();
-            this.pbLobby = new System.Windows.Forms.ProgressBar();
             this.Button11 = new System.Windows.Forms.Button();
             this.installSound = new System.Windows.Forms.Button();
             this.Label11 = new System.Windows.Forms.Label();
@@ -100,6 +96,7 @@
             this.Label10 = new System.Windows.Forms.Label();
             this.Button10 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button32 = new System.Windows.Forms.Button();
             this.delLangBak = new System.Windows.Forms.Button();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.gKR = new System.Windows.Forms.Button();
@@ -154,7 +151,6 @@
             this.button27 = new System.Windows.Forms.Button();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
-            this.button32 = new System.Windows.Forms.Button();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -540,7 +536,7 @@
             this.button26.Location = new System.Drawing.Point(41, 101);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(168, 89);
-            this.button26.TabIndex = 3;
+            this.button26.TabIndex = 0;
             this.button26.Text = "按我進入UI管理...";
             this.button26.UseVisualStyleBackColor = true;
             this.button26.Click += new System.EventHandler(this.button26_Click_1);
@@ -647,7 +643,7 @@
             this.LinkLabel3.Size = new System.Drawing.Size(299, 16);
             this.LinkLabel3.TabIndex = 0;
             this.LinkLabel3.TabStop = true;
-            this.LinkLabel3.Text = "http://lolnx.netai.net/lol-tools-tw/lol-lobby-theme/";
+            this.LinkLabel3.Text = "http://nitroxenon.com/lol-tools-tw/lol-lobby-theme/";
             this.LinkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
             // 
             // Button16
@@ -719,15 +715,11 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.installL2);
-            this.tabPage4.Controls.Add(this.installL1);
             this.tabPage4.Controls.Add(this.Label12);
             this.tabPage4.Controls.Add(this.LinkLabel2);
             this.tabPage4.Controls.Add(this.Button14);
             this.tabPage4.Controls.Add(this.Button13);
             this.tabPage4.Controls.Add(this.Button12);
-            this.tabPage4.Controls.Add(this.pbGame);
-            this.tabPage4.Controls.Add(this.pbLobby);
             this.tabPage4.Controls.Add(this.Button11);
             this.tabPage4.Controls.Add(this.installSound);
             this.tabPage4.Controls.Add(this.Label11);
@@ -741,22 +733,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "語音修改";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // installL2
-            // 
-            this.installL2.AutoSize = true;
-            this.installL2.Location = new System.Drawing.Point(345, 263);
-            this.installL2.Name = "installL2";
-            this.installL2.Size = new System.Drawing.Size(0, 13);
-            this.installL2.TabIndex = 27;
-            // 
-            // installL1
-            // 
-            this.installL1.AutoSize = true;
-            this.installL1.Location = new System.Drawing.Point(342, 181);
-            this.installL1.Name = "installL1";
-            this.installL1.Size = new System.Drawing.Size(0, 13);
-            this.installL1.TabIndex = 26;
             // 
             // Label12
             // 
@@ -777,7 +753,7 @@
             this.LinkLabel2.Size = new System.Drawing.Size(242, 20);
             this.LinkLabel2.TabIndex = 0;
             this.LinkLabel2.TabStop = true;
-            this.LinkLabel2.Text = "http://lolnx.netai.net/sound-pack";
+            this.LinkLabel2.Text = "http://nitroxenon.com/sound-pack";
             this.LinkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
             // Button14
@@ -810,25 +786,11 @@
             this.Button12.UseVisualStyleBackColor = true;
             this.Button12.Click += new System.EventHandler(this.Button12_Click);
             // 
-            // pbGame
-            // 
-            this.pbGame.Location = new System.Drawing.Point(274, 282);
-            this.pbGame.Name = "pbGame";
-            this.pbGame.Size = new System.Drawing.Size(201, 18);
-            this.pbGame.TabIndex = 20;
-            // 
-            // pbLobby
-            // 
-            this.pbLobby.Location = new System.Drawing.Point(274, 200);
-            this.pbLobby.Name = "pbLobby";
-            this.pbLobby.Size = new System.Drawing.Size(201, 18);
-            this.pbLobby.TabIndex = 19;
-            // 
             // Button11
             // 
             this.Button11.Location = new System.Drawing.Point(85, 262);
             this.Button11.Name = "Button11";
-            this.Button11.Size = new System.Drawing.Size(162, 56);
+            this.Button11.Size = new System.Drawing.Size(335, 56);
             this.Button11.TabIndex = 3;
             this.Button11.Text = "安裝(遊戲)";
             this.Button11.UseVisualStyleBackColor = true;
@@ -838,7 +800,7 @@
             // 
             this.installSound.Location = new System.Drawing.Point(85, 181);
             this.installSound.Name = "installSound";
-            this.installSound.Size = new System.Drawing.Size(162, 56);
+            this.installSound.Size = new System.Drawing.Size(335, 56);
             this.installSound.TabIndex = 2;
             this.installSound.Text = "安裝(大廳)";
             this.installSound.UseVisualStyleBackColor = true;
@@ -897,6 +859,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "語言切換";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(670, 260);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(114, 46);
+            this.button32.TabIndex = 32;
+            this.button32.Text = "檢查語言檔更新";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
             // 
             // delLangBak
             // 
@@ -1207,7 +1179,7 @@
             this.LinkLabel1.Size = new System.Drawing.Size(115, 13);
             this.LinkLabel1.TabIndex = 27;
             this.LinkLabel1.TabStop = true;
-            this.LinkLabel1.Text = "http://lolnx.netai.net/";
+            this.LinkLabel1.Text = "http://nitroxenon.com/";
             this.LinkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked_1);
             // 
             // PictureBox1
@@ -1475,16 +1447,6 @@
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
             // 
-            // button32
-            // 
-            this.button32.Location = new System.Drawing.Point(670, 260);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(114, 46);
-            this.button32.TabIndex = 32;
-            this.button32.Text = "檢查語言檔更新";
-            this.button32.UseVisualStyleBackColor = true;
-            this.button32.Click += new System.EventHandler(this.button32_Click);
-            // 
             // TwTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1584,15 +1546,11 @@
         internal System.Windows.Forms.Label Label13;
         internal System.Windows.Forms.TextBox websiteIn;
         private System.Windows.Forms.TabPage tabPage4;
-        public System.Windows.Forms.Label installL2;
-        public System.Windows.Forms.Label installL1;
         internal System.Windows.Forms.Label Label12;
         internal System.Windows.Forms.LinkLabel LinkLabel2;
         internal System.Windows.Forms.Button Button14;
         internal System.Windows.Forms.Button Button13;
         internal System.Windows.Forms.Button Button12;
-        internal System.Windows.Forms.ProgressBar pbGame;
-        internal System.Windows.Forms.ProgressBar pbLobby;
         internal System.Windows.Forms.Label Label11;
         internal System.Windows.Forms.TextBox tbPath;
         internal System.Windows.Forms.Label Label10;

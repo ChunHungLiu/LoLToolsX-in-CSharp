@@ -35,6 +35,7 @@ namespace LoLToolsX
         public static bool allowBakRes = true;
         public static bool allowUpdate = true;
         public static bool editpropMessageBox = true;
+        public static bool forceSelectPath = false;
 
         #endregion
 

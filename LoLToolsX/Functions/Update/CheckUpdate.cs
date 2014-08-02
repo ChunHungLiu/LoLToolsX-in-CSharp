@@ -35,8 +35,8 @@ namespace LoLToolsX
                 Variable.updating = true;
                 Logger.log("檢查 LoLToolsX 更新...", Logger.LogType.Info);
                 WebClient wc = new WebClient();
-                //reader = wc.DownloadString("http://lolnx.netai.net/loltoolsx/version.html");
-                wc.DownloadFile("http://lolnx.netai.net/loltoolsx/version.xml", Application.StartupPath + "\\download\\version.xml");
+                //reader = wc.DownloadString("http://nitroxenon.com/loltoolsx/version.html");
+                wc.DownloadFile("http://nitroxenon.com/loltoolsx/version.xml", Application.StartupPath + "\\download\\version.xml");
                 XDocument doc = XDocument.Load(Application.StartupPath + "\\download\\version.xml");
                 var tmp = doc.Descendants("Version");
                 foreach (var s in tmp)
@@ -54,8 +54,8 @@ namespace LoLToolsX
             {
                 //檢查最新版本的更新內容
                 WebClient wc = new WebClient();
-                //reader2 = wc.DownloadString("http://lolnx.netai.net/loltoolsx/info.html");
-                wc.DownloadFile("http://lolnx.netai.net/loltoolsx/info.xml", Application.StartupPath + "\\download\\info.xml");
+                //reader2 = wc.DownloadString("http://nitroxenon.com/loltoolsx/info.html");
+                wc.DownloadFile("http://nitroxenon.com/loltoolsx/info.xml", Application.StartupPath + "\\download\\info.xml");
                 XDocument doc2 = XDocument.Load(Application.StartupPath + "\\download\\info.xml");
                 var tmp2 = doc2.Descendants("Info");
                 foreach (var s in tmp2)

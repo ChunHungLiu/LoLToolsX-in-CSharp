@@ -45,12 +45,17 @@ namespace LoLToolsX
             PictureBox1.ImageLocation = Application.StartupPath + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
+            if (Variable.forceSelectPath)
+            {
+                goto SelectPath;
+            }
+
             //取得LoL路徑
             GetReg gr = new GetReg();
             installPath = gr.TwPath(Application.StartupPath + @"\config.ini");
             Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
 
-
+SelectPath:
             CFGFile CFGFile = new CFGFile(Application.StartupPath + @"\config.ini");
 
             //檢查路徑是否存有 LoLTW 字串
@@ -64,7 +69,7 @@ namespace LoLToolsX
                     {
                         installPath = folderBrowserDialog1.SelectedPath;
                         Logger.log("LoL目錄檢查成功! " + installPath, Logger.LogType.Info);
-                        CFGFile.SetValue("LoLPath", "TwPath", installPath);
+                        CFGFile.SetValue("LoLPath", "TwPath", "\"" + installPath + "\"");
                         CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                     }
                     else
@@ -84,7 +89,7 @@ namespace LoLToolsX
             }
             else
             {
-                CFGFile.SetValue("LoLPath", "TwPath", installPath);
+                CFGFile.SetValue("LoLPath", "TwPath", "\"" + installPath + "\"");
                 CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
                 PathLabel.Text = installPath;
                 Logger.log("LoL目錄檢查成功! " , Logger.LogType.Info);
@@ -139,7 +144,7 @@ namespace LoLToolsX
             //在綫統計使用人數
             try
             {
-                WebBrowser1.Navigate("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/stat.html");
+                WebBrowser1.Navigate("http://nitroxenon.com/loltoolsx/stat.html");
             }
             catch (Exception e2)
             {
@@ -165,7 +170,7 @@ namespace LoLToolsX
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Logger.log("開啟NitroXenon的BLOG...", Logger.LogType.Info);
-            Process.Start("http://lolnx.netai.net");
+            Process.Start("http://nitroxenon.com");
         }
 
         public static string GetLoLVer()
@@ -351,12 +356,12 @@ namespace LoLToolsX
 
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://lolnx.netai.net/sound-pack");
+            Process.Start("http://nitroxenon.com/sound-pack");
         }
 
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://lolnx.netai.net/lol-tools-tw/lol-lobby-theme/");
+            Process.Start("http://nitroxenon.com/lol-tools-tw/lol-lobby-theme/");
         }
 
         private void Button10_Click(object sender, EventArgs e)
@@ -383,8 +388,8 @@ namespace LoLToolsX
             {
                 if (!Variable.switchingSound)
                 {
-                    SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-                    ss.SwitchGame();
+                    SwitchType st = new SwitchType(installPath,tbPath.Text);
+                    st.ShowDialog();
                 }
                 else
                 {

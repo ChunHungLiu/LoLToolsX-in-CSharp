@@ -15,6 +15,8 @@ namespace LoLToolsX
 {
     public partial class NaTools : Form
     {
+        ToolTip tip2 = null;
+        ToolTip tip = null;
         public static string installPath = "";
         public static string airVer = "";
         public static string gameVer = "";
@@ -29,7 +31,6 @@ namespace LoLToolsX
 
         private void NaTools_Load(object sender, EventArgs e)
         {
-            Variable.airPath = airPath;
 
             if (!Variable.allowBakRes)
             {
@@ -40,7 +41,7 @@ namespace LoLToolsX
             installPath = Variable.n_installPath;
             airVer = Variable.airVer;
             gameVer = Variable.gameVer;
-            airPath = installPath + @"\RADS\projects\lol_air_client\releases\" + airVer + @"\deploy";
+            Variable.airPath = airPath = installPath + @"\RADS\projects\lol_air_client\releases\" + airVer + @"\deploy";
             gamePath = installPath + @"\RADS\projects\lol_game_client\releases\" + gameVer + @"\deploy";
 
             if (Variable.allowUpdate)
@@ -90,7 +91,7 @@ namespace LoLToolsX
             //在綫統計使用人數
             try
             {
-                WebBrowser1.Navigate("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/stat.html");
+                WebBrowser1.Navigate("http://nitroxenon.com/loltoolsx/stat.html");
             }
             catch (Exception e2)
             {
@@ -109,60 +110,116 @@ namespace LoLToolsX
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Logger.log("開啟NitroXenon的BLOG...", Logger.LogType.Info);
-            Process.Start("http://lolnx.netai.net");
+            Process.Start("http://nitroxenon.com");
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "lolt.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "lolt.properties");
+            }
+            else
+            {
+                SwitchServer.localEdit(airPath, "zh_TW");
+            }
             serverLocation.Text = "台服";
             
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "lols.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "lols.properties");
+            }
+            else
+            {
+                MessageBox.Show("此伺服器不支緩安全切換方法");
+            }
             serverLocation.Text = "SEA服";
             
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "loloce.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "loloce.properties");
+            }
+            else
+            {
+                MessageBox.Show("此伺服器不支緩安全切換方法");
+            }
             serverLocation.Text = "大洋洲服";
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "loln.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "loln.properties");
+            }
+            else
+            {
+                SwitchServer.localEdit(airPath, "en_US");
+            }
             serverLocation.Text = "美服";
             
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "lole.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "lole.properties");
+            }
+            else
+            {
+                MessageBox.Show("此伺服器不支緩安全切換方法");
+            }
             serverLocation.Text = "EUW服";
             
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "lolp.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "lolp.properties");
+            }
+            else
+            {
+                MessageBox.Show("此伺服器不支緩安全切換方法");
+            }
             serverLocation.Text = "PBE服";
             
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "lolk.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "lolk.properties");
+            }
+            else
+            {
+                SwitchServer.localEdit(airPath, "ko_KR");
+            }
             serverLocation.Text = "韓服";
             
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLocNa(airPath, "loleune.properties");
+            if (oldSwitch.Checked)
+            {
+                SwitchServer.SwitchServerLocNa(airPath, "loleune.properties");
+            }
+            else
+            {
+                MessageBox.Show("此伺服器不支緩安全切換方法");
+            }
             serverLocation.Text = "EUNE服";
             
         }
@@ -269,7 +326,7 @@ namespace LoLToolsX
 
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://lolnx.netai.net/lol-tools-tw/lol-lobby-theme/");
+            Process.Start("http://nitroxenon.com/lol-tools-tw/lol-lobby-theme/");
         }
 
         private void checkServerStatus_Click(object sender, EventArgs e)
@@ -369,5 +426,62 @@ namespace LoLToolsX
         {
             Environment.Exit(Environment.ExitCode);
         }
+
+        private void chooseHUD_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                Variable.hudPath = openFileDialog2.FileName;
+                Logger.log("已選擇hudPath路徑: " + Variable.hudPath);
+            }
+        }
+
+        private void installHUD_Click(object sender, EventArgs e)
+        {
+            InstallUI.NaGameUI(installPath);
+        }
+
+        private void installHUD_MouseEnter(object sender, EventArgs e)
+        {
+            if (tip == null)
+            {
+                tip = new ToolTip();
+                tip.Show("目前美服UI安裝會出現短暫假死現象 並非程式當掉", installHUD);
+            }
+        }
+
+        private void Button20_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.NaUi(1);
+        }
+
+        private void Button21_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.NaUi(2);
+        }
+
+        private void Button19_Click(object sender, EventArgs e)
+        {
+            BakRes br = new BakRes(installPath);
+            br.NaUi(3);
+        }
+
+        private void Button21_MouseEnter(object sender, EventArgs e)
+        {
+            if (tip2 == null)
+            {
+                tip2 = new ToolTip();
+                tip2.Show("目前美服UI還原會出現短暫假死現象 並非程式當掉", Button21);
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("快捷:\r\n修改 lol.properties 檔案\r\n需要先啟動遊戲 再進行切換\r\n\r\n進階:\r\n修改 local.properties 檔案\r\n需要先切換再啟動遊戲\r\n\r\n如快捷方法無法登入 請使用進階方法進行切換\r\n\r\n!!注意!!使用進階方法切換韓服 語言和語音有機會變成韓文和韓語", "切換方法說明", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
     }
 }

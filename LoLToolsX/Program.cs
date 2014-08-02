@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace LoLToolsX
 {
@@ -14,6 +15,17 @@ namespace LoLToolsX
         [STAThread]
         static void Main(string[] args)
         {
+            if (args.Length != 0)
+            {
+                if (args[0] == "-M")
+                {
+                    Variable.forceSelectPath = true;
+                }
+            }
+            foreach (string s in Directory.GetFiles(Application.StartupPath + "\\download"))
+            {
+                File.Delete(s);
+            }
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
             //只允許單一執行個體

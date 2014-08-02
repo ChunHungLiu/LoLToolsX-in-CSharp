@@ -100,11 +100,11 @@
             this.Label14 = new System.Windows.Forms.Label();
             this.Label13 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label21 = new System.Windows.Forms.Label();
             this.Button19 = new System.Windows.Forms.Button();
             this.Button20 = new System.Windows.Forms.Button();
             this.Button21 = new System.Windows.Forms.Button();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.installHUD = new System.Windows.Forms.Button();
@@ -143,6 +143,10 @@
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.oldSwitch = new System.Windows.Forms.RadioButton();
+            this.newSwitch = new System.Windows.Forms.RadioButton();
+            this.button28 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -159,6 +163,7 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // BakLang
@@ -173,6 +178,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.delBakProp);
             this.tabPage2.Controls.Add(this.backProp);
             this.tabPage2.Controls.Add(this.restoneProp);
@@ -196,7 +202,7 @@
             // 
             // delBakProp
             // 
-            this.delBakProp.Location = new System.Drawing.Point(661, 249);
+            this.delBakProp.Location = new System.Drawing.Point(661, 170);
             this.delBakProp.Name = "delBakProp";
             this.delBakProp.Size = new System.Drawing.Size(114, 46);
             this.delBakProp.TabIndex = 11;
@@ -206,7 +212,7 @@
             // 
             // backProp
             // 
-            this.backProp.Location = new System.Drawing.Point(661, 64);
+            this.backProp.Location = new System.Drawing.Point(661, 33);
             this.backProp.Name = "backProp";
             this.backProp.Size = new System.Drawing.Size(114, 46);
             this.backProp.TabIndex = 9;
@@ -216,7 +222,7 @@
             // 
             // restoneProp
             // 
-            this.restoneProp.Location = new System.Drawing.Point(661, 157);
+            this.restoneProp.Location = new System.Drawing.Point(661, 101);
             this.restoneProp.Name = "restoneProp";
             this.restoneProp.Size = new System.Drawing.Size(114, 46);
             this.restoneProp.TabIndex = 10;
@@ -500,10 +506,10 @@
             this.LinkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LinkLabel2.Location = new System.Drawing.Point(78, 30);
             this.LinkLabel2.Name = "LinkLabel2";
-            this.LinkLabel2.Size = new System.Drawing.Size(242, 20);
+            this.LinkLabel2.Size = new System.Drawing.Size(244, 20);
             this.LinkLabel2.TabIndex = 0;
             this.LinkLabel2.TabStop = true;
-            this.LinkLabel2.Text = "http://lolnx.netai.net/sound-pack";
+            this.LinkLabel2.Text = "http://nitroxenon.com/sound-pack";
             this.LinkLabel2.Visible = false;
             // 
             // Button14
@@ -620,7 +626,7 @@
             this.LinkLabel1.Size = new System.Drawing.Size(115, 13);
             this.LinkLabel1.TabIndex = 27;
             this.LinkLabel1.TabStop = true;
-            this.LinkLabel1.Text = "http://lolnx.netai.net/";
+            this.LinkLabel1.Text = "http://nitroxenon.com/";
             this.LinkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // PictureBox1
@@ -869,10 +875,10 @@
             this.LinkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.LinkLabel3.Location = new System.Drawing.Point(309, 33);
             this.LinkLabel3.Name = "LinkLabel3";
-            this.LinkLabel3.Size = new System.Drawing.Size(299, 16);
+            this.LinkLabel3.Size = new System.Drawing.Size(298, 16);
             this.LinkLabel3.TabIndex = 0;
             this.LinkLabel3.TabStop = true;
-            this.LinkLabel3.Text = "http://lolnx.netai.net/lol-tools-tw/lol-lobby-theme/";
+            this.LinkLabel3.Text = "http://nitroxenon.com/lol-tools-tw/lol-lobby-theme/";
             this.LinkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
             // 
             // Button15
@@ -907,11 +913,11 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.label21);
             this.tabPage6.Controls.Add(this.Button19);
             this.tabPage6.Controls.Add(this.Button20);
             this.tabPage6.Controls.Add(this.Button21);
             this.tabPage6.Controls.Add(this.GroupBox4);
+            this.tabPage6.Controls.Add(this.GroupBox3);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
@@ -920,58 +926,58 @@
             this.tabPage6.Text = "UI安裝";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(375, 147);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(144, 35);
-            this.label21.TabIndex = 36;
-            this.label21.Text = "暫不開放...";
-            // 
             // Button19
             // 
-            this.Button19.Location = new System.Drawing.Point(668, 241);
+            this.Button19.Location = new System.Drawing.Point(669, 240);
             this.Button19.Name = "Button19";
             this.Button19.Size = new System.Drawing.Size(114, 46);
             this.Button19.TabIndex = 2;
             this.Button19.Text = "刪除已備份設定檔";
             this.Button19.UseVisualStyleBackColor = true;
-            this.Button19.Visible = false;
+            this.Button19.Click += new System.EventHandler(this.Button19_Click);
             // 
             // Button20
             // 
             this.Button20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Button20.Location = new System.Drawing.Point(668, 56);
+            this.Button20.Location = new System.Drawing.Point(669, 55);
             this.Button20.Name = "Button20";
             this.Button20.Size = new System.Drawing.Size(114, 46);
             this.Button20.TabIndex = 0;
             this.Button20.Text = "備份UI";
             this.Button20.UseVisualStyleBackColor = true;
-            this.Button20.Visible = false;
+            this.Button20.Click += new System.EventHandler(this.Button20_Click);
             // 
             // Button21
             // 
-            this.Button21.Location = new System.Drawing.Point(668, 149);
+            this.Button21.Location = new System.Drawing.Point(669, 148);
             this.Button21.Name = "Button21";
             this.Button21.Size = new System.Drawing.Size(114, 46);
             this.Button21.TabIndex = 1;
             this.Button21.Text = "還原UI";
             this.Button21.UseVisualStyleBackColor = true;
-            this.Button21.Visible = false;
+            this.Button21.Click += new System.EventHandler(this.Button21_Click);
+            this.Button21.MouseEnter += new System.EventHandler(this.Button21_MouseEnter);
             // 
             // GroupBox4
             // 
+            this.GroupBox4.Controls.Add(this.label21);
             this.GroupBox4.Controls.Add(this.button26);
-            this.GroupBox4.Controls.Add(this.GroupBox3);
-            this.GroupBox4.Location = new System.Drawing.Point(47, 27);
+            this.GroupBox4.Location = new System.Drawing.Point(49, 26);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(250, 291);
-            this.GroupBox4.TabIndex = 35;
+            this.GroupBox4.TabIndex = 40;
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "大廳UI";
-            this.GroupBox4.Visible = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(85, 129);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 26);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "未開放";
             // 
             // button26
             // 
@@ -989,55 +995,53 @@
             this.GroupBox3.Controls.Add(this.Label18);
             this.GroupBox3.Controls.Add(this.Label17);
             this.GroupBox3.Controls.Add(this.chooseHUD);
-            this.GroupBox3.Location = new System.Drawing.Point(51, 0);
+            this.GroupBox3.Location = new System.Drawing.Point(348, 26);
             this.GroupBox3.Name = "GroupBox3";
             this.GroupBox3.Size = new System.Drawing.Size(250, 291);
-            this.GroupBox3.TabIndex = 34;
+            this.GroupBox3.TabIndex = 39;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "遊戲UI";
-            this.GroupBox3.Visible = false;
             // 
             // installHUD
             // 
-            this.installHUD.Location = new System.Drawing.Point(62, 203);
+            this.installHUD.Location = new System.Drawing.Point(58, 203);
             this.installHUD.Name = "installHUD";
             this.installHUD.Size = new System.Drawing.Size(131, 48);
             this.installHUD.TabIndex = 1;
             this.installHUD.Text = "安裝";
             this.installHUD.UseVisualStyleBackColor = true;
-            this.installHUD.Visible = false;
+            this.installHUD.Click += new System.EventHandler(this.installHUD_Click);
+            this.installHUD.MouseEnter += new System.EventHandler(this.installHUD_MouseEnter);
             // 
             // Label18
             // 
             this.Label18.AutoSize = true;
             this.Label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Label18.Location = new System.Drawing.Point(59, 158);
+            this.Label18.Location = new System.Drawing.Point(55, 158);
             this.Label18.Name = "Label18";
             this.Label18.Size = new System.Drawing.Size(139, 15);
             this.Label18.TabIndex = 2;
             this.Label18.Text = "第二步: 點擊\'安裝\'安裝UI";
-            this.Label18.Visible = false;
             // 
             // Label17
             // 
             this.Label17.AutoSize = true;
             this.Label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Label17.Location = new System.Drawing.Point(27, 29);
+            this.Label17.Location = new System.Drawing.Point(23, 29);
             this.Label17.Name = "Label17";
             this.Label17.Size = new System.Drawing.Size(200, 15);
             this.Label17.TabIndex = 1;
             this.Label17.Text = "第一步: 請選擇 HUDAtlas.tag UI檔案";
-            this.Label17.Visible = false;
             // 
             // chooseHUD
             // 
-            this.chooseHUD.Location = new System.Drawing.Point(62, 72);
+            this.chooseHUD.Location = new System.Drawing.Point(58, 72);
             this.chooseHUD.Name = "chooseHUD";
             this.chooseHUD.Size = new System.Drawing.Size(131, 48);
             this.chooseHUD.TabIndex = 0;
             this.chooseHUD.Text = "選擇...";
             this.chooseHUD.UseVisualStyleBackColor = true;
-            this.chooseHUD.Visible = false;
+            this.chooseHUD.Click += new System.EventHandler(this.chooseHUD_Click);
             // 
             // tabPage7
             // 
@@ -1360,6 +1364,50 @@
             this.notifyIcon2.Text = "notifyIcon2";
             this.notifyIcon2.Visible = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button28);
+            this.groupBox5.Controls.Add(this.newSwitch);
+            this.groupBox5.Controls.Add(this.oldSwitch);
+            this.groupBox5.Location = new System.Drawing.Point(633, 239);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(174, 88);
+            this.groupBox5.TabIndex = 29;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "切換方法";
+            // 
+            // oldSwitch
+            // 
+            this.oldSwitch.AutoSize = true;
+            this.oldSwitch.Checked = true;
+            this.oldSwitch.Location = new System.Drawing.Point(29, 24);
+            this.oldSwitch.Name = "oldSwitch";
+            this.oldSwitch.Size = new System.Drawing.Size(49, 17);
+            this.oldSwitch.TabIndex = 0;
+            this.oldSwitch.TabStop = true;
+            this.oldSwitch.Text = "傳統";
+            this.oldSwitch.UseVisualStyleBackColor = true;
+            // 
+            // newSwitch
+            // 
+            this.newSwitch.AutoSize = true;
+            this.newSwitch.Location = new System.Drawing.Point(29, 55);
+            this.newSwitch.Name = "newSwitch";
+            this.newSwitch.Size = new System.Drawing.Size(49, 17);
+            this.newSwitch.TabIndex = 1;
+            this.newSwitch.Text = "安全";
+            this.newSwitch.UseVisualStyleBackColor = true;
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(96, 36);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(56, 23);
+            this.button28.TabIndex = 2;
+            this.button28.Text = "說明";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
             // NaTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1396,8 +1444,8 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
             this.GroupBox4.ResumeLayout(false);
+            this.GroupBox4.PerformLayout();
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
             this.tabPage7.ResumeLayout(false);
@@ -1406,6 +1454,8 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1475,16 +1525,6 @@
         internal System.Windows.Forms.Label Label14;
         internal System.Windows.Forms.Label Label13;
         private System.Windows.Forms.TabPage tabPage6;
-        internal System.Windows.Forms.Button Button19;
-        internal System.Windows.Forms.Button Button20;
-        internal System.Windows.Forms.Button Button21;
-        internal System.Windows.Forms.GroupBox GroupBox4;
-        internal System.Windows.Forms.Button button26;
-        internal System.Windows.Forms.GroupBox GroupBox3;
-        internal System.Windows.Forms.Button installHUD;
-        internal System.Windows.Forms.Label Label18;
-        internal System.Windows.Forms.Label Label17;
-        internal System.Windows.Forms.Button chooseHUD;
         private System.Windows.Forms.TabPage tabPage7;
         internal System.Windows.Forms.Button Button22;
         private System.Windows.Forms.TabPage tabPage8;
@@ -1520,10 +1560,24 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label21;
         internal System.Windows.Forms.Button button31;
         internal System.Windows.Forms.Button Button16;
         internal System.Windows.Forms.Button Button17;
         internal System.Windows.Forms.Button Button18;
+        internal System.Windows.Forms.Button Button19;
+        internal System.Windows.Forms.Button Button20;
+        internal System.Windows.Forms.Button Button21;
+        internal System.Windows.Forms.GroupBox GroupBox4;
+        private System.Windows.Forms.Label label21;
+        internal System.Windows.Forms.Button button26;
+        internal System.Windows.Forms.GroupBox GroupBox3;
+        internal System.Windows.Forms.Button installHUD;
+        internal System.Windows.Forms.Label Label18;
+        internal System.Windows.Forms.Label Label17;
+        internal System.Windows.Forms.Button chooseHUD;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.RadioButton newSwitch;
+        private System.Windows.Forms.RadioButton oldSwitch;
     }
 }

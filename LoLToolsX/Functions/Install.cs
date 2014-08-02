@@ -34,6 +34,49 @@ namespace LoLToolsX
                 Logger.log("HUDAtlas.tga 未選擇 : 安裝失敗", Logger.LogType.Error);
             }
         }
+
+        public static void NaGameUI(string installPath)
+        {
+            if (Path.GetExtension(Variable.hudPath) == ".tga")
+            {
+                try
+                {
+                    string dir = Variable.n_installPath + @"\RADS\projects\lol_game_client\filearchives";
+                    string[] folder = Directory.GetDirectories(dir);
+                    foreach (string f in folder)
+                    {
+                        if (!Directory.Exists(f + "\\DATA"))
+                        {
+                            Directory.CreateDirectory(f + "\\DATA");
+                        }
+                        if (!Directory.Exists(f + "\\DATA\\Menu"))
+                        {
+                            Directory.CreateDirectory(f + "\\DATA\\Menu");
+
+                        }
+                        if (!Directory.Exists(f + "\\DATA\\Menu\\Textures"))
+                        {
+                            Directory.CreateDirectory(f + "\\DATA\\Menu\\Textures");
+                        }
+                        File.Copy(Variable.hudPath, f + "\\DATA\\Menu\\Textures\\HUDAtlas.tga",true);
+                    }
+                    MessageBox.Show("UI安裝成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.log("UI安裝成功...");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("UI安裝失敗\r\n錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("UI安裝失敗...", Logger.LogType.Error);
+                    Logger.log(e);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("請選擇 '.tga' 檔案", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("HUDAtlas.tga 未選擇 : 安裝失敗", Logger.LogType.Error);
+            }
+        }
     }
     class InstallSkin
     {

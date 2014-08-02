@@ -63,12 +63,12 @@ namespace LoLToolsX
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Process.Start("http://lolnx.netai.net/guestbook/");
+            Process.Start("http://nitroxenon.com/guestbook/");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Process.Start("http://lolnx.netai.net/");
+            Process.Start("http://nitroxenon.com/");
         }
     }
 }

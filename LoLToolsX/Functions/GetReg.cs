@@ -24,7 +24,8 @@ namespace LoLToolsX
             //檢查 config.ini
             if (!String.IsNullOrEmpty(CFGFile.GetValue("LoLPath", "TwPath")))
             {
-                installPath = CFGFile.GetValue("LoLPath", "TwPath");
+                string tmp = CFGFile.GetValue("LoLPath", "TwPath");
+                installPath = tmp.Replace("\"", "");
                 return installPath;
             }
 
@@ -58,7 +59,8 @@ namespace LoLToolsX
             //檢查 config.ini
             if (!String.IsNullOrEmpty(CFGFile.GetValue("LoLPath", "NaPath")))
             {
-                installPath = CFGFile.GetValue("LoLPath", "NaPath");
+                string tmp = CFGFile.GetValue("LoLPath", "NaPath");
+                installPath = tmp.Replace("\"", "");
                 return installPath;
             }
 

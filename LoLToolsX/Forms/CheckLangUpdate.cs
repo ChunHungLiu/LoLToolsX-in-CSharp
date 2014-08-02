@@ -90,8 +90,8 @@ namespace LoLToolsX.Forms
             {
                 string md5sum = "";
                 WebClient client = new WebClient();
-                //string tmp = client.DownloadString("http://lolnx.netai.net/loltoolsx/MD5/md5.xml");
-                client.DownloadFile("http://lolnx.netai.net/loltoolsx/MD5/md5.xml",Application.StartupPath + "\\download\\md5.xml");
+                //string tmp = client.DownloadString("http://nitroxenon.com/loltoolsx/MD5/md5.xml");
+                client.DownloadFile("http://nitroxenon.com/loltoolsx/MD5/md5.xml",Application.StartupPath + "\\download\\md5.xml");
                 XDocument doc = XDocument.Load(Application.StartupPath + "\\download\\md5.xml");
                 var tmp = doc.Descendants("MD5");
                 foreach (var s in tmp)
@@ -99,7 +99,7 @@ namespace LoLToolsX.Forms
                     md5sum = s.Value;
                 }
                 
-                //client.DownloadFile("http://lolnx.netai.net/loltoolsx/MD5/md5.txt", Application.StartupPath + @"\download\md5.txt");
+                //client.DownloadFile("http://nitroxenon.com/loltoolsx/MD5/md5.txt", Application.StartupPath + @"\download\md5.txt");
                 //string tmp = File.ReadAllText(Application.StartupPath + @"\download\md5.txt");
 
                 //對比本地檔案和最新檔案的MD5
