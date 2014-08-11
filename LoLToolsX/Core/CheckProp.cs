@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     /// <summary>
     /// 檢查 lol.properties
@@ -19,11 +19,19 @@ namespace LoLToolsX
         {
             if (!File.Exists(installPath + @"\Air\lol.properties"))
             {
-                MessageBox.Show("無法存取伺服器設定檔\r\n按'確定'關閉程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("無法存取伺服器設定檔", Logger.LogType.Error);
-                Logger.log("強制關閉程式... Exit Code: " + Environment.ExitCode, Logger.LogType.Error);
+                //\r\n按'確定'關閉程式
+                if (MessageBox.Show("程式無法存取伺服器設定檔，你要繼續執行程式嗎?", "錯誤", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    Variable.propPath = installPath + @"\Air\lol.properties";
+                }
+                else
+                {
+                    Environment.Exit(Environment.ExitCode);
+                }
+                //Logger.log("強制關閉程式... Exit Code: " + Environment.ExitCode, Logger.LogType.Error);
                 
-                Environment.Exit(Environment.ExitCode);
+                //Environment.Exit(Environment.ExitCode);
             }
 
             else
@@ -41,7 +49,7 @@ namespace LoLToolsX
 
                     string cs = sr.ReadToEnd();
 
-                    //////////////////////////////////////
+                    //檢查目前伺服器
 
                     if (cs.Contains("host=prodtw.lol.garenanow.com"))
                     {
@@ -106,11 +114,22 @@ namespace LoLToolsX
         {
             if (!File.Exists(installPath + @"\lol.properties"))
             {
-                MessageBox.Show("無法存取伺服器設定檔\r\n按'確定'關閉程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Logger.log("無法存取伺服器設定檔", Logger.LogType.Error);
-                Logger.log("強制關閉程式... Exit Code: " + Environment.ExitCode, Logger.LogType.Error);
+                //\r\n按'確定'關閉程式
+                if (MessageBox.Show("程式無法存取伺服器設定檔，你要繼續執行程式嗎?", "錯誤", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    Variable.propPath = installPath + @"\lol.properties";
+                }
+                else
+                {
+                    Environment.Exit(Environment.ExitCode);
+                }
+                
+                //Logger.log("強制關閉程式... Exit Code: " + Environment.ExitCode, Logger.LogType.Error);
 
-                Environment.Exit(Environment.ExitCode);
+                //Environment.Exit(Environment.ExitCode);
+                
+                
             }
 
             else
@@ -128,7 +147,7 @@ namespace LoLToolsX
 
                 string cs = sr.ReadToEnd();
 
-                //////////////////////////////////////
+                //檢查目前伺服器
 
                 if (cs.Contains("host=prodtw.lol.garenanow.com"))
                 {
@@ -184,9 +203,6 @@ namespace LoLToolsX
             {
                 GC.Collect();
             }
-
-
-
         }
     }
 }

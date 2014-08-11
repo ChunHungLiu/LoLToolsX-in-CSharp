@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LoLToolsX.Core;
 
 namespace LoLToolsX
 {
@@ -27,7 +28,6 @@ namespace LoLToolsX
 
         #region 布林值
 
-        public static bool debug = false;
         public static bool haveUpdate = false;
         public static bool switchingSound = false;
         public static bool updating = false;

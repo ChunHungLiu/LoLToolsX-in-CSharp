@@ -7,7 +7,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Threading;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     /// <summary>
     /// 遊戲啟動
@@ -22,16 +22,15 @@ namespace LoLToolsX
         private delegate void StartGameHandler();
         private event StartGameHandler StartGameFinish;
 
-        public StartGame(string ip)
+        public StartGame(string installPath)
         {
             ni.DoubleClick += new EventHandler(ni_DoubleClick);
             StartGameFinish += new StartGameHandler(StartGame_StartGameFinish);
-           installPath = ip;
+           this.installPath = installPath;
         }
 
         public void StartGarena()
-        {
-            
+        {     
             try
             {
                 string ggcPath = "";
@@ -60,8 +59,10 @@ namespace LoLToolsX
                 g_started = false;
             }
 
+            //如果開啟失敗
             if (!g_started)
             {
+                //向上尋找Garena路徑
                 string p1 = Directory.GetParent(installPath).ToString();
                 string p2 = Directory.GetParent(p1).ToString();
                 string p3 = Directory.GetParent(p2).ToString();
@@ -142,6 +143,7 @@ namespace LoLToolsX
         }
         private void StartGame_StartGameFinish()
         {
+            //自動最小化到工具列
             System.Drawing.Icon icon = new System.Drawing.Icon(Application.StartupPath + "\\lol.ico");
             ni.Icon = icon;
             ni.Visible = true;

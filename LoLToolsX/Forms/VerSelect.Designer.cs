@@ -80,18 +80,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(35, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "美服客戶端版本 :";
+            this.label1.Text = "客戶端版本 :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(35, 210);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "美服遊戲版本:";
+            this.label2.Text = "遊戲版本:";
             // 
             // label3
             // 
@@ -121,7 +121,7 @@
             this.MinimizeBox = false;
             this.Name = "VerSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "美服版本選擇";
+            this.Text = "Riot官方客戶端版本選擇";
             this.Load += new System.EventHandler(this.VerSelect_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

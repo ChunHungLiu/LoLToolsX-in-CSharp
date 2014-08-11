@@ -8,10 +8,10 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using SevenZip;
-using LoLToolsX.Functions.Update;
+using LoLToolsX.Core.Update;
 using System.Xml.Linq;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core.Update
 {
     class CheckUpdate
     {
@@ -23,25 +23,23 @@ namespace LoLToolsX
 
         public static void checkUpdate()
         {
-            string reader = "";
-            string reader2 = "";
-            List<string> updateInfo = new List<string>();
-            //StreamReader reader;
-            //StreamReader reader2;
+            /********************
+             * 檢查LoLToolsX更新 *
+             ********************/
+
+            string verValue = "";           //版本
+            List<string> updateInfo = new List<string>();    //儲存更新內容
 
             try
             {
                 //檢查最新版本訊息
-                Variable.updating = true;
+                Variable.updating = true;          //正在更新
                 Logger.log("檢查 LoLToolsX 更新...", Logger.LogType.Info);
-                WebClient wc = new WebClient();
-                //reader = wc.DownloadString("http://nitroxenon.com/loltoolsx/version.html");
-                wc.DownloadFile("http://nitroxenon.com/loltoolsx/version.xml", Application.StartupPath + "\\download\\version.xml");
-                XDocument doc = XDocument.Load(Application.StartupPath + "\\download\\version.xml");
+                XDocument doc = XDocument.Load("http://nitroxenon.com/loltoolsx/version.xml");       //讀取最新版本
                 var tmp = doc.Descendants("Version");
                 foreach (var s in tmp)
                 {
-                    reader = s.Value;
+                    verValue = s.Value;         //取得最新版本
                 }
             }
             catch
@@ -53,14 +51,11 @@ namespace LoLToolsX
             try
             {
                 //檢查最新版本的更新內容
-                WebClient wc = new WebClient();
-                //reader2 = wc.DownloadString("http://nitroxenon.com/loltoolsx/info.html");
-                wc.DownloadFile("http://nitroxenon.com/loltoolsx/info.xml", Application.StartupPath + "\\download\\info.xml");
-                XDocument doc2 = XDocument.Load(Application.StartupPath + "\\download\\info.xml");
+                XDocument doc2 = XDocument.Load("http://nitroxenon.com/loltoolsx/info.xml");       //讀取更新內容
                 var tmp2 = doc2.Descendants("Info");
                 foreach (var s in tmp2)
                 {
-                    updateInfo.Add(s.Value);
+                    updateInfo.Add(s.Value);                //加入到updateInfo的List
                 }
                 
             }
@@ -73,15 +68,12 @@ namespace LoLToolsX
             try
             {
                 //閱讀更新信息
-                string result = reader;
-                string info = reader2;
-
-                
-                if (Application.ProductVersion != result)
+                //版本比對
+                if (Application.ProductVersion != verValue)
                 {
                     //有更新
                     Variable.haveUpdate = true;
-                    UpdateForm uf = new UpdateForm(result,updateInfo);
+                    UpdateForm uf = new UpdateForm(verValue,updateInfo);
                     uf.Show();
                     //Call Form an contiune original work (can use invoke)
                     Application.Run();
@@ -89,26 +81,21 @@ namespace LoLToolsX
                 else
                 {
                     Variable.updating = false;
-                    //wait.progressBar1.Value = 0;
-                    //wait.Dispose();
                     Logger.log("LoLToolsX 沒有可用更新", Logger.LogType.Info);
                 }
             }
             catch (Exception e)
             {
                 Variable.updating = false;
-                //wait.progressBar1.Value = 0;
-                //wait.Dispose();
                 Logger.log("LoLToolsX 下載更新資訊失敗", Logger.LogType.Info);
                 Logger.log(e, Logger.LogType.Error);
             }
             finally
             {
                 Variable.updating = false;
+                //釋放記憶體
                 GC.Collect();
             }
-           
-
         }
     }
 

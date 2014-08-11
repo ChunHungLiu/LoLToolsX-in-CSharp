@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     public static class Logger
     {
@@ -74,24 +74,9 @@ namespace LoLToolsX
             fs.Close();
         }
 
-        private static void write(Stream s, LogType type = LogType.Info)
-        {
-            StreamReader sr = new StreamReader(s);
-            write(sr.ReadToEnd(), type);
-            sr.Close();
-        }
-
         static public void log(string str, LogType type = LogType.Info)
         {
             write(str, type);
-        }
-
-        static public void log(Stream s, LogType type = LogType.Info)
-        {
-            StreamReader sr = new StreamReader(s);
-            sr.Close();
-            write(sr.ReadToEnd(), type);
-            
         }
         
         // Log Exception

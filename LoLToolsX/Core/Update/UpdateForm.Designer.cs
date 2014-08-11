@@ -1,4 +1,4 @@
-﻿namespace LoLToolsX.Functions.Update
+﻿namespace LoLToolsX.Core.Update
 {
     partial class UpdateForm
     {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using LoLToolsX.Core;
 
 namespace LoLToolsX
 {
@@ -29,6 +30,7 @@ namespace LoLToolsX
        
         private void ServerSelect_Load(object sender, EventArgs e)
         {
+            GC.Collect();
             //如果多過15個Log就全部刪
             string[] files = Directory.GetFiles(Application.StartupPath + @"\Logs");
             if (files.Length > 15)

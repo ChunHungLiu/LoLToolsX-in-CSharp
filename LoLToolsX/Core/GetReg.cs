@@ -6,7 +6,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.Windows.Forms;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     class GetReg
     {
@@ -53,7 +53,7 @@ namespace LoLToolsX
 
         public string NaPath(string iniPath)
         {
-
+            //取得美服安裝路徑
             CFGFile CFGFile = new CFGFile(iniPath);
 
             //檢查 config.ini

@@ -12,6 +12,7 @@ using System.IO;
 using SevenZip;
 using System.Xml;
 using System.Xml.Linq;
+using LoLToolsX.Core;
 
 namespace LoLToolsX.Forms
 {

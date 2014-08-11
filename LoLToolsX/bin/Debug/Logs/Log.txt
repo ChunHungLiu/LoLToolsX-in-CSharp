@@ -1,6 +1,6 @@
 ﻿============================== LoLToolsX Log File ==============================
-08/02/2014 14:58:50信息: LoLToolsX 啟動路徑 : K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
-08/02/2014 14:58:50信息: 檔案檢查開始!
+08/11/2014 08:03:35信息: LoLToolsX 啟動路徑 : K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
+08/11/2014 08:03:35信息: 檔案檢查開始!
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Skin.txt
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLBakRes.exe
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Updater.exe
@@ -23,13 +23,13 @@
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files
 檢查 K:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files\lang\kr
 檢查完成!
-08/02/2014 14:58:51信息: LoLToolsX版本: 3.1.7.0
-08/02/2014 14:58:51信息: 目前客戶端 : 台服
-08/02/2014 14:58:51信息: LoLToolsX Logo載入成功!
-08/02/2014 14:58:52信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-08/02/2014 14:58:52信息: LoL目錄檢查成功! 
-08/02/2014 14:58:52信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-08/02/2014 14:58:52信息: 檢查 LoLToolsX 更新...
-08/02/2014 14:58:52信息: 伺服器設定檔檢查成功! 
-08/02/2014 14:58:52信息: 目前伺服器: 台服
-08/02/2014 14:58:52信息: Air版本: 20140724
+08/11/2014 08:03:36信息: LoLToolsX版本: 3.1.8.0
+08/11/2014 08:03:36信息: 目前客戶端 : 台服
+08/11/2014 08:03:36信息: LoLToolsX Logo載入成功!
+08/11/2014 08:03:36信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+08/11/2014 08:03:36信息: LoL目錄檢查成功! 
+08/11/2014 08:03:36信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+08/11/2014 08:03:36信息: 伺服器設定檔檢查成功! 
+08/11/2014 08:03:36信息: 目前伺服器: 台服
+08/11/2014 08:03:36信息: 檢查 LoLToolsX 更新...
+08/11/2014 08:03:36信息: Air版本: 20140805

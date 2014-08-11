@@ -6,12 +6,13 @@ using System.Windows.Forms;
 using System.IO;
 using SevenZip;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     class InstallUI
     {
         public static void GameUI(string installPath)
         {
+            //檢查是否正確的UI檔案
             if (Path.GetExtension(Variable.hudPath) == ".tga")
             {
                 try
@@ -37,10 +38,12 @@ namespace LoLToolsX
 
         public static void NaGameUI(string installPath)
         {
+            //檢查是否正確的UI檔案
             if (Path.GetExtension(Variable.hudPath) == ".tga")
             {
                 try
                 {
+                    //複製檔案到每個資料夾
                     string dir = Variable.n_installPath + @"\RADS\projects\lol_game_client\filearchives";
                     string[] folder = Directory.GetDirectories(dir);
                     foreach (string f in folder)
@@ -92,10 +95,12 @@ namespace LoLToolsX
             {
                 try
                 {
+                    //解壓
                     string extractPath = installpath;
                     string parentPath = Directory.GetParent(extractPath).ToString();
                     SevenZipExtractor sze = new SevenZipExtractor(zipPath);
                     sze.ExtractArchive(parentPath);
+                    //寫入 ClientZips.txt
                     FileStream fs = new FileStream(extractPath + @"\Game\ClientZips.txt", FileMode.Append, FileAccess.Write);
                     StreamWriter sw = new StreamWriter(fs);
                     sw.WriteLine(zipName);
@@ -110,6 +115,10 @@ namespace LoLToolsX
                 {
                     MessageBox.Show("SKIN安裝失敗 錯誤信息如下:\r\n" + ex.ToString());
                     return;
+                }
+                finally
+                {
+                    GC.Collect();
                 }
             }
             else

@@ -12,12 +12,13 @@ using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.VisualBasic.Devices;
 
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     class Function
     {
         public static bool UploadLogs()
         {
+            //傳送錯誤報告
                 //Upload Log
                 Logger.log("關閉程式...", Logger.LogType.Info);
                 Random random = new Random();
@@ -41,6 +42,8 @@ namespace LoLToolsX
         }
     }
 
+    //Properties File (Doesn't work)
+    /*
     public class PropertiesFile
     {
         private Dictionary<String, String> list;
@@ -141,6 +144,8 @@ namespace LoLToolsX
 
 
     }
+
+     * */
 
     public static class My
     {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using ChatColour;
+using LoLToolsX.Core;
 
 namespace LoLToolsX
 {

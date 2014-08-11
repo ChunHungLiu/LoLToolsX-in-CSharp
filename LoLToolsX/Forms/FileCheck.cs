@@ -10,6 +10,7 @@ using System.IO;
 using System.Web;
 using System.Net;
 using System.Threading;
+using LoLToolsX.Core;
 
 namespace LoLToolsX
 {

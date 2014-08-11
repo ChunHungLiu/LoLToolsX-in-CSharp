@@ -33,6 +33,10 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.BakLang = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button28 = new System.Windows.Forms.Button();
+            this.newSwitch = new System.Windows.Forms.RadioButton();
+            this.oldSwitch = new System.Windows.Forms.RadioButton();
             this.delBakProp = new System.Windows.Forms.Button();
             this.backProp = new System.Windows.Forms.Button();
             this.restoneProp = new System.Windows.Forms.Button();
@@ -57,7 +61,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.delLangBak = new System.Windows.Forms.Button();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label19 = new System.Windows.Forms.Label();
@@ -143,11 +146,9 @@
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.oldSwitch = new System.Windows.Forms.RadioButton();
-            this.newSwitch = new System.Windows.Forms.RadioButton();
-            this.button28 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
@@ -163,7 +164,6 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // BakLang
@@ -199,6 +199,50 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "伺服器切換";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button28);
+            this.groupBox5.Controls.Add(this.newSwitch);
+            this.groupBox5.Controls.Add(this.oldSwitch);
+            this.groupBox5.Location = new System.Drawing.Point(633, 239);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(174, 88);
+            this.groupBox5.TabIndex = 29;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "切換方法";
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(96, 36);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(56, 23);
+            this.button28.TabIndex = 2;
+            this.button28.Text = "說明";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // newSwitch
+            // 
+            this.newSwitch.AutoSize = true;
+            this.newSwitch.Location = new System.Drawing.Point(29, 55);
+            this.newSwitch.Name = "newSwitch";
+            this.newSwitch.Size = new System.Drawing.Size(49, 17);
+            this.newSwitch.TabIndex = 1;
+            this.newSwitch.Text = "安全";
+            this.newSwitch.UseVisualStyleBackColor = true;
+            // 
+            // oldSwitch
+            // 
+            this.oldSwitch.AutoSize = true;
+            this.oldSwitch.Checked = true;
+            this.oldSwitch.Location = new System.Drawing.Point(29, 24);
+            this.oldSwitch.Name = "oldSwitch";
+            this.oldSwitch.Size = new System.Drawing.Size(49, 17);
+            this.oldSwitch.TabIndex = 0;
+            this.oldSwitch.TabStop = true;
+            this.oldSwitch.Text = "傳統";
+            this.oldSwitch.UseVisualStyleBackColor = true;
             // 
             // delBakProp
             // 
@@ -442,16 +486,6 @@
             this.GroupBox2.TabIndex = 31;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "遊戲";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微軟正黑體", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(76, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 29);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "不開放";
             // 
             // Label12
             // 
@@ -1106,7 +1140,7 @@
             // 
             this.Label008.AutoSize = true;
             this.Label008.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label008.Location = new System.Drawing.Point(387, 275);
+            this.Label008.Location = new System.Drawing.Point(302, 278);
             this.Label008.Name = "Label008";
             this.Label008.Size = new System.Drawing.Size(56, 28);
             this.Label008.TabIndex = 33;
@@ -1116,7 +1150,7 @@
             // 
             this.Label002.AutoSize = true;
             this.Label002.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label002.Location = new System.Drawing.Point(387, 73);
+            this.Label002.Location = new System.Drawing.Point(302, 76);
             this.Label002.Name = "Label002";
             this.Label002.Size = new System.Drawing.Size(56, 28);
             this.Label002.TabIndex = 32;
@@ -1126,7 +1160,7 @@
             // 
             this.Label003.AutoSize = true;
             this.Label003.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label003.Location = new System.Drawing.Point(387, 106);
+            this.Label003.Location = new System.Drawing.Point(302, 109);
             this.Label003.Name = "Label003";
             this.Label003.Size = new System.Drawing.Size(56, 28);
             this.Label003.TabIndex = 31;
@@ -1136,7 +1170,7 @@
             // 
             this.Label004.AutoSize = true;
             this.Label004.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label004.Location = new System.Drawing.Point(387, 140);
+            this.Label004.Location = new System.Drawing.Point(302, 143);
             this.Label004.Name = "Label004";
             this.Label004.Size = new System.Drawing.Size(56, 28);
             this.Label004.TabIndex = 30;
@@ -1146,7 +1180,7 @@
             // 
             this.Label005.AutoSize = true;
             this.Label005.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label005.Location = new System.Drawing.Point(387, 174);
+            this.Label005.Location = new System.Drawing.Point(302, 177);
             this.Label005.Name = "Label005";
             this.Label005.Size = new System.Drawing.Size(56, 28);
             this.Label005.TabIndex = 29;
@@ -1156,7 +1190,7 @@
             // 
             this.Label006.AutoSize = true;
             this.Label006.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label006.Location = new System.Drawing.Point(387, 208);
+            this.Label006.Location = new System.Drawing.Point(302, 211);
             this.Label006.Name = "Label006";
             this.Label006.Size = new System.Drawing.Size(56, 28);
             this.Label006.TabIndex = 28;
@@ -1166,7 +1200,7 @@
             // 
             this.Label007.AutoSize = true;
             this.Label007.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label007.Location = new System.Drawing.Point(387, 241);
+            this.Label007.Location = new System.Drawing.Point(302, 244);
             this.Label007.Name = "Label007";
             this.Label007.Size = new System.Drawing.Size(56, 28);
             this.Label007.TabIndex = 27;
@@ -1177,7 +1211,7 @@
             this.Label001.AutoSize = true;
             this.Label001.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
             this.Label001.ForeColor = System.Drawing.Color.Black;
-            this.Label001.Location = new System.Drawing.Point(387, 36);
+            this.Label001.Location = new System.Drawing.Point(302, 39);
             this.Label001.Name = "Label001";
             this.Label001.Size = new System.Drawing.Size(56, 28);
             this.Label001.TabIndex = 26;
@@ -1187,7 +1221,7 @@
             // 
             this.Label02.AutoSize = true;
             this.Label02.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label02.Location = new System.Drawing.Point(270, 71);
+            this.Label02.Location = new System.Drawing.Point(185, 74);
             this.Label02.Name = "Label02";
             this.Label02.Size = new System.Drawing.Size(68, 28);
             this.Label02.TabIndex = 25;
@@ -1197,7 +1231,7 @@
             // 
             this.Label03.AutoSize = true;
             this.Label03.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label03.Location = new System.Drawing.Point(270, 104);
+            this.Label03.Location = new System.Drawing.Point(185, 107);
             this.Label03.Name = "Label03";
             this.Label03.Size = new System.Drawing.Size(87, 28);
             this.Label03.TabIndex = 24;
@@ -1207,7 +1241,7 @@
             // 
             this.Label04.AutoSize = true;
             this.Label04.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label04.Location = new System.Drawing.Point(270, 138);
+            this.Label04.Location = new System.Drawing.Point(185, 141);
             this.Label04.Name = "Label04";
             this.Label04.Size = new System.Drawing.Size(68, 28);
             this.Label04.TabIndex = 23;
@@ -1217,7 +1251,7 @@
             // 
             this.Label05.AutoSize = true;
             this.Label05.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label05.Location = new System.Drawing.Point(270, 172);
+            this.Label05.Location = new System.Drawing.Point(185, 175);
             this.Label05.Name = "Label05";
             this.Label05.Size = new System.Drawing.Size(98, 28);
             this.Label05.TabIndex = 22;
@@ -1227,7 +1261,7 @@
             // 
             this.Label06.AutoSize = true;
             this.Label06.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label06.Location = new System.Drawing.Point(270, 206);
+            this.Label06.Location = new System.Drawing.Point(185, 209);
             this.Label06.Name = "Label06";
             this.Label06.Size = new System.Drawing.Size(105, 28);
             this.Label06.TabIndex = 21;
@@ -1237,7 +1271,7 @@
             // 
             this.Label07.AutoSize = true;
             this.Label07.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label07.Location = new System.Drawing.Point(270, 239);
+            this.Label07.Location = new System.Drawing.Point(185, 242);
             this.Label07.Name = "Label07";
             this.Label07.Size = new System.Drawing.Size(112, 28);
             this.Label07.TabIndex = 20;
@@ -1247,7 +1281,7 @@
             // 
             this.Label08.AutoSize = true;
             this.Label08.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label08.Location = new System.Drawing.Point(270, 273);
+            this.Label08.Location = new System.Drawing.Point(185, 276);
             this.Label08.Name = "Label08";
             this.Label08.Size = new System.Drawing.Size(86, 28);
             this.Label08.TabIndex = 19;
@@ -1257,7 +1291,7 @@
             // 
             this.Label01.AutoSize = true;
             this.Label01.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label01.Location = new System.Drawing.Point(270, 36);
+            this.Label01.Location = new System.Drawing.Point(185, 39);
             this.Label01.Name = "Label01";
             this.Label01.Size = new System.Drawing.Size(68, 28);
             this.Label01.TabIndex = 18;
@@ -1364,49 +1398,15 @@
             this.notifyIcon2.Text = "notifyIcon2";
             this.notifyIcon2.Visible = true;
             // 
-            // groupBox5
+            // label5
             // 
-            this.groupBox5.Controls.Add(this.button28);
-            this.groupBox5.Controls.Add(this.newSwitch);
-            this.groupBox5.Controls.Add(this.oldSwitch);
-            this.groupBox5.Location = new System.Drawing.Point(633, 239);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(174, 88);
-            this.groupBox5.TabIndex = 29;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "切換方法";
-            // 
-            // oldSwitch
-            // 
-            this.oldSwitch.AutoSize = true;
-            this.oldSwitch.Checked = true;
-            this.oldSwitch.Location = new System.Drawing.Point(29, 24);
-            this.oldSwitch.Name = "oldSwitch";
-            this.oldSwitch.Size = new System.Drawing.Size(49, 17);
-            this.oldSwitch.TabIndex = 0;
-            this.oldSwitch.TabStop = true;
-            this.oldSwitch.Text = "傳統";
-            this.oldSwitch.UseVisualStyleBackColor = true;
-            // 
-            // newSwitch
-            // 
-            this.newSwitch.AutoSize = true;
-            this.newSwitch.Location = new System.Drawing.Point(29, 55);
-            this.newSwitch.Name = "newSwitch";
-            this.newSwitch.Size = new System.Drawing.Size(49, 17);
-            this.newSwitch.TabIndex = 1;
-            this.newSwitch.Text = "安全";
-            this.newSwitch.UseVisualStyleBackColor = true;
-            // 
-            // button28
-            // 
-            this.button28.Location = new System.Drawing.Point(96, 36);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(56, 23);
-            this.button28.TabIndex = 2;
-            this.button28.Text = "說明";
-            this.button28.UseVisualStyleBackColor = true;
-            this.button28.Click += new System.EventHandler(this.button28_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微軟正黑體", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(76, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 29);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "不開放";
             // 
             // NaTools
             // 
@@ -1428,6 +1428,8 @@
             this.Click += new System.EventHandler(this.NaTools_Click);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.GroupBox1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -1454,8 +1456,6 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1556,7 +1556,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.NotifyIcon notifyIcon2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label16;
@@ -1579,5 +1578,6 @@
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.RadioButton newSwitch;
         private System.Windows.Forms.RadioButton oldSwitch;
+        private System.Windows.Forms.Label label5;
     }
 }

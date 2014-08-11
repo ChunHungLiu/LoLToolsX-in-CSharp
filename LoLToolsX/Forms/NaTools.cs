@@ -10,6 +10,8 @@ using System.Diagnostics;
 using System.Threading;
 using System.Net;
 using System.Net.NetworkInformation;
+using LoLToolsX.Core;
+using LoLToolsX.Core.Update;
 
 namespace LoLToolsX
 {
@@ -342,32 +344,44 @@ namespace LoLToolsX
 
             string[] serverAry = 
             {   "lol.garena.com",
-                "landing.leagueoflegends.com",
-                "lol.garena.com",
+                "216.52.241.254",
+                "203.117.155.133",
                 "www.leagueoflegends.co.kr",
-                "lq.eu.lol.riotgames.com",
-                "lq.eun1.lol.riotgames.com",
+                "95.172.70.254",
+                "190.93.254.13",
                 "lq.oc1.lol.riotgames.com",
-                "d2q6fdmnncz9b0.cloudfront.net"
+                "66.150.148.64"
             };
 
             for (int i = 0; i <= 7; i++)
             {
-                if (StatusCheck.pingCheck(serverAry[i]))
+                //if (StatusCheck.pingCheck(serverAry[i]))
+                //{
+                string tmp = StatusCheck.pingCheck(serverAry[i]);
+                if (tmp != "請求逾時" & tmp != "不明")
                 {
-                    labels[i].Text = "正常";
                     labels[i].ForeColor = System.Drawing.Color.Green;
-                    Logger.log("Server Status Check:", Logger.LogType.Info);
-                    Logger.log(serverAry[i] + " : 正常", Logger.LogType.Info);
+                }
+                else if (tmp == "不明")
+                {
+                    labels[i].ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    labels[i].Text = "請求逾時";
                     labels[i].ForeColor = System.Drawing.Color.Red;
-                    Logger.log("Server Status Check:", Logger.LogType.Info);
-                    Logger.log(serverAry[i] + " : 請求逾時", Logger.LogType.Info);
                 }
+                labels[i].Text = tmp;
+                Logger.log("Server Status Check:", Logger.LogType.Info);
+                Logger.log(serverAry[i] + " : 正常", Logger.LogType.Info);
             }
+            //else
+            //{
+            //labels[i].Text = "請求逾時";
+            //labels[i].ForeColor = System.Drawing.Color.Red;
+            // Logger.log("Server Status Check:", Logger.LogType.Info);
+            //Logger.log(serverAry[i] + " : 請求逾時", Logger.LogType.Info);
+            //}
+
 
         }
 

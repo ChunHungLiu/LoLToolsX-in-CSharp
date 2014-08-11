@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
 
-namespace LoLToolsX.Functions.Update
+namespace LoLToolsX.Core.Update
 {
     public partial class UpdateForm : Form
     {
@@ -21,9 +21,8 @@ namespace LoLToolsX.Functions.Update
         public UpdateForm(string _version,List<string> _info)
         {
             InitializeComponent();
-            this.version = _version;
-            this.info = _info;
-            //this.info = _info;
+            this.version = _version;     //最新版本
+            this.info = _info;           //更新資訊
         }
 
         private void UpdateForm_Load(object sender, EventArgs e)
@@ -33,14 +32,21 @@ namespace LoLToolsX.Functions.Update
             lastestVer.Text = version;
             foreach (string s in info)
             {
+                //寫入更新資訊到TextBox
                 textBox1.AppendText(s + "\r\n");
             }
             //取消全選
             textBox1.Select(0, 0);
         }
 
+        /// <summary>
+        /// 下載更新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            //路徑 = github + 版本號碼 + /LoLToolsX + 版本號碼 + .exe
             string downloadPath = "https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/LoLToolsX" + version + "/LoLToolsX" + version + ".exe";
 
             //建立事件 進度條用
@@ -53,6 +59,7 @@ namespace LoLToolsX.Functions.Update
                 {
                     updating = true;
                     label3.Text = "0";
+                    //開始下載更新
                     wc.DownloadFileAsync(new Uri(downloadPath), Application.StartupPath + @"\download\" + @"LoLToolsX.exe");
                 }
             }
@@ -82,6 +89,9 @@ namespace LoLToolsX.Functions.Update
             MessageBox.Show("更新下載完成! 按確定安裝更新");
             Logger.log("更新下載成功!");
             Logger.log("啟動Updater.exe進行gengx");
+            /////////////////
+            // 開始進行更新 //
+            /////////////////
             ProcessStartInfo pi = new ProcessStartInfo();
             pi.FileName = "Updater.exe";
             pi.WorkingDirectory = Application.StartupPath;
@@ -91,8 +101,8 @@ namespace LoLToolsX.Functions.Update
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //取消更新
             this.Dispose();
-
         }
     }
 }

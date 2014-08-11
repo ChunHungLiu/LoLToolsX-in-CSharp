@@ -39,7 +39,7 @@
             this.selectNA.Name = "selectNA";
             this.selectNA.Size = new System.Drawing.Size(118, 49);
             this.selectNA.TabIndex = 4;
-            this.selectNA.Text = "美服";
+            this.selectNA.Text = "其他";
             this.selectNA.UseVisualStyleBackColor = true;
             this.selectNA.Click += new System.EventHandler(this.selectNA_Click);
             // 
@@ -49,7 +49,7 @@
             this.selectTW.Name = "selectTW";
             this.selectTW.Size = new System.Drawing.Size(118, 49);
             this.selectTW.TabIndex = 3;
-            this.selectTW.Text = "台服";
+            this.selectTW.Text = "台服 / Garena";
             this.selectTW.UseVisualStyleBackColor = true;
             this.selectTW.Click += new System.EventHandler(this.selectTW_Click);
             // 

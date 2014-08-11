@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.Devices;
-using Microsoft.VisualBasic.ApplicationServices;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     class PropEdit
     {
@@ -56,6 +54,7 @@ namespace LoLToolsX
 
         public void LobbyLanding()
         {
+            //如用戶在TextBox沒有輸入含http://的網址 程式將會自動加上
             if (website.Contains("http://") | (website.Contains("https://")))
             {
                 try
@@ -77,6 +76,7 @@ namespace LoLToolsX
             else
             {
                 editedWebSite = "http://" + website;
+                //開始修改
                 LobbyLandingEdit();
             }
         }

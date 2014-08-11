@@ -287,7 +287,7 @@
             // 
             this.Label008.AutoSize = true;
             this.Label008.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label008.Location = new System.Drawing.Point(387, 275);
+            this.Label008.Location = new System.Drawing.Point(342, 268);
             this.Label008.Name = "Label008";
             this.Label008.Size = new System.Drawing.Size(56, 28);
             this.Label008.TabIndex = 33;
@@ -297,7 +297,7 @@
             // 
             this.Label002.AutoSize = true;
             this.Label002.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label002.Location = new System.Drawing.Point(387, 73);
+            this.Label002.Location = new System.Drawing.Point(342, 66);
             this.Label002.Name = "Label002";
             this.Label002.Size = new System.Drawing.Size(56, 28);
             this.Label002.TabIndex = 32;
@@ -307,7 +307,7 @@
             // 
             this.Label003.AutoSize = true;
             this.Label003.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label003.Location = new System.Drawing.Point(387, 106);
+            this.Label003.Location = new System.Drawing.Point(342, 99);
             this.Label003.Name = "Label003";
             this.Label003.Size = new System.Drawing.Size(56, 28);
             this.Label003.TabIndex = 31;
@@ -317,7 +317,7 @@
             // 
             this.Label004.AutoSize = true;
             this.Label004.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label004.Location = new System.Drawing.Point(387, 140);
+            this.Label004.Location = new System.Drawing.Point(342, 133);
             this.Label004.Name = "Label004";
             this.Label004.Size = new System.Drawing.Size(56, 28);
             this.Label004.TabIndex = 30;
@@ -327,7 +327,7 @@
             // 
             this.Label005.AutoSize = true;
             this.Label005.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label005.Location = new System.Drawing.Point(387, 174);
+            this.Label005.Location = new System.Drawing.Point(342, 167);
             this.Label005.Name = "Label005";
             this.Label005.Size = new System.Drawing.Size(56, 28);
             this.Label005.TabIndex = 29;
@@ -337,7 +337,7 @@
             // 
             this.Label006.AutoSize = true;
             this.Label006.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label006.Location = new System.Drawing.Point(387, 208);
+            this.Label006.Location = new System.Drawing.Point(342, 201);
             this.Label006.Name = "Label006";
             this.Label006.Size = new System.Drawing.Size(56, 28);
             this.Label006.TabIndex = 28;
@@ -347,7 +347,7 @@
             // 
             this.Label007.AutoSize = true;
             this.Label007.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label007.Location = new System.Drawing.Point(387, 241);
+            this.Label007.Location = new System.Drawing.Point(342, 234);
             this.Label007.Name = "Label007";
             this.Label007.Size = new System.Drawing.Size(56, 28);
             this.Label007.TabIndex = 27;
@@ -358,7 +358,7 @@
             this.Label001.AutoSize = true;
             this.Label001.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
             this.Label001.ForeColor = System.Drawing.Color.Black;
-            this.Label001.Location = new System.Drawing.Point(387, 36);
+            this.Label001.Location = new System.Drawing.Point(342, 29);
             this.Label001.Name = "Label001";
             this.Label001.Size = new System.Drawing.Size(56, 28);
             this.Label001.TabIndex = 26;
@@ -368,7 +368,7 @@
             // 
             this.Label02.AutoSize = true;
             this.Label02.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label02.Location = new System.Drawing.Point(270, 71);
+            this.Label02.Location = new System.Drawing.Point(225, 64);
             this.Label02.Name = "Label02";
             this.Label02.Size = new System.Drawing.Size(68, 28);
             this.Label02.TabIndex = 25;
@@ -378,7 +378,7 @@
             // 
             this.Label03.AutoSize = true;
             this.Label03.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label03.Location = new System.Drawing.Point(270, 104);
+            this.Label03.Location = new System.Drawing.Point(225, 97);
             this.Label03.Name = "Label03";
             this.Label03.Size = new System.Drawing.Size(87, 28);
             this.Label03.TabIndex = 24;
@@ -388,7 +388,7 @@
             // 
             this.Label04.AutoSize = true;
             this.Label04.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label04.Location = new System.Drawing.Point(270, 138);
+            this.Label04.Location = new System.Drawing.Point(225, 131);
             this.Label04.Name = "Label04";
             this.Label04.Size = new System.Drawing.Size(68, 28);
             this.Label04.TabIndex = 23;
@@ -398,7 +398,7 @@
             // 
             this.Label05.AutoSize = true;
             this.Label05.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label05.Location = new System.Drawing.Point(270, 172);
+            this.Label05.Location = new System.Drawing.Point(225, 165);
             this.Label05.Name = "Label05";
             this.Label05.Size = new System.Drawing.Size(98, 28);
             this.Label05.TabIndex = 22;
@@ -408,7 +408,7 @@
             // 
             this.Label06.AutoSize = true;
             this.Label06.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label06.Location = new System.Drawing.Point(270, 206);
+            this.Label06.Location = new System.Drawing.Point(225, 199);
             this.Label06.Name = "Label06";
             this.Label06.Size = new System.Drawing.Size(105, 28);
             this.Label06.TabIndex = 21;
@@ -418,7 +418,7 @@
             // 
             this.Label07.AutoSize = true;
             this.Label07.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label07.Location = new System.Drawing.Point(270, 239);
+            this.Label07.Location = new System.Drawing.Point(225, 232);
             this.Label07.Name = "Label07";
             this.Label07.Size = new System.Drawing.Size(112, 28);
             this.Label07.TabIndex = 20;
@@ -428,7 +428,7 @@
             // 
             this.Label08.AutoSize = true;
             this.Label08.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label08.Location = new System.Drawing.Point(270, 273);
+            this.Label08.Location = new System.Drawing.Point(225, 266);
             this.Label08.Name = "Label08";
             this.Label08.Size = new System.Drawing.Size(86, 28);
             this.Label08.TabIndex = 19;
@@ -438,7 +438,7 @@
             // 
             this.Label01.AutoSize = true;
             this.Label01.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label01.Location = new System.Drawing.Point(270, 36);
+            this.Label01.Location = new System.Drawing.Point(225, 29);
             this.Label01.Name = "Label01";
             this.Label01.Size = new System.Drawing.Size(68, 28);
             this.Label01.TabIndex = 18;
@@ -640,7 +640,7 @@
             this.LinkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.LinkLabel3.Location = new System.Drawing.Point(309, 33);
             this.LinkLabel3.Name = "LinkLabel3";
-            this.LinkLabel3.Size = new System.Drawing.Size(299, 16);
+            this.LinkLabel3.Size = new System.Drawing.Size(298, 16);
             this.LinkLabel3.TabIndex = 0;
             this.LinkLabel3.TabStop = true;
             this.LinkLabel3.Text = "http://nitroxenon.com/lol-tools-tw/lol-lobby-theme/";
@@ -750,7 +750,7 @@
             this.LinkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LinkLabel2.Location = new System.Drawing.Point(78, 30);
             this.LinkLabel2.Name = "LinkLabel2";
-            this.LinkLabel2.Size = new System.Drawing.Size(242, 20);
+            this.LinkLabel2.Size = new System.Drawing.Size(244, 20);
             this.LinkLabel2.TabIndex = 0;
             this.LinkLabel2.TabStop = true;
             this.LinkLabel2.Text = "http://nitroxenon.com/sound-pack";

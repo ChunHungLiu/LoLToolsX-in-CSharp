@@ -90,38 +90,38 @@
     <Compile Include="Forms\CheckLangUpdate.Designer.cs">
       <DependentUpon>CheckLangUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\BakRes.cs" />
-    <Compile Include="Functions\CFGFile.cs" />
+    <Compile Include="Core\BakRes.cs" />
+    <Compile Include="Core\CFGFile.cs" />
     <Compile Include="Forms\ChatEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ChatEdit.Designer.cs">
       <DependentUpon>ChatEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\CheckProp.cs" />
-    <Compile Include="Functions\Update\CheckUpdate.cs" />
+    <Compile Include="Core\CheckProp.cs" />
+    <Compile Include="Core\Update\CheckUpdate.cs" />
     <Compile Include="Forms\CrushForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CrushForm.Designer.cs">
       <DependentUpon>CrushForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\Edit.cs" />
+    <Compile Include="Core\Edit.cs" />
     <Compile Include="Forms\FileCheck.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FileCheck.Designer.cs">
       <DependentUpon>FileCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\Function.cs" />
-    <Compile Include="Functions\Install.cs" />
+    <Compile Include="Core\Function.cs" />
+    <Compile Include="Core\Install.cs" />
     <Compile Include="Forms\LobbyUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\LobbyUI.Designer.cs">
       <DependentUpon>LobbyUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\Logger.cs" />
+    <Compile Include="Core\Logger.cs" />
     <Compile Include="Forms\NaTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,20 +134,20 @@
     <Compile Include="Forms\ServerSelect.Designer.cs">
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\StartGame.cs" />
-    <Compile Include="Functions\StatusCheck.cs" />
-    <Compile Include="Functions\Switch.cs" />
+    <Compile Include="Core\StartGame.cs" />
+    <Compile Include="Core\StatusCheck.cs" />
+    <Compile Include="Core\Switch.cs" />
     <Compile Include="Forms\TwTools.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TwTools.Designer.cs">
       <DependentUpon>TwTools.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\GetReg.cs" />
-    <Compile Include="Functions\Update\UpdateForm.cs">
+    <Compile Include="Core\GetReg.cs" />
+    <Compile Include="Core\Update\UpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Functions\Update\UpdateForm.Designer.cs">
+    <Compile Include="Core\Update\UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -195,7 +195,7 @@
     <EmbeddedResource Include="Forms\TwTools.resx">
       <DependentUpon>TwTools.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Functions\Update\UpdateForm.resx">
+    <EmbeddedResource Include="Core\Update\UpdateForm.resx">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

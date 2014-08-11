@@ -7,7 +7,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 
-namespace LoLToolsX
+namespace LoLToolsX.Core
 {
     class CFGFile
     {

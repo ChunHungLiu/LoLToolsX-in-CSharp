@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
+using LoLToolsX.Core;
 
 namespace LoLToolsX
 {
