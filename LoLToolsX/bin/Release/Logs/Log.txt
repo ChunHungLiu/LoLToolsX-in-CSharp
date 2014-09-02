@@ -1,1 +1,35 @@
-﻿
+﻿============================== LoLToolsX Log File ==============================
+09/02/2014 18:22:34信息: LoLToolsX 啟動路徑 : R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release
+09/02/2014 18:22:34信息: 檔案檢查開始!
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Skin.txt
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\LoLBakRes.exe
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Updater.exe
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Logs\Log.txt
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\SevenZipSharp.dll
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\7z.dll
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\Air
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\Chat
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\lang
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\LoL
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\na_lang
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\na_server_prop
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\server_prop
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\sound
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\UI
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\UI\game
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\download
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Logs
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\files
+檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\files\lang\kr
+檢查完成!
+09/02/2014 18:22:35信息: LoLToolsX版本: 3.3.0.0
+09/02/2014 18:22:35信息: 目前客戶端 : 台服
+09/02/2014 18:22:35信息: LoLToolsX Logo載入成功!
+09/02/2014 18:22:35信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+09/02/2014 18:22:35信息: LoL目錄檢查成功! 
+09/02/2014 18:22:35信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+09/02/2014 18:22:35信息: 伺服器設定檔檢查成功! 
+09/02/2014 18:22:35信息: 檢查 LoLToolsX 更新...
+09/02/2014 18:22:35信息: 目前伺服器: 台服
+09/02/2014 18:22:35信息: Air版本: 20140819

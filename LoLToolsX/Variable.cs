@@ -10,7 +10,8 @@ namespace LoLToolsX
     {
         #region 字串
 
-        public static string v_installPath;
+        public static string tw_installPath;  //台服LOL路徑
+        public static string na_installPath;  //美服LOL路徑
         public static string propPath;
         public static string hudPath;
         public static string n_installPath;
@@ -36,12 +37,13 @@ namespace LoLToolsX
         public static bool allowUpdate = true;
         public static bool editpropMessageBox = true;
         public static bool forceSelectPath = false;
+        public static bool frmShown = false;
 
         #endregion
 
         #region 物件
 
-        public static CFGFile lolConfig = new CFGFile(v_installPath);
+        public static CFGFile lolConfig = new CFGFile(tw_installPath);
 
         #endregion
 

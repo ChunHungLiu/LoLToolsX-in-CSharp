@@ -10,6 +10,7 @@ using System.IO;
 using System.Web;
 using System.Net;
 using System.Threading;
+using System.Diagnostics;
 using LoLToolsX.Core;
 
 namespace LoLToolsX
@@ -200,6 +201,7 @@ namespace LoLToolsX
                 }
                 progressBar1.PerformStep();
             }
+
 
             textBox1.AppendText("\r\n檢查完成!");
             CheckFinish();

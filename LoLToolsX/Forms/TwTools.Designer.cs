@@ -149,6 +149,7 @@
             this.button28 = new System.Windows.Forms.Button();
             this.skinPathBox = new System.Windows.Forms.ListBox();
             this.button27 = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
             this.tabPage9.SuspendLayout();
@@ -1311,6 +1312,7 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Location = new System.Drawing.Point(1, 0);
@@ -1436,6 +1438,16 @@
             this.button27.Text = "安裝SKIN";
             this.button27.UseVisualStyleBackColor = true;
             this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(867, 346);
+            this.tabPage11.TabIndex = 10;
+            this.tabPage11.Text = "觀戰工具";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            this.tabPage11.Enter += new System.EventHandler(this.tabPage11_Enter);
             // 
             // notifyIcon2
             // 
@@ -1616,6 +1628,7 @@
         private System.Windows.Forms.Label label20;
         internal System.Windows.Forms.Button button31;
         internal System.Windows.Forms.Button button32;
+        private System.Windows.Forms.TabPage tabPage11;
     }
 }
 

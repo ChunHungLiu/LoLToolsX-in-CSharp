@@ -158,7 +158,6 @@ SelectPath:
             cp = null;
             gr = null;
 
-            Variable.v_installPath = installPath;
 
             string[] skins = File.ReadAllLines(Application.StartupPath + @"\Skin.txt");
             foreach (string s in skins)
@@ -166,7 +165,9 @@ SelectPath:
                 installedSkin.Items.Add(s);
             }
 
+            Variable.tw_installPath = installPath;
             Variable.curClient = "台服";
+
         }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -815,6 +816,52 @@ SelectPath:
         {
             LoLToolsX.Forms.CheckLangUpdate check = new Forms.CheckLangUpdate();
             check.ShowDialog();
+        }
+
+        private void tabPage11_Enter(object sender, EventArgs e)
+        {
+            Forms.frmSpect spect;
+            spect = new Forms.frmSpect();
+            spect.TopMost = true;
+            spect.Disposed += new EventHandler(spect_Disposed);
+            spect.Shown += new EventHandler(spect_Shown);
+
+            if (!Variable.frmShown)
+            {
+
+                if (Application.OpenForms["frmSpect"] == null)
+                {
+                    spect.Show();
+                    spect.Focus();
+                    Application.OpenForms["frmSpect"].Focus();
+                }
+                else
+                {
+                    Application.OpenForms["frmSpect"].Focus();
+                }
+
+                Variable.frmShown = true;
+            }
+            else
+            {
+                try
+                {
+                    Application.OpenForms["frmSpect"].Focus();
+                }
+                catch { }
+            }
+
+            tabControl1.SelectedTab = tabPage1;     //強制回到第一分頁
+        }
+
+        private void spect_Disposed(object sender, EventArgs e)
+        {
+            Variable.frmShown = false;
+        }
+
+        private void spect_Shown(object sender, EventArgs e)
+        {
+            Variable.frmShown = true;
         }
 
     }
