@@ -10,8 +10,8 @@ namespace LoLToolsX
     {
         #region 字串
 
-        public static string tw_installPath;  //台服LOL路徑
-        public static string na_installPath;  //美服LOL路徑
+        //public static string tw_installPath;  //台服LOL路徑
+        //public static string na_installPath;  //美服LOL路徑
         public static string propPath;
         public static string hudPath;
         public static string n_installPath;
@@ -20,7 +20,7 @@ namespace LoLToolsX
 
         #endregion
 
-        #region 版本
+        #region 版本(美服)
 
         public static string airVer = "";
         public static string gameVer = "";
@@ -43,7 +43,7 @@ namespace LoLToolsX
 
         #region 物件
 
-        public static CFGFile lolConfig = new CFGFile(tw_installPath);
+        //public static CFGFile lolConfig = new CFGFile(tw_installPath);
 
         #endregion
 

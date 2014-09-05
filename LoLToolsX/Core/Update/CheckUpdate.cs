@@ -96,6 +96,8 @@ namespace LoLToolsX.Core.Update
                 //釋放記憶體
                 GC.Collect();
             }
+
+            Variable.updating = false;
         }
     }
 

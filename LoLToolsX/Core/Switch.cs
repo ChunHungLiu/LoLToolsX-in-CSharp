@@ -297,15 +297,6 @@ namespace LoLToolsX.Core
         public void QuickSwitch()
         {
             #region ko_KR
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR", true);
-            }
-            catch { }
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
             {
                 Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
@@ -324,27 +315,9 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
             }
             catch { }
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN", true);
-            }
-            catch { }
             #endregion
 
             #region zh_TW
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR", true);
-            }
-            catch { }
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
             {
                 Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
@@ -363,27 +336,9 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
             }
             catch { }
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN", true);
-            }
-            catch { }
             #endregion
 
             #region zh_CN
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR", true);
-            }
-            catch { }
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
             {
                 Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
@@ -400,15 +355,6 @@ namespace LoLToolsX.Core
             try
             {
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
-            }
-            catch { }
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN", true);
             }
             catch { }
             #endregion

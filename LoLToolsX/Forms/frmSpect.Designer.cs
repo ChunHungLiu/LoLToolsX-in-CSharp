@@ -41,7 +41,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(1005, 698);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://nitroxenon.com/loltoolsx/spect.html", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://lol-clearcode.rhcloud.com", System.UriKind.Absolute);
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
@@ -56,7 +56,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSpect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "觀戰工具";
+            this.Text = "精選對戰觀戰工具";
             this.Load += new System.EventHandler(this.frmSpect_Load);
             this.ResumeLayout(false);
 

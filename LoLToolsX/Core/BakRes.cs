@@ -439,23 +439,24 @@ namespace LoLToolsX.Core
         
         public void Sound(int Type)    //語音  
         {
+            
             //需要備份的檔案
-            string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb", "LoL_Audio_zh_TW.fev", "LoL_Audio_zh_CN.fev", "LoL_Audio_en_US.fev", "LoL_Audio_ko_KR.fev" };
+            //string[] fsbFile = { "VOBank_zh_TW.fsb", "VOBank_zh_CN.fsb", "VOBank_en_US.fsb", "VOBank_ko_KR.fsb", "LoL_Audio_zh_TW.fev", "LoL_Audio_zh_CN.fev", "LoL_Audio_en_US.fev", "LoL_Audio_ko_KR.fev" };
 
             if (Type == 1)  //備份
             {
                 wait.Show();
                 wait.progressBar1.Value = 0;    
 
-                foreach (string file in fsbFile)
-                {
-                    try
-                    {
-                        File.Copy(installPath + @"\Game\DATA\Sounds\FMOD\" + file, Application.StartupPath + @"\bak\sound\FMOD\" + file, true);
-                        wait.progressBar1.Value = wait.progressBar1.Value + 5;
-                    }
-                    catch { }
-                }
+                //foreach (string file in fsbFile)
+                //{
+                    //try
+                    //{
+                        //File.Copy(installPath + @"\Game\DATA\Sounds\FMOD\" + file, Application.StartupPath + @"\bak\sound\FMOD\" + file, true);
+                        //wait.progressBar1.Value = wait.progressBar1.Value + 5;
+                    //}
+                    //catch { }
+                //}
                 try
                 {
                     My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", Application.StartupPath + "\\bak\\sound\\zh_TW", true);
@@ -466,28 +467,13 @@ namespace LoLToolsX.Core
                 }
                 try
                 {
-                    My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_CN", Application.StartupPath + "\\bak\\sound\\zh_CN", true);
-                }
-                catch
-                {
-
-                }
-                try
-                {
                     My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", Application.StartupPath + "\\bak\\sound\\en_US", true);
                 }
                 catch
                 {
 
                 }
-                try
-                {
-                    My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\ko_KR", Application.StartupPath + "\\bak\\sound\\ko_KR", true);
-                }
-                catch
-                {
 
-                }
                 try
                 {
                     Directory.CreateDirectory(Application.StartupPath + @"\bak\sound\air");
@@ -517,14 +503,26 @@ namespace LoLToolsX.Core
                 wait.Show();
                 wait.progressBar1.Value = 0;
 
-                foreach (string file in fsbFile)
+                //foreach (string file in fsbFile)
+               //{
+                    //try
+                    //{
+                        //File.Copy(Application.StartupPath + @"\bak\sound\FMOD\" + file, installPath + @"\Game\DATA\Sounds\FMOD\" + file, true);
+                        //wait.progressBar1.Value = wait.progressBar1.Value + 15;
+                    //}
+                    //catch { }
+                //}
+                string[] folder = {
+                                      "ko_KR",
+                                      "zh_CN"
+                                  };
+                foreach (string f in folder)
                 {
-                    try
+                    if (Directory.Exists(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\" + f))
                     {
-                        File.Copy(Application.StartupPath + @"\bak\sound\FMOD\" + file, installPath + @"\Game\DATA\Sounds\FMOD\" + file, true);
-                        wait.progressBar1.Value = wait.progressBar1.Value + 15;
+                        Directory.Delete(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\" + f);
                     }
-                    catch { }
+
                 }
                 try
                 {
@@ -536,23 +534,7 @@ namespace LoLToolsX.Core
                 }
                 try
                 {
-                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\zh_CN", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_CN", true);
-                }
-                catch
-                {
-
-                }
-                try
-                {
                     My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\en_US", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", true);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\ko_KR", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\ko_KR", true);
                 }
                 catch
                 {
@@ -589,14 +571,14 @@ namespace LoLToolsX.Core
 
             if (Type == 3)  //刪除備份
             {
-                foreach (string files in fsbFile)
-                {
-                    try
-                    {
-                        File.Delete(Application.StartupPath + @"\bak\sound\FMOD\" + files);
-                    }
-                    catch { }
-                }
+                //foreach (string files in fsbFile)
+                //{
+                    //try
+                    //{
+                        //File.Delete(Application.StartupPath + @"\bak\sound\FMOD\" + files);
+                    //}
+                    //catch { }
+                //}
                 try
                 {
                     Directory.Delete(Application.StartupPath + @"\bak\sound\zh_TW", true);

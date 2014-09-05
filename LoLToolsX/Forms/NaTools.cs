@@ -104,7 +104,7 @@ namespace LoLToolsX
             //刪除物件
             cp = null;
 
-            Variable.na_installPath = installPath;
+            //Variable.na_installPath = installPath;
             Variable.curClient = "美服";
         }
 

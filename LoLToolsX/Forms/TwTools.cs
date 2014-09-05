@@ -98,16 +98,17 @@ SelectPath:
                 Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);
             }
 
-            CFGFile = null;
+            //CFGFile = null;
 
             if (Variable.allowUpdate)
             {
-                CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
-                if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
+                //CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
+                if (CFGFile.GetValue("LoLToolsX", "AutoUpdate") == "true")
                 {
                     Variable.updating = true;
                     this.checkBox1.Checked = false;
                     Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                    //開始檢查更新
                     updateThread.Start();
                 }
                 else
@@ -165,7 +166,7 @@ SelectPath:
                 installedSkin.Items.Add(s);
             }
 
-            Variable.tw_installPath = installPath;
+            //Variable.tw_installPath = installPath;
             Variable.curClient = "台服";
 
         }
@@ -821,7 +822,7 @@ SelectPath:
         private void tabPage11_Enter(object sender, EventArgs e)
         {
             Forms.frmSpect spect;
-            spect = new Forms.frmSpect();
+            spect = new Forms.frmSpect(installPath);
             spect.TopMost = true;
             spect.Disposed += new EventHandler(spect_Disposed);
             spect.Shown += new EventHandler(spect_Shown);
@@ -863,7 +864,6 @@ SelectPath:
         {
             Variable.frmShown = true;
         }
-
     }
 }
 

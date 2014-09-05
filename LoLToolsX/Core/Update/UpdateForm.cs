@@ -103,6 +103,12 @@ namespace LoLToolsX.Core.Update
         {
             //取消更新
             this.Dispose();
+            Variable.updating = false;
+        }
+
+        private void UpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Variable.updating = false;
         }
     }
 }

@@ -76,7 +76,10 @@ namespace LoLToolsX
                                   "\\Updater.exe",
                                   "\\Logs\\Log.txt",
                                   "\\SevenZipSharp.dll",
-                                  "\\7z.dll"
+                                  "\\7z.dll",
+                                  "\\LICENSE.txt",
+                                  "\\Disclaimer.txt",
+                                  "\\Privacy.txt"
                              };
 
             int count = folder.Length + files.Length;
@@ -127,10 +130,48 @@ namespace LoLToolsX
                             }
                         case "\\7z.dll":
                             textBox1.AppendText("\r\n程式必要的類別庫遺失 正在重新下載... 請勿關閉程式");
-                            WebClient wc3 = new WebClient();
                             try
                             {
                                 wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", cd + "\\7z.dll");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch
+                            {
+                                textBox1.AppendText("\r\n下載失敗");
+                                continue;
+                            }
+                        case "\\LICENSE.txt":
+                            textBox1.AppendText("\r\n程式授權文件遺失 正在下載...");
+                            try
+                            {
+                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/LICENSE.txt", cd + "\\LICENSE.txt");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch
+                            {
+                                textBox1.AppendText("\r\n下載失敗");
+                                continue;
+                            }
+                        case "\\重要聲明.txt":
+                            textBox1.AppendText("\r\n程式聲明文件遺失 正在下載...");
+                            try
+                            {
+                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/Disclaimer.txt", cd + "\\重要聲明.txt");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch
+                            {
+                                textBox1.AppendText("\r\n下載失敗");
+                                continue;
+                            }
+                        case "\\隱私權聲明.txt":
+                            textBox1.AppendText("\r\n程式隱私權聲明文件遺失 正在下載...");
+                            try
+                            {
+                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/Privacy.txt", cd + "\\隱私權聲明.txt");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -204,7 +245,10 @@ namespace LoLToolsX
 
 
             textBox1.AppendText("\r\n檢查完成!");
-            CheckFinish();
+            //釋放資源
+            folder = null;
+            files = null;
+            CheckFinish();   //觸發檢查完畢事件
         }
 
         private void CheckEnd()
