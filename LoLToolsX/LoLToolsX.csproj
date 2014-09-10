@@ -115,12 +115,6 @@
     </Compile>
     <Compile Include="Core\Function.cs" />
     <Compile Include="Core\Install.cs" />
-    <Compile Include="Forms\frmSpect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmSpect.Designer.cs">
-      <DependentUpon>frmSpect.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\LobbyUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,9 +182,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FileCheck.resx">
       <DependentUpon>FileCheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSpect.resx">
-      <DependentUpon>frmSpect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LobbyUI.resx">
       <DependentUpon>LobbyUI.cs</DependentUpon>

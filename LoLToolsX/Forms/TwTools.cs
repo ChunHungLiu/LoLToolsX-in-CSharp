@@ -821,38 +821,37 @@ SelectPath:
 
         private void tabPage11_Enter(object sender, EventArgs e)
         {
-            Forms.frmSpect spect;
-            spect = new Forms.frmSpect(installPath);
-            spect.TopMost = true;
-            spect.Disposed += new EventHandler(spect_Disposed);
-            spect.Shown += new EventHandler(spect_Shown);
-
-            if (!Variable.frmShown)
+            if (!Directory.Exists(Application.StartupPath + @"\LoLSpectX"))
             {
-
-                if (Application.OpenForms["frmSpect"] == null)
+                if (MessageBox.Show("已推出 LoLSpectX 觀戰工具 請問要下載嗎?", "新工具發佈", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    spect.Show();
-                    spect.Focus();
-                    Application.OpenForms["frmSpect"].Focus();
-                }
-                else
-                {
-                    Application.OpenForms["frmSpect"].Focus();
-                }
+                    Wait wait = new Wait();
+                    wait.progressBar1.Visible = false;
+                    wait.label1.Visible = true;
+                    wait.ShowDialog();
+                    wait.Refresh();
+                    wait.Update();
 
-                Variable.frmShown = true;
+                    if (!Directory.Exists(Application.StartupPath + "\\LoLSpectX"))
+                    {
+                        Directory.CreateDirectory(Application.StartupPath + "\\LoLSpectX\\");
+                    }
+
+                    WebClient wc = new WebClient();
+                    wc.DownloadFile("http://nitroxenon.com/lolspectx/LoLSpectX.exe", Application.StartupPath + "\\LoLSpectX\\LoLSpectX.exe");
+                    wc.DownloadFile("http://nitroxenon.com/lolspectx/Newtonsoft.Json.dll", Application.StartupPath + "\\LoLSpectX\\Newtonsoft.Json.dll");
+                    wc.DownloadFile("http://nitroxenon.com/lolspectx/INIFile.dll", Application.StartupPath + "\\LoLSpectX\\INIFile.dll");
+                    wc.Dispose();
+                    wait.Dispose();
+                    MessageBox.Show("下載完成! 按確定開啟 LoLSpectX 觀戰工具 ", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ProcessStartInfo start = new ProcessStartInfo();
+                    start.WorkingDirectory = Application.StartupPath + "\\LoLSpectX\\";
+                    start.FileName = Application.StartupPath + "\\LoLSpectX\\LoLSpectX.exe";
+                    start.Arguments = installPath;
+                    Process.Start(start);
+                }
             }
-            else
-            {
-                try
-                {
-                    Application.OpenForms["frmSpect"].Focus();
-                }
-                catch { }
-            }
-
-            tabControl1.SelectedTab = tabPage1;     //強制回到第一分頁
         }
 
         private void spect_Disposed(object sender, EventArgs e)

@@ -44,11 +44,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 31);
+            this.label1.Location = new System.Drawing.Point(107, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(215, 26);
+            this.label1.Size = new System.Drawing.Size(90, 26);
             this.label1.TabIndex = 1;
-            this.label1.Text = "語音安裝中... 請稍候...";
+            this.label1.Text = "請稍候...";
             this.label1.Visible = false;
             // 
             // Wait
@@ -73,6 +73,6 @@
         #endregion
 
         public System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label1;
     }
 }
