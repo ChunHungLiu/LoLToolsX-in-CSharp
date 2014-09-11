@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Net;
 using System.Net.NetworkInformation;
+using SevenZip;
 using LoLToolsX.Core;
 using LoLToolsX.Core.Update;
 
@@ -828,30 +829,27 @@ SelectPath:
                     Wait wait = new Wait();
                     wait.progressBar1.Visible = false;
                     wait.label1.Visible = true;
-                    wait.ShowDialog();
+                    wait.TopMost = true;
+                    wait.Show();
                     wait.Refresh();
                     wait.Update();
 
-                    if (!Directory.Exists(Application.StartupPath + "\\LoLSpectX"))
-                    {
-                        Directory.CreateDirectory(Application.StartupPath + "\\LoLSpectX\\");
-                    }
-
                     WebClient wc = new WebClient();
-                    wc.DownloadFile("http://nitroxenon.com/lolspectx/LoLSpectX.exe", Application.StartupPath + "\\LoLSpectX\\LoLSpectX.exe");
-                    wc.DownloadFile("http://nitroxenon.com/lolspectx/Newtonsoft.Json.dll", Application.StartupPath + "\\LoLSpectX\\Newtonsoft.Json.dll");
-                    wc.DownloadFile("http://nitroxenon.com/lolspectx/INIFile.dll", Application.StartupPath + "\\LoLSpectX\\INIFile.dll");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.1-beta/LoLSpectX0.1.1-beta.zip", Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    SevenZipExtractor sze = new SevenZipExtractor(Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    sze.ExtractArchive(Application.StartupPath + "\\LoLSpectX\\");
                     wc.Dispose();
+                    sze.Dispose();
                     wait.Dispose();
                     MessageBox.Show("下載完成! 按確定開啟 LoLSpectX 觀戰工具 ", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    ProcessStartInfo start = new ProcessStartInfo();
-                    start.WorkingDirectory = Application.StartupPath + "\\LoLSpectX\\";
-                    start.FileName = Application.StartupPath + "\\LoLSpectX\\LoLSpectX.exe";
-                    start.Arguments = installPath;
-                    Process.Start(start);
                 }
             }
+            tabControl1.SelectedTab = tabPage1;
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.WorkingDirectory = Application.StartupPath + "\\LoLSpectX\\LoLSpectX";
+                start.FileName = Application.StartupPath + "\\LoLSpectX\\LoLSpectX\\LoLSpectX.exe";
+                start.Arguments = installPath;
+                Process.Start(start);
         }
 
         private void spect_Disposed(object sender, EventArgs e)
