@@ -152,6 +152,8 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -204,6 +206,8 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.label21);
+            this.tabPage9.Controls.Add(this.checkBox2);
             this.tabPage9.Controls.Add(this.button25);
             this.tabPage9.Controls.Add(this.button24);
             this.tabPage9.Controls.Add(this.checkBox1);
@@ -1459,6 +1463,26 @@
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(311, 261);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(50, 17);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "開啟";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(178, 255);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(127, 26);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "F8 秒關 LOL";
+            // 
             // TwTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1629,6 +1653,8 @@
         internal System.Windows.Forms.Button button31;
         internal System.Windows.Forms.Button button32;
         private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

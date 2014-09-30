@@ -822,6 +822,32 @@ SelectPath:
 
         private void tabPage11_Enter(object sender, EventArgs e)
         {
+
+            if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\lolspectx.txt"))
+            {
+                if (MessageBox.Show("已推出新版 LoLSpectX 觀戰工具 請問要下載嗎?", "新工具發佈", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    Wait wait = new Wait();
+                    wait.progressBar1.Visible = false;
+                    wait.label1.Visible = true;
+                    wait.TopMost = true;
+                    wait.Show();
+                    wait.Refresh();
+                    wait.Update();
+
+                    WebClient wc = new WebClient();
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.6-beta/LoLSpectX0.1.6-beta.zip", Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    SevenZipExtractor sze = new SevenZipExtractor(Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    sze.ExtractArchive(Application.StartupPath + "\\LoLSpectX\\");
+                    wc.Dispose();
+                    sze.Dispose();
+                    wait.Dispose();
+
+                    File.Create(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\lolspectx.txt").Close();
+
+                    MessageBox.Show("下載完成! 按確定開啟 LoLSpectX 觀戰工具 ", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
             if (!Directory.Exists(Application.StartupPath + @"\LoLSpectX"))
             {
                 if (MessageBox.Show("已推出 LoLSpectX 觀戰工具 請問要下載嗎?", "新工具發佈", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -835,14 +861,19 @@ SelectPath:
                     wait.Update();
 
                     WebClient wc = new WebClient();
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.1-beta/LoLSpectX0.1.1-beta.zip", Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.6-beta/LoLSpectX0.1.6-beta.zip", Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
                     SevenZipExtractor sze = new SevenZipExtractor(Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
                     sze.ExtractArchive(Application.StartupPath + "\\LoLSpectX\\");
                     wc.Dispose();
                     sze.Dispose();
                     wait.Dispose();
+
+                    File.Create(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\lolspectx.txt").Close();
+
                     MessageBox.Show("下載完成! 按確定開啟 LoLSpectX 觀戰工具 ", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                    
+                
             }
             tabControl1.SelectedTab = tabPage1;
                 ProcessStartInfo start = new ProcessStartInfo();
