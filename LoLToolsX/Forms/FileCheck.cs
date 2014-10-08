@@ -35,6 +35,7 @@ namespace LoLToolsX
             CheckFinish += new CheckFinishHandler(CheckEnd);
             timer1.Interval = 500;
             timer1.Start();
+            
         }
         private void CheckBegin()
         {
@@ -67,7 +68,7 @@ namespace LoLToolsX
                                   "\\download",
                                   "\\Logs",
                                   "\\files",
-                                  "\\files\\lang\\kr"
+                                  //"\\files\\lang\\kr",
                               };
 
             string[] files = {
@@ -79,7 +80,10 @@ namespace LoLToolsX
                                   "\\7z.dll",
                                   "\\LICENSE.txt",
                                   "\\Disclaimer.txt",
-                                  "\\Privacy.txt"
+                                  "\\Privacy.txt",
+                                  "\\files\\fix-fd\\dependencies.properties",
+                                  "\\files\\fix-fd\\info.riotmod",
+                                  "\\files\\fix-fd\\mod_cht2.dat"
                              };
 
             int count = folder.Length + files.Length;
@@ -180,6 +184,34 @@ namespace LoLToolsX
                                 textBox1.AppendText("\r\n下載失敗");
                                 continue;
                             }
+                        case "\\files\\fix-fd\\dependencies.properties":
+                            if (!Directory.Exists(cd + "\\files\\fix-fd"))
+                            {
+                                Directory.CreateDirectory(cd + "\\files\\fix-fd");
+                            }
+                            try
+                            {
+                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/dependencies.properties", cd + "\\files\\fix-fd\\dependencies.properties");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch { textBox1.AppendText("\r\n下載失敗"); continue; }
+                        case "\\files\\fix-fd\\info.riotmod":
+                            try
+                            {
+                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/info.riotmod", cd + "\\files\\fix-fd\\info.riotmod");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch { textBox1.AppendText("\r\n下載失敗"); continue; }
+                        case "\\files\\fix-fd\\mod_cht2.dat":
+                            try
+                            {
+                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/mod_cht2.dat", cd + "\\files\\fix-fd\\mod_cht2.dat");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch { textBox1.AppendText("\r\n下載失敗"); continue; }
                     }
 
                 }

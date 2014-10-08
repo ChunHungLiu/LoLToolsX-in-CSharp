@@ -18,10 +18,9 @@ namespace LoLToolsX.Forms
 {
     public partial class CheckLangUpdate : Form
     {
-        CFGFile ini = new CFGFile(Application.StartupPath + @"\config.ini");
-        MD5CryptoServiceProvider CheckLang = new MD5CryptoServiceProvider();
-        string tw_final;
-        string na_final;
+        //CFGFile ini = new CFGFile(Application.StartupPath + @"\config.ini");
+        //MD5CryptoServiceProvider CheckLang = new MD5CryptoServiceProvider();
+        string newVer;
 
         public CheckLangUpdate()
         {
@@ -41,7 +40,7 @@ namespace LoLToolsX.Forms
             WebClient wc = new WebClient();
             wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadFileCompleted);
             wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
-            wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/lang/pack.zip"), Application.StartupPath + @"\download\pack.zip");
+            wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/lang/" + newVer + ".zip"), Application.StartupPath + @"\download\pack.zip");
 
         }
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -57,8 +56,10 @@ namespace LoLToolsX.Forms
         void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             label1.Text = "更新正在安裝更新... 請稍候...";
+            File.Create(Application.StartupPath + "\\files\\lang\\eng\\game\\" + newVer + ".txt").Close();
             SevenZipExtractor sz = new SevenZipExtractor(Application.StartupPath + @"\download\pack.zip");
             sz.ExtractArchive(Application.StartupPath + @"\files\lang");
+            File.Delete(Application.StartupPath + @"\download\pack.zip");
 
             if (MessageBox.Show("更新完成") == DialogResult.OK)
             {
@@ -70,6 +71,30 @@ namespace LoLToolsX.Forms
         {
             timer1.Stop();
 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://nitroxenon.com/loltoolsx/lang/update.txt");
+            WebResponse response = (WebResponse)request.GetResponse();
+            Stream stream = response.GetResponseStream();
+            StreamReader sr = new StreamReader(stream);
+            newVer = sr.ReadToEnd();
+
+            if (!File.Exists(Application.StartupPath + "\\files\\lang\\eng\\game\\" + newVer + ".txt"))
+            {
+                //有更新
+                button1.Enabled = true;
+                label1.Text = "發現可用更新 按更新按鈕下載更新";
+            }
+            else
+            {
+                button1.Enabled = false;
+                label1.Text = "沒有可用更新!";
+            }
+
+            sr.Close();
+            stream.Close();
+            response.Close();
+
+            #region "Old method"
+            /*
             //獲取本機檔案MD5 (TW)
             FileStream tw_fs = new FileStream(Application.StartupPath + @"\files\lang\cht\game\fontconfig_en_US.txt", FileMode.Open, FileAccess.Read);
             byte[] output = CheckLang.ComputeHash(tw_fs);
@@ -120,6 +145,8 @@ namespace LoLToolsX.Forms
             {
                 label1.Text = "檢查更新失敗!";
             }
+             * */
+            #endregion
         }
     }
 }

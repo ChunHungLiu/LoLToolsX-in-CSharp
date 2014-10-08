@@ -892,6 +892,110 @@ SelectPath:
         {
             Variable.frmShown = true;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            AceGameUI ui = new AceGameUI(installPath);
+            ui.Install(txtZipPath.Text);
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            FixFriend ff = new FixFriend(installPath);
+            ff.StartFix();
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Wait wait = new Wait();
+                wait.Show();
+                wait.progressBar1.Value = 40;
+                My.Computer.FileSystem.CopyDirectory(installPath + @"\Air", Application.StartupPath + @"\bak\Air", true);
+                wait.progressBar1.Value = 100;
+                wait.Dispose();
+                Logger.log("大廳UI備份成功!", Logger.LogType.Info);
+                MessageBox.Show("大廳UI備份成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                Logger.log("大廳UI備份失敗 : ", Logger.LogType.Error);
+                Logger.log(ex, Logger.LogType.Error);
+                MessageBox.Show("大廳UI備份失敗 : " + ex, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Wait wait = new Wait();
+                wait.Show();
+                wait.progressBar1.Value = 40;
+                My.Computer.FileSystem.CopyDirectory(Application.StartupPath + @"\bak\Air", installPath + @"\Air", true);
+                wait.progressBar1.Value = 100;
+                wait.Dispose();
+                Logger.log("大廳UI還原成功!", Logger.LogType.Info);
+                MessageBox.Show("大廳UI還原成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (FileNotFoundException)
+            {
+                Logger.log("大廳UI還原失敗 : 沒有備份", Logger.LogType.Error);
+                MessageBox.Show("大廳UI還原失敗 : 沒有備份", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                Logger.log("大廳UI還原失敗 : ", Logger.LogType.Error);
+                Logger.log(ex, Logger.LogType.Error);
+                MessageBox.Show("大廳UI還原失敗 : " + ex, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                My.Computer.FileSystem.DeleteDirectory(Application.StartupPath + @"\bak\Air", Microsoft.VisualBasic.FileIO.DeleteDirectoryOption.DeleteAllContents);
+                Logger.log("大廳UI刪除備份成功!", Logger.LogType.Info);
+                MessageBox.Show("大廳UI刪除備份成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (FileNotFoundException)
+            {
+                Logger.log("大廳UI刪除備份失敗 : 沒有備份", Logger.LogType.Error);
+                MessageBox.Show("大廳UI刪除備份失敗 : 沒有備份", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                Logger.log("大廳UI刪除備份失敗 : ", Logger.LogType.Error);
+                Logger.log(ex, Logger.LogType.Error);
+                MessageBox.Show("大廳UI刪除備份失敗 : " + ex, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog f = new FolderBrowserDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                txtZipPath.Text = f.SelectedPath;
+            }
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://forum.gamer.com.tw/C.php?bsn=17532&snA=430322&tnum=420");
+        }
     }
 }
 

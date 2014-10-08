@@ -3,3 +3,8 @@ K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\bin\Debug\LoLToolsX-Updater.pdb
 K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Debug\ResolveAssemblyReference.cache
 K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Debug\LoLToolsX-Updater.exe
 K:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Debug\LoLToolsX-Updater.pdb
+E:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\bin\Debug\LoLToolsX-Updater.exe
+E:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\bin\Debug\LoLToolsX-Updater.pdb
+E:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Debug\LoLToolsX-Updater.exe
+E:\git\LoLToolsX-in-CSharp\LoLToolsX-Updater\obj\x86\Debug\LoLToolsX-Updater.pdb

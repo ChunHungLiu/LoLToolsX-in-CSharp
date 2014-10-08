@@ -55,7 +55,6 @@ namespace LoLToolsX.Core
                         if (!Directory.Exists(f + "\\DATA\\Menu"))
                         {
                             Directory.CreateDirectory(f + "\\DATA\\Menu");
-
                         }
                         if (!Directory.Exists(f + "\\DATA\\Menu\\Textures"))
                         {

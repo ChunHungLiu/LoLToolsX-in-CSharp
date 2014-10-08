@@ -17,9 +17,9 @@ namespace LoLToolsX.Core
         string installPath;
         string cd = Application.StartupPath;
 
-        public SwitchLang(string ip)
+        public SwitchLang(string _installPath)
         {
-            installPath = ip;
+            installPath = _installPath;
         }
 
         //英文
@@ -29,9 +29,7 @@ namespace LoLToolsX.Core
             {
                 File.Copy(cd + @"\files\lang\eng\game\FontTypes.xml", installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
                 File.Copy(cd + @"\files\lang\eng\game\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
-                File.Copy(cd + @"\files\lang\eng\game\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
                 File.Copy(cd + @"\files\lang\eng\game\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
-                File.Copy(cd + @"\files\lang\eng\game\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
                 File.Copy(cd + @"\files\lang\eng\game\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
                 MessageBox.Show("遊戲語言切換完成: 英文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("遊戲語言切換完成: 英文", Logger.LogType.Info);
@@ -296,6 +294,17 @@ namespace LoLToolsX.Core
         }
         public void QuickSwitch()
         {
+        	#region Prevent Jump Game
+        	if (Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
+        	{
+        		Directory.Delete(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN");
+        	}
+        	if (Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
+        	{
+        		Directory.Delete(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR");
+        	}
+        	#endregion
+        	
             #region ko_KR
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
             {
@@ -306,6 +315,7 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
             }
             catch { }
+            /*
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
             {
                 Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
@@ -315,6 +325,7 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
             }
             catch { }
+            */
             #endregion
 
             #region zh_TW
@@ -327,6 +338,7 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
             }
             catch { }
+            /*
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
             {
                 Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
@@ -336,6 +348,7 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
             }
             catch { }
+            */
             #endregion
 
             #region zh_CN
@@ -348,6 +361,7 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
             }
             catch { }
+            /*
             if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
             {
                 Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
@@ -357,6 +371,7 @@ namespace LoLToolsX.Core
                 My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
             }
             catch { }
+            */
             #endregion
 
             MessageBox.Show("安裝完成!");

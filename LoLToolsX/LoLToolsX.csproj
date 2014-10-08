@@ -84,6 +84,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AceGameUI.cs" />
     <Compile Include="Forms\CheckLangUpdate.cs">
       <SubType>Form</SubType>
     </Compile>

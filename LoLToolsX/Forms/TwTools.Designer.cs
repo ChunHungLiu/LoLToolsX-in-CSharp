@@ -37,6 +37,8 @@
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.label21 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button25 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -152,8 +154,19 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.txtZipPath = new System.Windows.Forms.TextBox();
+            this.button38 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -170,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.tabPage12.SuspendLayout();
             this.SuspendLayout();
             // 
             // startLoL
@@ -219,6 +233,26 @@
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "其他選項";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(178, 255);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(127, 26);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "F8 秒關 LOL";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(311, 261);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(50, 17);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "開啟";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // button25
             // 
@@ -1313,6 +1347,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage7);
@@ -1463,25 +1498,148 @@
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
             // 
-            // checkBox2
+            // tabPage12
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(311, 261);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(50, 17);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "開啟";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.tabPage12.Controls.Add(this.label25);
+            this.tabPage12.Controls.Add(this.label24);
+            this.tabPage12.Controls.Add(this.linkLabel5);
+            this.tabPage12.Controls.Add(this.label23);
+            this.tabPage12.Controls.Add(this.label22);
+            this.tabPage12.Controls.Add(this.button38);
+            this.tabPage12.Controls.Add(this.txtZipPath);
+            this.tabPage12.Controls.Add(this.button37);
+            this.tabPage12.Controls.Add(this.button36);
+            this.tabPage12.Controls.Add(this.button33);
+            this.tabPage12.Controls.Add(this.button34);
+            this.tabPage12.Controls.Add(this.button35);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(867, 346);
+            this.tabPage12.TabIndex = 11;
+            this.tabPage12.Text = "大廳主題安裝";
+            this.tabPage12.UseVisualStyleBackColor = true;
             // 
-            // label21
+            // button33
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(178, 255);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(127, 26);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "F8 秒關 LOL";
+            this.button33.Location = new System.Drawing.Point(652, 185);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(118, 51);
+            this.button33.TabIndex = 4;
+            this.button33.Text = "刪除備份";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // button34
+            // 
+            this.button34.Location = new System.Drawing.Point(652, 111);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(118, 51);
+            this.button34.TabIndex = 3;
+            this.button34.Text = "還原";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // button35
+            // 
+            this.button35.Location = new System.Drawing.Point(652, 35);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(118, 51);
+            this.button35.TabIndex = 2;
+            this.button35.Text = "備份";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
+            // button36
+            // 
+            this.button36.Location = new System.Drawing.Point(652, 257);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(118, 51);
+            this.button36.TabIndex = 5;
+            this.button36.Text = "修復好友不見問題";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.Location = new System.Drawing.Point(308, 254);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(121, 54);
+            this.button37.TabIndex = 1;
+            this.button37.Text = "一鍵安裝";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // txtZipPath
+            // 
+            this.txtZipPath.Location = new System.Drawing.Point(237, 174);
+            this.txtZipPath.Name = "txtZipPath";
+            this.txtZipPath.Size = new System.Drawing.Size(246, 20);
+            this.txtZipPath.TabIndex = 12;
+            // 
+            // button38
+            // 
+            this.button38.Location = new System.Drawing.Point(499, 171);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(62, 23);
+            this.button38.TabIndex = 0;
+            this.button38.Text = "瀏覽";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(88, 174);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(134, 21);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "主題壓縮檔路徑 : ";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(260, 35);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(153, 26);
+            this.label23.TabIndex = 15;
+            this.label23.Text = "大廳主題下載 : ";
+            // 
+            // linkLabel5
+            // 
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel5.Location = new System.Drawing.Point(419, 35);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(54, 26);
+            this.linkLabel5.TabIndex = 16;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "按我";
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(207, 82);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(326, 21);
+            this.label24.TabIndex = 17;
+            this.label24.Text = "注意 : 目前次功能只支持 不含語音 的 主題包 ";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(143, 128);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(472, 17);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "注意 : 目前次功能還在研發階段，因此可能會出現錯誤，安裝前請先備份，謝謝。";
             // 
             // TwTools
             // 
@@ -1525,6 +1683,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1655,6 +1815,19 @@
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.TextBox txtZipPath;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.LinkLabel linkLabel5;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
     }
 }
 

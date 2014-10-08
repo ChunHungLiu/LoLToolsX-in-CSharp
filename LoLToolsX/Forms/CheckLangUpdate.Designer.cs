@@ -48,9 +48,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(134, 65);
+            this.label1.Location = new System.Drawing.Point(12, 69);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 35);
+            this.label1.Size = new System.Drawing.Size(524, 35);
             this.label1.TabIndex = 1;
             this.label1.Text = "更新檢查中... 請稍候...";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
