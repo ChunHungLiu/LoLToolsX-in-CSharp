@@ -13,7 +13,29 @@ namespace LoLToolsX.Core
         public static void GameUI(string installPath)
         {
             //檢查是否正確的UI檔案
-            if (Path.GetExtension(Variable.hudPath) == ".tga")
+            if (Path.GetExtension(Variable.hudPath) == ".dds")
+            {
+                if (MessageBox.Show("此UI檔案為舊版格式，要確認轉換成新格式並安裝嗎?","提示",MessageBoxButtons.YesNo,MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    string originalPath = Variable.hudPath;
+                    try
+                    {
+                        File.Copy(originalPath, installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.dds", true);
+                        MessageBox.Show("UI安裝成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Logger.log("UI安裝成功...(dds)");
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("UI安裝失敗\r\n錯誤訊息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Logger.log("UI安裝失敗...(dds)", Logger.LogType.Error);
+                        Logger.log(e);
+                    }
+                    return;
+                }
+                else
+                { return; }
+            }
+            if (Path.GetExtension(Variable.hudPath) == ".dds")
             {
                 try
                 {
@@ -27,12 +49,12 @@ namespace LoLToolsX.Core
                     Logger.log("UI安裝失敗...", Logger.LogType.Error);
                     Logger.log(e);
                 }
-
+                return;
             }
             else
             {
-                MessageBox.Show("請選擇 '.tga' 檔案", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.log("HUDAtlas.tga 未選擇 : 安裝失敗", Logger.LogType.Error);
+                MessageBox.Show("請選擇 '.tga' 或 '.dds' 檔案", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.log("檔案未選擇 : 安裝失敗", Logger.LogType.Error);
             }
         }
 
