@@ -276,10 +276,17 @@ namespace LoLToolsX.Core
             try
             {
                 Variable.switchingSound = true;
+                My.Computer.FileSystem.CopyDirectory(soundPath + "\\champions", installPath + @"\Air\assets\sounds\zh_TW\champions", true);
+
+                #region Old Method
+                /*
                 foreach (string newPath in Directory.GetFiles(soundPath + @"\champions", "*.*", SearchOption.AllDirectories))
                     File.Copy(newPath, newPath.Replace(soundPath + @"\champions", installPath + @"\Air\assets\sounds\en_US\champions"), true);
                 foreach (string newPath in Directory.GetFiles(soundPath + @"\champions", "*.*", SearchOption.AllDirectories))
                     File.Copy(newPath, newPath.Replace(soundPath + @"\champions", installPath + @"\Air\assets\sounds\zh_TW\champions"), true);
+                 * */
+                #endregion
+
                 MessageBox.Show("安裝完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("大廳語音安裝成功!", Logger.LogType.Info);
                 Variable.switchingSound = false;
@@ -306,72 +313,42 @@ namespace LoLToolsX.Core
         	#endregion
         	
             #region ko_KR
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
+            if (Directory.Exists(soundPath + @"\ko_KR"))
             {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+                }
+                catch { MessageBox.Show("語音切換失敗", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
-            }
-            catch { }
-            /*
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
-            }
-            catch { }
-            */
+
             #endregion
 
             #region zh_TW
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
+            if (Directory.Exists(soundPath + @"\zh_TW"))
             {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+                }
+                catch { MessageBox.Show("語音切換失敗", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
-            }
-            catch { }
-            /*
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_TW", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
-            }
-            catch { }
-            */
+
             #endregion
 
             #region zh_CN
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
+            if (Directory.Exists(soundPath + @"\zh_CN"))
             {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
+                if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
+                {
+                    Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW");
+                }
+                try
+                {
+                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+                }
+                catch { }
             }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
-            }
-            catch { }
-            /*
-            if (!Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US"))
-            {
-                Directory.CreateDirectory(installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US");
-            }
-            try
-            {
-                My.Computer.FileSystem.CopyDirectory(soundPath + @"\zh_CN", installPath + @"\Game\DATA\Sounds\Wwise\VO\en_US", true);
-            }
-            catch { }
-            */
             #endregion
 
             MessageBox.Show("安裝完成!");

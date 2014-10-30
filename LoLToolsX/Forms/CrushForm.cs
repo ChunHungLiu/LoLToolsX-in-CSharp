@@ -50,6 +50,7 @@ namespace LoLToolsX
                        if (sucess)
                        {
                            MessageBox.Show("傳送錯誤報告成功!");
+                           Environment.Exit(0);
                        }
                        else
                        {

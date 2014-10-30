@@ -169,7 +169,6 @@ SelectPath:
 
             //Variable.tw_installPath = installPath;
             Variable.curClient = "台服";
-
         }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -425,27 +424,6 @@ SelectPath:
             br.Sound(3);
         }
 
-        private void button23_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ProcessStartInfo StartInfo = new ProcessStartInfo();
-                StartInfo.UseShellExecute = true;
-                StartInfo.WorkingDirectory = System.Environment.CurrentDirectory;
-                StartInfo.Verb = "runas";
-                StartInfo.FileName = "BakResConsole";
-                StartInfo.Arguments = "Backup" + " " + installPath;
-                Process.Start(StartInfo);
-                Logger.log("LoLToolsX 備份/還原中心 啟動成功!", Logger.LogType.Info);
-            }
-            catch (Exception e3)
-            {
-                Logger.log("LoLToolsX 備份/還原中心 啟動失敗", Logger.LogType.Error);
-                Logger.log(e3);
-            }
-
-
-        }
 
         private void Button15_Click(object sender, EventArgs e)
         {
@@ -995,6 +973,51 @@ SelectPath:
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://forum.gamer.com.tw/C.php?bsn=17532&snA=430322&tnum=420");
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                //註冊熱鍵 : F8關閉LoL
+                HotKey.RegisterHotKey(Handle, 101, HotKey.KeyModifiers.None, Keys.F8); 
+            }
+            else
+            {
+                //取消熱鍵 : F8關閉LoL
+                HotKey.UnregisterHotKey(Handle, 101); 
+            }
+        }
+        protected override void WndProc(ref Message m)
+        {
+            //HotKey Event
+            const int WM_HOTKEY = 0x0312;
+            switch (m.Msg)
+            {
+                case WM_HOTKEY:
+                    switch (m.WParam.ToInt32())
+                    {
+                        case 101:    //F8 
+                            //Close LOL
+                            Process[] lolProc = Process.GetProcessesByName("League of Legends");
+                            if (lolProc.Length >= 1)
+                            {
+                                foreach (Process p in lolProc)
+                                {
+                                    p.Kill();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("LoL 沒有運行~");
+                            }
+                            break;
+
+                    }
+                    break;
+            }
+
+            base.WndProc(ref m);
         }
     }
 }

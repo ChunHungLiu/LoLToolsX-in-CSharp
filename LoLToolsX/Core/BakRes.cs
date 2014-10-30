@@ -851,12 +851,13 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    ProcessStartInfo si = new ProcessStartInfo();
-                    si.Arguments = "Backup " + installPath;
-                    si.Verb = "runas";
-                    si.WorkingDirectory = Application.StartupPath;
-                    si.FileName = "LoLBakRes.exe";
-                    Process.Start(si);
+                    Process.Start(new ProcessStartInfo
+                    {
+                        Arguments = "Backup " + installPath,
+                        Verb = "runas",
+                        WorkingDirectory = Application.StartupPath,
+                        FileName = "LoLBakRes.exe"
+                    });
                     Logger.log("LoL一鍵備份 開始!", Logger.LogType.Info);
                 }
                 catch
@@ -869,12 +870,12 @@ namespace LoLToolsX.Core
                 {
                     try
                     {
-                        ProcessStartInfo si = new ProcessStartInfo();
-                        si.Arguments = "Restore " + installPath;
-                        si.Verb = "runas";
-                        si.WorkingDirectory = Application.StartupPath;
-                        si.FileName = "LoLBakRes.exe";
-                        Process.Start(si);
+                        Process.Start(new ProcessStartInfo { 
+                            Arguments = "Restore " + installPath,
+                            Verb = "runas",
+                            WorkingDirectory = Application.StartupPath,
+                            FileName = "LoLBakRes.exe"
+                        });
                         Logger.log("LoL一鍵還原 開始!", Logger.LogType.Info);
                     }
                     catch
