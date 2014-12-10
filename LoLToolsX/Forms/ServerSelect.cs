@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using LoLToolsX.Core;
+using System.Windows.Forms;
 
 namespace LoLToolsX
 {
     public partial class ServerSelect : Form
     {
-        string cd = Application.StartupPath;
+        string cd = Variable.CurrentDirectory;
 
         public ServerSelect()
         {
@@ -32,18 +25,18 @@ namespace LoLToolsX
         {
             GC.Collect();
             //如果多過15個Log就全部刪
-            string[] files = Directory.GetFiles(Application.StartupPath + @"\Logs");
+            string[] files = Directory.GetFiles(Variable.CurrentDirectory + @"\Logs");
             if (files.Length > 15)
             {
                 foreach (string txt in files)
                 {
                 System.IO.File.Delete(txt);
                 }
-                File.Create(Application.StartupPath + @"\Logs\Log.txt");
+                File.Create(Variable.CurrentDirectory + @"\Logs\Log.txt");
             }
-            if (!File.Exists(Application.StartupPath + "\\config.ini"))
+            if (!File.Exists(Variable.CurrentDirectory + "\\config.ini"))
             { 
-                File.Create(Application.StartupPath + "\\config.ini");
+                File.Create(Variable.CurrentDirectory + "\\config.ini");
             }
         }
 

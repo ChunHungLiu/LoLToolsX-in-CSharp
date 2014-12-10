@@ -8,10 +8,29 @@ namespace LoLToolsX
 {
     struct Variable
     {
+        #region 屬性
+        public static string PropertiesFile
+        {
+            get
+            {
+                return Variable.installPath + "\\Air\\lol.properties";
+            }
+        }
+
+        public static string CurrentDirectory
+        {
+            get
+            {
+                return System.Windows.Forms.Application.StartupPath;
+            }
+        }
+        #endregion
+
         #region 字串
 
         //public static string tw_installPath;  //台服LOL路徑
         //public static string na_installPath;  //美服LOL路徑
+        public static string installPath;
         public static string propPath;
         public static string hudPath;
         public static string n_installPath;

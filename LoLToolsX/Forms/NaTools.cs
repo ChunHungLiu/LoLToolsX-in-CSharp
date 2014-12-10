@@ -48,7 +48,7 @@ namespace LoLToolsX
 
             if (Variable.allowUpdate)
             {
-                CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
+                CFGFile checkAutoUpdate = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
                 if (checkAutoUpdate.GetValue("LoLToolsX", "AutoUpdate") == "true")
                 {
                     Variable.updating = true;
@@ -73,7 +73,7 @@ namespace LoLToolsX
 
             Logger.log("目前客戶端 : 美服", Logger.LogType.Info);
             //載入LoLToolsX Logo
-            PictureBox1.ImageLocation = Application.StartupPath + @"\logo.png";
+            PictureBox1.ImageLocation = Variable.CurrentDirectory + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
             
@@ -298,13 +298,13 @@ namespace LoLToolsX
 
         private void lChin_Click(object sender, EventArgs e)
         {
-            SwitchLang sl = new SwitchLang(airPath);
+            LangEdit sl = new LangEdit(airPath);
             sl.ChinLobby(2);
         }
 
         private void lEng_Click(object sender, EventArgs e)
         {
-            SwitchLang sl = new SwitchLang(airPath);
+            LangEdit sl = new LangEdit(airPath);
             sl.EngLobby(2);
         }
 
@@ -357,7 +357,7 @@ namespace LoLToolsX
             {
                 //if (StatusCheck.pingCheck(serverAry[i]))
                 //{
-                string tmp = StatusCheck.pingCheck(serverAry[i]);
+                string tmp = Utility.PingCheck(serverAry[i]);
                 if (tmp != "請求逾時" & tmp != "不明")
                 {
                     labels[i].ForeColor = System.Drawing.Color.Green;

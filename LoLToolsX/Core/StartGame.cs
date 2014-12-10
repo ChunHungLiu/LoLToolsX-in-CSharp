@@ -144,7 +144,7 @@ namespace LoLToolsX.Core
         private void StartGame_StartGameFinish()
         {
             //自動最小化到工具列
-            System.Drawing.Icon icon = new System.Drawing.Icon(Application.StartupPath + "\\lol.ico");
+            System.Drawing.Icon icon = new System.Drawing.Icon(Variable.CurrentDirectory + "\\lol.ico");
             ni.Icon = icon;
             ni.Visible = true;
             ni.ShowBalloonTip(3000,"","遊戲啟動成功!",ToolTipIcon.None);

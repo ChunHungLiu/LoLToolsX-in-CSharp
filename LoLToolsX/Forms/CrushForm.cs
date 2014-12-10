@@ -46,7 +46,7 @@ namespace LoLToolsX
             if (!Variable.haveUpdate)
             {
                     Logger.log("傳送錯誤報告");
-                       sucess = Function.UploadLogs();
+                       sucess = Utility.UploadLogs();
                        if (sucess)
                        {
                            MessageBox.Show("傳送錯誤報告成功!");

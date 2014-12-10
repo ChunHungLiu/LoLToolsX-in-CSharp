@@ -23,25 +23,25 @@ namespace LoLToolsX.Core
             this.installPath = installPath;
 
             //如沒有備份資料夾就建立
-            if (!Directory.Exists(Application.StartupPath + @"\bak\sound\FMOD\"))
+            if (!Directory.Exists(Variable.CurrentDirectory + @"\bak\sound\FMOD\"))
             {
-                Directory.CreateDirectory(Application.StartupPath + @"\bak\sound\FMOD\");
+                Directory.CreateDirectory(Variable.CurrentDirectory + @"\bak\sound\FMOD\");
             }
-            if (!Directory.Exists(Application.StartupPath + Application.StartupPath + "\\bak\\sound\\zh_TW"))
+            if (!Directory.Exists(Variable.CurrentDirectory + Variable.CurrentDirectory + "\\bak\\sound\\zh_TW"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\zh_TW");
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\bak\\sound\\zh_TW");
             }
-            if (!Directory.Exists(Application.StartupPath + "\\bak\\sound\\zh_CN"))
+            if (!Directory.Exists(Variable.CurrentDirectory + "\\bak\\sound\\zh_CN"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\zh_CN");
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\bak\\sound\\zh_CN");
             }
-            if (!Directory.Exists(Application.StartupPath + "\\bak\\sound\\en_US"))
+            if (!Directory.Exists(Variable.CurrentDirectory + "\\bak\\sound\\en_US"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\en_US");
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\bak\\sound\\en_US");
             }
-            if (!Directory.Exists(Application.StartupPath + "\\bak\\sound\\ko_KR"))
+            if (!Directory.Exists(Variable.CurrentDirectory + "\\bak\\sound\\ko_KR"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\bak\\sound\\ko_KR");
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\bak\\sound\\ko_KR");
             }
         }
 
@@ -57,17 +57,17 @@ namespace LoLToolsX.Core
             {
                 //台服檔案路徑
                 propPath = installPath + @"\Air\lol.properties";
-                bakPath = Application.StartupPath + @"\bak\server_prop\lol.properties";
+                bakPath = Variable.CurrentDirectory + @"\bak\server_prop\lol.properties";
                 localePath = installPath + @"\Air\locale.properties";
-                localeBakPath = Application.StartupPath + @"\bak\server_prop\locale.properties";
+                localeBakPath = Variable.CurrentDirectory + @"\bak\server_prop\locale.properties";
             }
             else
             {
                 //美服檔案路徑
                 propPath = installPath + @"\lol.properties";
-                bakPath = Application.StartupPath + @"\bak\na_server_prop\lol.properties";
+                bakPath = Variable.CurrentDirectory + @"\bak\na_server_prop\lol.properties";
                 localePath = installPath + @"\locale.properties";
-                localeBakPath = Application.StartupPath + @"\bak\na_server_prop\locale.properties";
+                localeBakPath = Variable.CurrentDirectory + @"\bak\na_server_prop\locale.properties";
             }
 
             //備份
@@ -152,7 +152,7 @@ namespace LoLToolsX.Core
 
         public void NaLang(int Type)   //備份語言檔(美服)
         {
-            string cd = Application.StartupPath;
+            string cd = Variable.CurrentDirectory;
             //備份
             if (Type == 1)
             {
@@ -260,7 +260,7 @@ namespace LoLToolsX.Core
         public void Lang(int Type)     //備份語言檔
         {
 
-            string cd = Application.StartupPath;
+            string cd = Variable.CurrentDirectory;
             //備份
             if (Type == 1)
             {
@@ -452,14 +452,14 @@ namespace LoLToolsX.Core
                 //{
                     //try
                     //{
-                        //File.Copy(installPath + @"\Game\DATA\Sounds\FMOD\" + file, Application.StartupPath + @"\bak\sound\FMOD\" + file, true);
+                        //File.Copy(installPath + @"\Game\DATA\Sounds\FMOD\" + file, Variable.CurrentDirectory + @"\bak\sound\FMOD\" + file, true);
                         //wait.progressBar1.Value = wait.progressBar1.Value + 5;
                     //}
                     //catch { }
                 //}
                 try
                 {
-                    My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", Application.StartupPath + "\\bak\\sound\\zh_TW", true);
+                    My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", Variable.CurrentDirectory + "\\bak\\sound\\zh_TW", true);
                 }
                 catch
                 {
@@ -467,7 +467,7 @@ namespace LoLToolsX.Core
                 }
                 try
                 {
-                    My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", Application.StartupPath + "\\bak\\sound\\en_US", true);
+                    My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", Variable.CurrentDirectory + "\\bak\\sound\\en_US", true);
                 }
                 catch
                 {
@@ -476,12 +476,12 @@ namespace LoLToolsX.Core
 
                 try
                 {
-                    Directory.CreateDirectory(Application.StartupPath + @"\bak\sound\air");
+                    Directory.CreateDirectory(Variable.CurrentDirectory + @"\bak\sound\air");
                     foreach (string newPath in Directory.GetFiles(installPath + @"\Air\assets\sounds\en_US\champions", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(installPath + @"\Air\assets\sounds\en_US\champions", Application.StartupPath + @"\bak\sound\air"), true);
+                        File.Copy(newPath, newPath.Replace(installPath + @"\Air\assets\sounds\en_US\champions", Variable.CurrentDirectory + @"\bak\sound\air"), true);
                     wait.progressBar1.Value = 60;
                     foreach (string newPath in Directory.GetFiles(installPath + @"\Air\assets\sounds\zh_TW\champions", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(installPath + @"\Air\assets\sounds\zh_TW\champions", Application.StartupPath + @"\bak\sound\air"), true);
+                        File.Copy(newPath, newPath.Replace(installPath + @"\Air\assets\sounds\zh_TW\champions", Variable.CurrentDirectory + @"\bak\sound\air"), true);
                     wait.progressBar1.Value = 100;
                     wait.progressBar1.Value = 0;
                     wait.Close();
@@ -507,7 +507,7 @@ namespace LoLToolsX.Core
                //{
                     //try
                     //{
-                        //File.Copy(Application.StartupPath + @"\bak\sound\FMOD\" + file, installPath + @"\Game\DATA\Sounds\FMOD\" + file, true);
+                        //File.Copy(Variable.CurrentDirectory + @"\bak\sound\FMOD\" + file, installPath + @"\Game\DATA\Sounds\FMOD\" + file, true);
                         //wait.progressBar1.Value = wait.progressBar1.Value + 15;
                     //}
                     //catch { }
@@ -526,7 +526,7 @@ namespace LoLToolsX.Core
                 }
                 try
                 {
-                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\zh_TW", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", true);
+                    My.Computer.FileSystem.CopyDirectory(Variable.CurrentDirectory + "\\bak\\sound\\zh_TW", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", true);
                 }
                 catch
                 {
@@ -534,7 +534,7 @@ namespace LoLToolsX.Core
                 }
                 try
                 {
-                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath + "\\bak\\sound\\en_US", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", true);
+                    My.Computer.FileSystem.CopyDirectory(Variable.CurrentDirectory + "\\bak\\sound\\en_US", installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\en_US", true);
                 }
                 catch
                 {
@@ -542,11 +542,11 @@ namespace LoLToolsX.Core
                 }
                 try
                 {
-                    foreach (string newPath in Directory.GetFiles(Application.StartupPath + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(Application.StartupPath + @"\bak\sound\air",installPath + @"\Air\assets\sounds\en_US\champions"), true);
+                    foreach (string newPath in Directory.GetFiles(Variable.CurrentDirectory + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(Variable.CurrentDirectory + @"\bak\sound\air",installPath + @"\Air\assets\sounds\en_US\champions"), true);
                     wait.progressBar1.Value = 50;
-                    foreach (string newPath in Directory.GetFiles(Application.StartupPath + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
-                        File.Copy(newPath, newPath.Replace(Application.StartupPath + @"\bak\sound\air", installPath + @"\Air\assets\sounds\zh_TW\champions"), true);
+                    foreach (string newPath in Directory.GetFiles(Variable.CurrentDirectory + @"\bak\sound\air", "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(Variable.CurrentDirectory + @"\bak\sound\air", installPath + @"\Air\assets\sounds\zh_TW\champions"), true);
                     wait.progressBar1.Value = 100;
                     wait.progressBar1.Value = 0;
                     wait.Close();
@@ -575,37 +575,37 @@ namespace LoLToolsX.Core
                 //{
                     //try
                     //{
-                        //File.Delete(Application.StartupPath + @"\bak\sound\FMOD\" + files);
+                        //File.Delete(Variable.CurrentDirectory + @"\bak\sound\FMOD\" + files);
                     //}
                     //catch { }
                 //}
                 try
                 {
-                    Directory.Delete(Application.StartupPath + @"\bak\sound\zh_TW", true);
+                    Directory.Delete(Variable.CurrentDirectory + @"\bak\sound\zh_TW", true);
                 }
                 catch
                 { }
                 try
                 {
-                    Directory.Delete(Application.StartupPath + @"\bak\sound\zh_CN", true);
+                    Directory.Delete(Variable.CurrentDirectory + @"\bak\sound\zh_CN", true);
                 }
                 catch
                 { }
                 try
                 {
-                    Directory.Delete(Application.StartupPath + @"\bak\sound\en_US", true);
+                    Directory.Delete(Variable.CurrentDirectory + @"\bak\sound\en_US", true);
                 }
                 catch
                 { }
                 try
                 {
-                    Directory.Delete(Application.StartupPath + @"\bak\sound\ko_KR", true);
+                    Directory.Delete(Variable.CurrentDirectory + @"\bak\sound\ko_KR", true);
                 }
                 catch
                 { }
                 try
                 {
-                    Directory.Delete(Application.StartupPath + @"\bak\sound\Air", true);
+                    Directory.Delete(Variable.CurrentDirectory + @"\bak\sound\Air", true);
                     Logger.log("語音檔 刪除備份成功!", Logger.LogType.Error);
                     MessageBox.Show("備份刪除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -623,7 +623,7 @@ namespace LoLToolsX.Core
                 try
                 {
                     FileInfo fi = new FileInfo(installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.tga");
-                    fi.CopyTo(Application.StartupPath + @"\bak\UI\game\HUDAtlas.tga", true);
+                    fi.CopyTo(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga", true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 備份成功!", Logger.LogType.Info);
                 }
@@ -641,7 +641,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\UI\game\HUDAtlas.tga");
+                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga");
                     fi.CopyTo(installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.tga", true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 還原成功!", Logger.LogType.Info);
@@ -666,7 +666,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\UI\game\HUDAtlas.tga");
+                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga");
                     fi.Delete();
                     Logger.log("UI檔案 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -684,9 +684,9 @@ namespace LoLToolsX.Core
 
         public void NaUi(int Type)       //美服UI備份
         {
-            if (!Directory.Exists(Application.StartupPath + @"\bak\UI\na\game"))
+            if (!Directory.Exists(Variable.CurrentDirectory + @"\bak\UI\na\game"))
             {
-                Directory.CreateDirectory(Application.StartupPath + @"\bak\UI\na\game");
+                Directory.CreateDirectory(Variable.CurrentDirectory + @"\bak\UI\na\game");
             }
 
             //備份
@@ -703,7 +703,7 @@ namespace LoLToolsX.Core
                         {
                             if (File.Exists(f + @"\DATA\Menu\Textures\HUDAtlas.tga"))
                             {
-                                File.Copy(f + @"\DATA\Menu\Textures\HUDAtlas.tga", Application.StartupPath + @"\bak\UI\na\game\HUDAtlas.tga", true);
+                                File.Copy(f + @"\DATA\Menu\Textures\HUDAtlas.tga", Variable.CurrentDirectory + @"\bak\UI\na\game\HUDAtlas.tga", true);
                                 Logger.log("UI檔案 備份成功!", Logger.LogType.Info);
                                 MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 //如已備份UI 就無需重複備份
@@ -743,7 +743,7 @@ namespace LoLToolsX.Core
                         {
                             Directory.CreateDirectory(f + "\\DATA\\Menu\\Textures");
                         }
-                        File.Copy(Application.StartupPath + @"\bak\UI\na\game\HUDAtlas.tga", f + "\\DATA\\Menu\\Textures\\HUDAtlas.tga", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\UI\na\game\HUDAtlas.tga", f + "\\DATA\\Menu\\Textures\\HUDAtlas.tga", true);
                     }
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 還原成功!", Logger.LogType.Info);
@@ -762,7 +762,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\UI\na\game\HUDAtlas.tga");
+                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\UI\na\game\HUDAtlas.tga");
                     fi.Delete();
                     Logger.log("UI檔案 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -786,7 +786,7 @@ namespace LoLToolsX.Core
                 try
                 {
                     FileInfo fi = new FileInfo(installPath + @"\Game\DATA\Menu\HUD\defaults\Chat.ini");
-                    fi.CopyTo(Application.StartupPath + @"\bak\Chat\Chat.ini", true);
+                    fi.CopyTo(Variable.CurrentDirectory + @"\bak\Chat\Chat.ini", true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("Chat.ini 備份成功!", Logger.LogType.Info);
                 }
@@ -804,7 +804,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\Chat\Chat.ini");
+                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\Chat\Chat.ini");
                     fi.CopyTo(installPath + @"\Game\DATA\Menu\HUD\defaults\Chat.ini", true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("Chat.ini 還原成功!", Logger.LogType.Info);
@@ -829,7 +829,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Application.StartupPath + @"\bak\Chat\Chat.ini");
+                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\Chat\Chat.ini");
                     fi.Delete();
                     Logger.log("Chat.ini 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -855,7 +855,7 @@ namespace LoLToolsX.Core
                     {
                         Arguments = "Backup " + installPath,
                         Verb = "runas",
-                        WorkingDirectory = Application.StartupPath,
+                        WorkingDirectory = Variable.CurrentDirectory,
                         FileName = "LoLBakRes.exe"
                     });
                     Logger.log("LoL一鍵備份 開始!", Logger.LogType.Info);
@@ -873,7 +873,7 @@ namespace LoLToolsX.Core
                         Process.Start(new ProcessStartInfo { 
                             Arguments = "Restore " + installPath,
                             Verb = "runas",
-                            WorkingDirectory = Application.StartupPath,
+                            WorkingDirectory = Variable.CurrentDirectory,
                             FileName = "LoLBakRes.exe"
                         });
                         Logger.log("LoL一鍵還原 開始!", Logger.LogType.Info);

@@ -105,7 +105,7 @@ namespace LoLToolsX
                 Wait wait = new Wait();
                 wait.Show();
                 wait.progressBar1.Value = 40;
-                My.Computer.FileSystem.CopyDirectory(installPath + @"\Air", Application.StartupPath + @"\bak\Air", true);
+                My.Computer.FileSystem.CopyDirectory(installPath + @"\Air", Variable.CurrentDirectory + @"\bak\Air", true);
                 wait.progressBar1.Value = 100;
                 wait.Dispose();
                 Logger.log("大廳UI備份成功!", Logger.LogType.Info);
@@ -126,7 +126,7 @@ namespace LoLToolsX
                 Wait wait = new Wait();
                 wait.Show();
                 wait.progressBar1.Value = 40;
-                My.Computer.FileSystem.CopyDirectory(Application.StartupPath + @"\bak\Air", installPath + @"\Air", true);
+                My.Computer.FileSystem.CopyDirectory(Variable.CurrentDirectory + @"\bak\Air", installPath + @"\Air", true);
                 wait.progressBar1.Value = 100;
                 wait.Dispose();
                 Logger.log("大廳UI還原成功!", Logger.LogType.Info);
@@ -149,7 +149,7 @@ namespace LoLToolsX
         {
             try
             {
-                My.Computer.FileSystem.DeleteDirectory(Application.StartupPath + @"\bak\Air", Microsoft.VisualBasic.FileIO.DeleteDirectoryOption.DeleteAllContents);
+                My.Computer.FileSystem.DeleteDirectory(Variable.CurrentDirectory + @"\bak\Air", Microsoft.VisualBasic.FileIO.DeleteDirectoryOption.DeleteAllContents);
                 Logger.log("大廳UI刪除備份成功!", Logger.LogType.Info);
                 MessageBox.Show("大廳UI刪除備份成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

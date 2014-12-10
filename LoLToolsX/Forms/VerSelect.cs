@@ -22,11 +22,11 @@ namespace LoLToolsX
 
         private void VerSelect_Load(object sender, EventArgs e)
         {
-            CFGFile CFGFile = new CFGFile(Application.StartupPath + @"\config.ini");
+            CFGFile CFGFile = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
 
             //取得LoL路徑
             GetReg gr = new GetReg();
-            installPath = gr.NaPath(Application.StartupPath + @"\config.ini");
+            installPath = gr.NaPath(Variable.CurrentDirectory + @"\config.ini");
             Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
 
 

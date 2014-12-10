@@ -25,18 +25,18 @@ namespace LoLToolsX.Core
 
         public static void start()
         {
-            if (!Directory.Exists(Application.StartupPath + @"\Logs"))
+            if (!Directory.Exists(Variable.CurrentDirectory + @"\Logs"))
             {
-                Directory.CreateDirectory(Application.StartupPath + @"\Logs");
-                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Logs");
+                Directory.CreateDirectory(Variable.CurrentDirectory + @"\Logs");
+                DirectoryInfo di = new DirectoryInfo(Variable.CurrentDirectory + @"\Logs");
                 di.Refresh();
             }
                 GC.Collect();
-                file = System.IO.Path.Combine(Application.StartupPath + @"\Logs\" + "Log.txt");
-                if (!File.Exists(Application.StartupPath + @"\Logs\" + "Log.txt"))
-                    File.Create(Application.StartupPath + @"\Logs\" + "Log.txt");
+                file = System.IO.Path.Combine(Variable.CurrentDirectory + @"\Logs\" + "Log.txt");
+                if (!File.Exists(Variable.CurrentDirectory + @"\Logs\" + "Log.txt"))
+                    File.Create(Variable.CurrentDirectory + @"\Logs\" + "Log.txt");
                 GC.Collect();
-                FileStream fs = new FileStream(Application.StartupPath + @"\Logs\" + "Log.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+                FileStream fs = new FileStream(Variable.CurrentDirectory + @"\Logs\" + "Log.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                 StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
                 sw.WriteLine("============================== LoLToolsX Log File ==============================");
                 sw.Close();

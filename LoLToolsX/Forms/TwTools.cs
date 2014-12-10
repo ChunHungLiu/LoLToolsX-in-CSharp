@@ -45,7 +45,7 @@ namespace LoLToolsX
 
             Logger.log("目前客戶端 : 台服", Logger.LogType.Info);
             //載入LoLToolsX Logo
-            PictureBox1.ImageLocation = Application.StartupPath + @"\logo.png";
+            PictureBox1.ImageLocation = Variable.CurrentDirectory + @"\logo.png";
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
             if (Variable.forceSelectPath)
@@ -55,11 +55,11 @@ namespace LoLToolsX
 
             //取得LoL路徑
             GetReg gr = new GetReg();
-            installPath = gr.TwPath(Application.StartupPath + @"\config.ini");
+            installPath = gr.TwPath(Variable.CurrentDirectory + @"\config.ini");
             Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
 
 SelectPath:
-            CFGFile CFGFile = new CFGFile(Application.StartupPath + @"\config.ini");
+            CFGFile CFGFile = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
 
             //檢查路徑是否存有 LoLTW 字串
             if (!installPath.Contains("LoLTW"))
@@ -99,11 +99,14 @@ SelectPath:
                 Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);
             }
 
+
+            Variable.installPath = TwTools.installPath;
+
             //CFGFile = null;
 
             if (Variable.allowUpdate)
             {
-                //CFGFile checkAutoUpdate = new CFGFile(Application.StartupPath + @"\config.ini");
+                //CFGFile checkAutoUpdate = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
                 if (CFGFile.GetValue("LoLToolsX", "AutoUpdate") == "true")
                 {
                     Variable.updating = true;
@@ -126,7 +129,7 @@ SelectPath:
             //Thread langUpdate = new Thread(LangUpdate.CheckLangUpdate);
             //langUpdate.Start();
 
-            //string test = Application.StartupPath;
+            //string test = Variable.CurrentDirectory;
             //MessageBox.Show(test);
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,7 +144,7 @@ SelectPath:
 
             //取得版本資訊
             toolsVersion.Text = Application.ProductVersion.ToString();
-            LoLVersionLabel.Text = GetLoLVer();
+            LoLVersionLabel.Text = Utility.GetLoLVer();
 
 
 
@@ -161,7 +164,7 @@ SelectPath:
             gr = null;
 
 
-            string[] skins = File.ReadAllLines(Application.StartupPath + @"\Skin.txt");
+            string[] skins = File.ReadAllLines(Variable.CurrentDirectory + @"\Skin.txt");
             foreach (string s in skins)
             {
                 installedSkin.Items.Add(s);
@@ -169,6 +172,7 @@ SelectPath:
 
             //Variable.tw_installPath = installPath;
             Variable.curClient = "台服";
+
         }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -177,40 +181,12 @@ SelectPath:
             Process.Start("http://nitroxenon.com");
         }
 
-        public static string GetLoLVer()
-        {
-            //取得LoL版本
-            FileStream fs2 = new FileStream(installPath + @"\lol.version", FileMode.Open);
-            StreamReader sr2 = new StreamReader(fs2);
-            try
-            {
-                //string gameVer = sr.ReadLine();
-                string airVer = sr2.ReadLine();
-                Logger.log("Air版本: " + airVer, Logger.LogType.Info);
-                return airVer;
-                
-                
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("無法取得LoL版本", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.log("無法取得Air版本: " , Logger.LogType.Error);
-                Logger.log(e);
-                return "未知";
-            }
-            finally
-            {
-                //sr.Close();
-                sr2.Close();
-                //fs.Close();
-                fs2.Close();
-            }
-        }
-
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "lolt.properties");
-            serverLocation.Text = "台服";
+            PropertiesWriter writer = new PropertiesWriter(Server.TW);
+            writer.Write();
+            //SwitchServer.SwitchServerLoc(installPath, "lolt.properties");
+            //serverLocation.Text = "台服";
         }
 
         private void Button6_Click(object sender, EventArgs e)
@@ -317,27 +293,27 @@ SelectPath:
 
         private void lChin_Click(object sender, EventArgs e)
         {
-            SwitchLang sl = new SwitchLang(installPath);
+            LangEdit sl = new LangEdit(installPath);
             sl.ChinLobby(1);
 
         }
 
         private void lEng_Click(object sender, EventArgs e)
         {
-            SwitchLang sl = new SwitchLang(installPath);
+            LangEdit sl = new LangEdit(installPath);
             sl.EngLobby(1);
         }
 
         private void gChin_Click(object sender, EventArgs e)
         {
-            SwitchLang sl = new SwitchLang(installPath);
+            LangEdit sl = new LangEdit(installPath);
             sl.ChinGame();
         }
 
         private void gEng_Click(object sender, EventArgs e)
         {
-            SwitchLang sl = new SwitchLang(installPath);
-            sl.EngGame();
+            LangEdit sl = new LangEdit(installPath);
+            //sl.EngGame();
         }
 
         private void BakLang_Click(object sender, EventArgs e)
@@ -448,7 +424,7 @@ SelectPath:
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            CFGFile ini = new CFGFile(Application.StartupPath + @"\config.ini");
+            CFGFile ini = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
             if (checkBox1.Checked == true)
             ini.SetValue("LoLToolsX", "AutoUpdate", "false");
             else
@@ -526,7 +502,7 @@ SelectPath:
             {
                 //if (StatusCheck.pingCheck(serverAry[i]))
                 //{
-                string tmp = StatusCheck.pingCheck(serverAry[i]);
+                string tmp = Utility.PingCheck(serverAry[i]);
                 if (tmp != "請求逾時" & tmp != "不明")
                 {
                     labels[i].ForeColor = System.Drawing.Color.Green;
@@ -624,9 +600,9 @@ SelectPath:
                 {
                     wait.Show();
                     wait.progressBar1.Value = 50;
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Application.StartupPath + @"\SevenZipSharp.dll");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Variable.CurrentDirectory + @"\SevenZipSharp.dll");
                     wait.progressBar1.Value = 70;
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", Application.StartupPath + @"\7z.dll");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", Variable.CurrentDirectory + @"\7z.dll");
                     wait.progressBar1.Value = 100;
                     MessageBox.Show("下載完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("SevenZipSharp.dll 下載完成!", Logger.LogType.Info);
@@ -645,13 +621,13 @@ SelectPath:
 
         private void lKR_Click(object sender, EventArgs e)
         {
-            SwitchLang swLang = new SwitchLang(installPath);
+            LangEdit swLang = new LangEdit(installPath);
             swLang.KRLobby();
         }
 
         private void gKR_Click(object sender, EventArgs e)
         {
-            SwitchLang swLang = new SwitchLang(installPath);
+            LangEdit swLang = new LangEdit(installPath);
             swLang.KRGame();
         }
 
@@ -676,7 +652,7 @@ SelectPath:
 
         private void button27_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(Application.StartupPath + @"\SevenZipSharp.dll") || !File.Exists(Application.StartupPath + @"\7z.dll"))
+            if (!File.Exists(Variable.CurrentDirectory + @"\SevenZipSharp.dll") || !File.Exists(Variable.CurrentDirectory + @"\7z.dll"))
             {
                 Logger.log("找不到Skin安裝所需的類別庫", Logger.LogType.Info);
                 if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
@@ -694,14 +670,14 @@ SelectPath:
                     {
                         try
                         {
-                            string str = File.ReadAllText(Application.StartupPath + @"\Skin.txt");
+                            string str = File.ReadAllText(Variable.CurrentDirectory + @"\Skin.txt");
 
 
 
-                            File.WriteAllText(Application.StartupPath + @"\Skin.txt", str, Encoding.Default);
+                            File.WriteAllText(Variable.CurrentDirectory + @"\Skin.txt", str, Encoding.Default);
 
                             InstallSkin.Skin(installPath, skinPathBox.SelectedItem.ToString(), Path.GetFileName(skinPathBox.SelectedItem.ToString()));
-                            FileStream fs = new FileStream(Application.StartupPath + @"\Skin.txt", FileMode.Append, FileAccess.Write);
+                            FileStream fs = new FileStream(Variable.CurrentDirectory + @"\Skin.txt", FileMode.Append, FileAccess.Write);
                             StreamWriter sw = new StreamWriter(fs);
                             sw.WriteLine(Path.GetFileName(skinPathBox.SelectedItem.ToString()));
                             sw.Close();
@@ -742,15 +718,15 @@ SelectPath:
             {
                 try
                 {
-                    string str = File.ReadAllText(Application.StartupPath + @"\Skin.txt");
+                    string str = File.ReadAllText(Variable.CurrentDirectory + @"\Skin.txt");
                     
                     
                     
-                    File.WriteAllText(Application.StartupPath + @"\Skin.txt", str, Encoding.Default);
+                    File.WriteAllText(Variable.CurrentDirectory + @"\Skin.txt", str, Encoding.Default);
 
-                    string temp = File.ReadAllText(Application.StartupPath + @"\Skin.txt");
+                    string temp = File.ReadAllText(Variable.CurrentDirectory + @"\Skin.txt");
                     string newTemp = temp.Replace(installedSkin.SelectedItem.ToString() + "\r\n" , "");
-                    File.WriteAllText(Application.StartupPath + @"\Skin.txt", newTemp);
+                    File.WriteAllText(Variable.CurrentDirectory + @"\Skin.txt", newTemp);
 
                     string temp2 = File.ReadAllText(installPath + @"\Game\ClientZips.txt");
                     string newTemp2 = temp2.Replace(installedSkin.SelectedItem.ToString() + "\r\n", "");
@@ -814,9 +790,9 @@ SelectPath:
                     wait.Update();
 
                     WebClient wc = new WebClient();
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.6-beta/LoLSpectX0.1.6-beta.zip", Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
-                    SevenZipExtractor sze = new SevenZipExtractor(Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
-                    sze.ExtractArchive(Application.StartupPath + "\\LoLSpectX\\");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.6-beta/LoLSpectX0.1.6-beta.zip", Variable.CurrentDirectory + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    SevenZipExtractor sze = new SevenZipExtractor(Variable.CurrentDirectory + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    sze.ExtractArchive(Variable.CurrentDirectory + "\\LoLSpectX\\");
                     wc.Dispose();
                     sze.Dispose();
                     wait.Dispose();
@@ -826,7 +802,7 @@ SelectPath:
                     MessageBox.Show("下載完成! 按確定開啟 LoLSpectX 觀戰工具 ", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            if (!Directory.Exists(Application.StartupPath + @"\LoLSpectX"))
+            if (!Directory.Exists(Variable.CurrentDirectory + @"\LoLSpectX"))
             {
                 if (MessageBox.Show("已推出 LoLSpectX 觀戰工具 請問要下載嗎?", "新工具發佈", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
@@ -839,9 +815,9 @@ SelectPath:
                     wait.Update();
 
                     WebClient wc = new WebClient();
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.6-beta/LoLSpectX0.1.6-beta.zip", Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
-                    SevenZipExtractor sze = new SevenZipExtractor(Application.StartupPath + "\\download\\LoLSpectX0.1.1-beta.zip");
-                    sze.ExtractArchive(Application.StartupPath + "\\LoLSpectX\\");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLSpectX/releases/download/v0.1.6-beta/LoLSpectX0.1.6-beta.zip", Variable.CurrentDirectory + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    SevenZipExtractor sze = new SevenZipExtractor(Variable.CurrentDirectory + "\\download\\LoLSpectX0.1.1-beta.zip");
+                    sze.ExtractArchive(Variable.CurrentDirectory + "\\LoLSpectX\\");
                     wc.Dispose();
                     sze.Dispose();
                     wait.Dispose();
@@ -855,8 +831,8 @@ SelectPath:
             }
             tabControl1.SelectedTab = tabPage1;
                 ProcessStartInfo start = new ProcessStartInfo();
-                start.WorkingDirectory = Application.StartupPath + "\\LoLSpectX\\LoLSpectX";
-                start.FileName = Application.StartupPath + "\\LoLSpectX\\LoLSpectX\\LoLSpectX.exe";
+                start.WorkingDirectory = Variable.CurrentDirectory + "\\LoLSpectX\\LoLSpectX";
+                start.FileName = Variable.CurrentDirectory + "\\LoLSpectX\\LoLSpectX\\LoLSpectX.exe";
                 start.Arguments = installPath;
                 Process.Start(start);
         }
@@ -900,7 +876,7 @@ SelectPath:
                 Wait wait = new Wait();
                 wait.Show();
                 wait.progressBar1.Value = 40;
-                My.Computer.FileSystem.CopyDirectory(installPath + @"\Air", Application.StartupPath + @"\bak\Air", true);
+                My.Computer.FileSystem.CopyDirectory(installPath + @"\Air", Variable.CurrentDirectory + @"\bak\Air", true);
                 wait.progressBar1.Value = 100;
                 wait.Dispose();
                 Logger.log("大廳UI備份成功!", Logger.LogType.Info);
@@ -921,7 +897,7 @@ SelectPath:
                 Wait wait = new Wait();
                 wait.Show();
                 wait.progressBar1.Value = 40;
-                My.Computer.FileSystem.CopyDirectory(Application.StartupPath + @"\bak\Air", installPath + @"\Air", true);
+                My.Computer.FileSystem.CopyDirectory(Variable.CurrentDirectory + @"\bak\Air", installPath + @"\Air", true);
                 wait.progressBar1.Value = 100;
                 wait.Dispose();
                 Logger.log("大廳UI還原成功!", Logger.LogType.Info);
@@ -944,7 +920,7 @@ SelectPath:
         {
             try
             {
-                My.Computer.FileSystem.DeleteDirectory(Application.StartupPath + @"\bak\Air", Microsoft.VisualBasic.FileIO.DeleteDirectoryOption.DeleteAllContents);
+                My.Computer.FileSystem.DeleteDirectory(Variable.CurrentDirectory + @"\bak\Air", Microsoft.VisualBasic.FileIO.DeleteDirectoryOption.DeleteAllContents);
                 Logger.log("大廳UI刪除備份成功!", Logger.LogType.Info);
                 MessageBox.Show("大廳UI刪除備份成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

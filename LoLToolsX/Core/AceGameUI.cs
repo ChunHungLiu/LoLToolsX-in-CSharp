@@ -15,9 +15,9 @@ namespace LoLToolsX.Core
         public AceGameUI(string _installPath)
         {
             this.installPath = _installPath;
-            if (!Directory.Exists(Application.StartupPath + "\\temp"))
+            if (!Directory.Exists(Variable.CurrentDirectory + "\\temp"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\temp");
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\temp");
             }
         }
         public void Install(string zipPath)
@@ -25,15 +25,15 @@ namespace LoLToolsX.Core
             try
             {
                 SevenZipExtractor sze = new SevenZipExtractor(zipPath);
-                sze.ExtractArchive(Application.StartupPath + "\\temp");
+                sze.ExtractArchive(Variable.CurrentDirectory + "\\temp");
             }
             catch { MessageBox.Show("解壓失敗! 將會取消安裝程序", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
             try
             {
-                if (Directory.GetDirectories(Application.StartupPath + "\\temp").Length < 3)
+                if (Directory.GetDirectories(Variable.CurrentDirectory + "\\temp").Length < 3)
                 {
-                    foreach (string d in Directory.GetDirectories(Application.StartupPath + "\\temp"))
+                    foreach (string d in Directory.GetDirectories(Variable.CurrentDirectory + "\\temp"))
                     {
                         if (File.Exists(d + "\\lol.properties"))
                         {
@@ -83,7 +83,7 @@ namespace LoLToolsX.Core
 
             try
             {
-                foreach (string dir in Directory.GetDirectories(Application.StartupPath + "\\temp"))
+                foreach (string dir in Directory.GetDirectories(Variable.CurrentDirectory + "\\temp"))
                 {
 #if DEBUG
                     MessageBox.Show(dir);
@@ -91,7 +91,7 @@ namespace LoLToolsX.Core
 #endif
                     Directory.Delete(dir,true);
                 }
-                foreach (string f in Directory.GetFiles(Application.StartupPath + "\\temp"))
+                foreach (string f in Directory.GetFiles(Variable.CurrentDirectory + "\\temp"))
                 {
                     File.Delete(f);
                 }
@@ -112,7 +112,7 @@ namespace LoLToolsX.Core
         {
             try
             {
-                foreach (string f in Directory.GetFiles((Application.StartupPath + "\\files\\fix-fd")))
+                foreach (string f in Directory.GetFiles((Variable.CurrentDirectory + "\\files\\fix-fd")))
                 {
                     File.Copy(f, installPath + "\\Air\\mod\\cht2\\" + Path.GetFileName(f), true);
                 }

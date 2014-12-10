@@ -16,26 +16,25 @@ namespace LoLToolsX
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length != 0)
-            {
-                if (args[0] == "-M")
-                {
-                    Variable.forceSelectPath = true;
-                }
-            }
-            foreach (string s in Directory.GetFiles(Application.StartupPath + "\\download"))
-            {
-                File.Delete(s);
-            }
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
 
             //只允許單一執行個體
             SingelApp myapp = new SingelApp();
             myapp.Run(args);
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ServerSelect());
+            if (args.Length > 0)
+            {
+                if (args[0] == "-M")
+                {
+                    //強制手動選擇路徑
+                    Variable.forceSelectPath = true;
+                }
+            }
+            //清理下載資料夾
+            foreach (string s in Directory.GetFiles(Variable.CurrentDirectory + "\\download"))
+            {
+                File.Delete(s);
+            }
         }
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)  //CrushHandler
         {
@@ -45,7 +44,6 @@ namespace LoLToolsX
                 CrushForm cf = new CrushForm(ex.Message,ex.StackTrace);
                 cf.ShowDialog();
                 Logger.log(string.Format("程式發生未處理的錯誤！\n\n{0}{1}", ex.Message, ex.StackTrace), Logger.LogType.Crash);
-                //MessageBox.Show(string.Format("程式發生未處理的錯誤, 按確定關閉程式！\n\n{0}{1}", ex.Message, ex.StackTrace), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             finally
             {

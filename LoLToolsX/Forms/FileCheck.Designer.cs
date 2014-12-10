@@ -54,10 +54,6 @@
             this.textBox1.Size = new System.Drawing.Size(480, 212);
             this.textBox1.TabIndex = 2;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // FileCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

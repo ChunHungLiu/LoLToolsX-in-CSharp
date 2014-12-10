@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-
+using LoLToolsX.Core;
+using System.Xml;
 
 namespace LoLToolsX.Core
 {
@@ -12,35 +13,16 @@ namespace LoLToolsX.Core
     /// <summary>
     /// 語言切換
     /// </summary>
-    class SwitchLang
+    class LangEdit
     {
         string installPath;
-        string cd = Application.StartupPath;
+        string currentPath = Variable.CurrentDirectory;
 
-        public SwitchLang(string _installPath)
+        public LangEdit(string _installPath)
         {
             installPath = _installPath;
         }
 
-        //英文
-        public void EngGame()
-        {
-            try
-            {
-                File.Copy(cd + @"\files\lang\eng\game\FontTypes.xml", installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
-                File.Copy(cd + @"\files\lang\eng\game\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
-                File.Copy(cd + @"\files\lang\eng\game\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
-                File.Copy(cd + @"\files\lang\eng\game\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
-                MessageBox.Show("遊戲語言切換完成: 英文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Logger.log("遊戲語言切換完成: 英文", Logger.LogType.Info);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("語言切換失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.log("語言切換失敗!", Logger.LogType.Error);
-                Logger.log(e, Logger.LogType.Error);
-            }
-        }
         public void EngLobby(int type)
         {
             string targetPath = "";
@@ -58,8 +40,8 @@ namespace LoLToolsX.Core
 
             try
             {
-                File.Copy(cd + @"\files\lang\eng\lobby\locale.properties", targetPath + @"\locale.properties", true);
-                File.Copy(cd + @"\files\lang\eng\lobby\fonts.swf", targetPath + @"\css\fonts.swf", true);
+                File.Copy(currentPath + @"\files\lang\eng\lobby\locale.properties", targetPath + @"\locale.properties", true);
+                File.Copy(currentPath + @"\files\lang\eng\lobby\fonts.swf", targetPath + @"\css\fonts.swf", true);
                 MessageBox.Show("大廳語言切換完成: 英文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("大廳語言切換完成: 英文", Logger.LogType.Info);
             }
@@ -78,12 +60,12 @@ namespace LoLToolsX.Core
         {
             try
             {
-                File.Copy(cd + @"\files\lang\cht\game\FontTypes.xml", installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
-                File.Copy(cd + @"\files\lang\cht\game\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
-                File.Copy(cd + @"\files\lang\cht\game\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
-                File.Copy(cd + @"\files\lang\cht\game\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
-                File.Copy(cd + @"\files\lang\cht\game\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
-                File.Copy(cd + @"\files\lang\cht\game\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
+                File.Copy(currentPath + @"\files\lang\cht\game\FontTypes.xml", installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
+                File.Copy(currentPath + @"\files\lang\cht\game\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
+                File.Copy(currentPath + @"\files\lang\cht\game\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
+                File.Copy(currentPath + @"\files\lang\cht\game\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
+                File.Copy(currentPath + @"\files\lang\cht\game\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
+                File.Copy(currentPath + @"\files\lang\cht\game\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
                 MessageBox.Show("遊戲語言切換完成: 中文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("遊戲語言切換完成: 中文", Logger.LogType.Info);
             }
@@ -110,9 +92,9 @@ namespace LoLToolsX.Core
 
             try
             {
-                File.Copy(cd + @"\files\lang\cht\lobby\locale.properties", targetPath + @"\locale.properties" , true);
-                File.Copy(cd + @"\files\lang\cht\lobby\fonts.swf", targetPath + @"\css\fonts.swf", true);
-                File.Copy(cd + @"\files\lang\cht\lobby\fonts_zh_TW.swf", targetPath + @"\css\fonts_zh_TW.swf", true);
+                File.Copy(currentPath + @"\files\lang\cht\lobby\locale.properties", targetPath + @"\locale.properties" , true);
+                File.Copy(currentPath + @"\files\lang\cht\lobby\fonts.swf", targetPath + @"\css\fonts.swf", true);
+                File.Copy(currentPath + @"\files\lang\cht\lobby\fonts_zh_TW.swf", targetPath + @"\css\fonts_zh_TW.swf", true);
                 MessageBox.Show("大廳語言切換完成: 中文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("大廳語言切換完成: 中文", Logger.LogType.Info);
             }
@@ -129,12 +111,12 @@ namespace LoLToolsX.Core
         {
             try
             {
-                File.Copy(cd + @"\files\lang\kr\game\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
-                File.Copy(cd + @"\files\lang\kr\game\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
+                File.Copy(currentPath + @"\files\lang\kr\game\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
+                File.Copy(currentPath + @"\files\lang\kr\game\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
                 //File.Copy(cd + @"\files\lang\kr\game\GamePermanent_ko_KR.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", true);
-                File.Copy(cd + @"\files\lang\kr\game\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
-                File.Copy(cd + @"\files\lang\kr\game\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
-                File.Copy(cd + @"\files\lang\kr\game\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
+                File.Copy(currentPath + @"\files\lang\kr\game\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
+                File.Copy(currentPath + @"\files\lang\kr\game\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
+                File.Copy(currentPath + @"\files\lang\kr\game\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
                 MessageBox.Show("遊戲語言切換完成: 韓文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("遊戲語言切換完成: 韓文", Logger.LogType.Info);
             }
@@ -149,10 +131,10 @@ namespace LoLToolsX.Core
         {
             try
             {
-                File.Copy(cd + @"\files\lang\kr\lobby\locale.properties", installPath + @"\Air\locale.properties", true);
-                File.Copy(cd + @"\files\lang\kr\lobby\fonts.swf", installPath + @"\Air\css\fonts.swf", true);
-                File.Copy(cd + @"\files\lang\kr\lobby\fonts_zh_TW.swf", installPath + @"\Air\css\fonts_zh_TW.swf", true);
-                File.Copy(cd + @"\files\lang\kr\lobby\fonts_ko_KR.swf", installPath + @"\Air\css\fonts_ko_KR.swf", true);
+                File.Copy(currentPath + @"\files\lang\kr\lobby\locale.properties", installPath + @"\Air\locale.properties", true);
+                File.Copy(currentPath + @"\files\lang\kr\lobby\fonts.swf", installPath + @"\Air\css\fonts.swf", true);
+                File.Copy(currentPath + @"\files\lang\kr\lobby\fonts_zh_TW.swf", installPath + @"\Air\css\fonts_zh_TW.swf", true);
+                File.Copy(currentPath + @"\files\lang\kr\lobby\fonts_ko_KR.swf", installPath + @"\Air\css\fonts_ko_KR.swf", true);
                 MessageBox.Show("大廳語言切換完成: 韓文", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.log("大廳語言切換完成: 韓文", Logger.LogType.Info);
             }
@@ -176,7 +158,7 @@ namespace LoLToolsX.Core
         public static void SwitchServerLoc(string installPath, string targetLoc)
         {
             string propPath = installPath + @"\Air\lol.properties";
-            string localProp = Application.StartupPath + @"\files\server_prop\" + targetLoc;
+            string localProp = Variable.CurrentDirectory + @"\files\server_prop\" + targetLoc;
             FileInfo fi = new FileInfo(localProp);
             try
             {
@@ -200,7 +182,7 @@ namespace LoLToolsX.Core
         public static void SwitchServerLocNa(string installPath, string targetLoc)
         {
             string propPath = installPath + @"\lol.properties";
-            string localProp = Application.StartupPath + @"\files\server_prop\" + targetLoc;
+            string localProp = Variable.CurrentDirectory + @"\files\server_prop\" + targetLoc;
             FileInfo fi = new FileInfo(localProp);
             try
             {

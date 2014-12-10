@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AceGameUI.cs" />
+    <Compile Include="Core\PropertiesWriter.cs" />
+    <Compile Include="Core\Utility.cs" />
     <Compile Include="Forms\CheckLangUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,7 +138,6 @@
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\StartGame.cs" />
-    <Compile Include="Core\StatusCheck.cs" />
     <Compile Include="Core\Switch.cs" />
     <Compile Include="Forms\TwTools.cs">
       <SubType>Form</SubType>

@@ -106,7 +106,7 @@ namespace LoLToolsX.Core
     {
         public static void Skin(string installpath,string zipPath,string zipName)
         {
-            SevenZipExtractor.SetLibraryPath(Application.StartupPath + @"\7z.dll");
+            SevenZipExtractor.SetLibraryPath(Variable.CurrentDirectory + @"\7z.dll");
 
             StreamReader sr = new StreamReader(installpath + @"\Game\ClientZips.txt");
             string temp = sr.ReadToEnd().ToString();

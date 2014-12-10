@@ -60,7 +60,7 @@ namespace LoLToolsX.Core.Update
                     updating = true;
                     label3.Text = "0";
                     //開始下載更新
-                    wc.DownloadFileAsync(new Uri(downloadPath), Application.StartupPath + @"\download\" + @"LoLToolsX.exe");
+                    wc.DownloadFileAsync(new Uri(downloadPath), Variable.CurrentDirectory + @"\download\" + @"LoLToolsX.exe");
                 }
             }
             catch
@@ -94,7 +94,7 @@ namespace LoLToolsX.Core.Update
             /////////////////
             ProcessStartInfo pi = new ProcessStartInfo();
             pi.FileName = "Updater.exe";
-            pi.WorkingDirectory = Application.StartupPath;
+            pi.WorkingDirectory = Variable.CurrentDirectory;
             Process.Start(pi);
             Application.Exit();
         }

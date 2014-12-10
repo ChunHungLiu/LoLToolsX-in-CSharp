@@ -118,7 +118,7 @@ namespace LoLToolsX.Core.Update
 
             try
             {
-                if (!Directory.Exists(Application.StartupPath + @"\files\lang\kr"))
+                if (!Directory.Exists(Variable.CurrentDirectory + @"\files\lang\kr"))
                 {
                     Logger.log("語言檔有可用更新", Logger.LogType.Info);
                     if (MessageBox.Show("語言檔有可用更新 按'確定'下載更新\r\nPS.下載需時較久，請耐心等候...", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
@@ -126,7 +126,7 @@ namespace LoLToolsX.Core.Update
                         Wait wait = new Wait();
                         wait.Show();
 
-                         if (!File.Exists(Application.StartupPath + @"\SevenZipSharp.dll"))
+                         if (!File.Exists(Variable.CurrentDirectory + @"\SevenZipSharp.dll"))
             {
                 if (MessageBox.Show("找不到Skin安裝所需的類別庫, 按確定下載Skin安裝用類別庫。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
@@ -134,7 +134,7 @@ namespace LoLToolsX.Core.Update
                 try
                 {
                     wait.progressBar1.Value = 10;
-                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Application.StartupPath + @"\SevenZipSharp.dll");
+                    wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Variable.CurrentDirectory + @"\SevenZipSharp.dll");
                     wait.progressBar1.Value = 100;
                     MessageBox.Show("下載完成 按'確定'更新語言檔!\r\nPS.下載需時較久，請耐心等候...", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("SevenZipSharp.dll 下載完成!", Logger.LogType.Info);
@@ -164,10 +164,10 @@ namespace LoLToolsX.Core.Update
                                 try
                                 {
                                     Logger.log("LoLToolsX 開始下載語言檔更新\r\nPS.下載需時較久，請耐心等候...", Logger.LogType.Info);
-                                    wc.DownloadFile(downloadPath, Application.StartupPath + @"\download\" + @"lang.zip");
+                                    wc.DownloadFile(downloadPath, Variable.CurrentDirectory + @"\download\" + @"lang.zip");
                                     wait.progressBar1.Value = 50;
-                                    SevenZip.SevenZipExtractor sz = new SevenZip.SevenZipExtractor(Application.StartupPath + @"\download\" + @"lang.zip");
-                                    sz.ExtractArchive(Application.StartupPath + @"\files\lang");
+                                    SevenZip.SevenZipExtractor sz = new SevenZip.SevenZipExtractor(Variable.CurrentDirectory + @"\download\" + @"lang.zip");
+                                    sz.ExtractArchive(Variable.CurrentDirectory + @"\files\lang");
                                     wait.progressBar1.Value = 100;
                                     MessageBox.Show("語言檔更新完成!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }

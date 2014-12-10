@@ -1,57 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using LoLToolsX.Core;
+using System;
 using System.IO;
-using System.Web;
 using System.Net;
 using System.Threading;
-using System.Diagnostics;
-using LoLToolsX.Core;
+using System.Windows.Forms;
 
 namespace LoLToolsX
 {
     public partial class FileCheck : Form
     {
+        //檢查完畢事件
         private delegate void CheckFinishHandler();
-
         private event CheckFinishHandler CheckFinish;
-
-        WebClient wc = new WebClient();
-
-        string cd = Application.StartupPath;
+        WebClient client = new WebClient();
 
         public FileCheck()
         {
             InitializeComponent();
+
+            CheckFinish += delegate
+            {
+                Logger.log(this.textBox1.Text);
+
+                //釋放資源
+                timer1 = null;
+                client = null;
+                this.Hide();
+                //var thread = new Thread(() => Application.Run(new ServerSelect()));
+                //thread.Start();
+                ServerSelect ss = new ServerSelect();
+                ss.Show();
+            };
+
+            timer1.Interval = 500;
+            timer1.Tick += delegate {
+                timer1.Stop();
+                CheckBegin();
+            };
         }
 
         private void FileCheck_Load(object sender, EventArgs e)
         {
-            CheckFinish += new CheckFinishHandler(CheckEnd);
-            timer1.Interval = 500;
-            timer1.Start();
-            
+            timer1.Start();     
         }
+
         private void CheckBegin()
         {
-            if (!Directory.Exists(cd + @"\Logs"))
-            {
-                Directory.CreateDirectory(cd + @"\Logs");
-                //會出錯
-                //Logger.log("找不到Logs資料夾 重新建立資料夾", Logger.LogType.Error);
-            }
-
             // Logger 開始記錄
-            if (!Directory.Exists(Application.StartupPath + @"\Logs"))
-                Directory.CreateDirectory(Application.StartupPath + @"\Logs");
+            if (!Directory.Exists(Variable.CurrentDirectory + @"\Logs"))
+                Directory.CreateDirectory(Variable.CurrentDirectory + @"\Logs");
+
             Logger.start();
 
-            Logger.log("LoLToolsX 啟動路徑 : " + cd);
+            Logger.log("LoLToolsX 啟動路徑 : " + Variable.CurrentDirectory);
 
             string[] folder = {
                                   "\\bak",
@@ -86,28 +87,26 @@ namespace LoLToolsX
                                   "\\files\\fix-fd\\mod_cht2.dat"
                              };
 
-            int count = folder.Length + files.Length;
-
             progressBar1.Minimum = 0;
-            progressBar1.Maximum = count;
+            progressBar1.Maximum = folder.Length + files.Length;
             progressBar1.Step = 1;
 
             textBox1.AppendText("檔案檢查開始!");
 
-            foreach (string f in files)
+            foreach (string str in files)
             {
-                string path = cd + f;
+                string path = Variable.CurrentDirectory + str;
                 textBox1.AppendText(String.Format("\r\n檢查 {0}", path));
                 if (!File.Exists(path))
                 {
                     textBox1.AppendText(String.Format("\r\n找不到 {0} 檔案", path));
-                    switch (f)
+                    switch (path)
                     {
                         case "\\Skin.txt":
-                            File.Create(cd + "\\Skin.txt");
+                            File.Create(Variable.CurrentDirectory + "\\Skin.txt");
                             break;
                         case "\\Logs\\Log.txt":
-                            File.Create(cd + "\\Logs\\Log.txt");
+                            File.Create(Variable.CurrentDirectory + "\\Logs\\Log.txt");
                             break;
                         case "\\LoLBakRes.exe":
                             MessageBox.Show("備份主控台遺失 將無法進行一鍵備份與還原");
@@ -123,7 +122,7 @@ namespace LoLToolsX
                             textBox1.AppendText("\r\n程式必要的類別庫遺失 正在重新下載... 請勿關閉程式");
                             try
                             {
-                                wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", cd + "\\SevenZipSharp.dll");
+                                client.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/SevenZipSharp/SevenZipSharp.dll", Variable.CurrentDirectory + "\\SevenZipSharp.dll");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -136,7 +135,7 @@ namespace LoLToolsX
                             textBox1.AppendText("\r\n程式必要的類別庫遺失 正在重新下載... 請勿關閉程式");
                             try
                             {
-                                wc.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", cd + "\\7z.dll");
+                                client.DownloadFile("https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/7z/7z.dll", Variable.CurrentDirectory + "\\7z.dll");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -149,7 +148,7 @@ namespace LoLToolsX
                             textBox1.AppendText("\r\n程式授權文件遺失 正在下載...");
                             try
                             {
-                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/LICENSE.txt", cd + "\\LICENSE.txt");
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/LICENSE.txt", Variable.CurrentDirectory + "\\LICENSE.txt");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -162,7 +161,7 @@ namespace LoLToolsX
                             textBox1.AppendText("\r\n程式聲明文件遺失 正在下載...");
                             try
                             {
-                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/Disclaimer.txt", cd + "\\重要聲明.txt");
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/Disclaimer.txt", Variable.CurrentDirectory + "\\重要聲明.txt");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -175,7 +174,7 @@ namespace LoLToolsX
                             textBox1.AppendText("\r\n程式隱私權聲明文件遺失 正在下載...");
                             try
                             {
-                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/Privacy.txt", cd + "\\隱私權聲明.txt");
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/Privacy.txt", Variable.CurrentDirectory + "\\隱私權聲明.txt");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -185,13 +184,13 @@ namespace LoLToolsX
                                 continue;
                             }
                         case "\\files\\fix-fd\\dependencies.properties":
-                            if (!Directory.Exists(cd + "\\files\\fix-fd"))
+                            if (!Directory.Exists(Variable.CurrentDirectory + "\\files\\fix-fd"))
                             {
-                                Directory.CreateDirectory(cd + "\\files\\fix-fd");
+                                Directory.CreateDirectory(Variable.CurrentDirectory + "\\files\\fix-fd");
                             }
                             try
                             {
-                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/dependencies.properties", cd + "\\files\\fix-fd\\dependencies.properties");
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/dependencies.properties", Variable.CurrentDirectory + "\\files\\fix-fd\\dependencies.properties");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -199,7 +198,7 @@ namespace LoLToolsX
                         case "\\files\\fix-fd\\info.riotmod":
                             try
                             {
-                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/info.riotmod", cd + "\\files\\fix-fd\\info.riotmod");
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/info.riotmod", Variable.CurrentDirectory + "\\files\\fix-fd\\info.riotmod");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -207,7 +206,7 @@ namespace LoLToolsX
                         case "\\files\\fix-fd\\mod_cht2.dat":
                             try
                             {
-                                wc.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/mod_cht2.dat", cd + "\\files\\fix-fd\\mod_cht2.dat");
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/fix-fd/mod_cht2.dat", Variable.CurrentDirectory + "\\files\\fix-fd\\mod_cht2.dat");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
@@ -220,7 +219,7 @@ namespace LoLToolsX
 
             foreach (string f in folder)
             {
-                string path = cd + f;
+                string path = Variable.CurrentDirectory + f;
                 textBox1.AppendText(String.Format("\r\n檢查 {0}", path));
                 if (!Directory.Exists(path) & f != "\\files")
                 {
@@ -241,11 +240,7 @@ namespace LoLToolsX
                     textBox1.AppendText("\r\n找不到韓文語言檔案 正在重新下載... 請勿關閉程式");
                     try
                     {
-                        //wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
-                        //wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadFileCompleted);
-                        //wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip"),cd + "\\download\\kr.zip");
-
-                        wc.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip", cd + "\\download\\kr.zip");
+                        client.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/KR_lang/kr.zip", Variable.CurrentDirectory + "\\download\\kr.zip");
                        
                     }
                     catch
@@ -275,49 +270,12 @@ namespace LoLToolsX
                 progressBar1.PerformStep();
             }
 
-
             textBox1.AppendText("\r\n檢查完成!");
-            //釋放資源
+
             folder = null;
             files = null;
+
             CheckFinish();   //觸發檢查完畢事件
         }
-
-        private void CheckEnd()
-        {
-            Logger.log(this.textBox1.Text);
-
-            //釋放資源
-            timer1 = null;
-            wc = null;
-            cd = null;
-
-            this.Hide();
-            ServerSelect ss = new ServerSelect();
-            ss.Show();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1.Stop();
-            CheckBegin();
-        }
-        /*
-        private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            double bytesIn = double.Parse(e.BytesReceived.ToString());
-            double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
-            double percentage = bytesIn / totalBytes * 100;
-
-            int value = int.Parse(Math.Truncate(percentage).ToString()); 
-            textBox1.AppendText("\r\n" + value.ToString());
-        }
-        private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            SevenZip.SevenZipExtractor Extractor = new SevenZip.SevenZipExtractor(cd + "\\download\\kr.zip");
-            Extractor.ExtractArchive(cd + "\\files\\lang");
-            textBox1.AppendText("\r\n下載完成!");
-        }
-         */
     }
 }
