@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.IO;
 using System.Windows.Forms;
 
 namespace LoLToolsX.Core
@@ -13,7 +10,7 @@ namespace LoLToolsX.Core
         string website;
         string editedWebSite;
 
-        public PropEdit(string installpath, string websiteIn,int client)
+        public PropEdit(string installpath, string websiteIn, int client)
         {
             Variable.editpropMessageBox = false;
 
@@ -83,7 +80,7 @@ namespace LoLToolsX.Core
 
         public void LobbyLandingEdit()
         {
-            
+
             FileStream fs = new FileStream(propPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
             StreamReader sr = new StreamReader(fs, Encoding.Default);
             string fileContent = sr.ReadToEnd().Replace("lobbyLandingURL", "#lobbyLandingURL"); ;
@@ -94,7 +91,7 @@ namespace LoLToolsX.Core
 
             MessageBox.Show("修改完成!\r\n" + website, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Logger.log("LobbyLanding 修改成功 : " + website, Logger.LogType.Info);
-            
+
 
             /*
             PropertiesFile prop = new PropertiesFile(propPath);
@@ -105,10 +102,8 @@ namespace LoLToolsX.Core
             Logger.log("LobbyLanding 修改成功 : " + website, Logger.LogType.Info);
              */
 
-             Variable.editpropMessageBox = true;
+            Variable.editpropMessageBox = true;
 
         }
     }
-
-
 }

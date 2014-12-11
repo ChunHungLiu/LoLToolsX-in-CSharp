@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using Microsoft.Win32;
-using System.Windows.Forms;
 
 namespace LoLToolsX.Core
 {
@@ -26,7 +21,15 @@ namespace LoLToolsX.Core
             {
                 string tmp = CFGFile.GetValue("LoLPath", "TwPath");
                 installPath = tmp.Replace("\"", "");
-                return installPath;
+
+                if (Directory.Exists(installPath))
+                {
+                    return installPath;
+                }
+                else
+                {
+                    return "";
+                }
             }
 
             if (My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\LoLTW", "Path",null) != null)
@@ -61,7 +64,14 @@ namespace LoLToolsX.Core
             {
                 string tmp = CFGFile.GetValue("LoLPath", "NaPath");
                 installPath = tmp.Replace("\"", "");
-                return installPath;
+                if (Directory.Exists(installPath))
+                {
+                    return installPath;
+                }
+                else
+                {
+                    return "";
+                }
             }
 
             if (My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Riot Games\League of Legends", "Path", null) != null)

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using LoLToolsX.Core;
-using System.Xml;
 
 namespace LoLToolsX.Core
 {
@@ -179,6 +174,7 @@ namespace LoLToolsX.Core
                 }
             }
         }
+
         public static void SwitchServerLocNa(string installPath, string targetLoc)
         {
             string propPath = installPath + @"\lol.properties";
@@ -203,6 +199,7 @@ namespace LoLToolsX.Core
                 }
             }
         }
+
         public static void localEdit(string installPath, string locale)
         {
             string localePath = installPath + @"\locale.properties";
@@ -236,29 +233,22 @@ namespace LoLToolsX.Core
     /// </summary>
     class SwitchSound
     {
-        string installPath;
-        string soundPath;
         TwTools tt = new TwTools();
 
-        public SwitchSound(string installPath, string soundPath)
-        {
-            this.installPath = installPath;
-            this.soundPath = soundPath;
-        }
-
         //大廳語音切換
-        public void SwitchLobby()
+        public void SwitchLobby(string lobbySoundPath)
         {
-            if (!soundPath.Contains("Sound"))
-            {
-                MessageBox.Show("請選擇正確的Sound資料夾", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.log("語音切換: Sound 資料夾選擇錯誤", Logger.LogType.Error);
-                return;
-            }
             try
             {
                 Variable.switchingSound = true;
-                My.Computer.FileSystem.CopyDirectory(soundPath + "\\champions", installPath + @"\Air\assets\sounds\zh_TW\champions", true);
+
+
+                //把 Chanpions 轉做 champions
+                if (Path.GetDirectoryName(lobbySoundPath) == "Champions")
+                    Directory.Move(lobbySoundPath, Directory.GetParent(lobbySoundPath) + "\\champions");
+
+                My.Computer.FileSystem.CopyDirectory(lobbySoundPath, Variable.installPath + @"\Air\assets\sounds\zh_TW\champions", true);
+                My.Computer.FileSystem.CopyDirectory(lobbySoundPath, Variable.installPath + @"\Air\assets\sounds\en_US\champions", true);
 
                 #region Old Method
                 /*
@@ -281,30 +271,31 @@ namespace LoLToolsX.Core
                 Variable.switchingSound = false;
             }
         }
-        public void QuickSwitch()
+        public void SwitchGame(string gameSoundPath)
         {
-        	#region Prevent Jump Game
-        	if (Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
-        	{
-        		Directory.Delete(installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN");
-        	}
-        	if (Directory.Exists(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
-        	{
-        		Directory.Delete(installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR");
-        	}
-        	#endregion
-        	
-            #region ko_KR
-            if (Directory.Exists(soundPath + @"\ko_KR"))
-            {
-                try
-                {
-                    My.Computer.FileSystem.CopyDirectory(soundPath + @"\ko_KR", installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
-                }
-                catch { MessageBox.Show("語音切換失敗", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            }
+            Variable.switchingSound = true;
 
+            #region Prevent Game Broken
+            if (Directory.Exists(Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN"))
+            {
+                Directory.Delete(Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_CN",true);
+            }
+            if (Directory.Exists(Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR"))
+            {
+                Directory.Delete(Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\ko_KR", true);
+            }
+            if (Directory.Exists(Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW"))
+            {
+                Directory.Delete(Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+            }
             #endregion
+
+            try
+            {
+                My.Computer.FileSystem.CopyDirectory(gameSoundPath, Variable.installPath + @"\Game\DATA\Sounds\Wwise\VO\zh_TW", true);
+            }
+            catch { Variable.switchingSound = false; MessageBox.Show("語音切換失敗", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            /*
 
             #region zh_TW
             if (Directory.Exists(soundPath + @"\zh_TW"))
@@ -332,10 +323,12 @@ namespace LoLToolsX.Core
                 catch { }
             }
             #endregion
-
-            MessageBox.Show("安裝完成!");
+            */
+            Variable.switchingSound = false;
+            MessageBox.Show("安裝完成!","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
+        /*
         public void FullSwitch()
         {
 
@@ -423,6 +416,6 @@ namespace LoLToolsX.Core
 
             QuickSwitch();
         }
+         * */
     }
-
 }

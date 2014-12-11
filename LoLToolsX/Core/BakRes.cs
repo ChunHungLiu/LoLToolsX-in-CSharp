@@ -1,33 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace LoLToolsX.Core
 {
     class BakRes
     {
-        Wait wait = new Wait();
-
         /// <summary>
         /// 檔案備份/還原
         /// </summary>
 
-        private string installPath;  
+        private string installPath;
+        Wait wait = new Wait();
 
-        public BakRes(string installPath)  //Constructor
+        public BakRes(string _installPath)
         {
-            this.installPath = installPath;
+            this.installPath = _installPath;
 
+            CheckPath();
+        }
+
+        private void CheckPath()
+        {
             //如沒有備份資料夾就建立
-            if (!Directory.Exists(Variable.CurrentDirectory + @"\bak\sound\FMOD\"))
+            if (!Directory.Exists(Variable.CurrentDirectory + "\\bak\\sound\\FMOD\\"))
             {
-                Directory.CreateDirectory(Variable.CurrentDirectory + @"\bak\sound\FMOD\");
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\bak\\sound\\FMOD\\");
             }
-            if (!Directory.Exists(Variable.CurrentDirectory + Variable.CurrentDirectory + "\\bak\\sound\\zh_TW"))
+            if (!Directory.Exists(Variable.CurrentDirectory + "\\bak\\sound\\zh_TW"))
             {
                 Directory.CreateDirectory(Variable.CurrentDirectory + "\\bak\\sound\\zh_TW");
             }
@@ -47,10 +48,10 @@ namespace LoLToolsX.Core
 
         public void Prop(int Type,int client)     //備份伺服器設定檔 (lol.properties)
         {
-            string propPath = "";
-            string bakPath = "";
-            string localePath = "";
-            string localeBakPath = "";
+            string propPath;
+            string bakPath;
+            string localePath;
+            string localeBakPath;
 
             //Client : 1是台服 2是美服
             if (client == 1)
@@ -77,11 +78,10 @@ namespace LoLToolsX.Core
                 {
                     try
                     {
-                        File.Copy(localePath, localeBakPath);
+                        File.Copy(localePath, localeBakPath,true);
                     }
                     catch { }
-                    FileInfo fi = new FileInfo(propPath);
-                    fi.CopyTo(bakPath,true);
+                    File.Copy(propPath, bakPath,true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("伺服器設定檔 備份成功!", Logger.LogType.Info);
                 }
@@ -105,7 +105,7 @@ namespace LoLToolsX.Core
                     }
                     catch { }
                     FileInfo fi = new FileInfo(bakPath);
-                    fi.CopyTo(propPath, true);
+                    File.Copy(bakPath, propPath);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("伺服器設定檔 還原成功!", Logger.LogType.Info);
                 }
@@ -115,7 +115,6 @@ namespace LoLToolsX.Core
                     Logger.log("伺服器設定檔 還原失敗 : 沒有備份檔案", Logger.LogType.Error);
                     Logger.log(e2);
                 }
-
                 catch (Exception e)
                 {
                     MessageBox.Show("還原失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -134,8 +133,7 @@ namespace LoLToolsX.Core
                         File.Delete(localeBakPath);
                     }
                     catch { }
-                    FileInfo fi = new FileInfo(bakPath);
-                    fi.Delete();
+                    File.Delete(bakPath);
                     Logger.log("伺服器設定檔 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -152,25 +150,24 @@ namespace LoLToolsX.Core
 
         public void NaLang(int Type)   //備份語言檔(美服)
         {
-            string cd = Variable.CurrentDirectory;
             //備份
             if (Type == 1)
             {
                 try
                 {
-                    File.Copy(installPath + @"\css\fonts.swf", cd + @"\bak\na_lang\fonts.swf", true);
-                    File.Copy(installPath + @"\css\fonts_zh_TW.swf", cd + @"\bak\na_lang\fonts_zh_TW.swf", true);
+                    File.Copy(installPath + @"\css\fonts.swf",  Variable.CurrentDirectory + @"\bak\na_lang\fonts.swf", true);
+                    File.Copy(installPath + @"\css\fonts_zh_TW.swf", Variable.CurrentDirectory + @"\bak\na_lang\fonts_zh_TW.swf", true);
                     try
                     {
-                        File.Copy(installPath + @"\css\fonts_ko_KR.swf", cd + @"\bak\na_lang\fonts_ko_KR.swf", true);
+                        File.Copy(installPath + @"\css\fonts_ko_KR.swf", Variable.CurrentDirectory + @"\bak\na_lang\fonts_ko_KR.swf", true);
                     }
                     catch { }
                     try
                     {
-                        File.Copy(installPath + @"\css\fonts_en_US.swf", cd + @"\bak\na_lang\fonts_en_US.swf", true);
+                        File.Copy(installPath + @"\css\fonts_en_US.swf", Variable.CurrentDirectory + @"\bak\na_lang\fonts_en_US.swf", true);
                     }
                     catch { }
-                    File.Copy(installPath + @"\locale.properties", cd + @"\bak\na_lang\locale.properties", true);
+                    File.Copy(installPath + @"\locale.properties", Variable.CurrentDirectory + @"\bak\na_lang\locale.properties", true);
                     Logger.log("語言檔 備份成功!", Logger.LogType.Info);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -186,25 +183,25 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    File.Copy(cd + @"\bak\na_lang\fonts.swf", installPath + @"\css\fonts.swf", true);
+                    File.Copy(Variable.CurrentDirectory + @"\bak\na_lang\fonts.swf", installPath + @"\css\fonts.swf", true);
                 }
                 catch { }
                 try
                 {
-                    File.Copy(cd + @"\bak\na_lang\fonts_zh_TW.swf", installPath + @"\css\fonts_zh_TW.swf", true);
+                    File.Copy(Variable.CurrentDirectory + @"\bak\na_lang\fonts_zh_TW.swf", installPath + @"\css\fonts_zh_TW.swf", true);
                 }
                 catch { }
                 try
                 {
-                    File.Copy(cd + @"\bak\na_lang\fonts_en_US.swf", installPath + @"\css\fonts_en_US.swf", true);
+                    File.Copy(Variable.CurrentDirectory + @"\bak\na_lang\fonts_en_US.swf", installPath + @"\css\fonts_en_US.swf", true);
                 }
                 catch { }
                 try
                 {
-                    File.Copy(cd + @"\bak\na_lang\fonts_ko_KR.swf", installPath + @"\css\fonts_ko_KR.swf", true);
+                    File.Copy(Variable.CurrentDirectory + @"\bak\na_lang\fonts_ko_KR.swf", installPath + @"\css\fonts_ko_KR.swf", true);
                 }
                 catch { }
-                File.Copy(cd + @"\bak\na_lang\locale.properties", installPath + @"\locale.properties", true);
+                File.Copy(Variable.CurrentDirectory + @"\bak\na_lang\locale.properties", installPath + @"\locale.properties", true);
                 Logger.log("語言檔 還原成功!", Logger.LogType.Info);
                 MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -217,32 +214,32 @@ namespace LoLToolsX.Core
                     {
                         try
                         {
-                            File.Delete(cd + @"\bak\na_lang\Locale.cfg");
+                            File.Delete(Variable.CurrentDirectory + @"\bak\na_lang\Locale.cfg");
                         }
                         catch { }
                         try
                         {
-                            File.Delete(cd + @"\bak\na_lang\fonts.swf");
+                            File.Delete(Variable.CurrentDirectory + @"\bak\na_lang\fonts.swf");
                         }
                         catch { }
                         try
                         {
-                            File.Delete(cd + @"\bak\na_lang\fonts_zh_TW.swf");
+                            File.Delete(Variable.CurrentDirectory + @"\bak\na_lang\fonts_zh_TW.swf");
                         }
                         catch { }
                         try
                         {
-                            File.Delete(cd + @"\bak\na_lang\fonts_en_US.swf");
+                            File.Delete(Variable.CurrentDirectory + @"\bak\na_lang\fonts_en_US.swf");
                         }
                         catch { }
                         try
                         {
-                            File.Delete(cd + @"\bak\na_lang\fonts_ko_KR.swf");
+                            File.Delete(Variable.CurrentDirectory + @"\bak\na_lang\fonts_ko_KR.swf");
                         }
                         catch { }
                         try
                         {
-                            File.Delete(cd + @"\bak\na_lang\locale.properties");
+                            File.Delete(Variable.CurrentDirectory + @"\bak\na_lang\locale.properties");
                         }
                         catch { }
                         Logger.log("語言檔 備份刪除成功! ", Logger.LogType.Info);
@@ -259,8 +256,6 @@ namespace LoLToolsX.Core
 
         public void Lang(int Type)     //備份語言檔
         {
-
-            string cd = Variable.CurrentDirectory;
             //備份
             if (Type == 1)
             {
@@ -269,23 +264,23 @@ namespace LoLToolsX.Core
                 {
                     try
                     {
-                        File.Copy(installPath + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", cd + @"\bak\lang\GamePermanent_ko_KR.cfg", true);
+                        File.Copy(installPath + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", Variable.CurrentDirectory + @"\bak\lang\GamePermanent_ko_KR.cfg", true);
                     }
                     catch { }
-                    File.Copy(installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", cd + @"\bak\lang\FontTypes.xml", true);
-                    File.Copy(installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", cd + @"\bak\lang\GamePermanent_zh_TW.cfg", true);
-                    File.Copy(installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", cd + @"\bak\lang\GamePermanent.cfg", true);
-                    File.Copy(installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt",cd + @"\bak\lang\fontconfig_en_US.txt", true);
-                    File.Copy(installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", cd + @"\bak\lang\fontconfig_zh_TW.txt", true);
-                    File.Copy(installPath + @"\Game\DATA\CFG\Locale.cfg",cd + @"\bak\lang\Locale.cfg", true);
-                    File.Copy(installPath + @"\Air\css\fonts.swf", cd + @"\bak\lang\fonts.swf", true);
-                    File.Copy(installPath + @"\Air\css\fonts_zh_TW.swf", cd + @"\bak\lang\fonts_zh_TW.swf", true);
+                    File.Copy(installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", Variable.CurrentDirectory + @"\bak\lang\FontTypes.xml", true);
+                    File.Copy(installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", Variable.CurrentDirectory + @"\bak\lang\GamePermanent_zh_TW.cfg", true);
+                    File.Copy(installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", Variable.CurrentDirectory + @"\bak\lang\GamePermanent.cfg", true);
+                    File.Copy(installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", Variable.CurrentDirectory + @"\bak\lang\fontconfig_en_US.txt", true);
+                    File.Copy(installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", Variable.CurrentDirectory + @"\bak\lang\fontconfig_zh_TW.txt", true);
+                    File.Copy(installPath + @"\Game\DATA\CFG\Locale.cfg", Variable.CurrentDirectory + @"\bak\lang\Locale.cfg", true);
+                    File.Copy(installPath + @"\Air\css\fonts.swf", Variable.CurrentDirectory + @"\bak\lang\fonts.swf", true);
+                    File.Copy(installPath + @"\Air\css\fonts_zh_TW.swf", Variable.CurrentDirectory + @"\bak\lang\fonts_zh_TW.swf", true);
                     try
                     {
-                        File.Copy(installPath + @"\Air\css\fonts_ko_KR.swf", cd + @"\bak\lang\fonts_ko_KR.swf", true);
+                        File.Copy(installPath + @"\Air\css\fonts_ko_KR.swf", Variable.CurrentDirectory + @"\bak\lang\fonts_ko_KR.swf", true);
                     }
                     catch { }
-                    File.Copy(installPath + @"\Air\locale.properties", cd + @"\bak\lang\locale.properties", true);
+                    File.Copy(installPath + @"\Air\locale.properties", Variable.CurrentDirectory + @"\bak\lang\locale.properties", true);
                     Logger.log("語言檔 備份成功!", Logger.LogType.Info);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -304,56 +299,56 @@ namespace LoLToolsX.Core
                 {
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\GamePermanent_ko_KR.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\GamePermanent_ko_KR.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_ko_KR.cfg", true);
                     }
                     catch
                     { }
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\FontTypes.xml", installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\FontTypes.xml", installPath + @"\Game\DATA\CFG\defaults\FontTypes.xml", true);
                     }
                     catch { }
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\GamePermanent_zh_TW.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent_zh_TW.cfg", true);
                     }
                     catch { }
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\GamePermanent.cfg", installPath + @"\Game\DATA\CFG\defaults\GamePermanent.cfg", true);
                     }
                     catch { }
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\fontconfig_en_US.txt", installPath + @"\Game\DATA\Menu\fontconfig_en_US.txt", true);
                     }
                     catch {}
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\fontconfig_zh_TW.txt", installPath + @"\Game\DATA\Menu\fontconfig_zh_TW.txt", true);
                     }
                     catch {}
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\Locale.cfg", installPath + @"\Game\DATA\CFG\Locale.cfg", true);
                     }
                     catch {}
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\fonts.swf", installPath + @"\Air\css\fonts.swf", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\fonts.swf", installPath + @"\Air\css\fonts.swf", true);
                     }
                     catch {}
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\fonts_zh_TW.swf", installPath + @"\Air\css\fonts_zh_TW.swf", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\fonts_zh_TW.swf", installPath + @"\Air\css\fonts_zh_TW.swf", true);
                     }
                     catch { }
                     try
                     {
-                        File.Copy(cd + @"\bak\lang\fonts_ko_KR.swf", installPath + @"\Air\css\fonts_ko_KR.swf", true);
+                        File.Copy(Variable.CurrentDirectory + @"\bak\lang\fonts_ko_KR.swf", installPath + @"\Air\css\fonts_ko_KR.swf", true);
                     }
                     catch { }
-                    File.Copy(cd + @"\bak\lang\locale.properties", installPath + @"\Air\locale.properties", true);
+                    File.Copy(Variable.CurrentDirectory + @"\bak\lang\locale.properties", installPath + @"\Air\locale.properties", true);
                     Logger.log("語言檔 還原成功!", Logger.LogType.Info);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -372,57 +367,57 @@ namespace LoLToolsX.Core
                 {
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\GamePermanent_ko_KR.cfg");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\GamePermanent_ko_KR.cfg");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\FontTypes.xml");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\FontTypes.xml");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\GamePermanent_zh_TW.cfg");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\GamePermanent_zh_TW.cfg");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\GamePermanent.cfg");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\GamePermanent.cfg");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\fontconfig_en_US.txt");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\fontconfig_en_US.txt");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\fontconfig_zh_TW.txt");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\fontconfig_zh_TW.txt");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\Locale.cfg");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\Locale.cfg");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\fonts.swf");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\fonts.swf");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\fonts_zh_TW.swf");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\fonts_zh_TW.swf");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\fonts_ko_KR.swf");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\fonts_ko_KR.swf");
                     }
                     catch { }
                     try
                     {
-                        File.Delete(cd + @"\bak\lang\locale.properties");
+                        File.Delete(Variable.CurrentDirectory + @"\bak\lang\locale.properties");
                     }
                     catch { }
                     Logger.log("語言檔 備份刪除成功! ", Logger.LogType.Info);
@@ -448,15 +443,6 @@ namespace LoLToolsX.Core
                 wait.Show();
                 wait.progressBar1.Value = 0;    
 
-                //foreach (string file in fsbFile)
-                //{
-                    //try
-                    //{
-                        //File.Copy(installPath + @"\Game\DATA\Sounds\FMOD\" + file, Variable.CurrentDirectory + @"\bak\sound\FMOD\" + file, true);
-                        //wait.progressBar1.Value = wait.progressBar1.Value + 5;
-                    //}
-                    //catch { }
-                //}
                 try
                 {
                     My.Computer.FileSystem.CopyDirectory(installPath + "\\Game\\DATA\\Sounds\\Wwise\\VO\\zh_TW", Variable.CurrentDirectory + "\\bak\\sound\\zh_TW", true);
@@ -622,8 +608,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.tga");
-                    fi.CopyTo(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga", true);
+                    File.Copy(installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.dds",Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.dds",true);
                     MessageBox.Show("備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 備份成功!", Logger.LogType.Info);
                 }
@@ -632,7 +617,6 @@ namespace LoLToolsX.Core
                     MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Logger.log("UI檔案 備份失敗!", Logger.LogType.Error);
                     Logger.log(e);
-
                 }
             }
 
@@ -641,8 +625,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga");
-                    fi.CopyTo(installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.tga", true);
+                    File.Copy(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.dds",installPath + @"\Game\DATA\Menu\Textures\HUDAtlas.dds",true);
                     MessageBox.Show("還原成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Logger.log("UI檔案 還原成功!", Logger.LogType.Info);
                 }
@@ -666,8 +649,7 @@ namespace LoLToolsX.Core
             {
                 try
                 {
-                    FileInfo fi = new FileInfo(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga");
-                    fi.Delete();
+                    File.Delete(Variable.CurrentDirectory + @"\bak\UI\game\HUDAtlas.tga");
                     Logger.log("UI檔案 備份刪除成功!", Logger.LogType.Info);
                     MessageBox.Show("刪除備份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -717,7 +699,6 @@ namespace LoLToolsX.Core
                     MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Logger.log("UI檔案 備份失敗!", Logger.LogType.Error);
                     Logger.log(e);
-
                 }
             }
 
@@ -753,7 +734,6 @@ namespace LoLToolsX.Core
                     MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Logger.log("UI檔案 備份失敗!", Logger.LogType.Error);
                     Logger.log(e);
-
                 }
             }
 
@@ -795,7 +775,6 @@ namespace LoLToolsX.Core
                     MessageBox.Show("備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Logger.log("Chai.ini 備份失敗!", Logger.LogType.Error);
                     Logger.log(e);
-
                 }
             }
 
@@ -841,8 +820,6 @@ namespace LoLToolsX.Core
                     MessageBox.Show("刪除備份失敗 \r\n 錯誤信息: " + e, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
         }
 
         public void LoL(int Type)   //一鍵備份
@@ -862,7 +839,6 @@ namespace LoLToolsX.Core
                 }
                 catch
                 {
- 
                 }
             }
 
@@ -880,7 +856,6 @@ namespace LoLToolsX.Core
                     }
                     catch
                     {
- 
                     }
                 }
         }

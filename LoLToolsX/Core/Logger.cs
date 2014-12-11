@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Globalization;
-using System.Text;
-using System.IO;
-using System.Runtime.Serialization;
 using System.Collections;
-using System.Windows.Forms;
+using System.Globalization;
+using System.IO;
+using System.Text;
 
 namespace LoLToolsX.Core
 {
@@ -31,17 +29,17 @@ namespace LoLToolsX.Core
                 DirectoryInfo di = new DirectoryInfo(Variable.CurrentDirectory + @"\Logs");
                 di.Refresh();
             }
-                GC.Collect();
-                file = System.IO.Path.Combine(Variable.CurrentDirectory + @"\Logs\" + "Log.txt");
-                if (!File.Exists(Variable.CurrentDirectory + @"\Logs\" + "Log.txt"))
-                    File.Create(Variable.CurrentDirectory + @"\Logs\" + "Log.txt");
-                GC.Collect();
-                FileStream fs = new FileStream(Variable.CurrentDirectory + @"\Logs\" + "Log.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-                StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-                sw.WriteLine("============================== LoLToolsX Log File ==============================");
-                sw.Close();
-            }
-        
+            GC.Collect();
+            file = System.IO.Path.Combine(Variable.CurrentDirectory + @"\Logs\" + "Log.txt");
+            if (!File.Exists(Variable.CurrentDirectory + @"\Logs\" + "Log.txt"))
+                File.Create(Variable.CurrentDirectory + @"\Logs\" + "Log.txt");
+            GC.Collect();
+            FileStream fs = new FileStream(Variable.CurrentDirectory + @"\Logs\" + "Log.txt", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+            StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+            sw.WriteLine("============================== LoLToolsX Log File ==============================");
+            sw.Close();
+        }
+
         private static string writeInfo(LogType type = LogType.Info)
         {
             switch (type)
@@ -78,7 +76,7 @@ namespace LoLToolsX.Core
         {
             write(str, type);
         }
-        
+
         // Log Exception
         static public void log(Exception ex, LogType type = LogType.Exception)
         {
@@ -87,7 +85,7 @@ namespace LoLToolsX.Core
             message.AppendLine(ex.ToString());
             message.AppendLine(ex.Message);
             foreach (DictionaryEntry data in ex.Data)
-            message.AppendLine(string.Format("Key:{0}\nValue:{1}", data.Key, data.Value));
+                message.AppendLine(string.Format("Key:{0}\nValue:{1}", data.Key, data.Value));
             message.AppendLine(ex.StackTrace);
             var iex = ex;
             while (iex.InnerException != null)
@@ -98,7 +96,7 @@ namespace LoLToolsX.Core
                 message.AppendLine(iex.ToString());
                 message.AppendLine(iex.Message);
                 foreach (DictionaryEntry data in ex.Data)
-                message.AppendLine(string.Format("Key:{0}\nValue:{1}", data.Key, data.Value));
+                    message.AppendLine(string.Format("Key:{0}\nValue:{1}", data.Key, data.Value));
                 message.AppendLine(iex.StackTrace);
             }
             write(message.ToString(), type);

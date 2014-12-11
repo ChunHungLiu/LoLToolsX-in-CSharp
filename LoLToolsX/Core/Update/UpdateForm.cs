@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Net;
 using System.Diagnostics;
+using System.Net;
+using System.Windows.Forms;
 
 namespace LoLToolsX.Core.Update
 {
@@ -16,7 +12,6 @@ namespace LoLToolsX.Core.Update
         string version;
         //string info;
         List<string> info = new List<string>();
-        bool updating = false;
 
         public UpdateForm(string _version,List<string> _info)
         {
@@ -27,7 +22,6 @@ namespace LoLToolsX.Core.Update
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
-            Variable.haveUpdate = true;
             curVer.Text = ProductVersion;
             lastestVer.Text = version;
             foreach (string s in info)
@@ -55,9 +49,9 @@ namespace LoLToolsX.Core.Update
             wc.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
             try
             {
-                if (!updating)
+                if (!Variable.updating)
                 {
-                    updating = true;
+                    Variable.updating = true;
                     label3.Text = "0";
                     //開始下載更新
                     wc.DownloadFileAsync(new Uri(downloadPath), Variable.CurrentDirectory + @"\download\" + @"LoLToolsX.exe");
@@ -84,18 +78,16 @@ namespace LoLToolsX.Core.Update
 
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            updating = false;
             Variable.updating = false;
             MessageBox.Show("更新下載完成! 按確定安裝更新");
             Logger.log("更新下載成功!");
             Logger.log("啟動Updater.exe進行gengx");
-            /////////////////
-            // 開始進行更新 //
-            /////////////////
-            ProcessStartInfo pi = new ProcessStartInfo();
-            pi.FileName = "Updater.exe";
-            pi.WorkingDirectory = Variable.CurrentDirectory;
-            Process.Start(pi);
+
+            Process.Start(new ProcessStartInfo() {
+                FileName = "Updater.exe",
+                WorkingDirectory = Variable.CurrentDirectory
+            });
+
             Application.Exit();
         }
 
@@ -103,11 +95,13 @@ namespace LoLToolsX.Core.Update
         {
             //取消更新
             this.Dispose();
+            Variable.haveUpdate = false;
             Variable.updating = false;
         }
 
         private void UpdateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Variable.haveUpdate = false;
             Variable.updating = false;
         }
     }

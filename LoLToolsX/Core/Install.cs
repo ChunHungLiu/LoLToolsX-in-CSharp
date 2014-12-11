@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 using SevenZip;
 
 namespace LoLToolsX.Core
@@ -104,7 +101,7 @@ namespace LoLToolsX.Core
     }
     class InstallSkin
     {
-        public static void Skin(string installpath,string zipPath,string zipName)
+        public static void Skin(string installpath, string zipPath, string zipName)
         {
             SevenZipExtractor.SetLibraryPath(Variable.CurrentDirectory + @"\7z.dll");
 

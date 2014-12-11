@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Windows.Forms;
 using System.Net.NetworkInformation;
+using System.Text;
+using System.Windows.Forms;
 
 namespace LoLToolsX.Core
 {
@@ -14,7 +12,7 @@ namespace LoLToolsX.Core
         {
             switch (_server)
             {
-                case Server.TW :
+                case Server.TW:
                     return new[] { 
                         "host=prodtw.lol.garenanow.com",
                         "xmpp_server_url=chattw.lol.garenanow.com",
@@ -30,7 +28,7 @@ namespace LoLToolsX.Core
                         "loadModuleChampionDetail=true",
                         "featuredGamesURL=http://112.121.84.194:8088/observer-mode/rest/featured",
                     };
-                case Server.NA :
+                case Server.NA:
                     return new[] { 
                         "host=prod.na2.lol.riotgames.com",
                         "xmpp_server_url=chat.na2.lol.riotgames.com",
@@ -46,7 +44,94 @@ namespace LoLToolsX.Core
                         "riotDataServiceDataSendProbability=1.0",
                         "platformId=na1",
                     };
-                default :
+                case Server.EUNE:
+                    return new[] { 
+                        "regionTag=eune",
+                        "rssStatusURLs=null",
+                        "host=prod.eun1.lol.riotgames.com",
+                        "xmpp_server_url=chat.eun1.lol.riotgames.com",
+                        "lq_uri=https://lq.eun1.lol.riotgames.com",
+                        "lobbyLandingURL=http://landing.leagueoflegends.com/spectator_swf/landingPage.swf",
+                        "loadModuleChampionDetail=true",
+                        "featuredGamesURL=http://spectator.eu.lol.riotgames.com:8088/observer-mode/rest/featured",
+                        "storyPageURL=http://www.leagueoflegends.com/story",
+                        "ekg_uri=https://ekg.riotgames.com",
+                        "riotDataServiceDataSendProbability=1.0",
+                        "platformId=EUN1",
+                    };
+                case Server.EUW:
+                    return new[] { 
+                        "host=prod.eu.lol.riotgames.com",
+                        "xmpp_server_url=chat.eu.lol.riotgames.com",
+                        "xmpp_accept_self_signed_cert=true",
+                        "startChat=true",
+                        "storeEnabled=true",
+                        "enableTutorialGame=true",
+                        "lobbyLandingURL=http://landing.leagueoflegends.com/spectator_swf/landingPage.swf",
+                        "lq_uri=https://lq.eu.lol.riotgames.com",
+                        "storyPageURL=http://www.leagueoflegends.com/story",
+                        "loadModuleChampionDetail=true",
+                        "featuredGamesURL=http://spectator.eu.lol.riotgames.com:8088/observer-mode/rest/featured",
+                    };
+                case Server.KR:
+                    return new[] { 
+                        "host=prod.kr.lol.riotgames.com",
+                        "xmpp_server_url=chat.kr.lol.riotgames.com",
+                        "lq_uri=https://lq.kr.lol.riotgames.com",
+                        "rssStatusURLs=null",
+                        "regionTag=kr",
+                        "lobbyLandingURL=http://www.leagueoflegends.co.kr/Launcher/launcher_main.php",
+                        "featuredGamesURL=http://spectator.kr.lol.riotgames.com:80/observer-mode/rest/featured",
+                        "storyPageURL=http://leagueoflegends.co.kr/Launcher/launcher_journal.php",
+                        "ladderURL=http://www.leagueoflegends.co.kr",
+                        "platformId=KR",
+                        "ekg_uri=https://ekg.riotgames.com",
+                        "riotDataServiceDataSendProbability=1.0",
+                    };
+                case Server.OCE:
+                    return new[] { 
+                        "host=prod.oc1.lol.riotgames.com",
+                        "xmpp_server_url=chat.oc1.lol.riotgames.com",
+                        "ladderURL=http://www.leagueoflegends.com/ladders",
+                        "storyPageURL=http://www.leagueoflegends.com/story",
+                        "lq_uri=https://lq.oc1.lol.riotgames.com ",
+                        "ekg_uri=https://ekg.riotgames.com",
+                        "rssStatusURLs=null",
+                        "lobbyLandingURL=http://landing.leagueoflegends.com/spectator_swf/landingPage.swf",
+                        "loadModuleChampionDetail=true",
+                        "featuredGamesURL=http://spectator.oc1.lol.riotgames.com:80/observer-mode/rest/featured",
+                        "riotDataServiceDataSendProbability=1.0",
+                        "platformId=OC1",
+                        "regionTag=oce",
+                    };
+                case Server.PBE:
+                    return new[] { 
+                        "host=prod.pbe1.lol.riotgames.com",
+                        "xmpp_server_url=chat.pbe1.lol.riotgames.com",
+                        "xmpp_accept_self_signed_cert=true",
+                        "lobbyLandingURL=http://d2q6fdmnncz9b0.cloudfront.net/landingPage.swf",
+                        "ladderURL=http://www.leagueoflegends.com/ladders",
+                        "storyPageURL=http://www.leagueoflegends.com/story",
+                        "lq_uri=https://lq.pbe1.lol.riotgames.com/login-queue/rest/queue",
+                        "featuredGamesURL=http://spectator.pbe1.lol.riotgames.com:8088/observer-mode/rest/featured",
+                        "riotDataServiceDataSendProbability=1.0",
+                        "ekg_uri=https://ekg.riotgames.com ",
+                    };
+                case Server.SEA:
+                    return new[] { 
+                        "host=prod.lol.garenanow.com",
+                        "xmpp_server_url=chat.lol.garenanow.com",
+                        "xmpp_accept_self_signed_cert=true",
+                        "startChat=true",
+                        "storeEnabled=true",
+                        "enableTutorialGame=true",
+                        "lobbyLandingURL=http://lol.garena.com/landing.php",
+                        "ladderURL=http://lol.garena.com/ladders",
+                        "helpURL=http://lol.garena.com/support",
+                        "lq_uri=https://lq.lol.garenanow.com",
+                        "useOldChatRenderers=true",
+                    };
+                default:
                     return null;
             }
         }
@@ -54,7 +139,7 @@ namespace LoLToolsX.Core
         public static string GetLoLVer()
         {
             //取得LoL版本
-            using (StreamReader reader = new StreamReader(Variable.installPath + @"\lol.version",Encoding.UTF8))
+            using (StreamReader reader = new StreamReader(Variable.installPath + @"\lol.version", Encoding.UTF8))
             {
                 try
                 {

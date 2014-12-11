@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using Microsoft.Win32;
 using System.Diagnostics;
 using System.Threading;
-using System.Net;
-using System.Net.NetworkInformation;
+using System.Windows.Forms;
 using LoLToolsX.Core;
 using LoLToolsX.Core.Update;
 
@@ -266,7 +258,7 @@ namespace LoLToolsX
         {
             this.Opacity = 50;
 
-            StartGame sg = new StartGame(installPath);
+            StartGame sg = new StartGame(null,this);
 
             if (serverLocation.Text == "台服")
             {

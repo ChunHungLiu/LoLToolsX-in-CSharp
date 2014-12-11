@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.IO;
 
 namespace LoLToolsX.Core
 {
@@ -17,12 +14,20 @@ namespace LoLToolsX.Core
 
         public void Write()
         {
-            using (StreamWriter writer = new StreamWriter(Variable.PropertiesFile,false,Encoding.UTF8))
+            try
             {
-                foreach (string str in Utility.GetPropertiesFile(this.server))
+                using (StreamWriter writer = new StreamWriter(Variable.PropertiesFile, false, Encoding.UTF8))
                 {
-                    writer.WriteLine(str);
+                    foreach (string str in Utility.GetPropertiesFile(this.server))
+                    {
+                        writer.WriteLine(str);
+                    }
                 }
+                System.Windows.Forms.MessageBox.Show("lol.properties 修改成功!", "提示", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            }
+            catch 
+            {
+                System.Windows.Forms.MessageBox.Show("lol.properties 修改失敗!", "錯誤", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
     }

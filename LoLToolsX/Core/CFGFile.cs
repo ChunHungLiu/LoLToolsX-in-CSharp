@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Runtime.InteropServices;
 using System.Text;
-using System.Xml;
-using System.IO;
-using Microsoft.Win32;
-using System.Runtime.InteropServices;
 
 namespace LoLToolsX.Core
 {

@@ -76,7 +76,6 @@ R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.Core.Update.Updat
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.Properties.Resources.resources
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.VerSelect.resources
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.Wait.resources
-R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.SwitchType.resources
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.read.1.tlog
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.write.1.tlog
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.exe

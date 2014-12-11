@@ -1,9 +1,9 @@
-﻿using LoLToolsX.Core;
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
+using LoLToolsX.Core;
 
 namespace LoLToolsX
 {

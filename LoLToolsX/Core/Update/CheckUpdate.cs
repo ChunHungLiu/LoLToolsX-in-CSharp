@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.Web;
 using System.Windows.Forms;
-using System.IO;
-using System.Diagnostics;
-using SevenZip;
-using LoLToolsX.Core.Update;
 using System.Xml.Linq;
 
 namespace LoLToolsX.Core.Update
@@ -19,14 +11,10 @@ namespace LoLToolsX.Core.Update
         /// LoLToolsX 更新
         /// </summary>
 
-
-
         public static void checkUpdate()
         {
-            /********************
-             * 檢查LoLToolsX更新 *
-             ********************/
-
+            XDocument versionXml;
+            XDocument infoXml;
             string verValue = "";           //版本
             List<string> updateInfo = new List<string>();    //儲存更新內容
 
@@ -35,11 +23,11 @@ namespace LoLToolsX.Core.Update
                 //檢查最新版本訊息
                 Variable.updating = true;          //正在更新
                 Logger.log("檢查 LoLToolsX 更新...", Logger.LogType.Info);
-                XDocument doc = XDocument.Load("http://nitroxenon.com/loltoolsx/version.xml");       //讀取最新版本
-                var tmp = doc.Descendants("Version");
-                foreach (var s in tmp)
+                versionXml = XDocument.Load("http://nitroxenon.com/loltoolsx/version.xml");       //讀取最新版本
+                var verElement = versionXml.Descendants("Version");
+                foreach (var element in verElement)
                 {
-                    verValue = s.Value;         //取得最新版本
+                    verValue = element.Value;         //取得最新版本
                 }
             }
             catch
@@ -51,11 +39,11 @@ namespace LoLToolsX.Core.Update
             try
             {
                 //檢查最新版本的更新內容
-                XDocument doc2 = XDocument.Load("http://nitroxenon.com/loltoolsx/info.xml");       //讀取更新內容
-                var tmp2 = doc2.Descendants("Info");
-                foreach (var s in tmp2)
+                infoXml = XDocument.Load("http://nitroxenon.com/loltoolsx/info.xml");       //讀取更新內容
+                var infoElement = infoXml.Descendants("Info");
+                foreach (var element in infoElement)
                 {
-                    updateInfo.Add(s.Value);                //加入到updateInfo的List
+                    updateInfo.Add(element.Value);                //加入到updateInfo的List
                 }
                 
             }
@@ -73,8 +61,8 @@ namespace LoLToolsX.Core.Update
                 {
                     //有更新
                     Variable.haveUpdate = true;
-                    UpdateForm uf = new UpdateForm(verValue,updateInfo);
-                    uf.Show();
+                    UpdateForm updateForm = new UpdateForm(verValue,updateInfo);
+                    updateForm.Show();
                     //Call Form an contiune original work (can use invoke)
                     Application.Run();
                 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LoLToolsX.Core;
-
-namespace LoLToolsX
+﻿namespace LoLToolsX
 {
     struct Variable
     {
@@ -14,6 +8,14 @@ namespace LoLToolsX
             get
             {
                 return Variable.installPath + "\\Air\\lol.properties";
+            }
+        }
+
+        public static string UiPath
+        {
+            get
+            {
+                return Variable.installPath + "\\Game\\DATA\\Menu\\Textures\\HUDAtlas.dds";
             }
         }
 

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using Microsoft.Win32;
 using System.Diagnostics;
-using System.Threading;
+using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
-using SevenZip;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 using LoLToolsX.Core;
 using LoLToolsX.Core.Update;
+using SevenZip;
 
 namespace LoLToolsX
 {
@@ -24,94 +19,29 @@ namespace LoLToolsX
 
     public partial class TwTools : Form
     {     
-        public static string installPath = "";
+        CFGFile CFGFile = new CFGFile(Variable.CurrentDirectory + "\\config.ini");
 
         public TwTools()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)     //Form1_Load
+        private void Form1_Load(object sender, EventArgs e)
         {
-            if (!Variable.allowBakRes)
-            {
-                button24.Enabled = false;
-                button25.Enabled = false;
-            }
-            //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);   //If crush, call CrushHandler
+            //初始化
+            this.Initialize();
+            //檢查 LoL 路徑
+            this.CheckPath();
 
-            //寫入目前LoLToolsX版本到Log
-            Logger.log("LoLToolsX版本: " + Application.ProductVersion, Logger.LogType.Info);
-
-            Logger.log("目前客戶端 : 台服", Logger.LogType.Info);
-            //載入LoLToolsX Logo
-            PictureBox1.ImageLocation = Variable.CurrentDirectory + @"\logo.png";
-            Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
-
-            if (Variable.forceSelectPath)
-            {
-                goto SelectPath;
-            }
-
-            //取得LoL路徑
-            GetReg gr = new GetReg();
-            installPath = gr.TwPath(Variable.CurrentDirectory + @"\config.ini");
-            Logger.log("LoL目錄取得成功! " + installPath, Logger.LogType.Info);
-
-SelectPath:
-            CFGFile CFGFile = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
-
-            //檢查路徑是否存有 LoLTW 字串
-            if (!installPath.Contains("LoLTW"))
-            {
-                if (MessageBox.Show("無法取得LoL目錄 請手動選擇LoLTW目錄", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    folderBrowserDialog1.ShowDialog();
-                    Logger.log("LoL手動選擇目錄! " , Logger.LogType.Info);
-                    if (folderBrowserDialog1.SelectedPath.Contains("LoLTW"))
-                    {
-                        installPath = folderBrowserDialog1.SelectedPath;
-                        Logger.log("LoL目錄檢查成功! " + installPath, Logger.LogType.Info);
-                        CFGFile.SetValue("LoLPath", "TwPath", "\"" + installPath + "\"");
-                        CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
-                    }
-                    else
-                    {
-                        MessageBox.Show("目錄選擇錯誤 按確定退出程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Logger.log("LoL目錄檢查失敗 " , Logger.LogType.Error);
-                        Logger.log("強制關閉程式... " , Logger.LogType.Info);
-                        Application.Exit();
-                    }
-                }
-                else
-                {
-                    Logger.log("LoL目錄選擇取消 " , Logger.LogType.Error);
-                    Logger.log("關閉程式... " + installPath, Logger.LogType.Info);
-                    Application.Exit();
-                }
-            }
-            else
-            {
-                CFGFile.SetValue("LoLPath", "TwPath", "\"" + installPath + "\"");
-                CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
-                PathLabel.Text = installPath;
-                Logger.log("LoL目錄檢查成功! " , Logger.LogType.Info);
-                Logger.log("LoL目錄寫入成功! " + installPath, Logger.LogType.Info);
-            }
-
-
-            Variable.installPath = TwTools.installPath;
-
-            //CFGFile = null;
-
+            //目前可以檢查更新?
             if (Variable.allowUpdate)
             {
-                //CFGFile checkAutoUpdate = new CFGFile(Variable.CurrentDirectory + @"\config.ini");
+                //允許自動檢查更新
                 if (CFGFile.GetValue("LoLToolsX", "AutoUpdate") == "true")
                 {
-                    Variable.updating = true;
+                    Variable.updating = true;  //正在更新
                     this.checkBox1.Checked = false;
-                    Thread updateThread = new Thread(CheckUpdate.checkUpdate);
+                    Thread updateThread = new Thread(new ThreadStart(CheckUpdate.checkUpdate));
                     //開始檢查更新
                     updateThread.Start();
                 }
@@ -125,44 +55,9 @@ SelectPath:
                 button23.Enabled = false;
             }
 
-            //檢查語言檔更新
-            //Thread langUpdate = new Thread(LangUpdate.CheckLangUpdate);
-            //langUpdate.Start();
-
-            //string test = Variable.CurrentDirectory;
-            //MessageBox.Show(test);
-
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
             //取得目前伺服器
-            CheckProp cp = new CheckProp();
-            cp.CheckPropFL(installPath);
-            serverLocation.Text = cp.currentLoc;
-
-            notifyIcon1.Visible = false;
-            PathLabel.Text = installPath;
-
-            //取得版本資訊
-            toolsVersion.Text = Application.ProductVersion.ToString();
-            LoLVersionLabel.Text = Utility.GetLoLVer();
-
-
-
-            //在綫統計使用人數
-            try
-            {
-                WebBrowser1.Navigate("http://nitroxenon.com/loltoolsx/stat.html");
-            }
-            catch (Exception e2)
-            {
-                Logger.log("使用人數統計失敗", Logger.LogType.Error);
-                Logger.log(e2);
-            }
-
-            //刪除物件
-            cp = null;
-            gr = null;
-
+            CheckProp checkProp = new CheckProp();
+            serverLocation.Text = checkProp.CheckPropFL(Variable.installPath);
 
             string[] skins = File.ReadAllLines(Variable.CurrentDirectory + @"\Skin.txt");
             foreach (string s in skins)
@@ -170,9 +65,7 @@ SelectPath:
                 installedSkin.Items.Add(s);
             }
 
-            //Variable.tw_installPath = installPath;
-            Variable.curClient = "台服";
-
+            this.FinalizeStartup();
         }
 
         private void LinkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -185,75 +78,80 @@ SelectPath:
         {
             PropertiesWriter writer = new PropertiesWriter(Server.TW);
             writer.Write();
-            //SwitchServer.SwitchServerLoc(installPath, "lolt.properties");
-            //serverLocation.Text = "台服";
+            serverLocation.Text = "台服";
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "lols.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.SEA);
+            writer.Write();
             serverLocation.Text = "SEA服";
             
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "loloce.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.OCE);
+            writer.Write();
             serverLocation.Text = "大洋洲服";
             
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "loln.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.NA);
+            writer.Write();
             serverLocation.Text = "美服";
             
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "lole.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.EUW);
+            writer.Write();
             serverLocation.Text = "EUW服";
             
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "lolp.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.PBE);
+            writer.Write();
             serverLocation.Text = "PBE服";
             
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "lolk.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.KR);
+            writer.Write();
             serverLocation.Text = "韓服";
             
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            SwitchServer.SwitchServerLoc(installPath, "loleune.properties");
+            PropertiesWriter writer = new PropertiesWriter(Server.EUNE);
+            writer.Write();
             serverLocation.Text = "EUNE服";
             
         }
 
         private void backProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Prop(1,1);
-
         }
 
         private void restoneProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Prop(2,1);
         }
 
         private void delBakProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Prop(3,1);
         }
 
@@ -261,82 +159,69 @@ SelectPath:
         {
             this.Opacity = 50;
 
-            StartGame sg = new StartGame(installPath);
+            StartGame startGame = new StartGame(this,null);
 
             if (serverLocation.Text == "台服")
             {
-                    sg.StartGarena();
+                startGame.StartGarena();
             }
             else if (serverLocation.Text == "SEA服")
             {
-              
-                    sg.StartGarena();
-                    //this.Hide();
-                    //this.ShowInTaskbar = false;
-                    //this.notifyIcon1.Visible = true;
-                    //this.notifyIcon1.ShowBalloonTip(5000, "", "遊戲啟動成功", ToolTipIcon.None);
-                
+                startGame.StartGarena();
             }
             else
             {
-               
-                    sg.StartRiotL();
-                    //this.Hide();
-                    //this.ShowInTaskbar = false;
-                    //this.notifyIcon1.Visible = true;
-                    //this.notifyIcon1.ShowBalloonTip(5000, "", "遊戲啟動成功", ToolTipIcon.None);
-                
-                
+                startGame.StartRiotL();
             }
             this.Dispose();
         }
 
         private void lChin_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(installPath);
+            LangEdit sl = new LangEdit(Variable.installPath);
             sl.ChinLobby(1);
 
         }
 
         private void lEng_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(installPath);
+            LangEdit sl = new LangEdit(Variable.installPath);
             sl.EngLobby(1);
         }
 
         private void gChin_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(installPath);
+            LangEdit sl = new LangEdit(Variable.installPath);
             sl.ChinGame();
         }
 
         private void gEng_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(installPath);
+            LangEdit sl = new LangEdit(Variable.installPath);
             //sl.EngGame();
         }
 
         private void BakLang_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Lang(1);
         }
 
         private void ResLang_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Lang(2);
         }
 
         private void delLangBak_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Lang(3);
         }
 
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://nitroxenon.com/sound-pack");
+            Process.Start("http://forum.gamer.com.tw/C.php?bsn=17532&snA=398091&tnum=267");
         }
 
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -348,10 +233,10 @@ SelectPath:
         {
             if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (folderBrowserDialog1.SelectedPath.Contains("Sound"))
+                if (folderBrowserDialog1.SelectedPath.ToLower().Contains("champions"))
                 {
-                    Logger.log("Sound資料夾選擇成功: " +folderBrowserDialog1.SelectedPath, Logger.LogType.Info);
-                    tbPath.Text = folderBrowserDialog1.SelectedPath;
+                    Logger.log("champions 資料夾選擇成功: " +folderBrowserDialog1.SelectedPath, Logger.LogType.Info);
+                    tbLobbySound.Text = folderBrowserDialog1.SelectedPath;
                 }
                 else
                 {
@@ -364,12 +249,12 @@ SelectPath:
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(tbPath.Text))
+            if (!String.IsNullOrEmpty(tbGameSound.Text))
             {
                 if (!Variable.switchingSound)
                 {
-                    SwitchType st = new SwitchType(installPath,tbPath.Text);
-                    st.ShowDialog();
+                    SwitchSound switchSound = new SwitchSound();
+                    switchSound.SwitchGame(tbGameSound.Text);
                 }
                 else
                 {
@@ -384,26 +269,26 @@ SelectPath:
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Sound(1);
         }
 
         private void Button13_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Sound(2);
         }
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Sound(3);
         }
 
 
         private void Button15_Click(object sender, EventArgs e)
         {
-            PropEdit pe = new PropEdit(installPath,websiteIn.Text,1);
+            PropEdit pe = new PropEdit(Variable.installPath,websiteIn.Text,1);
             pe.LobbyLanding();
         }
 
@@ -419,7 +304,7 @@ SelectPath:
 
         private void installHUD_Click(object sender, EventArgs e)
         {
-            InstallUI.GameUI(installPath);
+            InstallUI.GameUI(Variable.installPath);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -449,25 +334,25 @@ SelectPath:
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.UI(1);
         }
 
         private void Button21_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.UI(2);
         }
 
         private void Button19_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.UI(3);
         }
 
         private void Button22_Click(object sender, EventArgs e)
         {
-            ChatEdit ce = new ChatEdit(installPath);
+            ChatEdit ce = new ChatEdit(Variable.installPath);
             ce.Show();
         }
 
@@ -532,54 +417,54 @@ SelectPath:
 
         private void button25_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.LoL(1);
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.LoL(2);
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
-            LobbyUI lui = new LobbyUI(installPath);
+            LobbyUI lui = new LobbyUI(Variable.installPath);
             lui.ShowDialog();
         }
 
         private void Button17_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Prop(1,1);
         }
 
         private void Button18_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Prop(2,1);
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            BakRes br = new BakRes(Variable.installPath);
             br.Prop(3,1);
         }
 
         private void button26_Click_1(object sender, EventArgs e)
         {
-            LobbyUI lui = new LobbyUI(installPath);
+            LobbyUI lui = new LobbyUI(Variable.installPath);
             lui.Show();
         }
 
         private void installSound_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(tbPath.Text))
+            if (!String.IsNullOrEmpty(tbLobbySound.Text))
             {
                 if (!Variable.switchingSound)
                 {
-                    SwitchSound ss = new SwitchSound(installPath, tbPath.Text);
-                    ss.SwitchLobby();
+                    SwitchSound switchSound = new SwitchSound();
+                    switchSound.SwitchLobby(tbLobbySound.Text);
                 }
                 else
                 {
@@ -621,13 +506,13 @@ SelectPath:
 
         private void lKR_Click(object sender, EventArgs e)
         {
-            LangEdit swLang = new LangEdit(installPath);
+            LangEdit swLang = new LangEdit(Variable.installPath);
             swLang.KRLobby();
         }
 
         private void gKR_Click(object sender, EventArgs e)
         {
-            LangEdit swLang = new LangEdit(installPath);
+            LangEdit swLang = new LangEdit(Variable.installPath);
             swLang.KRGame();
         }
 
@@ -676,7 +561,7 @@ SelectPath:
 
                             File.WriteAllText(Variable.CurrentDirectory + @"\Skin.txt", str, Encoding.Default);
 
-                            InstallSkin.Skin(installPath, skinPathBox.SelectedItem.ToString(), Path.GetFileName(skinPathBox.SelectedItem.ToString()));
+                            InstallSkin.Skin(Variable.installPath, skinPathBox.SelectedItem.ToString(), Path.GetFileName(skinPathBox.SelectedItem.ToString()));
                             FileStream fs = new FileStream(Variable.CurrentDirectory + @"\Skin.txt", FileMode.Append, FileAccess.Write);
                             StreamWriter sw = new StreamWriter(fs);
                             sw.WriteLine(Path.GetFileName(skinPathBox.SelectedItem.ToString()));
@@ -728,9 +613,9 @@ SelectPath:
                     string newTemp = temp.Replace(installedSkin.SelectedItem.ToString() + "\r\n" , "");
                     File.WriteAllText(Variable.CurrentDirectory + @"\Skin.txt", newTemp);
 
-                    string temp2 = File.ReadAllText(installPath + @"\Game\ClientZips.txt");
+                    string temp2 = File.ReadAllText(Variable.installPath + @"\Game\ClientZips.txt");
                     string newTemp2 = temp2.Replace(installedSkin.SelectedItem.ToString() + "\r\n", "");
-                    File.WriteAllText(installPath + @"\Game\ClientZips.txt", newTemp2);
+                    File.WriteAllText(Variable.installPath + @"\Game\ClientZips.txt", newTemp2);
                     installedSkin.Items.Remove(installedSkin.SelectedItem);
 
                     
@@ -759,7 +644,7 @@ SelectPath:
 
         private void button31_Click(object sender, EventArgs e)
         {
-            PropEdit pe = new PropEdit(installPath, "http://lobby.lol.tw/", 1);
+            PropEdit pe = new PropEdit(Variable.installPath, "http://lobby.lol.tw/", 1);
             pe.LobbyLanding();
         }
 
@@ -833,7 +718,7 @@ SelectPath:
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.WorkingDirectory = Variable.CurrentDirectory + "\\LoLSpectX\\LoLSpectX";
                 start.FileName = Variable.CurrentDirectory + "\\LoLSpectX\\LoLSpectX\\LoLSpectX.exe";
-                start.Arguments = installPath;
+                start.Arguments = Variable.installPath;
                 Process.Start(start);
         }
 
@@ -859,13 +744,13 @@ SelectPath:
 
         private void button37_Click(object sender, EventArgs e)
         {
-            AceGameUI ui = new AceGameUI(installPath);
+            AceGameUI ui = new AceGameUI(Variable.installPath);
             ui.Install(txtZipPath.Text);
         }
 
         private void button36_Click(object sender, EventArgs e)
         {
-            FixFriend ff = new FixFriend(installPath);
+            FixFriend ff = new FixFriend(Variable.installPath);
             ff.StartFix();
         }
 
@@ -876,7 +761,7 @@ SelectPath:
                 Wait wait = new Wait();
                 wait.Show();
                 wait.progressBar1.Value = 40;
-                My.Computer.FileSystem.CopyDirectory(installPath + @"\Air", Variable.CurrentDirectory + @"\bak\Air", true);
+                My.Computer.FileSystem.CopyDirectory(Variable.installPath + @"\Air", Variable.CurrentDirectory + @"\bak\Air", true);
                 wait.progressBar1.Value = 100;
                 wait.Dispose();
                 Logger.log("大廳UI備份成功!", Logger.LogType.Info);
@@ -897,7 +782,7 @@ SelectPath:
                 Wait wait = new Wait();
                 wait.Show();
                 wait.progressBar1.Value = 40;
-                My.Computer.FileSystem.CopyDirectory(Variable.CurrentDirectory + @"\bak\Air", installPath + @"\Air", true);
+                My.Computer.FileSystem.CopyDirectory(Variable.CurrentDirectory + @"\bak\Air", Variable.installPath + @"\Air", true);
                 wait.progressBar1.Value = 100;
                 wait.Dispose();
                 Logger.log("大廳UI還原成功!", Logger.LogType.Info);
@@ -994,6 +879,117 @@ SelectPath:
             }
 
             base.WndProc(ref m);
+        }
+
+        private void Initialize()
+        {
+            //備份主控台沒有遺失
+            if (!Variable.allowBakRes)
+            {
+                button24.Enabled = false;
+                button25.Enabled = false;
+            }
+
+            //寫入目前LoLToolsX版本到Log
+            Logger.log("LoLToolsX版本: " + Application.ProductVersion, Logger.LogType.Info);
+
+            Logger.log("目前客戶端 : 台服", Logger.LogType.Info);
+
+            //載入LoLToolsX Logo
+            PictureBox1.ImageLocation = Variable.CurrentDirectory + @"\logo.png";
+            Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
+        }
+
+        private void CheckPath()
+        {
+            if (!Variable.forceSelectPath)
+            {
+                //取得LoL路徑
+                GetReg getReg = new GetReg();
+                Variable.installPath = getReg.TwPath(Variable.CurrentDirectory + "\\config.ini");
+                Logger.log("LoL目錄取得成功! " + Variable.installPath, Logger.LogType.Info);
+            }
+
+            //檢查路徑是否存有 LoLTW 字串
+            if (!Variable.installPath.Contains("LoLTW"))
+            {
+                if (MessageBox.Show("無法取得LoL目錄 請手動選擇LoLTW目錄", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    folderBrowserDialog1.ShowDialog();
+                    Logger.log("LoL手動選擇目錄! ", Logger.LogType.Info);
+
+                    if (folderBrowserDialog1.SelectedPath.Contains("LoLTW"))
+                    {
+                        Variable.installPath = folderBrowserDialog1.SelectedPath;
+                        Logger.log("LoL目錄檢查成功! " + Variable.installPath, Logger.LogType.Info);
+                        CFGFile.SetValue("LoLPath", "TwPath", "\"" + Variable.installPath + "\"");
+                        CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("目錄選擇錯誤 按確定退出程式", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Logger.log("LoL目錄檢查失敗 ", Logger.LogType.Error);
+                        Logger.log("強制關閉程式... ", Logger.LogType.Info);
+                        Environment.Exit(0);
+                    }
+                }
+                else
+                {
+                    Logger.log("LoL目錄選擇取消 ", Logger.LogType.Error);
+                    Logger.log("關閉程式... " + Variable.installPath, Logger.LogType.Info);
+                    Environment.Exit(0);
+                }
+            }
+            else
+            {
+                CFGFile.SetValue("LoLPath", "TwPath", "\"" + Variable.installPath + "\"");
+                CFGFile.SetValue("LoLToolsX", "Version", Application.ProductVersion.ToString());
+                PathLabel.Text = Variable.installPath;
+                Logger.log("LoL目錄檢查成功! ", Logger.LogType.Info);
+                Logger.log("LoL目錄寫入成功! " + Variable.installPath, Logger.LogType.Info);
+            }
+        }
+
+        private void FinalizeStartup()
+        {
+            notifyIcon1.Visible = false;
+            PathLabel.Text = Variable.installPath;
+
+            //取得版本資訊
+            toolsVersion.Text = Application.ProductVersion.ToString();
+            LoLVersionLabel.Text = Utility.GetLoLVer();
+
+
+
+            //在綫統計使用人數
+            try
+            {
+                WebBrowser1.Navigate("http://nitroxenon.com/loltoolsx/stat.html");
+            }
+            catch (Exception e2)
+            {
+                Logger.log("使用人數統計失敗", Logger.LogType.Error);
+                Logger.log(e2);
+            }
+
+            Variable.curClient = "台服";
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (folderBrowserDialog1.SelectedPath.Contains("zh_TW") || folderBrowserDialog1.SelectedPath.Contains("ko_KR"))
+                {
+                    Logger.log("遊戲語音資料夾選擇成功: " + folderBrowserDialog1.SelectedPath, Logger.LogType.Info);
+                    tbGameSound.Text = folderBrowserDialog1.SelectedPath;
+                }
+                else
+                {
+                    MessageBox.Show("請選擇正確的Sound資料夾", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.log("Sound資料夾選擇錯誤", Logger.LogType.Error);
+                }
+            }
         }
     }
 }
