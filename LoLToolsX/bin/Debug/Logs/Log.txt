@@ -1,6 +1,6 @@
 ﻿============================== LoLToolsX Log File ==============================
-12/11/2014 14:08:07信息: LoLToolsX 啟動路徑 : R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
-12/11/2014 14:08:07信息: 檔案檢查開始!
+12/13/2014 11:45:12信息: LoLToolsX 啟動路徑 : R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
+12/13/2014 11:45:12信息: 檔案檢查開始!
 檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Skin.txt
 檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLBakRes.exe
 檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Updater.exe
@@ -30,41 +30,12 @@
 檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Logs
 檢查 R:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files
 檢查完成!
-12/11/2014 14:08:07信息: LoLToolsX版本: 4.0.0.0
-12/11/2014 14:08:08信息: 目前客戶端 : 台服
-12/11/2014 14:08:08信息: LoLToolsX Logo載入成功!
-12/11/2014 14:08:08信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:08:08信息: LoL目錄檢查成功! 
-12/11/2014 14:08:08信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:08:08信息: 伺服器設定檔檢查成功! 
-12/11/2014 14:08:08信息: 目前伺服器: 美服
-12/11/2014 14:08:08信息: Air版本: 20141125
-12/11/2014 14:08:08信息: 遊戲啟動成功!
-12/11/2014 14:08:08信息: E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW\lol.exe
-12/11/2014 14:09:12信息: LoLToolsX版本: 4.0.0.0
-12/11/2014 14:09:12信息: 目前客戶端 : 台服
-12/11/2014 14:09:12信息: LoLToolsX Logo載入成功!
-12/11/2014 14:09:12信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:09:12信息: LoL目錄檢查成功! 
-12/11/2014 14:09:12信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:09:12信息: 伺服器設定檔檢查成功! 
-12/11/2014 14:09:12信息: 目前伺服器: 美服
-12/11/2014 14:09:12信息: Air版本: 20141125
-12/11/2014 14:18:15信息: LoLToolsX版本: 4.0.0.0
-12/11/2014 14:18:15信息: 目前客戶端 : 台服
-12/11/2014 14:18:15信息: LoLToolsX Logo載入成功!
-12/11/2014 14:18:15信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:18:15信息: LoL目錄檢查成功! 
-12/11/2014 14:18:15信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:18:15信息: 伺服器設定檔檢查成功! 
-12/11/2014 14:18:15信息: 目前伺服器: 台服
-12/11/2014 14:18:15信息: Air版本: 20141125
-12/11/2014 14:18:15信息: LoLToolsX版本: 4.0.0.0
-12/11/2014 14:18:15信息: 目前客戶端 : 台服
-12/11/2014 14:18:15信息: LoLToolsX Logo載入成功!
-12/11/2014 14:18:15信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:18:15信息: LoL目錄檢查成功! 
-12/11/2014 14:18:15信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
-12/11/2014 14:18:15信息: 伺服器設定檔檢查成功! 
-12/11/2014 14:18:15信息: 目前伺服器: 台服
-12/11/2014 14:18:15信息: Air版本: 20141125
+12/13/2014 11:45:12信息: LoLToolsX版本: 4.0.1.0
+12/13/2014 11:45:12信息: 目前客戶端 : 台服
+12/13/2014 11:45:12信息: LoLToolsX Logo載入成功!
+12/13/2014 11:45:12信息: LoL目錄取得成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+12/13/2014 11:45:12信息: LoL目錄檢查成功! 
+12/13/2014 11:45:12信息: LoL目錄寫入成功! E:\1fa8bf7c8b28be9c838de368296535a9\LOL\GameData\Apps\LoLTW
+12/13/2014 11:45:12信息: 伺服器設定檔檢查成功! 
+12/13/2014 11:45:13信息: 目前伺服器: 台服
+12/13/2014 11:45:13信息: Air版本: 20141125

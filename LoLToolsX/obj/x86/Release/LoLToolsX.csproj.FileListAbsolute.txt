@@ -132,3 +132,4 @@ H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\ChatColour.xml
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\INIFile.pdb
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\INIFile.xml
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.Forms.GameLangEdit.resources
+R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.GameLangEdit.resources

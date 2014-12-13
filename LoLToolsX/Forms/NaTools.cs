@@ -220,37 +220,37 @@ namespace LoLToolsX
 
         private void backProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(1, 2);
         }
 
         private void restoneProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(2, 2);
         }
 
         private void delBakProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(3, 2);
         }
 
         private void Button17_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(1, 2);
         }
 
         private void Button18_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(2, 2);
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(3, 2);
         }
 
@@ -290,31 +290,29 @@ namespace LoLToolsX
 
         private void lChin_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(airPath);
-            sl.ChinLobby(2);
+
         }
 
         private void lEng_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(airPath);
-            sl.EngLobby(2);
+
         }
 
         private void BakLang_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.NaLang(1);
         }
 
         private void ResLang_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.NaLang(2);
         }
 
         private void delLangBak_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.NaLang(3);
         }
 
@@ -406,19 +404,19 @@ namespace LoLToolsX
 
         private void Button17_Click_1(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(1, 2);
         }
 
         private void Button18_Click_1(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(2, 2);
         }
 
         private void Button16_Click_1(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(airPath);
+            TwBakRes br = new TwBakRes(airPath);
             br.Prop(3, 2);
         }
 
@@ -458,19 +456,19 @@ namespace LoLToolsX
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            TwBakRes br = new TwBakRes(installPath);
             br.NaUi(1);
         }
 
         private void Button21_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            TwBakRes br = new TwBakRes(installPath);
             br.NaUi(2);
         }
 
         private void Button19_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            TwBakRes br = new TwBakRes(installPath);
             br.NaUi(3);
         }
 

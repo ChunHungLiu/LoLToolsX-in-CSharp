@@ -86,6 +86,9 @@
             this.Label13 = new System.Windows.Forms.Label();
             this.websiteIn = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tbGameSound = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.button39 = new System.Windows.Forms.Button();
             this.Label12 = new System.Windows.Forms.Label();
             this.LinkLabel2 = new System.Windows.Forms.LinkLabel();
             this.Button14 = new System.Windows.Forms.Button();
@@ -167,9 +170,6 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
-            this.tbGameSound = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.button39 = new System.Windows.Forms.Button();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -252,7 +252,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(330, 259);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(50, 18);
+            this.checkBox2.Size = new System.Drawing.Size(50, 17);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "開啟";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -283,7 +283,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(621, 215);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(122, 18);
+            this.checkBox1.Size = new System.Drawing.Size(122, 17);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "取消自動檢查更新";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -780,6 +780,33 @@
             this.tabPage4.Text = "語音修改";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // tbGameSound
+            // 
+            this.tbGameSound.Location = new System.Drawing.Point(80, 185);
+            this.tbGameSound.Name = "tbGameSound";
+            this.tbGameSound.Size = new System.Drawing.Size(273, 20);
+            this.tbGameSound.TabIndex = 28;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label26.Location = new System.Drawing.Point(76, 149);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(349, 20);
+            this.label26.TabIndex = 27;
+            this.label26.Text = "第二步: 請選擇遊戲語音資料夾 (zh_TW / ko_KR)";
+            // 
+            // button39
+            // 
+            this.button39.Location = new System.Drawing.Point(359, 181);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(61, 28);
+            this.button39.TabIndex = 26;
+            this.button39.Text = "瀏覽...";
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
             // Label12
             // 
             this.Label12.AutoSize = true;
@@ -905,6 +932,7 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "語言切換";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
             // 
             // button32
             // 
@@ -1649,33 +1677,6 @@
             // 
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
-            // 
-            // tbGameSound
-            // 
-            this.tbGameSound.Location = new System.Drawing.Point(80, 185);
-            this.tbGameSound.Name = "tbGameSound";
-            this.tbGameSound.Size = new System.Drawing.Size(273, 20);
-            this.tbGameSound.TabIndex = 28;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label26.Location = new System.Drawing.Point(76, 149);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(349, 20);
-            this.label26.TabIndex = 27;
-            this.label26.Text = "第二步: 請選擇遊戲語音資料夾 (zh_TW / ko_KR)";
-            // 
-            // button39
-            // 
-            this.button39.Location = new System.Drawing.Point(359, 181);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(61, 28);
-            this.button39.TabIndex = 26;
-            this.button39.Text = "瀏覽...";
-            this.button39.UseVisualStyleBackColor = true;
-            this.button39.Click += new System.EventHandler(this.button39_Click);
             // 
             // TwTools
             // 

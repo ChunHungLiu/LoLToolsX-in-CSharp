@@ -93,7 +93,7 @@
     <Compile Include="Forms\CheckLangUpdate.Designer.cs">
       <DependentUpon>CheckLangUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\BakRes.cs" />
+    <Compile Include="Core\TwBakRes.cs" />
     <Compile Include="Core\CFGFile.cs" />
     <Compile Include="Forms\ChatEdit.cs">
       <SubType>Form</SubType>
@@ -118,6 +118,12 @@
     </Compile>
     <Compile Include="Core\Function.cs" />
     <Compile Include="Core\Install.cs" />
+    <Compile Include="Forms\GameLangEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameLangEdit.Designer.cs">
+      <DependentUpon>GameLangEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LobbyUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,7 +144,7 @@
       <DependentUpon>ServerSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\StartGame.cs" />
-    <Compile Include="Core\Switch.cs" />
+    <Compile Include="Core\TwSwitch.cs" />
     <Compile Include="Forms\TwTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FileCheck.resx">
       <DependentUpon>FileCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameLangEdit.resx">
+      <DependentUpon>GameLangEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LobbyUI.resx">
       <DependentUpon>LobbyUI.cs</DependentUpon>

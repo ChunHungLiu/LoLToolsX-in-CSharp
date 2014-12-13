@@ -341,19 +341,19 @@ namespace LoLToolsX
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            TwBakRes br = new TwBakRes(installPath);
             br.Chat(1);
         }
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            TwBakRes br = new TwBakRes(installPath);
             br.Chat(2);
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(installPath);
+            TwBakRes br = new TwBakRes(installPath);
             br.Chat(3);
         }
 

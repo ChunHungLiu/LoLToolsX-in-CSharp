@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace LoLToolsX.Core
 {
-    class BakRes
+    class TwBakRes
     {
         /// <summary>
         /// 檔案備份/還原
@@ -14,7 +14,7 @@ namespace LoLToolsX.Core
         private string installPath;
         Wait wait = new Wait();
 
-        public BakRes(string _installPath)
+        public TwBakRes(string _installPath)
         {
             this.installPath = _installPath;
 
@@ -858,6 +858,81 @@ namespace LoLToolsX.Core
                     {
                     }
                 }
+        }
+    }
+
+    class LangBakRes
+    {
+        static string[] files = {
+                             "\\Air\\locale.properties",
+                             "\\Air\\css\\fonts.swf",
+                             "\\Air\\css\\fonts_zh_TW.swf",
+                             "\\Game\\DATA\\CFG\\Locale.cfg",
+                             "\\Game\\DATA\\CFG\\defaults\\FontTypes.xml",
+                             "\\Game\\DATA\\CFG\\defaults\\GamePermanent.cfg",
+                             "\\Game\\DATA\\CFG\\defaults\\GamePermanent_zh_TW.cfg",
+                             "\\Game\\DATA\\Menu\\fontconfig_en_US.txt",
+                             "\\Game\\DATA\\Menu\\fontconfig_zh_TW.txt",
+                         };
+
+        public static void Backup(string twInstallPath)
+        {
+            int errorCount = 0;
+            foreach (string f in files)
+            {
+                try
+                {
+                    File.Copy(twInstallPath + f, Variable.CurrentDirectory + "\\bak\\lang\\" + Path.GetFileName(f), true);
+                }
+                catch (Exception e)
+                {
+                    Logger.log("語言檔案備份出現錯誤 : \r\n" + e.Message + "\r\n\r\n" + e.Data + "\r\n\r\n", Logger.LogType.Error);
+                    MessageBox.Show(String.Format("備份 {0} 檔案失敗 按確定繼續備份", Path.GetFileName(f)), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorCount++;
+                    continue;
+                }
+            }
+            MessageBox.Show(String.Format("備份完成! 共有 {0} 個錯誤",errorCount),"提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        public static void Restore(string twInstallPath)
+        {
+            int errorCount = 0;
+            foreach (string f in files)
+            {
+                try
+                {
+                    File.Copy(Variable.CurrentDirectory + "\\bak\\lang\\" + Path.GetFileName(f),twInstallPath + f, true);
+                }
+                catch (Exception e)
+                {
+                    Logger.log("語言檔案還原出現錯誤 : \r\n" + e.Message + "\r\n\r\n" + e.Data + "\r\n\r\n", Logger.LogType.Error);
+                    MessageBox.Show(String.Format("還原 {0} 檔案失敗 按確定繼續還原", Path.GetFileName(f)), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorCount++;
+                    continue;
+                }
+            }
+            MessageBox.Show(String.Format("還原完成! 共有 {0} 個錯誤", errorCount), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void Delete()
+        {
+            int errorCount = 0;
+            foreach (string f in files)
+            {
+                try
+                {
+                    File.Delete(Variable.CurrentDirectory + "\\bak\\lang\\" + Path.GetFileName(f));
+                }
+                catch (Exception e)
+                {
+                    Logger.log("語言檔案備份刪除出現錯誤 : \r\n" + e.Message + "\r\n\r\n" + e.Data + "\r\n\r\n", Logger.LogType.Error);
+                    MessageBox.Show(String.Format("刪除備份 {0} 檔案失敗 按確定繼續還原", Path.GetFileName(f)), "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorCount++;
+                    continue;
+                }
+            }
+            MessageBox.Show(String.Format("備份刪除完成! 共有 {0} 個錯誤", errorCount), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

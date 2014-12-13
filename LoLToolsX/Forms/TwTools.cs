@@ -139,19 +139,19 @@ namespace LoLToolsX
 
         private void backProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Prop(1,1);
         }
 
         private void restoneProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Prop(2,1);
         }
 
         private void delBakProp_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Prop(3,1);
         }
 
@@ -178,45 +178,38 @@ namespace LoLToolsX
 
         private void lChin_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(Variable.installPath);
-            sl.ChinLobby(1);
+            LangEdit.ChinLobby(Variable.installPath);
 
         }
 
         private void lEng_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(Variable.installPath);
-            sl.EngLobby(1);
+            LangEdit.EngLobby(Variable.installPath);
         }
 
         private void gChin_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(Variable.installPath);
-            sl.ChinGame();
+            LangEdit.ChinGame(Variable.installPath);
         }
 
         private void gEng_Click(object sender, EventArgs e)
         {
-            LangEdit sl = new LangEdit(Variable.installPath);
-            //sl.EngGame();
+            LangEdit.EngGame(Variable.installPath);
         }
 
         private void BakLang_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
-            br.Lang(1);
+            LangBakRes.Backup(Variable.installPath);
         }
 
         private void ResLang_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
-            br.Lang(2);
+            LangBakRes.Restore(Variable.installPath);
         }
 
         private void delLangBak_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
-            br.Lang(3);
+            LangBakRes.Delete();
         }
 
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -269,19 +262,19 @@ namespace LoLToolsX
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Sound(1);
         }
 
         private void Button13_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Sound(2);
         }
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Sound(3);
         }
 
@@ -334,19 +327,19 @@ namespace LoLToolsX
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.UI(1);
         }
 
         private void Button21_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.UI(2);
         }
 
         private void Button19_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.UI(3);
         }
 
@@ -417,13 +410,13 @@ namespace LoLToolsX
 
         private void button25_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.LoL(1);
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.LoL(2);
         }
 
@@ -435,19 +428,19 @@ namespace LoLToolsX
 
         private void Button17_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Prop(1,1);
         }
 
         private void Button18_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Prop(2,1);
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            BakRes br = new BakRes(Variable.installPath);
+            TwBakRes br = new TwBakRes(Variable.installPath);
             br.Prop(3,1);
         }
 
@@ -506,14 +499,12 @@ namespace LoLToolsX
 
         private void lKR_Click(object sender, EventArgs e)
         {
-            LangEdit swLang = new LangEdit(Variable.installPath);
-            swLang.KRLobby();
+            
         }
 
         private void gKR_Click(object sender, EventArgs e)
         {
-            LangEdit swLang = new LangEdit(Variable.installPath);
-            swLang.KRGame();
+            
         }
 
         private void button28_Click(object sender, EventArgs e)
@@ -990,6 +981,11 @@ namespace LoLToolsX
                     Logger.log("Sound資料夾選擇錯誤", Logger.LogType.Error);
                 }
             }
+        }
+
+        private void tabPage3_Enter(object sender, EventArgs e)
+        {
+            MessageBox.Show("目前中文遊戲語言修改功能有 BUG\r\n\r\n請勿使用中文遊戲語言修改\r\n\r\n並請在切換成英文遊戲語言前進行備份 謝謝", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
