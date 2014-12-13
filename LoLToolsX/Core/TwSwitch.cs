@@ -12,7 +12,7 @@ namespace LoLToolsX.Core
     {
         public static void EngGame(string twInstallPath)
         {
-            CFGFile localeFile = new CFGFile(twInstallPath + @"\Game\DATA\CFG\Local.properties");
+            CFGFile localeFile = new CFGFile(twInstallPath + @"\Game\DATA\CFG\Locale.cfg");
             try
             {
                 localeFile.SetValue("General", "LanguageLocaleRegion", "en_US");
