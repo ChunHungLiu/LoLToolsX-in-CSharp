@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,12 +12,14 @@ namespace LoLToolsX.Core.Update
         string version;
         //string info;
         List<string> info = new List<string>();
+        WebClient client;
 
         public UpdateForm(string _version,List<string> _info)
         {
             InitializeComponent();
             this.version = _version;     //最新版本
             this.info = _info;           //更新資訊
+            this.client = new WebClient();
         }
 
         private void UpdateForm_Load(object sender, EventArgs e)
@@ -31,6 +33,8 @@ namespace LoLToolsX.Core.Update
             }
             //取消全選
             textBox1.Select(0, 0);
+            
+            Variable.updating = false;
         }
 
         /// <summary>
@@ -44,9 +48,8 @@ namespace LoLToolsX.Core.Update
             string downloadPath = "https://github.com/NitroXenon/LoLToolsX-in-CSharp/releases/download/LoLToolsX" + version + "/LoLToolsX" + version + ".exe";
 
             //建立事件 進度條用
-            WebClient wc = new WebClient();
-            wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-            wc.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
+            client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
             try
             {
                 if (!Variable.updating)
@@ -54,7 +57,7 @@ namespace LoLToolsX.Core.Update
                     Variable.updating = true;
                     label3.Text = "0";
                     //開始下載更新
-                    wc.DownloadFileAsync(new Uri(downloadPath), Variable.CurrentDirectory + @"\download\" + @"LoLToolsX.exe");
+                    client.DownloadFileAsync(new Uri(downloadPath), Variable.CurrentDirectory + @"\download\" + @"LoLToolsX.exe");
                 }
             }
             catch
@@ -78,17 +81,26 @@ namespace LoLToolsX.Core.Update
 
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            Variable.updating = false;
-            MessageBox.Show("更新下載完成! 按確定安裝更新");
-            Logger.log("更新下載成功!");
-            Logger.log("啟動Updater.exe進行gengx");
+        	if (!this.IsDisposed)
+        	{
+                Variable.updating = false;
+                MessageBox.Show("更新下載完成! 按確定安裝更新");
+                Logger.log("更新下載成功!");
+                Logger.log("啟動Updater.exe進行gengx");
 
-            Process.Start(new ProcessStartInfo() {
-                FileName = "Updater.exe",
-                WorkingDirectory = Variable.CurrentDirectory
-            });
+                Process.Start(new ProcessStartInfo() {
+                    FileName = "Updater.exe",
+                    WorkingDirectory = Variable.CurrentDirectory
+                });
 
-            Application.Exit();
+                Application.Exit();
+        	}
+        	else
+        	{
+        	    Variable.haveUpdate = false;
+                Variable.updating = false;
+        	    client.Dispose();
+        	}
         }
 
         private void button2_Click(object sender, EventArgs e)
