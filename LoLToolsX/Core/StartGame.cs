@@ -11,7 +11,7 @@ namespace LoLToolsX.Core
     class StartGame
     {
         NotifyIcon nIcon = new NotifyIcon();
-        bool garenaStarted = false;
+        bool gameStarted = false;
 
         //建立啟動完成事件
         private delegate void StartGameHandler();
@@ -22,7 +22,9 @@ namespace LoLToolsX.Core
 
         public StartGame(TwTools _twTools, NaTools _naTools)
         {
-            nIcon.DoubleClick += new EventHandler(ni_DoubleClick);
+            //nIcon.DoubleClick += new EventHandler(ni_DoubleClick);
+            nIcon.Click += new EventHandler(ni_Click);
+
             StartGameFinish += new StartGameHandler(StartGame_StartGameFinish);
             this.twTools = _twTools;
             this.naTools = _naTools;
@@ -30,6 +32,14 @@ namespace LoLToolsX.Core
 
         public void StartGarena()
         {
+            if (!StartupCheck())
+            {
+                if (MessageBox.Show("LoL 已開啟，你確定要繼續開啟 LoL 嗎?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
             try
             {
                 if (My.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Garena\im", "Path", null).ToString() != null)
@@ -40,22 +50,22 @@ namespace LoLToolsX.Core
                         Process.Start(ggcPath + @"\GarenaMessenger.exe");
                         Logger.log("遊戲啟動成功!", Logger.LogType.Info);
                         Logger.log(ggcPath + @"\GarenaMessenger.exe", Logger.LogType.Info);
-                        garenaStarted = true;
+                        gameStarted = true;
                         StartGameFinish();
                     }
                     else
                     {
-                        garenaStarted = false;
+                        gameStarted = false;
                     }
                 }
             }
             catch
             {
-                garenaStarted = false;
+                gameStarted = false;
             }
 
             //如果 Garena 開啟失敗
-            if (!garenaStarted)
+            if (!gameStarted)
             {
                 //在 LoL 目錄向上尋找Garena路徑
                 string p1 = Directory.GetParent(Variable.installPath).ToString();
@@ -64,15 +74,15 @@ namespace LoLToolsX.Core
                 try
                 {
                     Process.Start(p3 + @"\LoLTWLauncher.exe");
-                    garenaStarted = true;
+                    gameStarted = true;
                     StartGameFinish();
                 }
                 catch
                 {
-                    garenaStarted = false;
+                    gameStarted = false;
                 }
             }
-            if (!garenaStarted)
+            if (!gameStarted)
             {
                 if (Variable.curClient == "台服")
                 {
@@ -87,6 +97,7 @@ namespace LoLToolsX.Core
                 MessageBox.Show("遊戲啟動失敗!");
             }
         }
+  
 
         public void StartRiotL()
         {
@@ -138,39 +149,66 @@ namespace LoLToolsX.Core
                 Logger.log("遊戲啟動失敗!" + e, Logger.LogType.Error);
             }
         }
+
         private void StartGame_StartGameFinish()
         {
             //自動最小化到工具列
-            System.Drawing.Icon icon = new System.Drawing.Icon(Variable.CurrentDirectory + "\\lol.ico");
-            nIcon.Icon = icon;
+            System.Drawing.Icon _icon = Properties.Resources.lol;
+            nIcon.Icon = _icon;
             nIcon.Visible = true;
             nIcon.ShowBalloonTip(3000, "", "遊戲啟動成功!", ToolTipIcon.None);
 
             if (Variable.curClient == "台服")
             {
-                twTools.Dispose();
+                this.twTools.Dispose();
             }
             else
             {
-                NaTools nt = new NaTools();
-                nt.Dispose();
+                this.naTools.Dispose();
             }
         }
 
-        private void ni_DoubleClick(object sender, EventArgs e)
+        private void ni_Click(object sender, EventArgs e)
         {
             if (Variable.curClient == "台服")
             {
-                TwTools tt = new TwTools();
-                tt.Show();
+                if (!this.twTools.IsDisposed)
+                {
+                    this.twTools.Show();
+                }
+                else
+                {
+                    new TwTools().Show();
+                }
+
                 nIcon.Visible = false;
             }
             else
             {
-                NaTools nt = new NaTools();
-                nt.Show();
+                if (!this.naTools.IsDisposed)
+                {
+                    this.naTools.Show();
+                }
+                else
+                {
+                    new NaTools().Show();
+                }
+
                 nIcon.Visible = false;
             }
+        }
+
+        bool StartupCheck()
+        {
+            Process[] procLol = Process.GetProcessesByName("lol");
+            Process[] procClient = Process.GetProcessesByName("LoLClient");
+            Process[] procGarena = Process.GetProcessesByName("GarenaMessenger");
+            Process[] procLoLGame = Process.GetProcessesByName("League of Legends");
+
+            if (procLol.Length >= 1 || procClient.Length >= 1 || procGarena.Length >= 1 || procLoLGame.Length >= 1)
+                return false;
+            else
+                return true;
         }
     }
 }

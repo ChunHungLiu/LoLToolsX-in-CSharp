@@ -10,51 +10,44 @@ namespace LoLToolsX_Updater
 {
     class Program
     {
-
-
         static void Main()
         {
-            Thread.Sleep(1000);
-            Thread.Sleep(1000);
-            Thread.Sleep(1000);
-
-            string cd = Directory.GetCurrentDirectory();
-
-                //FileStream fs = new FileStream(cd + @"\Logs\Log.txt", FileMode.Append, FileAccess.Write);
-                //StreamWriter sw = new StreamWriter(fs);
-
             Console.WriteLine("LoLToolsX 更新安裝器");
             Console.WriteLine("開始進行更新...");
 
-                try
-                {
-                    File.Copy(cd + @"\download\LoLToolsX.exe", cd + @"\LoLToolsX.exe", true);
-                    //sw.WriteLine(DateTime.Now + "信息: LoLToolsX 更新完成!");
-                    //sw.WriteLine(DateTime.Now + "信息: 重新啟動 LoLToolsX...");
-                    Console.WriteLine("更新完成! 正在重新啟動 LoLToolsX...");
-                    Thread.Sleep(1000);
-                    Thread.Sleep(1000);
-                    Thread.Sleep(1000);
-                    Process.Start(cd + @"\LoLToolsX.exe");
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
-                }
-                catch
-                {
-                    Console.WriteLine("更新失敗...");
-                    Thread.Sleep(1000);
-                    Thread.Sleep(1000);
-                    Thread.Sleep(1000);
-                    //sw.WriteLine(DateTime.Now + "錯誤: LoLToolsX 更新失敗!");
-                    //sw.WriteLine(DateTime.Now + "錯誤: " + e);
-                }
-                finally
-                {
-                    //sw.Flush();
-                    //sw.Close();
-                    //fs.Close();
-                    Environment.Exit(Environment.ExitCode);
-                }
+            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"download\LoLToolsX.exe"))
+            {
+                Console.WriteLine("找不到更新檔，正在重新啟動 LoLToolsX...");
+                Thread.Sleep(1000);
+                Thread.Sleep(1000);
+                Thread.Sleep(1000);
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"LoLToolsX.exe");
+                Environment.Exit(0);
+            }
 
+            try
+            {
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + @"download\LoLToolsX.exe", AppDomain.CurrentDomain.BaseDirectory + @"LoLToolsX.exe", true);
+                Console.WriteLine("更新完成!");
+
+            }
+            catch
+            {
+                Console.WriteLine("更新失敗...");
+            }
+            finally
+            {
+                Console.WriteLine("正在重新啟動 LoLToolsX...");
+                Thread.Sleep(1000);
+                Thread.Sleep(1000);
+                Thread.Sleep(1000);
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"LoLToolsX.exe");
+                Environment.Exit(0);
+            }
         }
     }
 }

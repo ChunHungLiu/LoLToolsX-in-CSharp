@@ -173,7 +173,6 @@ namespace LoLToolsX
             {
                 startGame.StartRiotL();
             }
-            this.Dispose();
         }
 
         private void lChin_Click(object sender, EventArgs e)
