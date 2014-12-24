@@ -84,7 +84,7 @@ namespace LoLToolsX
                                   "\\Privacy.txt",
                                   "\\files\\fix-fd\\dependencies.properties",
                                   "\\files\\fix-fd\\info.riotmod",
-                                  "\\files\\fix-fd\\mod_cht2.dat"
+                                  "\\files\\fix-fd\\mod_cht2.dat",
                              };
 
             progressBar1.Minimum = 0;

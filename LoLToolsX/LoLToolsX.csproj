@@ -222,6 +222,8 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Release\logo.png" />
+    <None Include="logo.png" />
     <Content Include="lol.ico" />
   </ItemGroup>
   <ItemGroup>

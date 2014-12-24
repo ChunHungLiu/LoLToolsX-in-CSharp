@@ -65,7 +65,7 @@ namespace LoLToolsX
 
             Logger.log("目前客戶端 : 美服", Logger.LogType.Info);
             //載入LoLToolsX Logo
-            PictureBox1.ImageLocation = Variable.CurrentDirectory + @"\logo.png";
+            PictureBox1.Image = Properties.Resources.logo;
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
 
             
