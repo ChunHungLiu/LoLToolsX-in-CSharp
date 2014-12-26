@@ -127,6 +127,8 @@ H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Core.Update.UpdateF
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Properties.Resources.resources
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.VerSelect.resources
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.Wait.resources
-H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.SwitchType.resources
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.csproj.GenerateResource.Cache
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.GameLangEdit.resources
+H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Debug\LoLToolsX.GameLangEdit.resources
+H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\TargaImage.dll
+H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Ionic.Zip.dll

@@ -170,6 +170,23 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.skinSelector = new System.Windows.Forms.OpenFileDialog();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.tbCursor1Path = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pBoxCursor1 = new System.Windows.Forms.PictureBox();
+            this.pBoxCursor2 = new System.Windows.Forms.PictureBox();
+            this.btnCurrentCursors = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.tbCursor2Path = new System.Windows.Forms.TextBox();
+            this.button40 = new System.Windows.Forms.Button();
+            this.button41 = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.button42 = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
+            this.btnCursorDelete = new System.Windows.Forms.Button();
+            this.btnCursorRestore = new System.Windows.Forms.Button();
+            this.btnCursorBackup = new System.Windows.Forms.Button();
+            this.button44 = new System.Windows.Forms.Button();
             this.tabPage9.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -187,13 +204,16 @@
             this.tabControl1.SuspendLayout();
             this.tabPage12.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxCursor1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxCursor2)).BeginInit();
             this.SuspendLayout();
             // 
             // startLoL
             // 
-            this.startLoL.Location = new System.Drawing.Point(347, 378);
+            this.startLoL.Location = new System.Drawing.Point(347, 349);
             this.startLoL.Name = "startLoL";
-            this.startLoL.Size = new System.Drawing.Size(191, 46);
+            this.startLoL.Size = new System.Drawing.Size(191, 42);
             this.startLoL.TabIndex = 0;
             this.startLoL.Text = "啟動遊戲";
             this.startLoL.UseVisualStyleBackColor = true;
@@ -201,11 +221,11 @@
             // 
             // WebBrowser1
             // 
-            this.WebBrowser1.Location = new System.Drawing.Point(799, 393);
-            this.WebBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebBrowser1.Location = new System.Drawing.Point(799, 363);
+            this.WebBrowser1.MinimumSize = new System.Drawing.Size(20, 18);
             this.WebBrowser1.Name = "WebBrowser1";
             this.WebBrowser1.ScrollBarsEnabled = false;
-            this.WebBrowser1.Size = new System.Drawing.Size(20, 20);
+            this.WebBrowser1.Size = new System.Drawing.Size(20, 18);
             this.WebBrowser1.TabIndex = 28;
             this.WebBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.WebBrowser1.Visible = false;
@@ -232,7 +252,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(867, 346);
+            this.tabPage9.Size = new System.Drawing.Size(867, 317);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "其他選項";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -241,7 +261,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(178, 255);
+            this.label21.Location = new System.Drawing.Point(178, 235);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(127, 26);
             this.label21.TabIndex = 4;
@@ -250,9 +270,9 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(330, 259);
+            this.checkBox2.Location = new System.Drawing.Point(330, 239);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(50, 17);
+            this.checkBox2.Size = new System.Drawing.Size(48, 16);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "開啟";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -260,9 +280,9 @@
             // 
             // button25
             // 
-            this.button25.Location = new System.Drawing.Point(110, 119);
+            this.button25.Location = new System.Drawing.Point(110, 110);
             this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(163, 68);
+            this.button25.Size = new System.Drawing.Size(163, 63);
             this.button25.TabIndex = 0;
             this.button25.Text = "一鍵備份LoL";
             this.button25.UseVisualStyleBackColor = true;
@@ -270,9 +290,9 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(352, 119);
+            this.button24.Location = new System.Drawing.Point(352, 110);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(163, 68);
+            this.button24.Size = new System.Drawing.Size(163, 63);
             this.button24.TabIndex = 1;
             this.button24.Text = "一鍵還原LoL";
             this.button24.UseVisualStyleBackColor = true;
@@ -281,9 +301,9 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(621, 215);
+            this.checkBox1.Location = new System.Drawing.Point(621, 198);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(122, 17);
+            this.checkBox1.Size = new System.Drawing.Size(120, 16);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "取消自動檢查更新";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -291,9 +311,9 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(601, 119);
+            this.button23.Location = new System.Drawing.Point(601, 110);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(163, 68);
+            this.button23.Size = new System.Drawing.Size(163, 63);
             this.button23.TabIndex = 2;
             this.button23.Text = "檢查更新";
             this.button23.UseVisualStyleBackColor = true;
@@ -321,7 +341,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(867, 346);
+            this.tabPage8.Size = new System.Drawing.Size(867, 317);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "伺服器狀態";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -330,7 +350,7 @@
             // 
             this.Label008.AutoSize = true;
             this.Label008.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label008.Location = new System.Drawing.Point(342, 268);
+            this.Label008.Location = new System.Drawing.Point(342, 247);
             this.Label008.Name = "Label008";
             this.Label008.Size = new System.Drawing.Size(56, 28);
             this.Label008.TabIndex = 33;
@@ -340,7 +360,7 @@
             // 
             this.Label002.AutoSize = true;
             this.Label002.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label002.Location = new System.Drawing.Point(342, 66);
+            this.Label002.Location = new System.Drawing.Point(342, 61);
             this.Label002.Name = "Label002";
             this.Label002.Size = new System.Drawing.Size(56, 28);
             this.Label002.TabIndex = 32;
@@ -350,7 +370,7 @@
             // 
             this.Label003.AutoSize = true;
             this.Label003.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label003.Location = new System.Drawing.Point(342, 99);
+            this.Label003.Location = new System.Drawing.Point(342, 91);
             this.Label003.Name = "Label003";
             this.Label003.Size = new System.Drawing.Size(56, 28);
             this.Label003.TabIndex = 31;
@@ -360,7 +380,7 @@
             // 
             this.Label004.AutoSize = true;
             this.Label004.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label004.Location = new System.Drawing.Point(342, 133);
+            this.Label004.Location = new System.Drawing.Point(342, 123);
             this.Label004.Name = "Label004";
             this.Label004.Size = new System.Drawing.Size(56, 28);
             this.Label004.TabIndex = 30;
@@ -370,7 +390,7 @@
             // 
             this.Label005.AutoSize = true;
             this.Label005.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label005.Location = new System.Drawing.Point(342, 167);
+            this.Label005.Location = new System.Drawing.Point(342, 154);
             this.Label005.Name = "Label005";
             this.Label005.Size = new System.Drawing.Size(56, 28);
             this.Label005.TabIndex = 29;
@@ -380,7 +400,7 @@
             // 
             this.Label006.AutoSize = true;
             this.Label006.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label006.Location = new System.Drawing.Point(342, 202);
+            this.Label006.Location = new System.Drawing.Point(342, 186);
             this.Label006.Name = "Label006";
             this.Label006.Size = new System.Drawing.Size(56, 28);
             this.Label006.TabIndex = 28;
@@ -390,7 +410,7 @@
             // 
             this.Label007.AutoSize = true;
             this.Label007.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label007.Location = new System.Drawing.Point(342, 234);
+            this.Label007.Location = new System.Drawing.Point(342, 216);
             this.Label007.Name = "Label007";
             this.Label007.Size = new System.Drawing.Size(56, 28);
             this.Label007.TabIndex = 27;
@@ -401,7 +421,7 @@
             this.Label001.AutoSize = true;
             this.Label001.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
             this.Label001.ForeColor = System.Drawing.Color.Black;
-            this.Label001.Location = new System.Drawing.Point(342, 29);
+            this.Label001.Location = new System.Drawing.Point(342, 27);
             this.Label001.Name = "Label001";
             this.Label001.Size = new System.Drawing.Size(56, 28);
             this.Label001.TabIndex = 26;
@@ -411,7 +431,7 @@
             // 
             this.Label02.AutoSize = true;
             this.Label02.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label02.Location = new System.Drawing.Point(225, 64);
+            this.Label02.Location = new System.Drawing.Point(225, 59);
             this.Label02.Name = "Label02";
             this.Label02.Size = new System.Drawing.Size(68, 28);
             this.Label02.TabIndex = 25;
@@ -421,7 +441,7 @@
             // 
             this.Label03.AutoSize = true;
             this.Label03.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label03.Location = new System.Drawing.Point(225, 98);
+            this.Label03.Location = new System.Drawing.Point(225, 90);
             this.Label03.Name = "Label03";
             this.Label03.Size = new System.Drawing.Size(87, 28);
             this.Label03.TabIndex = 24;
@@ -431,7 +451,7 @@
             // 
             this.Label04.AutoSize = true;
             this.Label04.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label04.Location = new System.Drawing.Point(225, 131);
+            this.Label04.Location = new System.Drawing.Point(225, 121);
             this.Label04.Name = "Label04";
             this.Label04.Size = new System.Drawing.Size(68, 28);
             this.Label04.TabIndex = 23;
@@ -441,7 +461,7 @@
             // 
             this.Label05.AutoSize = true;
             this.Label05.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label05.Location = new System.Drawing.Point(225, 165);
+            this.Label05.Location = new System.Drawing.Point(225, 152);
             this.Label05.Name = "Label05";
             this.Label05.Size = new System.Drawing.Size(98, 28);
             this.Label05.TabIndex = 22;
@@ -451,7 +471,7 @@
             // 
             this.Label06.AutoSize = true;
             this.Label06.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label06.Location = new System.Drawing.Point(225, 199);
+            this.Label06.Location = new System.Drawing.Point(225, 184);
             this.Label06.Name = "Label06";
             this.Label06.Size = new System.Drawing.Size(105, 28);
             this.Label06.TabIndex = 21;
@@ -461,7 +481,7 @@
             // 
             this.Label07.AutoSize = true;
             this.Label07.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label07.Location = new System.Drawing.Point(225, 232);
+            this.Label07.Location = new System.Drawing.Point(225, 214);
             this.Label07.Name = "Label07";
             this.Label07.Size = new System.Drawing.Size(112, 28);
             this.Label07.TabIndex = 20;
@@ -471,7 +491,7 @@
             // 
             this.Label08.AutoSize = true;
             this.Label08.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label08.Location = new System.Drawing.Point(225, 267);
+            this.Label08.Location = new System.Drawing.Point(225, 246);
             this.Label08.Name = "Label08";
             this.Label08.Size = new System.Drawing.Size(86, 28);
             this.Label08.TabIndex = 19;
@@ -481,7 +501,7 @@
             // 
             this.Label01.AutoSize = true;
             this.Label01.Font = new System.Drawing.Font("微軟正黑體", 16F, System.Drawing.FontStyle.Bold);
-            this.Label01.Location = new System.Drawing.Point(225, 29);
+            this.Label01.Location = new System.Drawing.Point(225, 27);
             this.Label01.Name = "Label01";
             this.Label01.Size = new System.Drawing.Size(68, 28);
             this.Label01.TabIndex = 18;
@@ -489,9 +509,9 @@
             // 
             // checkServerStatus
             // 
-            this.checkServerStatus.Location = new System.Drawing.Point(546, 138);
+            this.checkServerStatus.Location = new System.Drawing.Point(546, 127);
             this.checkServerStatus.Name = "checkServerStatus";
-            this.checkServerStatus.Size = new System.Drawing.Size(115, 50);
+            this.checkServerStatus.Size = new System.Drawing.Size(115, 46);
             this.checkServerStatus.TabIndex = 17;
             this.checkServerStatus.Text = "一鍵查詢!";
             this.checkServerStatus.UseVisualStyleBackColor = true;
@@ -503,16 +523,16 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(867, 346);
+            this.tabPage7.Size = new System.Drawing.Size(867, 317);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "遊戲字體修改";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // Button22
             // 
-            this.Button22.Location = new System.Drawing.Point(359, 109);
+            this.Button22.Location = new System.Drawing.Point(359, 101);
             this.Button22.Name = "Button22";
-            this.Button22.Size = new System.Drawing.Size(164, 75);
+            this.Button22.Size = new System.Drawing.Size(164, 69);
             this.Button22.TabIndex = 0;
             this.Button22.Text = "對話框文字修改";
             this.Button22.UseVisualStyleBackColor = true;
@@ -528,16 +548,16 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(867, 346);
+            this.tabPage6.Size = new System.Drawing.Size(867, 317);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "UI安裝";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // Button19
             // 
-            this.Button19.Location = new System.Drawing.Point(668, 241);
+            this.Button19.Location = new System.Drawing.Point(668, 222);
             this.Button19.Name = "Button19";
-            this.Button19.Size = new System.Drawing.Size(114, 46);
+            this.Button19.Size = new System.Drawing.Size(114, 42);
             this.Button19.TabIndex = 2;
             this.Button19.Text = "刪除已備份設定檔";
             this.Button19.UseVisualStyleBackColor = true;
@@ -546,9 +566,9 @@
             // Button20
             // 
             this.Button20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Button20.Location = new System.Drawing.Point(668, 56);
+            this.Button20.Location = new System.Drawing.Point(668, 52);
             this.Button20.Name = "Button20";
-            this.Button20.Size = new System.Drawing.Size(114, 46);
+            this.Button20.Size = new System.Drawing.Size(114, 42);
             this.Button20.TabIndex = 0;
             this.Button20.Text = "備份UI";
             this.Button20.UseVisualStyleBackColor = true;
@@ -556,9 +576,9 @@
             // 
             // Button21
             // 
-            this.Button21.Location = new System.Drawing.Point(668, 150);
+            this.Button21.Location = new System.Drawing.Point(668, 138);
             this.Button21.Name = "Button21";
-            this.Button21.Size = new System.Drawing.Size(114, 46);
+            this.Button21.Size = new System.Drawing.Size(114, 42);
             this.Button21.TabIndex = 1;
             this.Button21.Text = "還原UI";
             this.Button21.UseVisualStyleBackColor = true;
@@ -567,18 +587,18 @@
             // GroupBox4
             // 
             this.GroupBox4.Controls.Add(this.button26);
-            this.GroupBox4.Location = new System.Drawing.Point(47, 27);
+            this.GroupBox4.Location = new System.Drawing.Point(47, 25);
             this.GroupBox4.Name = "GroupBox4";
-            this.GroupBox4.Size = new System.Drawing.Size(250, 291);
+            this.GroupBox4.Size = new System.Drawing.Size(250, 269);
             this.GroupBox4.TabIndex = 35;
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "大廳UI";
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(41, 101);
+            this.button26.Location = new System.Drawing.Point(41, 93);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(168, 89);
+            this.button26.Size = new System.Drawing.Size(168, 82);
             this.button26.TabIndex = 0;
             this.button26.Text = "按我進入UI管理...";
             this.button26.UseVisualStyleBackColor = true;
@@ -590,18 +610,18 @@
             this.GroupBox3.Controls.Add(this.Label18);
             this.GroupBox3.Controls.Add(this.Label17);
             this.GroupBox3.Controls.Add(this.chooseHUD);
-            this.GroupBox3.Location = new System.Drawing.Point(346, 27);
+            this.GroupBox3.Location = new System.Drawing.Point(346, 25);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(250, 291);
+            this.GroupBox3.Size = new System.Drawing.Size(250, 269);
             this.GroupBox3.TabIndex = 34;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "遊戲UI";
             // 
             // installHUD
             // 
-            this.installHUD.Location = new System.Drawing.Point(62, 203);
+            this.installHUD.Location = new System.Drawing.Point(62, 187);
             this.installHUD.Name = "installHUD";
-            this.installHUD.Size = new System.Drawing.Size(131, 48);
+            this.installHUD.Size = new System.Drawing.Size(131, 44);
             this.installHUD.TabIndex = 1;
             this.installHUD.Text = "安裝";
             this.installHUD.UseVisualStyleBackColor = true;
@@ -611,7 +631,7 @@
             // 
             this.Label18.AutoSize = true;
             this.Label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Label18.Location = new System.Drawing.Point(59, 158);
+            this.Label18.Location = new System.Drawing.Point(59, 146);
             this.Label18.Name = "Label18";
             this.Label18.Size = new System.Drawing.Size(139, 15);
             this.Label18.TabIndex = 2;
@@ -621,7 +641,7 @@
             // 
             this.Label17.AutoSize = true;
             this.Label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Label17.Location = new System.Drawing.Point(27, 29);
+            this.Label17.Location = new System.Drawing.Point(27, 27);
             this.Label17.Name = "Label17";
             this.Label17.Size = new System.Drawing.Size(200, 15);
             this.Label17.TabIndex = 1;
@@ -629,9 +649,9 @@
             // 
             // chooseHUD
             // 
-            this.chooseHUD.Location = new System.Drawing.Point(62, 72);
+            this.chooseHUD.Location = new System.Drawing.Point(62, 66);
             this.chooseHUD.Name = "chooseHUD";
-            this.chooseHUD.Size = new System.Drawing.Size(131, 48);
+            this.chooseHUD.Size = new System.Drawing.Size(131, 44);
             this.chooseHUD.TabIndex = 0;
             this.chooseHUD.Text = "選擇...";
             this.chooseHUD.UseVisualStyleBackColor = true;
@@ -652,16 +672,16 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(867, 346);
+            this.tabPage5.Size = new System.Drawing.Size(867, 317);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "大廳網頁修改";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(662, 250);
+            this.button31.Location = new System.Drawing.Point(662, 231);
             this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(114, 46);
+            this.button31.Size = new System.Drawing.Size(114, 42);
             this.button31.TabIndex = 42;
             this.button31.Text = "恢復預設首頁";
             this.button31.UseVisualStyleBackColor = true;
@@ -671,7 +691,7 @@
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.Label15.Location = new System.Drawing.Point(74, 33);
+            this.Label15.Location = new System.Drawing.Point(74, 30);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(229, 16);
             this.Label15.TabIndex = 41;
@@ -681,7 +701,7 @@
             // 
             this.LinkLabel3.AutoSize = true;
             this.LinkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.LinkLabel3.Location = new System.Drawing.Point(309, 33);
+            this.LinkLabel3.Location = new System.Drawing.Point(309, 30);
             this.LinkLabel3.Name = "LinkLabel3";
             this.LinkLabel3.Size = new System.Drawing.Size(298, 16);
             this.LinkLabel3.TabIndex = 0;
@@ -691,9 +711,9 @@
             // 
             // Button16
             // 
-            this.Button16.Location = new System.Drawing.Point(662, 180);
+            this.Button16.Location = new System.Drawing.Point(662, 166);
             this.Button16.Name = "Button16";
-            this.Button16.Size = new System.Drawing.Size(114, 46);
+            this.Button16.Size = new System.Drawing.Size(114, 42);
             this.Button16.TabIndex = 5;
             this.Button16.Text = "刪除已備份設定檔";
             this.Button16.UseVisualStyleBackColor = true;
@@ -701,9 +721,9 @@
             // 
             // Button17
             // 
-            this.Button17.Location = new System.Drawing.Point(662, 40);
+            this.Button17.Location = new System.Drawing.Point(662, 37);
             this.Button17.Name = "Button17";
-            this.Button17.Size = new System.Drawing.Size(114, 46);
+            this.Button17.Size = new System.Drawing.Size(114, 42);
             this.Button17.TabIndex = 3;
             this.Button17.Text = "備份設定檔";
             this.Button17.UseVisualStyleBackColor = true;
@@ -711,9 +731,9 @@
             // 
             // Button18
             // 
-            this.Button18.Location = new System.Drawing.Point(662, 109);
+            this.Button18.Location = new System.Drawing.Point(662, 101);
             this.Button18.Name = "Button18";
-            this.Button18.Size = new System.Drawing.Size(114, 46);
+            this.Button18.Size = new System.Drawing.Size(114, 42);
             this.Button18.TabIndex = 4;
             this.Button18.Text = "還原設定檔";
             this.Button18.UseVisualStyleBackColor = true;
@@ -721,9 +741,9 @@
             // 
             // Button15
             // 
-            this.Button15.Location = new System.Drawing.Point(254, 238);
+            this.Button15.Location = new System.Drawing.Point(254, 220);
             this.Button15.Name = "Button15";
-            this.Button15.Size = new System.Drawing.Size(140, 61);
+            this.Button15.Size = new System.Drawing.Size(140, 56);
             this.Button15.TabIndex = 2;
             this.Button15.Text = "修改";
             this.Button15.UseVisualStyleBackColor = true;
@@ -733,7 +753,7 @@
             // 
             this.Label14.AutoSize = true;
             this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Label14.Location = new System.Drawing.Point(205, 193);
+            this.Label14.Location = new System.Drawing.Point(205, 178);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(225, 20);
             this.Label14.TabIndex = 35;
@@ -743,7 +763,7 @@
             // 
             this.Label13.AutoSize = true;
             this.Label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Label13.Location = new System.Drawing.Point(197, 79);
+            this.Label13.Location = new System.Drawing.Point(197, 73);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(241, 20);
             this.Label13.TabIndex = 34;
@@ -751,9 +771,9 @@
             // 
             // websiteIn
             // 
-            this.websiteIn.Location = new System.Drawing.Point(203, 124);
+            this.websiteIn.Location = new System.Drawing.Point(203, 114);
             this.websiteIn.Name = "websiteIn";
-            this.websiteIn.Size = new System.Drawing.Size(235, 20);
+            this.websiteIn.Size = new System.Drawing.Size(235, 22);
             this.websiteIn.TabIndex = 1;
             // 
             // tabPage4
@@ -775,23 +795,23 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(867, 346);
+            this.tabPage4.Size = new System.Drawing.Size(867, 317);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "語音修改";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tbGameSound
             // 
-            this.tbGameSound.Location = new System.Drawing.Point(80, 185);
+            this.tbGameSound.Location = new System.Drawing.Point(80, 171);
             this.tbGameSound.Name = "tbGameSound";
-            this.tbGameSound.Size = new System.Drawing.Size(273, 20);
+            this.tbGameSound.Size = new System.Drawing.Size(273, 22);
             this.tbGameSound.TabIndex = 28;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label26.Location = new System.Drawing.Point(76, 149);
+            this.label26.Location = new System.Drawing.Point(76, 138);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(349, 20);
             this.label26.TabIndex = 27;
@@ -799,9 +819,9 @@
             // 
             // button39
             // 
-            this.button39.Location = new System.Drawing.Point(359, 181);
+            this.button39.Location = new System.Drawing.Point(359, 167);
             this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(61, 28);
+            this.button39.Size = new System.Drawing.Size(61, 26);
             this.button39.TabIndex = 26;
             this.button39.Text = "瀏覽...";
             this.button39.UseVisualStyleBackColor = true;
@@ -811,7 +831,7 @@
             // 
             this.Label12.AutoSize = true;
             this.Label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Label12.Location = new System.Drawing.Point(78, 10);
+            this.Label12.Location = new System.Drawing.Point(78, 9);
             this.Label12.Name = "Label12";
             this.Label12.Size = new System.Drawing.Size(85, 20);
             this.Label12.TabIndex = 25;
@@ -821,7 +841,7 @@
             // 
             this.LinkLabel2.AutoSize = true;
             this.LinkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LinkLabel2.Location = new System.Drawing.Point(78, 30);
+            this.LinkLabel2.Location = new System.Drawing.Point(78, 28);
             this.LinkLabel2.Name = "LinkLabel2";
             this.LinkLabel2.Size = new System.Drawing.Size(491, 20);
             this.LinkLabel2.TabIndex = 0;
@@ -831,9 +851,9 @@
             // 
             // Button14
             // 
-            this.Button14.Location = new System.Drawing.Point(620, 244);
+            this.Button14.Location = new System.Drawing.Point(620, 225);
             this.Button14.Name = "Button14";
-            this.Button14.Size = new System.Drawing.Size(162, 56);
+            this.Button14.Size = new System.Drawing.Size(162, 52);
             this.Button14.TabIndex = 6;
             this.Button14.Text = "刪除備份";
             this.Button14.UseVisualStyleBackColor = true;
@@ -841,9 +861,9 @@
             // 
             // Button13
             // 
-            this.Button13.Location = new System.Drawing.Point(620, 153);
+            this.Button13.Location = new System.Drawing.Point(620, 141);
             this.Button13.Name = "Button13";
-            this.Button13.Size = new System.Drawing.Size(162, 56);
+            this.Button13.Size = new System.Drawing.Size(162, 52);
             this.Button13.TabIndex = 5;
             this.Button13.Text = "還原";
             this.Button13.UseVisualStyleBackColor = true;
@@ -851,9 +871,9 @@
             // 
             // Button12
             // 
-            this.Button12.Location = new System.Drawing.Point(620, 59);
+            this.Button12.Location = new System.Drawing.Point(620, 54);
             this.Button12.Name = "Button12";
-            this.Button12.Size = new System.Drawing.Size(162, 56);
+            this.Button12.Size = new System.Drawing.Size(162, 52);
             this.Button12.TabIndex = 4;
             this.Button12.Text = "備份";
             this.Button12.UseVisualStyleBackColor = true;
@@ -861,9 +881,9 @@
             // 
             // Button11
             // 
-            this.Button11.Location = new System.Drawing.Point(265, 271);
+            this.Button11.Location = new System.Drawing.Point(265, 250);
             this.Button11.Name = "Button11";
-            this.Button11.Size = new System.Drawing.Size(155, 56);
+            this.Button11.Size = new System.Drawing.Size(155, 52);
             this.Button11.TabIndex = 3;
             this.Button11.Text = "安裝(遊戲)";
             this.Button11.UseVisualStyleBackColor = true;
@@ -871,9 +891,9 @@
             // 
             // installSound
             // 
-            this.installSound.Location = new System.Drawing.Point(82, 271);
+            this.installSound.Location = new System.Drawing.Point(82, 250);
             this.installSound.Name = "installSound";
-            this.installSound.Size = new System.Drawing.Size(155, 56);
+            this.installSound.Size = new System.Drawing.Size(155, 52);
             this.installSound.TabIndex = 2;
             this.installSound.Text = "安裝(大廳)";
             this.installSound.UseVisualStyleBackColor = true;
@@ -883,7 +903,7 @@
             // 
             this.Label11.AutoSize = true;
             this.Label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Label11.Location = new System.Drawing.Point(78, 228);
+            this.Label11.Location = new System.Drawing.Point(78, 210);
             this.Label11.Name = "Label11";
             this.Label11.Size = new System.Drawing.Size(193, 20);
             this.Label11.TabIndex = 16;
@@ -891,16 +911,16 @@
             // 
             // tbLobbySound
             // 
-            this.tbLobbySound.Location = new System.Drawing.Point(80, 102);
+            this.tbLobbySound.Location = new System.Drawing.Point(80, 94);
             this.tbLobbySound.Name = "tbLobbySound";
-            this.tbLobbySound.Size = new System.Drawing.Size(273, 20);
+            this.tbLobbySound.Size = new System.Drawing.Size(273, 22);
             this.tbLobbySound.TabIndex = 15;
             // 
             // Label10
             // 
             this.Label10.AutoSize = true;
             this.Label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Label10.Location = new System.Drawing.Point(76, 66);
+            this.Label10.Location = new System.Drawing.Point(76, 61);
             this.Label10.Name = "Label10";
             this.Label10.Size = new System.Drawing.Size(246, 20);
             this.Label10.TabIndex = 14;
@@ -908,9 +928,9 @@
             // 
             // Button10
             // 
-            this.Button10.Location = new System.Drawing.Point(359, 98);
+            this.Button10.Location = new System.Drawing.Point(359, 90);
             this.Button10.Name = "Button10";
-            this.Button10.Size = new System.Drawing.Size(61, 28);
+            this.Button10.Size = new System.Drawing.Size(61, 26);
             this.Button10.TabIndex = 1;
             this.Button10.Text = "瀏覽...";
             this.Button10.UseVisualStyleBackColor = true;
@@ -928,7 +948,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(867, 346);
+            this.tabPage3.Size = new System.Drawing.Size(867, 317);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "語言切換";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -936,9 +956,9 @@
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(670, 260);
+            this.button32.Location = new System.Drawing.Point(670, 240);
             this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(114, 46);
+            this.button32.Size = new System.Drawing.Size(114, 42);
             this.button32.TabIndex = 32;
             this.button32.Text = "檢查語言檔更新";
             this.button32.UseVisualStyleBackColor = true;
@@ -946,9 +966,9 @@
             // 
             // delLangBak
             // 
-            this.delLangBak.Location = new System.Drawing.Point(670, 191);
+            this.delLangBak.Location = new System.Drawing.Point(670, 176);
             this.delLangBak.Name = "delLangBak";
-            this.delLangBak.Size = new System.Drawing.Size(114, 46);
+            this.delLangBak.Size = new System.Drawing.Size(114, 42);
             this.delLangBak.TabIndex = 2;
             this.delLangBak.Text = "刪除已備份語言檔";
             this.delLangBak.UseVisualStyleBackColor = true;
@@ -959,9 +979,9 @@
             this.GroupBox2.Controls.Add(this.gKR);
             this.GroupBox2.Controls.Add(this.gEng);
             this.GroupBox2.Controls.Add(this.gChin);
-            this.GroupBox2.Location = new System.Drawing.Point(340, 51);
+            this.GroupBox2.Location = new System.Drawing.Point(340, 47);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(235, 264);
+            this.GroupBox2.Size = new System.Drawing.Size(235, 244);
             this.GroupBox2.TabIndex = 31;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "遊戲";
@@ -969,9 +989,9 @@
             // gKR
             // 
             this.gKR.Enabled = false;
-            this.gKR.Location = new System.Drawing.Point(61, 191);
+            this.gKR.Location = new System.Drawing.Point(61, 176);
             this.gKR.Name = "gKR";
-            this.gKR.Size = new System.Drawing.Size(114, 46);
+            this.gKR.Size = new System.Drawing.Size(114, 42);
             this.gKR.TabIndex = 2;
             this.gKR.Text = "韓文";
             this.gKR.UseVisualStyleBackColor = true;
@@ -979,9 +999,9 @@
             // 
             // gEng
             // 
-            this.gEng.Location = new System.Drawing.Point(61, 111);
+            this.gEng.Location = new System.Drawing.Point(61, 102);
             this.gEng.Name = "gEng";
-            this.gEng.Size = new System.Drawing.Size(114, 46);
+            this.gEng.Size = new System.Drawing.Size(114, 42);
             this.gEng.TabIndex = 1;
             this.gEng.Text = "英文";
             this.gEng.UseVisualStyleBackColor = true;
@@ -989,9 +1009,9 @@
             // 
             // gChin
             // 
-            this.gChin.Location = new System.Drawing.Point(61, 33);
+            this.gChin.Location = new System.Drawing.Point(61, 30);
             this.gChin.Name = "gChin";
-            this.gChin.Size = new System.Drawing.Size(114, 46);
+            this.gChin.Size = new System.Drawing.Size(114, 42);
             this.gChin.TabIndex = 0;
             this.gChin.Text = "中文";
             this.gChin.UseVisualStyleBackColor = true;
@@ -1002,9 +1022,9 @@
             this.GroupBox1.Controls.Add(this.lKR);
             this.GroupBox1.Controls.Add(this.lEng);
             this.GroupBox1.Controls.Add(this.lChin);
-            this.GroupBox1.Location = new System.Drawing.Point(61, 51);
+            this.GroupBox1.Location = new System.Drawing.Point(61, 47);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(235, 264);
+            this.GroupBox1.Size = new System.Drawing.Size(235, 244);
             this.GroupBox1.TabIndex = 30;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "大廳";
@@ -1012,9 +1032,9 @@
             // lKR
             // 
             this.lKR.Enabled = false;
-            this.lKR.Location = new System.Drawing.Point(59, 191);
+            this.lKR.Location = new System.Drawing.Point(59, 176);
             this.lKR.Name = "lKR";
-            this.lKR.Size = new System.Drawing.Size(114, 46);
+            this.lKR.Size = new System.Drawing.Size(114, 42);
             this.lKR.TabIndex = 2;
             this.lKR.Text = "韓文";
             this.lKR.UseVisualStyleBackColor = true;
@@ -1022,9 +1042,9 @@
             // 
             // lEng
             // 
-            this.lEng.Location = new System.Drawing.Point(59, 111);
+            this.lEng.Location = new System.Drawing.Point(59, 102);
             this.lEng.Name = "lEng";
-            this.lEng.Size = new System.Drawing.Size(114, 46);
+            this.lEng.Size = new System.Drawing.Size(114, 42);
             this.lEng.TabIndex = 1;
             this.lEng.Text = "英文";
             this.lEng.UseVisualStyleBackColor = true;
@@ -1032,9 +1052,9 @@
             // 
             // lChin
             // 
-            this.lChin.Location = new System.Drawing.Point(59, 33);
+            this.lChin.Location = new System.Drawing.Point(59, 30);
             this.lChin.Name = "lChin";
-            this.lChin.Size = new System.Drawing.Size(114, 46);
+            this.lChin.Size = new System.Drawing.Size(114, 42);
             this.lChin.TabIndex = 0;
             this.lChin.Text = "中文";
             this.lChin.UseVisualStyleBackColor = true;
@@ -1042,9 +1062,9 @@
             // 
             // BakLang
             // 
-            this.BakLang.Location = new System.Drawing.Point(670, 40);
+            this.BakLang.Location = new System.Drawing.Point(670, 37);
             this.BakLang.Name = "BakLang";
-            this.BakLang.Size = new System.Drawing.Size(114, 46);
+            this.BakLang.Size = new System.Drawing.Size(114, 42);
             this.BakLang.TabIndex = 0;
             this.BakLang.Text = "備份語言檔";
             this.BakLang.UseVisualStyleBackColor = true;
@@ -1052,9 +1072,9 @@
             // 
             // ResLang
             // 
-            this.ResLang.Location = new System.Drawing.Point(670, 114);
+            this.ResLang.Location = new System.Drawing.Point(670, 105);
             this.ResLang.Name = "ResLang";
-            this.ResLang.Size = new System.Drawing.Size(114, 46);
+            this.ResLang.Size = new System.Drawing.Size(114, 42);
             this.ResLang.TabIndex = 1;
             this.ResLang.Text = "還原語言檔";
             this.ResLang.UseVisualStyleBackColor = true;
@@ -1064,7 +1084,7 @@
             // 
             this.Label9.AutoSize = true;
             this.Label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label9.Location = new System.Drawing.Point(42, 18);
+            this.Label9.Location = new System.Drawing.Point(42, 17);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(162, 21);
             this.Label9.TabIndex = 29;
@@ -1088,16 +1108,16 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(867, 346);
+            this.tabPage2.Size = new System.Drawing.Size(867, 317);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "伺服器切換";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // delBakProp
             // 
-            this.delBakProp.Location = new System.Drawing.Point(661, 249);
+            this.delBakProp.Location = new System.Drawing.Point(661, 230);
             this.delBakProp.Name = "delBakProp";
-            this.delBakProp.Size = new System.Drawing.Size(114, 46);
+            this.delBakProp.Size = new System.Drawing.Size(114, 42);
             this.delBakProp.TabIndex = 11;
             this.delBakProp.Text = "刪除已備份設定檔";
             this.delBakProp.UseVisualStyleBackColor = true;
@@ -1105,9 +1125,9 @@
             // 
             // backProp
             // 
-            this.backProp.Location = new System.Drawing.Point(661, 64);
+            this.backProp.Location = new System.Drawing.Point(661, 59);
             this.backProp.Name = "backProp";
-            this.backProp.Size = new System.Drawing.Size(114, 46);
+            this.backProp.Size = new System.Drawing.Size(114, 42);
             this.backProp.TabIndex = 9;
             this.backProp.Text = "備份設定檔";
             this.backProp.UseVisualStyleBackColor = true;
@@ -1115,9 +1135,9 @@
             // 
             // restoneProp
             // 
-            this.restoneProp.Location = new System.Drawing.Point(661, 157);
+            this.restoneProp.Location = new System.Drawing.Point(661, 145);
             this.restoneProp.Name = "restoneProp";
-            this.restoneProp.Size = new System.Drawing.Size(114, 46);
+            this.restoneProp.Size = new System.Drawing.Size(114, 42);
             this.restoneProp.TabIndex = 10;
             this.restoneProp.Text = "還原設定檔";
             this.restoneProp.UseVisualStyleBackColor = true;
@@ -1126,18 +1146,18 @@
             // Button9
             // 
             this.Button9.Enabled = false;
-            this.Button9.Location = new System.Drawing.Point(413, 249);
+            this.Button9.Location = new System.Drawing.Point(413, 230);
             this.Button9.Name = "Button9";
-            this.Button9.Size = new System.Drawing.Size(114, 46);
+            this.Button9.Size = new System.Drawing.Size(114, 42);
             this.Button9.TabIndex = 8;
             this.Button9.Text = "陸服";
             this.Button9.UseVisualStyleBackColor = true;
             // 
             // Button8
             // 
-            this.Button8.Location = new System.Drawing.Point(69, 157);
+            this.Button8.Location = new System.Drawing.Point(69, 145);
             this.Button8.Name = "Button8";
-            this.Button8.Size = new System.Drawing.Size(114, 46);
+            this.Button8.Size = new System.Drawing.Size(114, 42);
             this.Button8.TabIndex = 3;
             this.Button8.Text = "美服";
             this.Button8.UseVisualStyleBackColor = true;
@@ -1145,9 +1165,9 @@
             // 
             // Button7
             // 
-            this.Button7.Location = new System.Drawing.Point(69, 249);
+            this.Button7.Location = new System.Drawing.Point(69, 230);
             this.Button7.Name = "Button7";
-            this.Button7.Size = new System.Drawing.Size(114, 46);
+            this.Button7.Size = new System.Drawing.Size(114, 42);
             this.Button7.TabIndex = 6;
             this.Button7.Text = "韓服";
             this.Button7.UseVisualStyleBackColor = true;
@@ -1155,9 +1175,9 @@
             // 
             // Button6
             // 
-            this.Button6.Location = new System.Drawing.Point(238, 64);
+            this.Button6.Location = new System.Drawing.Point(238, 59);
             this.Button6.Name = "Button6";
-            this.Button6.Size = new System.Drawing.Size(114, 46);
+            this.Button6.Size = new System.Drawing.Size(114, 42);
             this.Button6.TabIndex = 1;
             this.Button6.Text = "SEA服";
             this.Button6.UseVisualStyleBackColor = true;
@@ -1166,9 +1186,9 @@
             // Button5
             // 
             this.Button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Button5.Location = new System.Drawing.Point(238, 157);
+            this.Button5.Location = new System.Drawing.Point(238, 145);
             this.Button5.Name = "Button5";
-            this.Button5.Size = new System.Drawing.Size(114, 46);
+            this.Button5.Size = new System.Drawing.Size(114, 42);
             this.Button5.TabIndex = 4;
             this.Button5.Text = "EUW服";
             this.Button5.UseVisualStyleBackColor = true;
@@ -1176,9 +1196,9 @@
             // 
             // Button4
             // 
-            this.Button4.Location = new System.Drawing.Point(238, 249);
+            this.Button4.Location = new System.Drawing.Point(238, 230);
             this.Button4.Name = "Button4";
-            this.Button4.Size = new System.Drawing.Size(114, 46);
+            this.Button4.Size = new System.Drawing.Size(114, 42);
             this.Button4.TabIndex = 7;
             this.Button4.Text = "EUNE服";
             this.Button4.UseVisualStyleBackColor = true;
@@ -1186,9 +1206,9 @@
             // 
             // Button3
             // 
-            this.Button3.Location = new System.Drawing.Point(413, 64);
+            this.Button3.Location = new System.Drawing.Point(413, 59);
             this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(114, 46);
+            this.Button3.Size = new System.Drawing.Size(114, 42);
             this.Button3.TabIndex = 2;
             this.Button3.Text = "大洋洲服";
             this.Button3.UseVisualStyleBackColor = true;
@@ -1196,9 +1216,9 @@
             // 
             // Button2
             // 
-            this.Button2.Location = new System.Drawing.Point(413, 157);
+            this.Button2.Location = new System.Drawing.Point(413, 145);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(114, 46);
+            this.Button2.Size = new System.Drawing.Size(114, 42);
             this.Button2.TabIndex = 5;
             this.Button2.Text = "PBE服";
             this.Button2.UseVisualStyleBackColor = true;
@@ -1206,9 +1226,9 @@
             // 
             // Button1
             // 
-            this.Button1.Location = new System.Drawing.Point(69, 64);
+            this.Button1.Location = new System.Drawing.Point(69, 59);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(114, 46);
+            this.Button1.Size = new System.Drawing.Size(114, 42);
             this.Button1.TabIndex = 0;
             this.Button1.Text = "台服";
             this.Button1.UseVisualStyleBackColor = true;
@@ -1218,7 +1238,7 @@
             // 
             this.Label7.AutoSize = true;
             this.Label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label7.Location = new System.Drawing.Point(65, 24);
+            this.Label7.Location = new System.Drawing.Point(65, 22);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(178, 21);
             this.Label7.TabIndex = 28;
@@ -1242,7 +1262,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(867, 346);
+            this.tabPage1.Size = new System.Drawing.Size(867, 317);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "資訊主頁";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1250,9 +1270,9 @@
             // LinkLabel1
             // 
             this.LinkLabel1.AutoSize = true;
-            this.LinkLabel1.Location = new System.Drawing.Point(386, 107);
+            this.LinkLabel1.Location = new System.Drawing.Point(386, 99);
             this.LinkLabel1.Name = "LinkLabel1";
-            this.LinkLabel1.Size = new System.Drawing.Size(115, 13);
+            this.LinkLabel1.Size = new System.Drawing.Size(109, 12);
             this.LinkLabel1.TabIndex = 27;
             this.LinkLabel1.TabStop = true;
             this.LinkLabel1.Text = "http://nitroxenon.com/";
@@ -1262,9 +1282,9 @@
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
             this.PictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("PictureBox1.InitialImage")));
-            this.PictureBox1.Location = new System.Drawing.Point(235, 14);
+            this.PictureBox1.Location = new System.Drawing.Point(235, 13);
             this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(414, 77);
+            this.PictureBox1.Size = new System.Drawing.Size(414, 71);
             this.PictureBox1.TabIndex = 15;
             this.PictureBox1.TabStop = false;
             // 
@@ -1272,7 +1292,7 @@
             // 
             this.serverLocation.AutoSize = true;
             this.serverLocation.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.serverLocation.Location = new System.Drawing.Point(221, 306);
+            this.serverLocation.Location = new System.Drawing.Point(221, 282);
             this.serverLocation.Name = "serverLocation";
             this.serverLocation.Size = new System.Drawing.Size(60, 21);
             this.serverLocation.TabIndex = 26;
@@ -1282,7 +1302,7 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label1.Location = new System.Drawing.Point(83, 181);
+            this.Label1.Location = new System.Drawing.Point(83, 167);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(98, 21);
             this.Label1.TabIndex = 16;
@@ -1292,7 +1312,7 @@
             // 
             this.Label8.AutoSize = true;
             this.Label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label8.Location = new System.Drawing.Point(83, 306);
+            this.Label8.Location = new System.Drawing.Point(83, 282);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(98, 21);
             this.Label8.TabIndex = 25;
@@ -1302,7 +1322,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label2.Location = new System.Drawing.Point(83, 140);
+            this.Label2.Location = new System.Drawing.Point(83, 129);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(108, 21);
             this.Label2.TabIndex = 17;
@@ -1312,7 +1332,7 @@
             // 
             this.Label6.AutoSize = true;
             this.Label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label6.Location = new System.Drawing.Point(221, 181);
+            this.Label6.Location = new System.Drawing.Point(221, 167);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(42, 21);
             this.Label6.TabIndex = 24;
@@ -1322,7 +1342,7 @@
             // 
             this.PathLabel.AutoSize = true;
             this.PathLabel.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.PathLabel.Location = new System.Drawing.Point(221, 140);
+            this.PathLabel.Location = new System.Drawing.Point(221, 129);
             this.PathLabel.Name = "PathLabel";
             this.PathLabel.Size = new System.Drawing.Size(60, 21);
             this.PathLabel.TabIndex = 18;
@@ -1332,7 +1352,7 @@
             // 
             this.LoLVersionLabel.AutoSize = true;
             this.LoLVersionLabel.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.LoLVersionLabel.Location = new System.Drawing.Point(221, 263);
+            this.LoLVersionLabel.Location = new System.Drawing.Point(221, 243);
             this.LoLVersionLabel.Name = "LoLVersionLabel";
             this.LoLVersionLabel.Size = new System.Drawing.Size(60, 21);
             this.LoLVersionLabel.TabIndex = 23;
@@ -1341,9 +1361,9 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(370, 94);
+            this.Label3.Location = new System.Drawing.Point(370, 87);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(155, 13);
+            this.Label3.Size = new System.Drawing.Size(154, 12);
             this.Label3.TabIndex = 19;
             this.Label3.Text = "作者: NitroXenon @ 巴哈姆特\r\n";
             // 
@@ -1351,7 +1371,7 @@
             // 
             this.Label5.AutoSize = true;
             this.Label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label5.Location = new System.Drawing.Point(83, 263);
+            this.Label5.Location = new System.Drawing.Point(83, 243);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(80, 21);
             this.Label5.TabIndex = 22;
@@ -1361,7 +1381,7 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.Label4.Location = new System.Drawing.Point(83, 221);
+            this.Label4.Location = new System.Drawing.Point(83, 204);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(132, 21);
             this.Label4.TabIndex = 20;
@@ -1371,7 +1391,7 @@
             // 
             this.toolsVersion.AutoSize = true;
             this.toolsVersion.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.toolsVersion.Location = new System.Drawing.Point(221, 220);
+            this.toolsVersion.Location = new System.Drawing.Point(221, 203);
             this.toolsVersion.Name = "toolsVersion";
             this.toolsVersion.Size = new System.Drawing.Size(60, 21);
             this.toolsVersion.TabIndex = 21;
@@ -1387,6 +1407,7 @@
             this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage10);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage8);
@@ -1394,7 +1415,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(875, 372);
+            this.tabControl1.Size = new System.Drawing.Size(875, 343);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage12
@@ -1414,7 +1435,7 @@
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage12.Size = new System.Drawing.Size(867, 346);
+            this.tabPage12.Size = new System.Drawing.Size(867, 317);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "大廳主題安裝";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -1424,7 +1445,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(143, 128);
+            this.label25.Location = new System.Drawing.Point(143, 118);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(472, 17);
             this.label25.TabIndex = 18;
@@ -1435,7 +1456,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(207, 82);
+            this.label24.Location = new System.Drawing.Point(207, 76);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(326, 21);
             this.label24.TabIndex = 17;
@@ -1445,7 +1466,7 @@
             // 
             this.linkLabel5.AutoSize = true;
             this.linkLabel5.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel5.Location = new System.Drawing.Point(419, 35);
+            this.linkLabel5.Location = new System.Drawing.Point(419, 32);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(54, 26);
             this.linkLabel5.TabIndex = 16;
@@ -1457,7 +1478,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(260, 35);
+            this.label23.Location = new System.Drawing.Point(260, 32);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(153, 26);
             this.label23.TabIndex = 15;
@@ -1467,7 +1488,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(88, 174);
+            this.label22.Location = new System.Drawing.Point(88, 161);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(134, 21);
             this.label22.TabIndex = 14;
@@ -1475,9 +1496,9 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(499, 171);
+            this.button38.Location = new System.Drawing.Point(499, 158);
             this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(62, 23);
+            this.button38.Size = new System.Drawing.Size(62, 21);
             this.button38.TabIndex = 0;
             this.button38.Text = "瀏覽";
             this.button38.UseVisualStyleBackColor = true;
@@ -1485,16 +1506,16 @@
             // 
             // txtZipPath
             // 
-            this.txtZipPath.Location = new System.Drawing.Point(237, 174);
+            this.txtZipPath.Location = new System.Drawing.Point(237, 161);
             this.txtZipPath.Name = "txtZipPath";
-            this.txtZipPath.Size = new System.Drawing.Size(246, 20);
+            this.txtZipPath.Size = new System.Drawing.Size(246, 22);
             this.txtZipPath.TabIndex = 12;
             // 
             // button37
             // 
-            this.button37.Location = new System.Drawing.Point(308, 254);
+            this.button37.Location = new System.Drawing.Point(308, 234);
             this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(121, 54);
+            this.button37.Size = new System.Drawing.Size(121, 50);
             this.button37.TabIndex = 1;
             this.button37.Text = "一鍵安裝";
             this.button37.UseVisualStyleBackColor = true;
@@ -1502,9 +1523,9 @@
             // 
             // button36
             // 
-            this.button36.Location = new System.Drawing.Point(652, 257);
+            this.button36.Location = new System.Drawing.Point(652, 237);
             this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(118, 51);
+            this.button36.Size = new System.Drawing.Size(118, 47);
             this.button36.TabIndex = 5;
             this.button36.Text = "修復好友不見問題";
             this.button36.UseVisualStyleBackColor = true;
@@ -1512,9 +1533,9 @@
             // 
             // button33
             // 
-            this.button33.Location = new System.Drawing.Point(652, 185);
+            this.button33.Location = new System.Drawing.Point(652, 171);
             this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(118, 51);
+            this.button33.Size = new System.Drawing.Size(118, 47);
             this.button33.TabIndex = 4;
             this.button33.Text = "刪除備份";
             this.button33.UseVisualStyleBackColor = true;
@@ -1522,9 +1543,9 @@
             // 
             // button34
             // 
-            this.button34.Location = new System.Drawing.Point(652, 111);
+            this.button34.Location = new System.Drawing.Point(652, 102);
             this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(118, 51);
+            this.button34.Size = new System.Drawing.Size(118, 47);
             this.button34.TabIndex = 3;
             this.button34.Text = "還原";
             this.button34.UseVisualStyleBackColor = true;
@@ -1532,9 +1553,9 @@
             // 
             // button35
             // 
-            this.button35.Location = new System.Drawing.Point(652, 35);
+            this.button35.Location = new System.Drawing.Point(652, 32);
             this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(118, 51);
+            this.button35.Size = new System.Drawing.Size(118, 47);
             this.button35.TabIndex = 2;
             this.button35.Text = "備份";
             this.button35.UseVisualStyleBackColor = true;
@@ -1555,7 +1576,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(867, 346);
+            this.tabPage10.Size = new System.Drawing.Size(867, 317);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "SKIN安裝";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1564,7 +1585,7 @@
             // 
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.linkLabel4.Location = new System.Drawing.Point(263, 20);
+            this.linkLabel4.Location = new System.Drawing.Point(263, 18);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(151, 17);
             this.linkLabel4.TabIndex = 10;
@@ -1576,7 +1597,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label20.Location = new System.Drawing.Point(80, 20);
+            this.label20.Location = new System.Drawing.Point(80, 18);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(187, 17);
             this.label20.TabIndex = 9;
@@ -1585,18 +1606,18 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(80, 59);
+            this.label19.Location = new System.Drawing.Point(80, 54);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(71, 13);
+            this.label19.Size = new System.Drawing.Size(70, 12);
             this.label19.TabIndex = 8;
             this.label19.Text = "已安裝SKIN:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(339, 59);
+            this.label16.Location = new System.Drawing.Point(339, 54);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 13);
+            this.label16.Size = new System.Drawing.Size(94, 12);
             this.label16.TabIndex = 7;
             this.label16.Text = "預備安裝的SKIN:";
             // 
@@ -1604,16 +1625,17 @@
             // 
             this.installedSkin.FormattingEnabled = true;
             this.installedSkin.HorizontalScrollbar = true;
-            this.installedSkin.Location = new System.Drawing.Point(83, 78);
+            this.installedSkin.ItemHeight = 12;
+            this.installedSkin.Location = new System.Drawing.Point(83, 72);
             this.installedSkin.Name = "installedSkin";
-            this.installedSkin.Size = new System.Drawing.Size(200, 238);
+            this.installedSkin.Size = new System.Drawing.Size(200, 220);
             this.installedSkin.TabIndex = 0;
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(628, 264);
+            this.button30.Location = new System.Drawing.Point(628, 244);
             this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(141, 65);
+            this.button30.Size = new System.Drawing.Size(141, 60);
             this.button30.TabIndex = 5;
             this.button30.Text = "刪除SKIN";
             this.button30.UseVisualStyleBackColor = true;
@@ -1621,9 +1643,9 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(628, 100);
+            this.button29.Location = new System.Drawing.Point(628, 92);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(141, 65);
+            this.button29.Size = new System.Drawing.Size(141, 60);
             this.button29.TabIndex = 3;
             this.button29.Text = "從預備安裝清單中移除SKIN";
             this.button29.UseVisualStyleBackColor = true;
@@ -1631,9 +1653,9 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(628, 20);
+            this.button28.Location = new System.Drawing.Point(628, 18);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(141, 65);
+            this.button28.Size = new System.Drawing.Size(141, 60);
             this.button28.TabIndex = 2;
             this.button28.Text = "加入SKIN";
             this.button28.UseVisualStyleBackColor = true;
@@ -1643,16 +1665,17 @@
             // 
             this.skinPathBox.FormattingEnabled = true;
             this.skinPathBox.HorizontalScrollbar = true;
-            this.skinPathBox.Location = new System.Drawing.Point(342, 78);
+            this.skinPathBox.ItemHeight = 12;
+            this.skinPathBox.Location = new System.Drawing.Point(342, 72);
             this.skinPathBox.Name = "skinPathBox";
-            this.skinPathBox.Size = new System.Drawing.Size(200, 238);
+            this.skinPathBox.Size = new System.Drawing.Size(200, 220);
             this.skinPathBox.TabIndex = 1;
             // 
             // button27
             // 
-            this.button27.Location = new System.Drawing.Point(628, 184);
+            this.button27.Location = new System.Drawing.Point(628, 170);
             this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(141, 65);
+            this.button27.Size = new System.Drawing.Size(141, 60);
             this.button27.TabIndex = 4;
             this.button27.Text = "安裝SKIN";
             this.button27.UseVisualStyleBackColor = true;
@@ -1662,7 +1685,7 @@
             // 
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(867, 346);
+            this.tabPage11.Size = new System.Drawing.Size(867, 317);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Text = "觀戰工具";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -1678,11 +1701,190 @@
             this.skinSelector.Filter = "ZIP壓縮檔|*.zip|RAR壓縮檔|*.rar|7z壓縮檔|*.7z";
             this.skinSelector.Title = "請選擇SKIN檔案";
             // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.button44);
+            this.tabPage13.Controls.Add(this.btnCursorDelete);
+            this.tabPage13.Controls.Add(this.btnCursorRestore);
+            this.tabPage13.Controls.Add(this.btnCursorBackup);
+            this.tabPage13.Controls.Add(this.button43);
+            this.tabPage13.Controls.Add(this.button42);
+            this.tabPage13.Controls.Add(this.label29);
+            this.tabPage13.Controls.Add(this.button41);
+            this.tabPage13.Controls.Add(this.button40);
+            this.tabPage13.Controls.Add(this.label28);
+            this.tabPage13.Controls.Add(this.tbCursor2Path);
+            this.tabPage13.Controls.Add(this.btnCurrentCursors);
+            this.tabPage13.Controls.Add(this.pBoxCursor2);
+            this.tabPage13.Controls.Add(this.pBoxCursor1);
+            this.tabPage13.Controls.Add(this.label27);
+            this.tabPage13.Controls.Add(this.tbCursor1Path);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(867, 317);
+            this.tabPage13.TabIndex = 12;
+            this.tabPage13.Text = "鼠標修改";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // tbCursor1Path
+            // 
+            this.tbCursor1Path.Location = new System.Drawing.Point(47, 84);
+            this.tbCursor1Path.Name = "tbCursor1Path";
+            this.tbCursor1Path.Size = new System.Drawing.Size(207, 22);
+            this.tbCursor1Path.TabIndex = 0;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label27.Location = new System.Drawing.Point(43, 43);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(112, 24);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "鼠標 1 路徑:";
+            // 
+            // pBoxCursor1
+            // 
+            this.pBoxCursor1.Location = new System.Drawing.Point(373, 67);
+            this.pBoxCursor1.Name = "pBoxCursor1";
+            this.pBoxCursor1.Size = new System.Drawing.Size(68, 62);
+            this.pBoxCursor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBoxCursor1.TabIndex = 2;
+            this.pBoxCursor1.TabStop = false;
+            // 
+            // pBoxCursor2
+            // 
+            this.pBoxCursor2.Location = new System.Drawing.Point(373, 216);
+            this.pBoxCursor2.Name = "pBoxCursor2";
+            this.pBoxCursor2.Size = new System.Drawing.Size(68, 62);
+            this.pBoxCursor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBoxCursor2.TabIndex = 3;
+            this.pBoxCursor2.TabStop = false;
+            // 
+            // btnCurrentCursors
+            // 
+            this.btnCurrentCursors.Location = new System.Drawing.Point(497, 42);
+            this.btnCurrentCursors.Name = "btnCurrentCursors";
+            this.btnCurrentCursors.Size = new System.Drawing.Size(145, 53);
+            this.btnCurrentCursors.TabIndex = 4;
+            this.btnCurrentCursors.Text = "載入目前使用的鼠標";
+            this.btnCurrentCursors.UseVisualStyleBackColor = true;
+            this.btnCurrentCursors.Click += new System.EventHandler(this.btnCurrentCursors_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label28.Location = new System.Drawing.Point(45, 191);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(107, 24);
+            this.label28.TabIndex = 6;
+            this.label28.Text = "鼠標 2 路徑";
+            // 
+            // tbCursor2Path
+            // 
+            this.tbCursor2Path.Location = new System.Drawing.Point(49, 232);
+            this.tbCursor2Path.Name = "tbCursor2Path";
+            this.tbCursor2Path.Size = new System.Drawing.Size(207, 22);
+            this.tbCursor2Path.TabIndex = 5;
+            // 
+            // button40
+            // 
+            this.button40.Location = new System.Drawing.Point(269, 82);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(62, 23);
+            this.button40.TabIndex = 7;
+            this.button40.Text = "瀏覽";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // button41
+            // 
+            this.button41.Location = new System.Drawing.Point(271, 232);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(62, 23);
+            this.button41.TabIndex = 8;
+            this.button41.Text = "瀏覽";
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(373, 29);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(35, 12);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "預覽 :";
+            // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(497, 133);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(145, 53);
+            this.button42.TabIndex = 10;
+            this.button42.Text = "預覽已選擇的鼠標";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
+            // button43
+            // 
+            this.button43.Location = new System.Drawing.Point(497, 225);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(145, 53);
+            this.button43.TabIndex = 11;
+            this.button43.Text = "儲存鼠標";
+            this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
+            // btnCursorDelete
+            // 
+            this.btnCursorDelete.Location = new System.Drawing.Point(683, 170);
+            this.btnCursorDelete.Name = "btnCursorDelete";
+            this.btnCursorDelete.Size = new System.Drawing.Size(145, 47);
+            this.btnCursorDelete.TabIndex = 14;
+            this.btnCursorDelete.Text = "刪除鼠標備份";
+            this.btnCursorDelete.UseVisualStyleBackColor = true;
+            this.btnCursorDelete.Click += new System.EventHandler(this.btnCursorDelete_Click);
+            // 
+            // btnCursorRestore
+            // 
+            this.btnCursorRestore.Location = new System.Drawing.Point(683, 100);
+            this.btnCursorRestore.Name = "btnCursorRestore";
+            this.btnCursorRestore.Size = new System.Drawing.Size(145, 47);
+            this.btnCursorRestore.TabIndex = 13;
+            this.btnCursorRestore.Text = "還原鼠標";
+            this.btnCursorRestore.UseVisualStyleBackColor = true;
+            this.btnCursorRestore.Click += new System.EventHandler(this.btnCursorRestore_Click);
+            // 
+            // btnCursorBackup
+            // 
+            this.btnCursorBackup.Location = new System.Drawing.Point(683, 30);
+            this.btnCursorBackup.Name = "btnCursorBackup";
+            this.btnCursorBackup.Size = new System.Drawing.Size(145, 47);
+            this.btnCursorBackup.TabIndex = 12;
+            this.btnCursorBackup.Text = "備份鼠標";
+            this.btnCursorBackup.UseVisualStyleBackColor = true;
+            this.btnCursorBackup.Click += new System.EventHandler(this.btnCursorBackup_Click);
+            // 
+            // button44
+            // 
+            this.button44.Location = new System.Drawing.Point(683, 241);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(145, 47);
+            this.button44.TabIndex = 15;
+            this.button44.Text = "恢復原廠鼠標";
+            this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
             // TwTools
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 436);
+            this.ClientSize = new System.Drawing.Size(875, 402);
             this.Controls.Add(this.WebBrowser1);
             this.Controls.Add(this.startLoL);
             this.Controls.Add(this.tabControl1);
@@ -1722,6 +1924,10 @@
             this.tabPage12.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxCursor1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxCursor2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1868,6 +2074,23 @@
         internal System.Windows.Forms.TextBox tbGameSound;
         internal System.Windows.Forms.Label label26;
         internal System.Windows.Forms.Button button39;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.TextBox tbCursor1Path;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnCurrentCursors;
+        private System.Windows.Forms.PictureBox pBoxCursor2;
+        private System.Windows.Forms.PictureBox pBoxCursor1;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox tbCursor2Path;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Button button42;
+        private System.Windows.Forms.Button button44;
+        private System.Windows.Forms.Button btnCursorDelete;
+        private System.Windows.Forms.Button btnCursorRestore;
+        private System.Windows.Forms.Button btnCursorBackup;
     }
 }
 

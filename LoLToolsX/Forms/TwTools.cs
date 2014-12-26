@@ -20,6 +20,7 @@ namespace LoLToolsX
     public partial class TwTools : Form
     {     
         CFGFile CFGFile = new CFGFile(Variable.CurrentDirectory + "\\config.ini");
+        CursorsEdit cursorEdit;
 
         public TwTools()
         {
@@ -640,6 +641,7 @@ namespace LoLToolsX
 
         private void TwTools_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Directory.Delete(Variable.CurrentDirectory + "\\temp",true);
             Environment.Exit(Environment.ExitCode);
         }
 
@@ -888,6 +890,12 @@ namespace LoLToolsX
             //載入LoLToolsX Logo
             PictureBox1.Image = Properties.Resources.logo;
             Logger.log("LoLToolsX Logo載入成功!", Logger.LogType.Info);
+
+            try
+            {
+                Directory.CreateDirectory(Variable.CurrentDirectory + "\\temp");
+            }
+            catch { }
         }
 
         private void CheckPath()
@@ -963,6 +971,8 @@ namespace LoLToolsX
             }
 
             Variable.curClient = "台服";
+
+            cursorEdit = new CursorsEdit(pBoxCursor1, pBoxCursor2);
         }
 
         private void button39_Click(object sender, EventArgs e)
@@ -985,6 +995,70 @@ namespace LoLToolsX
         private void tabPage3_Enter(object sender, EventArgs e)
         {
             MessageBox.Show("目前中文遊戲語言修改功能有 BUG\r\n\r\n請勿使用中文遊戲語言修改\r\n\r\n並請在切換成英文遊戲語言前進行備份 謝謝", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnCurrentCursors_Click(object sender, EventArgs e)
+        {
+            cursorEdit.GetCurrentCursors();
+            cursorEdit.ShowCurrentCursors();
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog() {
+                Title = "請選擇 .tga 鼠標檔案" ,
+                Filter = "鼠標檔案|*.tga"
+            };
+
+            if (DialogResult.OK == fileDialog.ShowDialog())
+            {
+                tbCursor1Path.Text = fileDialog.FileName;
+            }
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog()
+            {
+                Title = "請選擇 .tga 鼠標檔案",
+                Filter = "鼠標檔案|*.tga"
+            };
+
+            if (DialogResult.OK == fileDialog.ShowDialog())
+            {
+                tbCursor2Path.Text = fileDialog.FileName;
+            }
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            cursorEdit.Load(tbCursor1Path.Text, tbCursor2Path.Text);
+            cursorEdit.Show();
+        }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            cursorEdit.SaveDefault();
+        }
+
+        private void btnCursorBackup_Click(object sender, EventArgs e)
+        {
+            cursorEdit.Backup();
+        }
+
+        private void btnCursorRestore_Click(object sender, EventArgs e)
+        {
+            cursorEdit.Restore();
+        }
+
+        private void btnCursorDelete_Click(object sender, EventArgs e)
+        {
+            cursorEdit.DeleteBackup();
+        }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+            cursorEdit.Save(tbCursor1Path.Text, tbCursor2Path.Text);
         }
     }
 }
