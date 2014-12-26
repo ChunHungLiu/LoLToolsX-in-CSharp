@@ -18,8 +18,7 @@ namespace LoLToolsX
         {
             InitializeComponent();
 
-            CheckFinish += delegate
-            {
+            CheckFinish += new CheckFinishHandler(() => {
                 Logger.log(this.textBox1.Text);
 
                 //釋放資源
@@ -30,7 +29,7 @@ namespace LoLToolsX
                 //thread.Start();
                 ServerSelect ss = new ServerSelect();
                 ss.Show();
-            };
+            });
 
             timer1.Interval = 500;
             timer1.Tick += delegate {
@@ -85,6 +84,8 @@ namespace LoLToolsX
                                   "\\files\\fix-fd\\dependencies.properties",
                                   "\\files\\fix-fd\\info.riotmod",
                                   "\\files\\fix-fd\\mod_cht2.dat",
+                                  "\\TargaImage.dll",
+                                  "\\Ionic.Zip.dll",
                              };
 
             progressBar1.Minimum = 0;
@@ -100,7 +101,7 @@ namespace LoLToolsX
                 if (!File.Exists(path))
                 {
                     textBox1.AppendText(String.Format("\r\n找不到 {0} 檔案", path));
-                    switch (path)
+                    switch (str)
                     {
                         case "\\Skin.txt":
                             File.Create(Variable.CurrentDirectory + "\\Skin.txt");
@@ -211,6 +212,22 @@ namespace LoLToolsX
                                 break;
                             }
                             catch { textBox1.AppendText("\r\n下載失敗"); continue; }
+                        case "\\TargaImage.dll" :
+                            try
+                            {
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/TargaImage.dll", Variable.CurrentDirectory + "\\TargaImage.dll");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch { textBox1.AppendText("\r\n下載失敗"); MessageBox.Show("遺失 TargaImage.dll 檔案"); continue; }
+                        case "\\Ionic.Zip.dll" :
+                            try
+                            {
+                                client.DownloadFile("http://nitroxenon.com/loltoolsx/files/Ionic.Zip.dll", Variable.CurrentDirectory + "\\Ionic.Zip.dll");
+                                textBox1.AppendText("\r\n下載完成");
+                                break;
+                            }
+                            catch { textBox1.AppendText("\r\n下載失敗"); MessageBox.Show("遺失 Ionic.Zip.dll 檔案"); continue; }
                     }
 
                 }
