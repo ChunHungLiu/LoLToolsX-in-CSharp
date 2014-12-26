@@ -1058,7 +1058,7 @@ namespace LoLToolsX
                             image.Format = MagickFormat.Tga;
                             string targetPath = Path.GetDirectoryName(fileDialog.FileName) + "\\" + Path.GetFileName(fileDialog.FileName) + ".tga";
                             image.Write(targetPath);
-                            tbCursor1Path.Text = targetPath;
+                            tbCursor2Path.Text = targetPath;
                             MessageBox.Show("CUR ---> TGA 轉檔成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
@@ -1070,7 +1070,7 @@ namespace LoLToolsX
                 }
                 else
                 {
-                    tbCursor1Path.Text = fileDialog.FileName;
+                    tbCursor2Path.Text = fileDialog.FileName;
                 }
             }
         }
