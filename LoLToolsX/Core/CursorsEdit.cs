@@ -3,6 +3,8 @@ using Ionic.Zip;
 using System;
 using System.IO;
 using System.Windows.Forms;
+using ImageMagick;
+
 
 namespace LoLToolsX.Core
 {
@@ -47,7 +49,7 @@ namespace LoLToolsX.Core
         {
             if (String.IsNullOrEmpty(cur1Path) && String.IsNullOrEmpty(cur2Path))
             {
-                MessageBox.Show("請先選擇鼠標TGA檔案", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("請先選擇鼠標TGA或CUR檔案", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
@@ -79,7 +81,7 @@ namespace LoLToolsX.Core
         {
             if (String.IsNullOrEmpty(cursor1) && String.IsNullOrEmpty(cursor2))
             {
-                MessageBox.Show("請先選擇鼠標TGA檔案", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("請先選擇鼠標TGA或CUR檔案", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             using (ZipFile zFile = new ZipFile(datasZip))

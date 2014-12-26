@@ -80,7 +80,6 @@ R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.read.1.tlo
 R:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.write.1.tlog
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.exe
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.pdb
-H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.csprojResolveAssemblyReference.cache
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.ChatEdit.resources
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.Forms.CheckLangUpdate.resources
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.CrushForm.resources
@@ -97,7 +96,6 @@ H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.csproj.GenerateRe
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\LoLToolsX.exe
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\LoLToolsX.pdb
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\SevenZipSharp.dll
-H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\INIFile.dll
 T:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.exe
 T:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.pdb
 T:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\ResolveAssemblyReference.cache
@@ -157,3 +155,4 @@ O:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\GenerateResource.write.1.tl
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Ionic.Zip.dll
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\TargaImage.dll
 H:\git\LoLToolsX-in-CSharp\LoLToolsX\obj\x86\Release\LoLToolsX.GameLangEdit.resources
+H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Magick.NET-x86.dll

@@ -1,6 +1,6 @@
 ﻿============================== LoLToolsX Log File ==============================
-12/26/2014 18:17:06信息: LoLToolsX 啟動路徑 : H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release
-12/26/2014 18:17:06信息: 檔案檢查開始!
+12/26/2014 20:52:45信息: LoLToolsX 啟動路徑 : H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release
+12/26/2014 20:52:45信息: 檔案檢查開始!
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Skin.txt
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\LoLBakRes.exe
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Updater.exe
@@ -17,6 +17,7 @@
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\files\fix-fd\mod_cht2.dat
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\TargaImage.dll
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Ionic.Zip.dll
+檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\MagicImage.dll
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\Air
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\bak\Chat
@@ -32,9 +33,13 @@
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\Logs
 檢查 H:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Release\files
 檢查完成!
-12/26/2014 18:17:18信息: LoLToolsX版本: 4.1.0.0
-12/26/2014 18:17:18信息: 目前客戶端 : 台服
-12/26/2014 18:17:18信息: LoLToolsX Logo載入成功!
-12/26/2014 18:17:18信息: LoL目錄取得成功! 
-12/26/2014 18:17:20錯誤: LoL目錄選擇取消 
-12/26/2014 18:17:20信息: 關閉程式... 
+12/26/2014 20:52:46信息: LoLToolsX版本: 4.1.0.1
+12/26/2014 20:52:46信息: 目前客戶端 : 台服
+12/26/2014 20:52:46信息: LoLToolsX Logo載入成功!
+12/26/2014 20:52:46信息: LoL目錄取得成功! D:\LoL\GarenaLoLTW\GameData\Apps\LoLTW
+12/26/2014 20:52:46信息: LoL目錄檢查成功! 
+12/26/2014 20:52:46信息: LoL目錄寫入成功! D:\LoL\GarenaLoLTW\GameData\Apps\LoLTW
+12/26/2014 20:52:46信息: 伺服器設定檔檢查成功! 
+12/26/2014 20:52:46信息: 檢查 LoLToolsX 更新...
+12/26/2014 20:52:46信息: 目前伺服器: 台服
+12/26/2014 20:52:46信息: Air版本: 20141223

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using ImageMagick;
+using LoLToolsX.Core;
+using LoLToolsX.Core.Update;
+using SevenZip;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using LoLToolsX.Core;
-using LoLToolsX.Core.Update;
-using SevenZip;
 
 namespace LoLToolsX
 {
@@ -1006,13 +1007,35 @@ namespace LoLToolsX
         private void button40_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog() {
-                Title = "請選擇 .tga 鼠標檔案" ,
-                Filter = "鼠標檔案|*.tga"
+                Title = "請選擇 .tga/.cur 鼠標檔案" ,
+                Filter = "鼠標檔案|*.tga;*.cur"
             };
 
             if (DialogResult.OK == fileDialog.ShowDialog())
             {
-                tbCursor1Path.Text = fileDialog.FileName;
+                if (Path.GetExtension(fileDialog.FileName) == ".cur")
+                {
+                    using (MagickImage image = new MagickImage(fileDialog.FileName))
+                    {
+                        try
+                        {
+                            image.Format = MagickFormat.Tga;
+                            string targetPath = Path.GetDirectoryName(fileDialog.FileName) + "\\" + Path.GetFileName(fileDialog.FileName) + ".tga";
+                            image.Write(targetPath);
+                            tbCursor1Path.Text = targetPath;
+                            MessageBox.Show("CUR ---> TGA 轉檔成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("CUR ---> TGA 轉檔失敗!\r\n無法使用此鼠標檔案!\r\n錯誤訊息\r\n\r\n" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Logger.log(ex);
+                        }
+                    }
+                }
+                else
+                {
+                    tbCursor1Path.Text = fileDialog.FileName;
+                }
             }
         }
 
@@ -1021,12 +1044,34 @@ namespace LoLToolsX
             OpenFileDialog fileDialog = new OpenFileDialog()
             {
                 Title = "請選擇 .tga 鼠標檔案",
-                Filter = "鼠標檔案|*.tga"
+                Filter = "鼠標檔案|*.tga;*.cur"
             };
 
             if (DialogResult.OK == fileDialog.ShowDialog())
             {
-                tbCursor2Path.Text = fileDialog.FileName;
+                if (Path.GetExtension(fileDialog.FileName) == ".cur")
+                {
+                    using (MagickImage image = new MagickImage(fileDialog.FileName))
+                    {
+                        try
+                        {
+                            image.Format = MagickFormat.Tga;
+                            string targetPath = Path.GetDirectoryName(fileDialog.FileName) + "\\" + Path.GetFileName(fileDialog.FileName) + ".tga";
+                            image.Write(targetPath);
+                            tbCursor1Path.Text = targetPath;
+                            MessageBox.Show("CUR ---> TGA 轉檔成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("CUR ---> TGA 轉檔失敗!\r\n無法使用此鼠標檔案!\r\n錯誤訊息\r\n\r\n" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Logger.log(ex);
+                        }
+                    }
+                }
+                else
+                {
+                    tbCursor1Path.Text = fileDialog.FileName;
+                }
             }
         }
 
