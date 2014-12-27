@@ -86,7 +86,7 @@ namespace LoLToolsX
                                   "\\files\\fix-fd\\mod_cht2.dat",
                                   "\\TargaImage.dll",
                                   "\\Ionic.Zip.dll",
-                                  "\\MagicImage.dll",
+                                  "\\Magick.NET-x86.dll",
                              };
 
             progressBar1.Minimum = 0;
@@ -229,15 +229,15 @@ namespace LoLToolsX
                                 break;
                             }
                             catch { textBox1.AppendText("\r\n下載失敗"); MessageBox.Show("遺失 Ionic.Zip.dll 檔案"); continue; }
-                        case "\\MagicImage.dll" :
+                        case "\\Magick.NET-x86.dll" :
                             try
                             {
                                 textBox1.AppendText("下載程式必要類別庫中，請稍後~");
-                                client.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/Magick.NET-x86.dll", Variable.CurrentDirectory + "\\MagicImage.dll");
+                                client.DownloadFile("https://dl.dropboxusercontent.com/u/7084520/LoLToolsX/Magick.NET-x86.dll", Variable.CurrentDirectory + "\\Magick.NET-x86.dll");
                                 textBox1.AppendText("\r\n下載完成");
                                 break;
                             }
-                            catch { textBox1.AppendText("\r\n下載失敗"); MessageBox.Show("遺失 MagicImage.dll 檔案"); continue; }
+                            catch { textBox1.AppendText("\r\n下載失敗"); MessageBox.Show("遺失 Magick.NET-x86.dll 檔案"); continue; }
                     }
 
                 }

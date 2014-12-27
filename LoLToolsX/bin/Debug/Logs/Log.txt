@@ -1,1 +1,54 @@
-﻿
+﻿============================== LoLToolsX Log File ==============================
+12/27/2014 12:25:51信息: LoLToolsX 啟動路徑 : C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug
+12/27/2014 12:25:51信息: 檔案檢查開始!
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Skin.txt
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LoLBakRes.exe
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Updater.exe
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Logs\Log.txt
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\SevenZipSharp.dll
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\7z.dll
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\LICENSE.txt
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Disclaimer.txt
+找不到 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Disclaimer.txt 檔案
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Privacy.txt
+找不到 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Privacy.txt 檔案
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files\fix-fd\dependencies.properties
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files\fix-fd\info.riotmod
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files\fix-fd\mod_cht2.dat
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\TargaImage.dll
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Ionic.Zip.dll
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Magick.NET-x86.dll
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\Air
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\Chat
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\lang
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\LoL
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\na_lang
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\na_server_prop
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\server_prop
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\sound
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\UI
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\bak\UI\game
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\download
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\Logs
+檢查 C:\git\LoLToolsX-in-CSharp\LoLToolsX\bin\Debug\files
+檢查完成!
+12/27/2014 12:25:53信息: LoLToolsX版本: 4.1.0.2
+12/27/2014 12:25:53信息: 目前客戶端 : 台服
+12/27/2014 12:25:53信息: LoLToolsX Logo載入成功!
+12/27/2014 12:25:53信息: LoL目錄取得成功! C:\Download\GarenaTWLoL_Install_20141223\GarenaLoLTW\GameData\Apps\LoLTW
+12/27/2014 12:25:53信息: LoL目錄檢查成功! 
+12/27/2014 12:25:53信息: LoL目錄寫入成功! C:\Download\GarenaTWLoL_Install_20141223\GarenaLoLTW\GameData\Apps\LoLTW
+12/27/2014 12:25:53信息: 伺服器設定檔檢查成功! 
+12/27/2014 12:25:53信息: 目前伺服器: 台服
+12/27/2014 12:25:53信息: Air版本: 20141223
+12/27/2014 12:26:04異常: TargaImage
+System.Exception: Targa Image only supports 8, 16, 24, or 32 bit pixel depths.
+   at Paloma.TargaImage.LoadTGAHeaderInfo(BinaryReader binReader)
+   at Paloma.TargaImage..ctor(String strFileName)
+   at LoLToolsX.Core.CursorsEdit.ShowCurrentCursors() in c:\git\LoLToolsX-in-CSharp\LoLToolsX\Core\CursorsEdit.cs:line 243
+Targa Image only supports 8, 16, 24, or 32 bit pixel depths.
+   at Paloma.TargaImage.LoadTGAHeaderInfo(BinaryReader binReader)
+   at Paloma.TargaImage..ctor(String strFileName)
+   at LoLToolsX.Core.CursorsEdit.ShowCurrentCursors() in c:\git\LoLToolsX-in-CSharp\LoLToolsX\Core\CursorsEdit.cs:line 243
+

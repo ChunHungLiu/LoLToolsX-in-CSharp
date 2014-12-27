@@ -12,8 +12,9 @@ namespace LoLToolsX.Core
     {
         #region "Variables"
         readonly string datasZip = Variable.installPath + "\\Game\\Datas.zip";
-        readonly string zipHand1 = "DATA/Images/UI/Cursors/Hand1.tga";
-        readonly string zipHand2 = "DATA/Images/UI/Cursors/Hand2.tga";
+        readonly string zipHand1 = "DATA\\Images\\UI\\Cursors\\Hand1.tga";
+        readonly string zipHand2 = "DATA\\Images\\UI\\Cursors\\Hand2.tga";
+        readonly string cursorsPath = "DATA\\Images\\UI\\Cursors\\";
 
         Paloma.TargaImage defaultCursor1;
         Paloma.TargaImage defaultCursor2;
@@ -26,6 +27,9 @@ namespace LoLToolsX.Core
 
         PictureBox pBox1;
         PictureBox pBox2;
+        
+        bool cur1Resized = false;
+        bool cur2Resized = false;
         #endregion
 
         public CursorsEdit(PictureBox _pBox1, PictureBox _pBox2)
@@ -67,7 +71,7 @@ namespace LoLToolsX.Core
             }
             catch (Exception e)
             {
-                MessageBox.Show("鼠標載入錯誤!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("鼠標載入錯誤!\r\n錯誤訊息:\r\n\r\n" + e.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -84,6 +88,13 @@ namespace LoLToolsX.Core
                 MessageBox.Show("請先選擇鼠標TGA或CUR檔案", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
+            
+            if (cur1Resized)
+            {
+            	pBox1.Image.Save(cursor1,System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            
+            
             using (ZipFile zFile = new ZipFile(datasZip))
             {
                 try
@@ -91,19 +102,27 @@ namespace LoLToolsX.Core
                     if (!String.IsNullOrEmpty(cursor1))
                     {
                         File.Copy(cursor1, Variable.CurrentDirectory + "\\temp\\Hand1.tga", true);
-                        zFile.RemoveEntry(zipHand1);
-                        zFile.AddFile(Variable.CurrentDirectory + "\\temp\\Hand1.tga", "DATA\\Images\\UI\\Cursors\\");
+                        try
+                        {
+                            zFile.RemoveEntry(zipHand1);
+                        }
+                        catch {}
+                        zFile.AddFile(Variable.CurrentDirectory + "\\temp\\Hand1.tga", cursorsPath);
                     }
                     if (!String.IsNullOrEmpty(cursor2))
                     {
                         File.Copy(cursor2, Variable.CurrentDirectory + "\\temp\\Hand2.tga", true);
-                        zFile.RemoveEntry(zipHand2);
-                        zFile.AddFile(Variable.CurrentDirectory + "\\temp\\Hand2.tga", "DATA\\Images\\UI\\Cursors\\");
+                        try
+                        {
+                            zFile.RemoveEntry(zipHand2);
+                        }
+                        catch {}
+                        zFile.AddFile(Variable.CurrentDirectory + "\\temp\\Hand2.tga", cursorsPath);
                     }
                 }
-                catch 
+                catch (Exception e)
                 {
-                    MessageBox.Show("鼠標修改失敗!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show("鼠標修改失敗!\r\n錯誤訊息:\r\n\r\n" + e.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                     return false; 
                 }
 
@@ -124,10 +143,24 @@ namespace LoLToolsX.Core
                 if (cur1 != null)
                 {
                     pBox1.Image = cur1.Image;
+                    /*
+                    if (cur1.Header.Height != 48 || cur1.Header.Width != 48)
+                    {
+                    	pBox1.Image = (System.Drawing.Bitmap)Utility.ResizeImage(cur1.Image,48,48);
+                    	cur1Resized = true;
+                    }
+                    */
                 }
                 if (cur2 != null)
                 {
                     pBox2.Image = cur2.Image;
+                    /*
+                    if (cur2.Header.Height != 48 || cur2.Header.Width != 48)
+                    {
+                    	pBox2.Image = (System.Drawing.Bitmap)Utility.ResizeImage(cur2.Image,48,48);
+                    	cur2Resized = true;
+                    }
+                    */
                 }
                 return true;
             }
@@ -148,7 +181,7 @@ namespace LoLToolsX.Core
             }
             catch (Exception e)
             {
-                MessageBox.Show("鼠標載入錯誤!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("鼠標載入錯誤!\r\n錯誤訊息:\r\n\r\n" + e.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -180,12 +213,13 @@ namespace LoLToolsX.Core
 #endif
                     foreach (ZipEntry e in zipF)
                     {
+                    	//e.FileName = e.FileName.Replace('/','\\');
                         //MessageBox.Show(e.FileName);
-                        if (e.FileName == zipHand1)
+                        if (e.FileName.Replace('/','\\') == zipHand1)
                         {
                             e.Extract(Variable.CurrentDirectory + "\\temp\\Hand1", ExtractExistingFileAction.OverwriteSilently);
                         }
-                        if (e.FileName == zipHand2)
+                        if (e.FileName.Replace('/','\\') == zipHand2)
                         {
                             e.Extract(Variable.CurrentDirectory + "\\temp\\Hand2", ExtractExistingFileAction.OverwriteSilently);
                         }

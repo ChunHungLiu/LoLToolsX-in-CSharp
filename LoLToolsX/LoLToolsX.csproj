@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Core\AceGameUI.cs" />
     <Compile Include="Core\CursorsEdit.cs" />
+    <Compile Include="Core\OnlineConvert.cs" />
     <Compile Include="Core\PropertiesWriter.cs" />
     <Compile Include="Core\Utility.cs" />
     <Compile Include="Forms\CheckLangUpdate.cs">
